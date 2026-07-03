@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowRight } from "lucide-react";
-import { projects, getProject, getService } from "@/lib/site";
+import { projects, getProject, getSector } from "@/lib/site";
 import Reveal from "@/components/Reveal";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
 
 export function generateStaticParams() {
@@ -29,64 +30,84 @@ export default async function ProjectPage({
   const project = getProject((await params).slug);
   if (!project) notFound();
 
-  const facts = [
-    { label: "Sector", value: project.sector },
-    { label: "Location", value: project.location },
-    { label: "Value", value: project.value },
-  ];
+  const sector = getSector(project.sector);
+  const related = projects
+    .filter((p) => p.sector === project.sector && p.slug !== project.slug)
+    .slice(0, 3);
 
   return (
     <>
-      <section className="blueprint bg-navy-950">
-        <div className="container-site py-20 sm:py-28">
-          <Reveal>
-            <p className="eyebrow">
-              <Link href="/projects" className="hover:text-brand-light">
-                Projects
-              </Link>{" "}
-              / {project.sector}
-            </p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-semibold text-white sm:text-5xl">
-              {project.title}
-            </h1>
-            <div className="rule" />
-            <p className="mt-6 max-w-2xl text-lg text-navy-100">
-              {project.summary}
-            </p>
-          </Reveal>
-        </div>
-      </section>
+      <PageHero
+        eyebrow={
+          <>
+            <Link href="/projects" className="hover:text-brand-light">
+              Projects
+            </Link>{" "}
+            / {sector?.title}
+          </>
+        }
+        title={project.title}
+        lead={project.summary}
+        image={project.hero ?? project.thumb}
+        imageAlt={project.title}
+      />
 
       <section className="section bg-white">
         <div className="container-site">
-          <Reveal>
-            <PlaceholderImage
-              label={`${project.title} — hero photo`}
-              sector={project.sector}
-              className="aspect-[21/9] w-full"
-            />
-          </Reveal>
-
-          <div className="mt-14 grid gap-14 lg:grid-cols-[1fr,320px]">
+          <div className="grid gap-14 lg:grid-cols-[1fr,300px]">
             <div>
-              <Reveal>
-                <h2 className="text-2xl font-semibold text-navy-900">
-                  The challenge
-                </h2>
-                <div className="rule" />
-                <p className="mt-5 text-lg leading-relaxed text-navy-700">
-                  {project.challenge}
-                </p>
-              </Reveal>
-              <Reveal>
-                <h2 className="mt-14 text-2xl font-semibold text-navy-900">
-                  The outcome
-                </h2>
-                <div className="rule" />
-                <p className="mt-5 text-lg leading-relaxed text-navy-700">
-                  {project.outcome}
-                </p>
-              </Reveal>
+              {project.body.length > 0 && (
+                <Reveal>
+                  <h2 className="text-2xl font-semibold text-navy-900">
+                    The project
+                  </h2>
+                  <div className="rule" />
+                  <div className="mt-5 space-y-5">
+                    {project.body.map((para) => (
+                      <p
+                        key={para.slice(0, 40)}
+                        className="text-lg leading-relaxed text-navy-700"
+                      >
+                        {para}
+                      </p>
+                    ))}
+                  </div>
+                </Reveal>
+              )}
+
+              {project.gallery.length > 0 && (
+                <Reveal>
+                  <h2
+                    className={`text-2xl font-semibold text-navy-900 ${
+                      project.body.length ? "mt-14" : ""
+                    }`}
+                  >
+                    In pictures
+                  </h2>
+                  <div className="rule" />
+                  <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3">
+                    {project.gallery.map((src, i) => (
+                      <div
+                        key={src}
+                        className={`relative overflow-hidden ${
+                          i % 5 === 0
+                            ? "col-span-2 aspect-[16/9]"
+                            : "aspect-[4/3]"
+                        }`}
+                      >
+                        <Image
+                          src={src}
+                          alt={`${project.title} — photo ${i + 1}`}
+                          fill
+                          className="object-cover transition-transform duration-500 hover:scale-105"
+                          sizes="(min-width: 1024px) 30rem, 50vw"
+                          loading="lazy"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </Reveal>
+              )}
             </div>
 
             <aside>
@@ -95,41 +116,84 @@ export default async function ProjectPage({
                   <h2 className="font-heading text-sm font-semibold uppercase tracking-wider text-navy-900">
                     Project facts
                   </h2>
-                  <dl className="mt-5 space-y-4">
-                    {facts.map((f) => (
-                      <div
-                        key={f.label}
-                        className="flex justify-between gap-4 border-b border-navy-100 pb-3 text-sm"
-                      >
-                        <dt className="text-navy-500">{f.label}</dt>
-                        <dd className="font-medium text-navy-900">{f.value}</dd>
+                  <dl className="mt-5 space-y-4 text-sm">
+                    <div className="flex justify-between gap-4 border-b border-navy-100 pb-3">
+                      <dt className="text-navy-500">Sector</dt>
+                      <dd className="text-right font-medium text-navy-900">
+                        {sector?.title}
+                      </dd>
+                    </div>
+                    {project.location && (
+                      <div className="flex justify-between gap-4 border-b border-navy-100 pb-3">
+                        <dt className="text-navy-500">Location</dt>
+                        <dd className="text-right font-medium text-navy-900">
+                          {project.location}
+                        </dd>
                       </div>
-                    ))}
+                    )}
+                    <div className="flex justify-between gap-4">
+                      <dt className="text-navy-500">Consultant</dt>
+                      <dd className="text-right font-medium text-navy-900">
+                        AOCA
+                      </dd>
+                    </div>
                   </dl>
-                  <h3 className="mt-7 font-heading text-sm font-semibold uppercase tracking-wider text-navy-900">
-                    AOCA services
-                  </h3>
-                  <ul className="mt-4 space-y-2">
-                    {project.servicesProvided.map((slug) => {
-                      const s = getService(slug);
-                      if (!s) return null;
-                      return (
-                        <li key={slug}>
-                          <Link
-                            href={`/services/${slug}`}
-                            className="inline-flex items-center gap-2 text-sm text-brand hover:text-brand-dark"
-                          >
-                            <ArrowRight size={14} aria-hidden />
-                            {s.title}
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
+                  <Link href="/contact" className="btn-primary mt-7 w-full">
+                    Discuss a similar project
+                  </Link>
                 </div>
               </Reveal>
             </aside>
           </div>
+
+          {related.length > 0 && (
+            <Reveal>
+              <div className="mt-20 border-t border-navy-100 pt-12">
+                <div className="flex flex-wrap items-end justify-between gap-4">
+                  <h2 className="text-2xl font-semibold text-navy-900">
+                    Related projects
+                  </h2>
+                  <Link
+                    href={`/projects?sector=${project.sector}`}
+                    className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand hover:text-brand-dark"
+                  >
+                    All {sector?.title}
+                    <ArrowRight size={14} aria-hidden />
+                  </Link>
+                </div>
+                <div className="mt-8 grid gap-6 sm:grid-cols-3">
+                  {related.map((p) => (
+                    <Link
+                      key={p.slug}
+                      href={`/projects/${p.slug}`}
+                      className="group block border border-navy-100 transition-all duration-200 hover:-translate-y-1 hover:border-navy-800 hover:shadow-lg"
+                    >
+                      <div className="relative aspect-[16/10] overflow-hidden">
+                        <Image
+                          src={p.thumb}
+                          alt={p.title}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          sizes="(min-width: 640px) 33vw, 100vw"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="p-5">
+                        <h3 className="font-semibold text-navy-900 group-hover:text-brand">
+                          {p.title}
+                        </h3>
+                        {p.location && (
+                          <p className="mt-1 text-xs uppercase tracking-wider text-navy-400">
+                            {p.location}
+                          </p>
+                        )}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          )}
         </div>
       </section>
 

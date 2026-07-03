@@ -3,7 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { site } from "@/lib/site";
+import { site, offices } from "@/lib/site";
 
 const heading = Space_Grotesk({
   subsets: ["latin"],
@@ -20,17 +20,17 @@ const body = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} | Civil & Structural Engineers, Ireland`,
+    default: `${site.name} | Consulting Engineers, Ireland & UK`,
     template: `%s | ${site.shortName} Engineering Consultants`,
   },
   description:
-    "AOCA Engineering Consultants — civil & structural engineering, project management, Assigned Certifier and site development services across Ireland.",
+    "Aidan O'Connell & Associates — civil & structural engineering, insurance engineering, pyrite remediation and consulting engineers since 1996. Offices in Portlaoise, Dublin and Manchester.",
   openGraph: {
     type: "website",
     siteName: site.name,
-    title: `${site.name} | Civil & Structural Engineers, Ireland`,
+    title: `${site.name} | Consulting Engineers, Ireland & UK`,
     description:
-      "Engineering certainty, from the ground up. Civil & structural design, project management and building-control compliance across Ireland.",
+      "We turn vision into reality. Over 7,000 projects delivered since 1996 across Ireland, the UK and Europe.",
     images: ["/aoca-logo-colour.png"],
   },
   robots: {
@@ -44,17 +44,26 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: site.name,
+  legalName: site.legalName,
   url: site.url,
   telephone: site.phone,
   email: site.email,
+  foundingDate: site.founded,
   address: {
     "@type": "PostalAddress",
-    streetAddress: site.address,
+    streetAddress: "Lismard House, Timahoe Road",
+    addressLocality: "Portlaoise",
+    addressRegion: "Co. Laois",
     addressCountry: "IE",
   },
-  areaServed: "Ireland",
+  location: offices.map((o) => ({
+    "@type": "Place",
+    name: o.name,
+    address: o.address.join(", "),
+  })),
+  areaServed: ["Ireland", "United Kingdom"],
   description:
-    "Civil & structural engineering, project management, Assigned Certifier and site development services.",
+    "Civil & structural engineering, insurance engineering, pyrite remediation and consulting engineering services since 1996.",
 };
 
 export default function RootLayout({

@@ -1,37 +1,35 @@
-# Placeholder swap-list
+# Content status & remaining swap-list
 
-Everything the client (AOCA) needs to confirm or supply before launch.
-All editable content lives in **`lib/site.ts`** — one file, clearly commented.
+Content and imagery are now **real** — sourced from the existing aoca.ie draft
+(crawled via the SkipDNS staging link on 2026-07-03). All editable content
+lives in **`lib/site.ts`**.
 
-## Must confirm with AOCA
+## Real content in place
 
-| Item | Where | Currently |
-|---|---|---|
-| Phone number | `lib/site.ts` → `site.phone` | Dummy `+353 (0)57 000 0000` |
-| Email | `lib/site.ts` → `site.email` | `info@aoca.ie` (unverified) |
-| Office address | `lib/site.ts` → `site.address` | Dummy Portlaoise address |
-| Founding year | `lib/site.ts` → `site.founded` | 2005 (guess) |
-| Stats (years/projects/counties) | `lib/site.ts` → `stats` | Invented figures |
-| Service list (6 disciplines) | `lib/site.ts` → `services` | Typical consultancy set — confirm which apply |
-| Case studies (all 6) | `lib/site.ts` → `projects` | **Entirely sample content** — replace with real projects |
-| Testimonials | `lib/site.ts` → `testimonials` | Sample quotes, anonymous attributions |
-| Team members | `lib/site.ts` → `team` | Placeholder names/roles/bios |
-| Company history copy | `app/about/page.tsx` story section | Drafted, needs fact-check |
-| What "AOCA" stands for | — | Not yet used anywhere; add to About once confirmed |
+- Company history, mission, 5 values, timeline (est. 1996, Aidan O'Connell & Associates)
+- 3 offices with real addresses/phones (Portlaoise HQ, Dublin, Manchester)
+- Management team: Philip O'Connell, Brian Byrne, Emmett O'Reilly, Colin Scott
+- 5 services with real copy (Civil, Structural, Insurance, Pyrite, Consulting)
+- 24 real projects with real photography (334 images from the current site)
+- 5 real client testimonials + partner logos (Davies, PCLA, RDF, OMC)
+- 30-brand client logo wall
+- Hero background video supplied by the client (public/video/hero.mp4)
 
-## Must supply
+## Still to confirm with AOCA
 
-- **Photography**: every `PlaceholderImage` component slot — hero/team/office,
-  6 project card photos + 6 project hero photos, map/office photo on Contact.
-  Swap `<PlaceholderImage …/>` for `next/image` `<Image …/>` when received.
-- **Accreditations/memberships** (Engineers Ireland, PI insurance wording, etc.)
-  — deliberately NOT claimed anywhere yet to avoid false claims.
+| Item | Notes |
+|---|---|
+| Testimonial attributions | Names/roles are real but company names weren't on the old site — confirm before launch |
+| "7,000+ projects / 27 years" stats | Old site says both "27 years" and "since 1996" (30 yrs) — confirm preferred figure |
+| Team photos | Management team currently shown with initials — headshots would lift the Company page |
+| Insights/news section | Old site has ~10 articles; not migrated into this draft yet (add later if wanted) |
+| Sector assignment of Arklow WTP | Old site categorised it under Commercial; arguably Infrastructure — confirm |
 
 ## Technical before production launch
 
-- Contact form backend (`components/ContactForm.tsx`) — currently simulates
-  success. Wire to Formspree/Resend/API route.
+- Contact form backend (`components/ContactForm.tsx`) — still simulates success.
 - Re-enable indexing: remove `robots: { index: false }` in `app/layout.tsx`
-  and open up `app/robots.ts` (both locked down for the draft).
-- Update `site.url` in `lib/site.ts` to the real domain.
-- Favicon/OG image: currently uses the colour logo; consider a proper OG card.
+  and open up `app/robots.ts`.
+- Update `site.url` in `lib/site.ts` to https://aoca.ie when it goes live.
+- Cookie/privacy policy pages (old site has them; not in this draft).
+- Video: 8.4MB mp4 — consider a compressed webm variant for slower connections.
