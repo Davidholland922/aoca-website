@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #1c3945;
+  --navy-deep: #132832;
+  --red: #c8202f;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white font-body text-navy-900 antialiased;
+  }
+
+  ::selection {
+    @apply bg-brand text-white;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand ring-offset-2;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-site px-5 sm:px-8;
+  }
+
+  .section {
+    @apply py-16 sm:py-24;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-brand;
+  }
+
+  .btn {
+    @apply inline-flex min-h-[44px] cursor-pointer items-center justify-center gap-2 px-6 py-3 text-sm font-semibold uppercase tracking-wider transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand text-white hover:bg-brand-dark;
+  }
+
+  .btn-outline-light {
+    @apply btn border border-white/40 text-white hover:border-white hover:bg-white/10;
+  }
+
+  .btn-outline-dark {
+    @apply btn border border-navy-300 text-navy-800 hover:border-navy-800 hover:bg-navy-50;
+  }
+
+  /* Blueprint grid texture for dark sections */
+  .blueprint {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .blueprint-light {
+    background-image:
+      linear-gradient(rgba(28, 57, 69, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(28, 57, 69, 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Red rule that echoes the underline in the AOCA logo */
+  .rule {
+    @apply mt-4 h-[3px] w-14 bg-brand;
+  }
+}
