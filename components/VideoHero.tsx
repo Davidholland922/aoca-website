@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 /**
  * Full-bleed background video (client-supplied) with poster fallback.
- * Respects prefers-reduced-motion by showing the poster only.
+ * Serves a dedicated portrait cut on mobile (<768px) and the main film on
+ * larger screens. Respects prefers-reduced-motion by showing the poster only.
  */
 export default function VideoHero({
   poster,
@@ -13,12 +14,24 @@ export default function VideoHero({
   poster: string;
   children: React.ReactNode;
 }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [showVideo, setShowVideo] = useState(false);
+  const [src, setSrc] = useState<string | null>(null);
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (!reduce.matches) setShowVideo(true);
+    const mobile = window.matchMedia("(max-width: 767px)");
+
+    const pick = () => {
+      if (reduce.matches) setSrc(null);
+      else setSrc(mobile.matches ? "/video/hero-mobile.mp4" : "/video/hero.mp4");
+    };
+
+    pick();
+    mobile.addEventListener("change", pick);
+    reduce.addEventListener("change", pick);
+    return () => {
+      mobile.removeEventListener("change", pick);
+      reduce.removeEventListener("change", pick);
+    };
   }, []);
 
   return (
@@ -28,9 +41,9 @@ export default function VideoHero({
         style={{ backgroundImage: `url(${poster})` }}
         aria-hidden
       />
-      {showVideo && (
+      {src && (
         <video
-          ref={videoRef}
+          key={src}
           className="absolute inset-0 h-full w-full object-cover"
           autoPlay
           muted
@@ -39,7 +52,7 @@ export default function VideoHero({
           poster={poster}
           aria-hidden
         >
-          <source src="/video/hero.mp4" type="video/mp4" />
+          <source src={src} type="video/mp4" />
         </video>
       )}
       {/* legibility scrim */}
