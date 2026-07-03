@@ -32,8 +32,8 @@ export default function PageHero({
         aria-hidden
       />
       <div
-        className={`container-site relative flex flex-col justify-end ${
-          compact ? "min-h-[40vh] py-16" : "min-h-[55vh] py-20"
+        className={`container-site relative flex flex-col justify-end pt-32 ${
+          compact ? "min-h-[48vh] pb-16" : "min-h-[62vh] pb-20"
         }`}
       >
         <Reveal>

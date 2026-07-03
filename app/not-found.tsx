@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react";
 export default function NotFound() {
   return (
     <section className="blueprint bg-navy-950">
-      <div className="container-site flex min-h-[60vh] flex-col items-start justify-center py-24">
+      <div className="container-site flex min-h-[70vh] flex-col items-start justify-center pb-24 pt-40">
         <p className="eyebrow">404</p>
         <h1 className="mt-4 max-w-xl text-4xl font-semibold text-white sm:text-5xl">
           This page didn&apos;t pass inspection.

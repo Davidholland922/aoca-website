@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -18,11 +18,35 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Menu floats transparently over the hero video/imagery at the top of the
+  // page, then condenses into a solid bar once the user scrolls.
+  const solid = scrolled || open;
+
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-navy-950/95 backdrop-blur">
-      <div className="container-site flex h-20 items-center justify-between gap-4">
+    <header
+      className={clsx(
+        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+        solid
+          ? "border-b border-white/10 bg-navy-950/95 shadow-lg shadow-navy-950/30 backdrop-blur"
+          : "border-b border-transparent bg-gradient-to-b from-navy-950/80 via-navy-950/35 to-transparent"
+      )}
+    >
+      <div
+        className={clsx(
+          "container-site flex items-center justify-between gap-4 transition-all duration-300",
+          solid ? "h-16" : "h-24"
+        )}
+      >
         <Link
           href="/"
           className="flex items-center"
@@ -36,7 +60,10 @@ export default function Navbar() {
             height={95}
             priority
             unoptimized
-            className="h-12 w-auto"
+            className={clsx(
+              "w-auto transition-all duration-300",
+              solid ? "h-10" : "h-14"
+            )}
           />
         </Link>
 
@@ -50,8 +77,11 @@ export default function Navbar() {
                 href={l.href}
                 className={clsx(
                   "relative py-2 text-sm font-medium uppercase tracking-wider transition-colors",
-                  active ? "text-white" : "text-navy-200 hover:text-white"
+                  active
+                    ? "text-white"
+                    : "text-navy-100 hover:text-white"
                 )}
+                style={{ textShadow: solid ? undefined : "0 1px 8px rgba(0,0,0,.45)" }}
               >
                 {l.label}
                 {active && (

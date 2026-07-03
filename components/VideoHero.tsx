@@ -35,7 +35,7 @@ export default function VideoHero({
   }, []);
 
   return (
-    <section className="relative min-h-[92svh] overflow-hidden bg-navy-950">
+    <section className="relative min-h-svh overflow-hidden bg-navy-950">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${poster})` }}
@@ -64,7 +64,9 @@ export default function VideoHero({
         className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-navy-950 to-transparent"
         aria-hidden
       />
-      <div className="relative flex min-h-[92svh] items-center">{children}</div>
+      <div className="relative flex min-h-svh items-center pt-24">
+        {children}
+      </div>
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-brand via-brand to-transparent" />
     </section>
   );
