@@ -1,7 +1,25 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Linkedin, Facebook, Instagram } from "lucide-react";
 import { site, services, offices } from "@/lib/site";
+
+const socials = [
+  {
+    href: "https://www.linkedin.com/company/aidan-o'connell-&-associates",
+    label: "AOCA on LinkedIn",
+    Icon: Linkedin,
+  },
+  {
+    href: "https://www.facebook.com/aoca.ie",
+    label: "AOCA on Facebook",
+    Icon: Facebook,
+  },
+  {
+    href: "https://instagram.com/aocaengineering",
+    label: "AOCA on Instagram",
+    Icon: Instagram,
+  },
+];
 
 export default function Footer() {
   return (
@@ -25,6 +43,20 @@ export default function Footer() {
             <Clock size={15} className="shrink-0 text-brand" aria-hidden />
             {site.hours}
           </p>
+          <div className="mt-6 flex gap-3">
+            {socials.map(({ href, label, Icon }) => (
+              <a
+                key={href}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="flex h-11 w-11 items-center justify-center border border-white/15 text-navy-200 transition-colors hover:border-brand hover:bg-brand hover:text-white"
+              >
+                <Icon size={18} aria-hidden />
+              </a>
+            ))}
+          </div>
         </div>
 
         <div>
@@ -65,6 +97,11 @@ export default function Footer() {
             <li>
               <Link href="/projects" className="transition-colors hover:text-white">
                 Projects
+              </Link>
+            </li>
+            <li>
+              <Link href="/insights" className="transition-colors hover:text-white">
+                Insights
               </Link>
             </li>
           </ul>

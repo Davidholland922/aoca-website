@@ -15,10 +15,13 @@ import {
   cultureImages,
   companyImages,
 } from "@/lib/site";
+import { insights } from "@/lib/insights";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import VideoHero from "@/components/VideoHero";
 import CtaBand from "@/components/CtaBand";
+import StatCounter from "@/components/StatCounter";
+import TestimonialCarousel from "@/components/TestimonialCarousel";
 
 export default function HomePage() {
   const featured = projects.filter((p) => p.featured);
@@ -61,7 +64,7 @@ export default function HomePage() {
             <Reveal key={s.label} delay={i * 0.06}>
               <div className="border-l-2 border-brand pl-5">
                 <p className="font-heading text-4xl font-semibold text-navy-900 sm:text-5xl">
-                  {s.value}
+                  <StatCounter value={s.value} />
                 </p>
                 <p className="mt-1 text-sm uppercase tracking-wider text-navy-500">
                   {s.label}
@@ -331,6 +334,44 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* AWARDS & RECOGNITION */}
+      <section className="border-b border-navy-100 bg-white">
+        <div className="container-site grid items-center gap-10 py-14 lg:grid-cols-[auto,1fr,auto]">
+          <Reveal>
+            <Image
+              src="/images/2024-01-ibda-finalist-blue-1.png"
+              alt="Irish Building and Design Awards — Finalist"
+              width={180}
+              height={180}
+              className="mx-auto h-32 w-auto object-contain"
+            />
+          </Reveal>
+          <Reveal delay={0.06}>
+            <div>
+              <p className="eyebrow">Recognition</p>
+              <h2 className="mt-2 text-2xl font-semibold text-navy-900 sm:text-3xl">
+                Award-recognised engineering
+              </h2>
+              <p className="mt-3 max-w-2xl leading-relaxed text-navy-600">
+                Shortlisted at the Irish Building &amp; Design Awards —
+                recognised as being &lsquo;Best in Class&rsquo; — and part of
+                the team behind the multi-award-winning Arklow Wastewater
+                Treatment Plant.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <Link
+              href="/insights/arklow-wastewater-treatment-plant-recognised-with-prestigious-awards"
+              className="btn-outline-dark whitespace-nowrap"
+            >
+              The Arklow story
+              <ArrowRight size={16} aria-hidden />
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
       {/* TESTIMONIALS */}
       <section className="blueprint section bg-navy-950">
         <div className="container-site">
@@ -341,27 +382,11 @@ export default function HomePage() {
               title="Built on repeat business"
             />
           </Reveal>
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {testimonials.slice(0, 3).map((t, i) => (
-              <Reveal key={t.author} delay={i * 0.07}>
-                <figure className="flex h-full flex-col border border-white/10 bg-navy-900/60 p-7">
-                  <span
-                    className="font-heading text-5xl leading-none text-brand-light"
-                    aria-hidden
-                  >
-                    &ldquo;
-                  </span>
-                  <blockquote className="mt-2 flex-1 text-sm leading-relaxed text-navy-100">
-                    {t.quote}
-                  </blockquote>
-                  <figcaption className="mt-6 border-t border-white/10 pt-4">
-                    <p className="font-semibold text-white">{t.author}</p>
-                    <p className="text-sm text-navy-300">{t.role}</p>
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal>
+            <div className="mt-12">
+              <TestimonialCarousel testimonials={testimonials} />
+            </div>
+          </Reveal>
           <Reveal>
             <div className="mt-12 flex flex-wrap items-center justify-center gap-x-14 gap-y-8 border-t border-white/10 pt-10">
               {partnerLogos.map((l) => (
@@ -376,6 +401,54 @@ export default function HomePage() {
               ))}
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* LATEST INSIGHTS */}
+      <section className="section bg-navy-50/60">
+        <div className="container-site">
+          <Reveal>
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              <SectionHeading
+                eyebrow="Insights"
+                title="From the drawing board"
+                lead="News, awards and practical engineering insight from the team."
+              />
+              <Link href="/insights" className="btn-outline-dark">
+                All insights
+                <ArrowRight size={16} aria-hidden />
+              </Link>
+            </div>
+          </Reveal>
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {insights.slice(0, 3).map((a, i) => (
+              <Reveal key={a.slug} delay={i * 0.07}>
+                <Link
+                  href={`/insights/${a.slug}`}
+                  className="group flex h-full flex-col border border-navy-100 bg-white transition-all duration-200 hover:-translate-y-1 hover:border-navy-800 hover:shadow-lg"
+                >
+                  <div className="relative aspect-[16/9] overflow-hidden">
+                    <Image
+                      src={a.image}
+                      alt={a.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <p className="text-xs uppercase tracking-wider text-navy-400">
+                      {a.displayDate}
+                    </p>
+                    <h3 className="mt-2 flex-1 font-semibold leading-snug text-navy-900 group-hover:text-brand">
+                      {a.title}
+                    </h3>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -62,6 +62,15 @@ export default function ContactPage() {
                     </a>
                   </li>
                 </ul>
+                <iframe
+                  title={`Map — ${o.name}`}
+                  src={`https://maps.google.com/maps?q=${encodeURIComponent(
+                    o.address.join(", ")
+                  )}&z=14&output=embed`}
+                  className="mt-6 h-44 w-full border-0 grayscale transition-all duration-300 hover:grayscale-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
             </Reveal>
           ))}
