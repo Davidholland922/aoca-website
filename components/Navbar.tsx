@@ -38,7 +38,7 @@ export default function Navbar() {
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         solid
           ? "border-b border-white/10 bg-navy-950/95 shadow-lg shadow-navy-950/30 backdrop-blur"
-          : "border-b border-transparent bg-gradient-to-b from-navy-950/80 via-navy-950/35 to-transparent"
+          : "border-b border-transparent bg-transparent"
       )}
     >
       <div
