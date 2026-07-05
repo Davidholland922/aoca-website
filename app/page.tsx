@@ -269,8 +269,9 @@ export default function HomePage() {
       </section>
 
       {/* VALUES */}
+      {/* bg-fixed is intentionally avoided — iOS Safari renders it broken */}
       <section
-        className="relative bg-cover bg-fixed bg-center"
+        className="relative bg-cover bg-center"
         style={{ backgroundImage: `url(${companyImages.homeStrip})` }}
       >
         <div className="absolute inset-0 bg-navy-950/85" aria-hidden />
