@@ -8,7 +8,6 @@ import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
-import Swoosh from "@/components/Swoosh";
 
 export const metadata: Metadata = {
   title: "Expertise",
@@ -67,7 +66,7 @@ export default function ExpertisePage() {
                         {s.title}
                       </h2>
                     </span>
-                    <Swoosh />
+                    <div className="rule" />
                     <p className="mt-5 max-w-2xl leading-relaxed text-navy-600">
                       {s.short}
                     </p>

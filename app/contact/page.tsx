@@ -5,7 +5,6 @@ import { site, offices, companyImages } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
 import PageHero from "@/components/PageHero";
-import Swoosh from "@/components/Swoosh";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -32,7 +31,7 @@ export default function ContactPage() {
             <Reveal key={o.name} delay={i * 0.06}>
               <div className="h-full border border-navy-100 bg-navy-50/40 p-7">
                 <h2 className="font-semibold text-navy-900">{o.name}</h2>
-                <Swoosh />
+                <div className="rule" />
                 <ul className="mt-5 space-y-4 text-sm">
                   <li className="flex items-start gap-3 text-navy-700">
                     <MapPin size={16} className="mt-0.5 shrink-0 text-brand" aria-hidden />
@@ -85,7 +84,7 @@ export default function ContactPage() {
             <h2 className="text-2xl font-semibold text-navy-900">
               Project enquiry
             </h2>
-            <Swoosh />
+            <div className="rule" />
             <p className="mt-5 flex items-center gap-3 text-sm text-navy-600">
               <Clock size={15} className="shrink-0 text-brand" aria-hidden />
               {site.hours}

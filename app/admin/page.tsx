@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import { CheckCircle2, ImagePlus, Loader2, X } from "lucide-react";
 import { sectors, services } from "@/lib/site";
-import Swoosh from "@/components/Swoosh";
 
 type Shot = { dataUrl: string; name: string };
 
@@ -116,7 +115,7 @@ export default function AdminPage() {
           <h1 className="mt-6 text-xl font-semibold text-white">
             Project uploads
           </h1>
-          <Swoosh />
+          <div className="rule" />
           <label htmlFor="pw" className="mt-6 block text-sm text-navy-200">
             Password
           </label>
@@ -147,7 +146,7 @@ export default function AdminPage() {
           <h1 className="mt-5 text-2xl font-semibold text-navy-900">
             Project published
           </h1>
-          <Swoosh className="mx-auto" />
+          <div className="rule mx-auto" />
           <p className="mt-5 leading-relaxed text-navy-600">
             <strong>{title}</strong> has been saved to the website. The site
             rebuilds automatically — your project page will be live at{" "}
@@ -180,7 +179,7 @@ export default function AdminPage() {
           <h1 className="mt-2 text-3xl font-semibold text-white">
             Add a project
           </h1>
-          <Swoosh />
+          <div className="rule" />
           <p className="mt-4 max-w-xl text-sm text-navy-200">
             Fill this in, add your photos, press publish. The project appears
             on the website automatically about two minutes later.

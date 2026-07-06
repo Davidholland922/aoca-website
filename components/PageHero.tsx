@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
-import Swoosh from "@/components/Swoosh";
 
 /** Full-bleed image hero for interior pages. */
 export default function PageHero({
@@ -47,7 +46,7 @@ export default function PageHero({
           <h1 className="mt-4 max-w-3xl text-4xl font-semibold text-white sm:text-5xl lg:text-6xl">
             {title}
           </h1>
-          <Swoosh />
+          <div className="rule" />
           {lead && (
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-navy-100">
               {lead}

@@ -3,7 +3,6 @@ import { ArrowRight, Phone } from "lucide-react";
 import { site } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import AWatermark from "@/components/AWatermark";
-import Swoosh from "@/components/Swoosh";
 
 export default function CtaBand({
   title = "Talk to an engineer, not a switchboard.",
@@ -22,7 +21,7 @@ export default function CtaBand({
               <h2 className="text-3xl font-semibold text-white sm:text-4xl">
                 {title}
               </h2>
-              <Swoosh />
+              <div className="rule" />
               <p className="mt-5 text-lg text-navy-100">{body}</p>
             </div>
             <div className="flex flex-col gap-4 sm:flex-row">

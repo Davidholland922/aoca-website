@@ -6,7 +6,6 @@ import { timeline, companyImages } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
-import Swoosh from "@/components/Swoosh";
 
 export const metadata: Metadata = {
   title: "Our History",
@@ -52,7 +51,7 @@ export default function HistoryPage() {
                         alt=""
                         width={151}
                         height={150}
-                        className="h-4 w-auto"
+                        className="h-6 w-auto"
                       />
                     </span>
                     <div
@@ -80,7 +79,7 @@ export default function HistoryPage() {
                       <h2 className="mt-3 text-2xl font-semibold text-navy-900">
                         {t.title}
                       </h2>
-                      <Swoosh />
+                      <div className="rule" />
                       <p className="mt-4 leading-relaxed text-navy-600">
                         {t.text}
                       </p>

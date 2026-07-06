@@ -24,7 +24,6 @@ import VideoHero from "@/components/VideoHero";
 import CtaBand from "@/components/CtaBand";
 import StatCounter from "@/components/StatCounter";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
-import Swoosh from "@/components/Swoosh";
 
 export default function HomePage() {
   const featured = projects.filter((p) => p.featured);
@@ -39,13 +38,19 @@ export default function HomePage() {
               Consulting Engineers · Ireland &amp; UK · Since {site.founded}
             </p>
             <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-[1.05] text-white sm:text-6xl lg:text-7xl">
-              A leader in multidisciplinary{" "}
-              <span className="text-brand-light">engineering expertise.</span>
+              We turn vision{" "}
+              <span className="text-brand-light">into reality.</span>
             </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-navy-100 sm:text-xl">
-              Civil &amp; structural engineering, project management and
-              forensic expertise — delivered with practical thinking, honest
-              effort and genuine pride since 1996.
+            {/* the brand's arrow-A stands in as the "A" of "A leader" */}
+            <p className="mt-7 flex max-w-2xl items-baseline gap-2.5 text-xl font-medium leading-relaxed text-white sm:text-2xl">
+              <Image
+                src="/a-mark.png"
+                alt="A"
+                width={151}
+                height={150}
+                className="inline-block h-[1.15em] w-auto translate-y-[0.18em]"
+              />
+              <span>leader in multidisciplinary engineering expertise.</span>
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Link href="/projects" className="btn-primary">
@@ -86,7 +91,7 @@ export default function HomePage() {
             <h2 className="mt-4 text-3xl font-semibold leading-snug text-navy-900 sm:text-4xl">
               {mission}
             </h2>
-            <Swoosh />
+            <div className="rule" />
             <p className="mt-6 text-lg leading-relaxed text-navy-600">
               Over 27 years. Over 7,000 projects. The same uncompromising
               standard every time — from one-off houses to award-winning
@@ -207,7 +212,7 @@ export default function HomePage() {
                     <h3 className="mt-3 text-2xl font-semibold text-white sm:text-3xl">
                       {p.title}
                     </h3>
-                    <Swoosh />
+                    <div className="rule" />
                     <p className="mt-5 leading-relaxed text-navy-100">
                       {p.summary}
                     </p>
@@ -375,25 +380,23 @@ export default function HomePage() {
             </Link>
           </Reveal>
         </div>
-        {/* accreditations & memberships (client-confirmed list) */}
+        {/* accreditations & certifications (exact client wording) */}
         <div className="border-t border-navy-100 bg-navy-50/60">
-          <div className="container-site flex flex-wrap items-center justify-center gap-x-8 gap-y-3 py-6">
-            {accreditations.map((a) => (
-              <span
-                key={a}
-                className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-navy-600"
-              >
-                <Image
-                  src="/a-mark.png"
-                  alt=""
-                  width={151}
-                  height={150}
-                  className="h-3 w-auto"
-                  aria-hidden
-                />
-                {a}
-              </span>
-            ))}
+          <div className="container-site py-8">
+            <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-navy-400">
+              Accreditations &amp; Certifications
+            </p>
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+              {accreditations.map((a) => (
+                <span
+                  key={a}
+                  className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-navy-600"
+                >
+                  <span className="h-1.5 w-1.5 rotate-45 bg-brand" aria-hidden />
+                  {a}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </section>

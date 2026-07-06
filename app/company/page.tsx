@@ -16,7 +16,6 @@ import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
-import Swoosh from "@/components/Swoosh";
 
 export const metadata: Metadata = {
   title: "Company",
@@ -130,7 +129,7 @@ export default function CompanyPage() {
             <h2 className="mt-4 max-w-3xl text-3xl font-semibold leading-snug text-navy-900 sm:text-4xl">
               {mission}
             </h2>
-            <Swoosh />
+            <div className="rule" />
           </Reveal>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
             {values.map((v, i) => (
@@ -233,7 +232,7 @@ export default function CompanyPage() {
               <Reveal key={o.name} delay={i * 0.07}>
                 <div className="h-full border border-white/10 bg-navy-900/60 p-7">
                   <h3 className="font-semibold text-white">{o.name}</h3>
-                  <Swoosh />
+                  <div className="rule" />
                   <p className="mt-4 text-sm leading-relaxed text-navy-100">
                     {o.address.map((l) => (
                       <span key={l} className="block">

@@ -482,12 +482,12 @@ export const services: Service[] = [
   },
 ];
 
-/** Accreditations & memberships (client-confirmed list, July 2026). */
+/** Accreditations & certifications — exact wording from AOCA, July 2026. */
 export const accreditations = [
+  "Member of the Institute of Fire Engineers",
   "Corporate Member of Engineers Ireland",
-  "ISO 9001 Certified with NSAI",
-  "Member of the Institution of Fire Engineers",
-  "Member of the Passive House Association of Ireland",
+  "ISO9001 Certification with NSAI",
+  "Member of Passive House Association of Ireland",
   "Green Cert Registered",
 ];
 
