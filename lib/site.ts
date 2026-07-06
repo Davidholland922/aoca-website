@@ -1148,7 +1148,7 @@ export const companyImages = {
     P + "2025-11-153a3667-2.jpg",
   ],
   // real photography preferred over AI-generated imagery (client feedback)
-  brandedTeam: P + "2025-11-153a3667-2.jpg",
+  brandedTeam: P + "2026-05-dji_0603.jpg",
   brandedTeam2: P + "2025-11-153a3905.jpg",
   cultureTeaser: P + "2026-05-group-49-2.jpg",
   careers: P + "2026-05-344a6993.jpg",

@@ -24,6 +24,7 @@ import VideoHero from "@/components/VideoHero";
 import CtaBand from "@/components/CtaBand";
 import StatCounter from "@/components/StatCounter";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
+import AWatermark from "@/components/AWatermark";
 
 export default function HomePage() {
   const featured = projects.filter((p) => p.featured);
@@ -83,35 +84,53 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* MISSION */}
-      <section className="section bg-white">
-        <div className="container-site grid items-center gap-14 lg:grid-cols-2">
+      {/* MISSION — brand feature panel built around the A */}
+      <section className="blueprint relative overflow-hidden bg-navy-950">
+        {/* giant ghost A anchors the design */}
+        <AWatermark className="pointer-events-none absolute -left-32 top-1/2 h-[150%] w-auto -translate-y-1/2 select-none opacity-[0.06]" />
+        <div className="container-site section relative grid items-center gap-14 lg:grid-cols-2">
           <Reveal>
             <p className="eyebrow">Our mission</p>
-            <h2 className="mt-4 text-3xl font-semibold leading-snug text-navy-900 sm:text-4xl">
+            <h2 className="mt-4 text-3xl font-semibold leading-snug text-white sm:text-4xl">
               {mission}
             </h2>
             <div className="rule" />
-            <p className="mt-6 text-lg leading-relaxed text-navy-600">
+            <p className="mt-6 text-lg leading-relaxed text-navy-100">
               Over 27 years. Over 7,000 projects. The same uncompromising
               standard every time — from one-off houses to award-winning
               national infrastructure.
             </p>
-            <Link href="/company" className="btn-outline-dark mt-8">
+            <Link href="/company" className="btn-outline-light mt-8">
               About AOCA
               <ArrowRight size={16} aria-hidden />
             </Link>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="relative">
+            <div className="relative mr-4 mt-4 lg:mr-6">
+              {/* offset red frame */}
+              <div
+                className="absolute -right-4 -top-4 h-full w-full border-2 border-brand lg:-right-6 lg:-top-6"
+                aria-hidden
+              />
               <Image
                 src={companyImages.brandedTeam}
-                alt="AOCA engineers reviewing drawings on site"
+                alt="The full AOCA team"
                 width={800}
-                height={860}
-                className="w-full object-cover"
+                height={600}
+                className="relative w-full object-cover"
                 sizes="(min-width: 1024px) 40rem, 100vw"
               />
+              {/* A-mark stamp */}
+              <div className="absolute -bottom-5 -left-5 border border-navy-100 bg-white p-3 shadow-lg">
+                <Image
+                  src="/a-mark.png"
+                  alt=""
+                  width={151}
+                  height={150}
+                  className="h-9 w-auto"
+                  aria-hidden
+                />
+              </div>
             </div>
           </Reveal>
         </div>
