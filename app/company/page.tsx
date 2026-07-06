@@ -99,7 +99,7 @@ export default function CompanyPage() {
             <SectionHeading dark eyebrow="Milestones" title="Three decades of building trust" />
           </Reveal>
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {timeline.map((t, i) => (
+            {timeline.slice(0, 4).map((t, i) => (
               <Reveal key={t.year} delay={i * 0.07}>
                 <div className="border-l-2 border-brand pl-5">
                   <p className="font-heading text-4xl font-semibold text-white">
@@ -112,6 +112,12 @@ export default function CompanyPage() {
               </Reveal>
             ))}
           </div>
+          <Reveal>
+            <Link href="/history" className="btn-outline-light mt-12">
+              The full story — reeling in the years
+              <ArrowRight size={16} aria-hidden />
+            </Link>
+          </Reveal>
         </div>
       </section>
 

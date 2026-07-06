@@ -3,7 +3,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowRight } from "lucide-react";
-import { projects, getProject, getSector } from "@/lib/site";
+import {
+  projects,
+  getProject,
+  getSector,
+  getService,
+  projectServices,
+} from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
@@ -59,7 +65,7 @@ export default async function ProjectPage({
               {project.body.length > 0 && (
                 <Reveal>
                   <h2 className="text-2xl font-semibold text-navy-900">
-                    The project
+                    The Project
                   </h2>
                   <div className="rule" />
                   <div className="mt-5 space-y-5">
@@ -138,6 +144,30 @@ export default async function ProjectPage({
                       </dd>
                     </div>
                   </dl>
+                  {(projectServices[project.slug] ?? []).length > 0 && (
+                    <>
+                      <h3 className="mt-7 font-heading text-sm font-semibold uppercase tracking-wider text-navy-900">
+                        Services Provided
+                      </h3>
+                      <ul className="mt-4 space-y-2">
+                        {(projectServices[project.slug] ?? []).map((slug) => {
+                          const s = getService(slug);
+                          if (!s) return null;
+                          return (
+                            <li key={slug}>
+                              <Link
+                                href={`/expertise/${slug}`}
+                                className="inline-flex items-center gap-2 text-sm text-brand hover:text-brand-dark"
+                              >
+                                <ArrowRight size={14} aria-hidden />
+                                {s.title}
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </>
+                  )}
                   <Link href="/contact" className="btn-primary mt-7 w-full">
                     Discuss a similar project
                   </Link>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import clsx from "clsx";
 
 export default function SectionHeading({
@@ -15,7 +16,23 @@ export default function SectionHeading({
 }) {
   return (
     <div className={clsx("max-w-2xl", center && "mx-auto text-center")}>
-      <p className="eyebrow">{eyebrow}</p>
+      <p
+        className={clsx(
+          "eyebrow flex items-center gap-2",
+          center && "justify-center"
+        )}
+      >
+        {/* the red 'A' from the AOCA mark, used as a brand accent */}
+        <Image
+          src="/a-mark.png"
+          alt=""
+          width={151}
+          height={150}
+          className="h-3.5 w-auto"
+          aria-hidden
+        />
+        {eyebrow}
+      </p>
       <h2
         className={clsx(
           "mt-3 text-3xl font-semibold sm:text-4xl",

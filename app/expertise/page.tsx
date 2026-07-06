@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Check } from "lucide-react";
-import { services, serviceLines, companyImages } from "@/lib/site";
+import { services, companyImages } from "@/lib/site";
+import ServiceIcon from "@/components/ServiceIcon";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
@@ -57,9 +58,9 @@ export default function ExpertisePage() {
                     />
                   </div>
                   <div className="flex flex-col justify-center p-8 lg:col-span-3 lg:p-12">
-                    <span className="flex items-baseline gap-3">
-                      <span className="font-heading text-sm font-semibold text-brand">
-                        0{i + 1}
+                    <span className="flex items-center gap-4">
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-navy-950 text-brand-light">
+                        <ServiceIcon name={s.icon} size={22} />
                       </span>
                       <h2 className="text-2xl font-semibold text-navy-900 sm:text-3xl">
                         {s.title}
@@ -90,32 +91,6 @@ export default function ExpertisePage() {
                     </span>
                   </div>
                 </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CORE SERVICE LINES */}
-      <section className="blueprint section bg-navy-950">
-        <div className="container-site">
-          <Reveal>
-            <SectionHeading
-              dark
-              eyebrow="Core service lines"
-              title="And everything in between"
-              lead="The service lines our clients call on most — this list should not be thought of as exhaustive in any way."
-            />
-          </Reveal>
-          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {serviceLines.map((line, i) => (
-              <Reveal key={line} delay={(i % 3) * 0.05}>
-                <div className="flex items-center gap-3 border border-white/10 bg-navy-900/60 px-5 py-4">
-                  <span className="h-[3px] w-6 shrink-0 bg-brand" aria-hidden />
-                  <span className="text-sm font-medium text-navy-100">
-                    {line}
-                  </span>
-                </div>
               </Reveal>
             ))}
           </div>

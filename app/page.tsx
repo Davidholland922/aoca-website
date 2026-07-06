@@ -14,7 +14,9 @@ import {
   logoWall,
   cultureImages,
   companyImages,
+  accreditations,
 } from "@/lib/site";
+import ServiceIcon from "@/components/ServiceIcon";
 import { insights } from "@/lib/insights";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
@@ -35,9 +37,9 @@ export default function HomePage() {
             <p className="eyebrow">
               Consulting Engineers · Ireland &amp; UK · Since {site.founded}
             </p>
-            <h1 className="mt-5 max-w-3xl text-4xl font-semibold leading-[1.05] text-white sm:text-6xl lg:text-7xl">
-              We turn vision{" "}
-              <span className="text-brand-light">into reality.</span>
+            <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-[1.05] text-white sm:text-6xl lg:text-7xl">
+              A leader in multidisciplinary{" "}
+              <span className="text-brand-light">engineering expertise.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-relaxed text-navy-100 sm:text-xl">
               Civil &amp; structural engineering, project management and
@@ -249,14 +251,14 @@ export default function HomePage() {
                     sizes="(min-width: 1024px) 15rem, (min-width: 640px) 50vw, 100vw"
                   />
                   <div
-                    className="absolute inset-0 bg-gradient-to-t from-navy-950/95 via-navy-950/40 to-navy-950/10"
+                    className="absolute inset-0 bg-gradient-to-t from-navy-950/95 via-navy-950/45 to-navy-950/10"
                     aria-hidden
                   />
                   <div className="absolute inset-x-0 bottom-0 p-5">
-                    <span className="font-heading text-xs font-semibold text-brand-light">
-                      0{i + 1}
+                    <span className="flex h-9 w-9 items-center justify-center border border-white/20 bg-navy-950/60 text-brand-light backdrop-blur-sm">
+                      <ServiceIcon name={s.icon} size={18} />
                     </span>
-                    <h3 className="mt-1 text-base font-semibold leading-snug text-white">
+                    <h3 className="mt-3 text-base font-semibold leading-snug text-white">
                       {s.title}
                     </h3>
                     <span className="mt-2 block h-[2px] w-8 bg-brand transition-all duration-300 group-hover:w-14" />
@@ -319,14 +321,15 @@ export default function HomePage() {
               {logoWall.map((src) => (
                 <div
                   key={src}
-                  className="flex aspect-[8/5] items-center justify-center bg-white p-5"
+                  className="flex aspect-[8/5] items-center justify-center bg-white p-6"
                 >
+                  {/* rendered no larger than source resolution to stay sharp */}
                   <Image
                     src={src}
                     alt="AOCA client logo"
-                    width={200}
-                    height={100}
-                    className="max-h-full w-auto object-contain opacity-80 transition-opacity hover:opacity-100"
+                    width={160}
+                    height={80}
+                    className="max-h-10 w-auto max-w-[75%] object-contain opacity-80 transition-opacity hover:opacity-100 sm:max-h-12"
                   />
                 </div>
               ))}
@@ -370,6 +373,20 @@ export default function HomePage() {
               <ArrowRight size={16} aria-hidden />
             </Link>
           </Reveal>
+        </div>
+        {/* accreditations & memberships (client-confirmed list) */}
+        <div className="border-t border-navy-100 bg-navy-50/60">
+          <div className="container-site flex flex-wrap items-center justify-center gap-x-8 gap-y-3 py-6">
+            {accreditations.map((a) => (
+              <span
+                key={a}
+                className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-navy-600"
+              >
+                <span className="h-1.5 w-1.5 rotate-45 bg-brand" aria-hidden />
+                {a}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -470,7 +487,7 @@ export default function HomePage() {
             </div>
           </Reveal>
           <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4">
-            {cultureImages.slice(0, 4).map((src, i) => (
+            {cultureImages.slice(0, 8).map((src, i) => (
               <Reveal key={src} delay={i * 0.06}>
                 <div
                   className={`relative overflow-hidden ${

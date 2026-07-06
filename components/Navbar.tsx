@@ -35,6 +35,7 @@ const links: NavItem[] = [
     label: "Company",
     children: [
       { href: "/company", label: "About AOCA" },
+      { href: "/history", label: "Our History" },
       { href: "/culture", label: "Our Culture" },
       { href: "/careers", label: "Careers" },
     ],
@@ -181,7 +182,7 @@ export default function Navbar() {
             unoptimized
             className={clsx(
               "w-auto transition-all duration-300",
-              solid ? "h-10" : "h-14"
+              solid ? "h-12" : "h-[4.5rem]"
             )}
           />
         </Link>
@@ -197,10 +198,10 @@ export default function Navbar() {
               }
             />
           ))}
-          <a href={site.phoneHref} className="btn-primary !min-h-0 !py-2.5">
+          <Link href="/contact" className="btn-primary !min-h-0 !py-2.5">
             <Phone size={15} aria-hidden />
-            {site.phone}
-          </a>
+            Get in touch
+          </Link>
         </nav>
 
         <button

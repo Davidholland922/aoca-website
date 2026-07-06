@@ -78,16 +78,53 @@ export const values = [
   },
 ];
 
+/**
+ * Company history for the /history page ("reeling in the years").
+ * [PLACEHOLDER] — milestones marked `confirm` are inferred from published
+ * material and need AOCA sign-off; they will also want to add their own.
+ */
 export const timeline = [
   {
     year: "1996",
-    text: "Aidan O'Connell & Associates founded in Portlaoise.",
+    title: "The beginning",
+    text: "Aidan O'Connell & Associates is founded in Portlaoise — one engineer, a drawing board and a conviction that clients deserve consultants who take responsibility.",
+    image: "/images/2026-04-aoca-black.png",
   },
-  { year: "2006", text: "Moved to our current head office at Lismard House, Portlaoise." },
-  { year: "2014", text: "Dublin office opened to better serve the Eastern region." },
+  {
+    year: "2006",
+    title: "A permanent home",
+    text: "The practice moves to its current head office at Lismard House on the Timahoe Road, Portlaoise.",
+    image: "/images/2025-11-153a3552.jpg",
+  },
+  {
+    year: "2014",
+    title: "Dublin calling",
+    text: "A second office opens at Centrepoint Business Park, Clondalkin, to better serve the Eastern region — growing to offer the full range of engineering services along with pyrite investigation.",
+    image: "/images/2025-11-153a3630.jpg",
+  },
+  {
+    year: "2016–2023",
+    title: "The remediation years",
+    text: "AOCA helps develop two NSAI National Standards for pyrite remediation and goes on to manage some of the largest residential remediation programmes in Ireland.",
+    image: "/images/2026-03-pyrite.jpg",
+  },
   {
     year: "2024",
-    text: "Three offices — Portlaoise, Dublin and Manchester — serving Ireland, the UK and Europe.",
+    title: "Recognised as Best in Class",
+    text: "Shortlisted at the Irish Building & Design Awards, and appointed Design Lead and Project Manager on a £9m fire safety and cladding remediation project in the UK. Three offices now serve Ireland, the UK and Europe.",
+    image: "/images/2024-01-ibda-finalist-blue-1.png",
+  },
+  {
+    year: "2025",
+    title: "Award-winning infrastructure",
+    text: "The Arklow Wastewater Treatment Plant — delivered with AOCA on the team — is recognised with prestigious industry awards, and Fire Safety Consultants launches in partnership with OCF.",
+    image: "/images/2025-09-arklow_case_study_featured_ojg6cb.webp",
+  },
+  {
+    year: "Today",
+    title: "7,000 projects and counting",
+    text: "A multidisciplinary team across Portlaoise, Dublin and Manchester, delivering ten expertise areas to clients across Ireland, the UK and Europe — with the same uncompromising standard as 1996.",
+    image: "/images/2026-05-344a7050.jpg",
   },
 ];
 
@@ -102,24 +139,67 @@ export type Service = {
   slug: string;
   title: string;
   short: string;
+  icon: string;
   image: string;
   gallery: string[];
   intro: string;
   sections: { heading: string; body: string }[];
   highlights: string[];
+  draft?: boolean; // copy still awaited from AOCA — see PLACEHOLDERS.md
 };
 
+/**
+ * The ten expertise areas confirmed by AOCA (client feedback, July 2026).
+ * Copy for Building Envelope, Project & Construction Management and Fire
+ * Safety supplied by the client; Building Surveying / Specialist Services /
+ * Building Science are marked draft pending their full copy.
+ */
 export const services: Service[] = [
   {
+    slug: "insurance-forensic-engineering",
+    title: "Insurance & Forensic Engineering",
+    icon: "scale",
+    short:
+      "Forensic investigation of subsidence, flooding, pyrite and structural damage — around 100 claims investigated every year.",
+    image: "/images/2026-03-insurance.jpg",
+    gallery: [],
+    intro:
+      "We are frequently asked to provide an engineering opinion on insurance claims lodged as subsidence, flooding or impact damage. We establish the proximate cause and the true extent of damage — using trial holes, dynamic probing, drains testing and CCTV surveys where required — and we currently investigate in the region of 100 subsidence claims in Ireland each year on behalf of both insurance companies and private homeowners.",
+    sections: [
+      {
+        heading: "Subsidence & Structural Damage",
+        body: "Whilst incidences of pure subsidence are rare, the point from which damage emanates is often clear while the underlying fault is not. Our engineers undertake every inspection with the care each case needs to reach the correct engineering determination.",
+      },
+      {
+        heading: "Pyrite & Defective Materials",
+        body: "AOCA has been highly involved with the NSAI in developing two National Standards used as the basis for the remediation of pyrite-affected properties in Ireland — and we have managed some of the largest residential remediation programmes in the country.",
+      },
+      {
+        heading: "Expert Witness",
+        body: "We have been called upon on numerous occasions to provide expert witness testimony at conciliations, mediations, arbitrations and District, Circuit and High Court cases. Our role is to provide factual, unbiased opinions that can be clearly understood by all parties.",
+      },
+      {
+        heading: "Unusual Cases",
+        body: "Buildings struck by vehicles — manned and unmanned — a helicopter crash, lightning strikes including a castle: when the unusual happens, insurers call us to establish exactly what occurred and what it will take to put right.",
+      },
+    ],
+    highlights: [
+      "~100 subsidence claims investigated yearly",
+      "Flooding & storm damage assessment",
+      "Pyrite identification & NSAI-standard remediation",
+      "Expert witness at all court levels",
+      "Reporting insurers can act on",
+    ],
+  },
+  {
     slug: "civil-engineering",
-    title: "Civil Engineering",
+    title: "Civil Engineering / Built Environment",
+    icon: "route",
     short:
       "Roads, drainage, water supply and geotechnics — the infrastructure that makes development possible.",
-    image: "/images/2026-05-group-36.jpg",
+    image: "/images/2026-02-dji_20250526051209_0006_d.jpg",
     gallery: [
-      "/images/2026-05-group-37.jpg",
-      "/images/2026-05-group-47.jpg",
-      "/images/2026-05-group-39.jpg",
+      "/images/2026-02-dji_0807.jpg",
       "/images/2026-05-geo.jpg",
     ],
     intro:
@@ -153,14 +233,13 @@ export const services: Service[] = [
   {
     slug: "structural-engineering",
     title: "Structural Engineering",
+    icon: "building",
     short:
-      "Complete structural design and project management across commercial, industrial, residential and community projects.",
-    image: "/images/2026-05-group-40.jpg",
+      "Complete structural design across commercial, industrial, residential and community projects.",
+    image: "/images/2026-02-1950x1462-cover-1.jpg",
     gallery: [
-      "/images/2026-05-group-41.jpg",
-      "/images/2026-05-group-42.jpg",
-      "/images/2026-05-group-43.jpg",
-      "/images/2026-05-group-44.jpg",
+      "/images/2026-02-20240926_090259262_ios.jpg",
+      "/images/2026-02-sam_9514.jpg",
     ],
     intro:
       "We provide a complete structural design and project management service to both the public and private sectors. Structural designers with a well-rounded knowledge of construction, the design Eurocodes and building regulations enable us to realise cost-effective solutions — from one-off retail units to €20m hotel developments.",
@@ -187,104 +266,225 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "insurance-engineering",
-    title: "Insurance Engineering",
+    slug: "project-construction-management",
+    title: "Project & Construction Management",
+    icon: "clipboard",
     short:
-      "Forensic investigation of subsidence, flooding and structural damage — around 100 claims investigated every year.",
-    image: "/images/2026-03-insurance.jpg",
+      "Engineering-led project management from concept to completion — including Ireland's largest residential remediation programmes.",
+    image: "/images/2026-05-team-meeting-2.webp",
     gallery: [],
     intro:
-      "We are frequently asked to provide an engineering opinion on insurance claims lodged as subsidence, flooding or impact damage. We establish the proximate cause and the true extent of damage — using trial holes, dynamic probing, drains testing and CCTV surveys where required — and we currently investigate in the region of 100 subsidence claims in Ireland each year on behalf of both insurance companies and private homeowners.",
+      "AOCA provides project management services for construction, development, remediation and technical engineering projects across the residential, commercial, industrial, healthcare and public sectors. Our approach is built around technical understanding, clear communication and practical delivery: we act as the client's representative, coordinating design teams, contractors, consultants and statutory processes to keep projects moving, risks managed and decisions clearly documented.",
     sections: [
       {
-        heading: "Subsidence & Structural Damage",
-        body: "Whilst incidences of pure subsidence are rare, the point from which damage emanates is often clear while the underlying fault is not. Our engineers undertake every inspection with the care each case needs to reach the correct engineering determination.",
+        heading: "An Engineering-Led Perspective",
+        body: "We bring an engineering-led perspective to project management. This allows us to identify technical issues early, challenge design assumptions, manage programme risks and support clients through planning, procurement, construction and handover.",
       },
+      {
+        heading: "Remediation Expertise",
+        body: "AOCA has particular expertise in building defect remediation and has managed some of the largest residential remediation programmes in Ireland, including major pyrite remediation projects. This experience gives us a strong understanding of complex stakeholder management, phased construction works, occupied buildings, technical investigations, statutory compliance, cost control and programme delivery.",
+      },
+      {
+        heading: "Full-Spectrum Delivery",
+        body: "While we are recognised for our expertise in building defect remediation, our project management capability extends across all aspects of construction project delivery — including strategic project advice, helping clients define the brief and key success measures before a project begins.",
+      },
+    ],
+    highlights: [
+      "Client representative & employer's agent",
+      "Ireland's largest residential remediation programmes",
+      "Programme, cost & risk management",
+      "Phased works in occupied buildings",
+      "Strategic project advice & brief definition",
+    ],
+  },
+  {
+    slug: "specialist-services",
+    title: "Specialist Services",
+    icon: "briefcase",
+    draft: true,
+    short:
+      "Expert witness, legal support and independent third-party checker services.",
+    image: "/images/2025-11-153a3552.jpg",
+    gallery: [],
+    intro:
+      "When a project, dispute or transaction needs an independent engineering voice, AOCA provides specialist services built on three decades of forensic and consultancy experience.",
+    sections: [
       {
         heading: "Expert Witness",
-        body: "We have been called upon on numerous occasions to provide expert witness testimony at conciliations, mediations, arbitrations and District, Circuit and High Court cases. Our role is to provide factual, unbiased opinions that can be clearly understood by all parties.",
+        body: "Factual, unbiased expert testimony at conciliations, mediations, arbitrations and District, Circuit and High Court cases — delivered so that all parties can clearly understand the engineering position.",
       },
       {
-        heading: "Unusual Cases",
-        body: "Buildings struck by vehicles — manned and unmanned — a helicopter crash, lightning strikes including a castle: when the unusual happens, insurers call us to establish exactly what occurred and what it will take to put right.",
+        heading: "Legal Support",
+        body: "Engineering reports, investigations and technical advice prepared for legal proceedings, insurers and property transactions.",
+      },
+      {
+        heading: "Third-Party Checker",
+        body: "Independent design checking and quality assurance — the same objective oversight role we perform on landmark projects such as the Glass Bottle Site development.",
       },
     ],
     highlights: [
-      "~100 subsidence claims investigated yearly",
-      "Flooding & storm damage assessment",
       "Expert witness at all court levels",
-      "Trial holes, probing, CCTV & drains testing",
-      "Reporting insurers can act on",
+      "Reports for legal proceedings",
+      "Independent third-party design checking",
     ],
   },
   {
-    slug: "pyrite-remediation",
-    title: "Pyrite Remediation",
+    slug: "psdp-assigned-certifier",
+    title: "PSDP / Assigned Certifier",
+    icon: "shield",
     short:
-      "National leaders in the identification and remediation of pyrite-affected properties.",
-    image: "/images/2026-03-pyrite.jpg",
+      "Statutory design-stage safety coordination and BCAR building-control certification.",
+    image: "/images/2026-02-20241017_104842393_ios.jpg",
     gallery: [],
     intro:
-      "Pyrite, or iron pyrite (FeS₂), is a common mineral present in many sedimentary rocks as framboidal crystals. When pyritic backfill, air and moisture mix, a chemical reaction creates expanding crystals within the material — causing floors to heave, walls to crack and buildings to suffer progressive damage.",
+      "Statutory roles need more than a signature — they need a consultant who treats the duty as seriously as the design. AOCA acts as Project Supervisor for the Design Process (PSDP) and as Assigned Certifier under the Building Control (Amendment) Regulations.",
     sections: [
       {
-        heading: "Identification & Testing",
-        body: "We assess whether damage is consistent with pyritic heave, arrange sampling and testing, and give homeowners and insurers a clear, evidence-based determination.",
+        heading: "PSDP",
+        body: "As designers we apply the General Principles of Prevention from design stage — eliminating hazards and reducing risk before anyone sets foot on site — and we discharge the PSDP role under the Safety, Health and Welfare at Work (Construction) Regulations, coordinating the design team's management of risk from concept to handover.",
       },
       {
-        heading: "National Standards",
-        body: "AOCA has been highly involved with the NSAI in developing two National Standards which are used as the basis for the remediation of pyrite-affected properties in Ireland — the same standards we apply on every remediation project we certify.",
+        heading: "Assigned Certifier",
+        body: "We act as Assigned Certifier on residential, commercial and industrial projects, planning inspections against the works programme, coordinating ancillary certificates and lodging the statutory register — so certification never holds up completion, sale or refinance.",
       },
     ],
     highlights: [
-      "Contributors to the NSAI national remediation standards",
-      "Assessment, testing & certification",
-      "Remediation design & supervision",
-      "Support through claims & schemes",
+      "PSDP under the Construction Regulations",
+      "Assigned Certifier under BCAR (S.I. 9 of 2014)",
+      "Inspection plans mapped to the works programme",
+      "Ancillary certificate coordination & statutory lodgement",
     ],
   },
   {
-    slug: "consulting-engineers",
-    title: "Consulting Engineers",
+    slug: "fire-safety-disability-access",
+    title: "Fire Safety & Disability Access",
+    icon: "flame",
     short:
-      "Project management, health & safety (PSDP) and the full breadth of consultancy services behind our design teams.",
-    image: "/images/2026-05-group-45.jpg",
+      "Specialist fire safety and accessibility consultancy through Fire Safety Consultants — our joint venture with OCF.",
+    image: "/images/2026-03-shutterstock_2715611483-1.jpg",
     gallery: [],
     intro:
-      "Aidan O'Connell & Associates Ltd. offer the full range of consulting engineering services to complement our design teams — from project management of conservation and restoration works to acting as the sole professional service on civil and building projects.",
+      "AOCA, in conjunction with OCF, has established Fire Safety Consultants to pool our resources and expertise and provide specialist fire safety and accessibility consultancy services. Fire Safety Consultants brings together internationally recognised expertise in fire engineering, fire safety compliance, accessibility, inspection, due diligence and structural fire engineering.",
     sections: [
       {
-        heading: "Project Management",
-        body: "We have led design and construction teams to bring projects in on time and on budget, using management approaches adapted to each project — church restorations, a new parish centre, temporary school accommodation and medical centres among them. Whatever the scale, the service is tailored to suit the client's requirements.",
+        heading: "Fire Engineering & Design",
+        body: "Performance-based and prescriptive fire safety design for new and existing buildings, with practical fire safety advice from early design stage through to construction and occupation.",
       },
       {
-        heading: "Health & Safety / PSDP",
-        body: "We aim to conduct every project to the best possible standards of health, safety and welfare. As designers we apply the General Principles of Prevention from design stage — eliminating hazards and reducing risk before anyone sets foot on site — and we discharge the PSDP role under the Construction Regulations 2006–2013.",
+        heading: "Review, Assessment & Inspection",
+        body: "Review of building designs and existing buildings to identify fire safety risks and compliance issues; fire risk assessments covering hazards, existing measures and practical risk-reduction recommendations; and inspections of buildings, fire doors, emergency lighting, alarm systems and passive fire protection.",
+      },
+      {
+        heading: "Accessibility Consultancy",
+        body: "Advice on accessibility, inclusive design and compliance with relevant accessibility requirements — designing buildings everyone can use.",
+      },
+      {
+        heading: "Due Diligence & Third-Party Checking",
+        body: "Independent fire safety reviews for acquisitions, developments, design teams, contractors and building owners.",
       },
     ],
     highlights: [
-      "Project management & client representation",
-      "PSDP & design-stage risk management",
-      "Assigned Certifier & building control",
-      "Technical due diligence & condition surveys",
-      "Fire safety & regulatory compliance",
+      "Fire engineering design — performance-based & prescriptive",
+      "Fire risk assessments & compliance reviews",
+      "Accessibility & inclusive design consultancy",
+      "Fire door, alarm & passive protection inspections",
+      "Structural fire engineering",
+    ],
+  },
+  {
+    slug: "building-envelope-engineering",
+    title: "Building Envelope Engineering",
+    icon: "layers",
+    short:
+      "Roof and façade engineering for data centre, pharmaceutical and mission-critical buildings across Europe.",
+    image: "/images/2026-02-20241121_102059.jpg",
+    gallery: [
+      "/images/2026-02-20250402_120133.jpg",
+      "/images/2026-02-20251009_114732.jpg",
+    ],
+    intro:
+      "AOCA provides specialist building envelope engineering services for data centre, pharmaceutical, industrial and other mission-critical buildings. Our role is to ensure that roof and façade systems are structurally sound, fire safe, moisture robust, thermally efficient and compliant with the project specification. We support clients, design teams and specialist contractors through design, review and site inspection services.",
+    sections: [
+      {
+        heading: "Design & Analysis",
+        body: "Roof and façade structural design; wind load design to Eurocode and FM Global requirements across multiple European jurisdictions; and finite element analysis for bespoke details and complex geometry.",
+      },
+      {
+        heading: "Performance & Compliance",
+        body: "Fire engineering review of façade, roof and cavity barrier systems; condensation risk analysis and hygrothermal modelling; U-value, thermal bridge and energy performance assessments; and architectural engineering specification advice.",
+      },
+      {
+        heading: "Assurance On Site",
+        body: "Design audits, peer reviews and compliance checks; BIM coordination and technical detailing support; and third-party site inspections and envelope audits — the role we perform on Dublin's Glass Bottle Site regeneration.",
+      },
+    ],
+    highlights: [
+      "Wind load design to Eurocode & FM Global",
+      "Finite element analysis of complex details",
+      "Condensation risk & hygrothermal modelling",
+      "Façade & roof fire engineering review",
+      "Third-party envelope inspections & audits",
+    ],
+  },
+  {
+    slug: "building-surveying",
+    title: "Building Surveying",
+    icon: "scan",
+    draft: true,
+    short:
+      "Technical due diligence, digital and drone surveys, thermal imaging and moisture investigation.",
+    image: "/images/2026-02-dji_0871.jpg",
+    gallery: [],
+    intro:
+      "From pre-acquisition due diligence to fit-out and refurbishment, AOCA's building surveying team gives owners, occupiers and investors a clear technical picture of the buildings they hold — using modern digital survey tools alongside three decades of engineering judgment.",
+    sections: [
+      {
+        heading: "What We Survey",
+        body: "Technical due diligence for acquisitions and lettings; fit-out and refurbishment surveys; digital surveying and legal mapping; building thermal imaging; drone surveys of roofs and inaccessible fabric; and damp and moisture investigations.",
+      },
+    ],
+    highlights: [
+      "Technical due diligence",
+      "Fit-out & refurbishment",
+      "Digital surveying & legal mapping",
+      "Building thermal imaging",
+      "Drone surveys",
+      "Damp & moisture surveys",
+    ],
+  },
+  {
+    slug: "building-science",
+    title: "Building Science",
+    icon: "flask",
+    draft: true,
+    short:
+      "Hygrothermal modelling, condensation risk analysis and building physics for high-performance buildings.",
+    image: "/images/2026-04-adobestock_118976966.webp",
+    gallery: [],
+    intro:
+      "How a building manages heat, air and moisture decides how it performs for the next fifty years. AOCA's building science capability applies building physics to real construction — from condensation risk analysis on mission-critical facilities to thermal performance assessment of new and existing buildings.",
+    sections: [
+      {
+        heading: "Analysis & Modelling",
+        body: "Condensation risk analysis and hygrothermal modelling; U-value, thermal bridge and energy performance assessments; and building fabric performance advice for design teams and specialist contractors.",
+      },
+    ],
+    highlights: [
+      "Condensation risk analysis",
+      "Hygrothermal modelling",
+      "U-value & thermal bridge assessment",
+      "Energy performance of the building fabric",
     ],
   },
 ];
 
-export const serviceLines = [
-  "Insurance Expert Consultancy",
-  "Insurance Reinstatement",
-  "Expert Witness for Litigation",
-  "Assigned Certifier",
-  "Fire Safety",
-  "Building Services Engineering",
-  "Mechanical & Electrical Design",
-  "Sustainability & Energy Efficiency",
-  "Project Management & Client Representation",
-  "Technical Due Diligence & Condition Surveys",
-  "Regulatory Compliance & Building Control",
-  "Design Coordination & BIM Services",
+/** Accreditations & memberships (client-confirmed list, July 2026). */
+export const accreditations = [
+  "Corporate Member of Engineers Ireland",
+  "ISO 9001 Certified with NSAI",
+  "Member of the Institution of Fire Engineers",
+  "Member of the Passive House Association of Ireland",
+  "Green Cert Registered",
 ];
 
 export type Sector = {
@@ -299,13 +499,13 @@ export const sectors: Sector[] = [
     slug: "commercial",
     title: "Commercial & Retail",
     blurb: "Engineering solutions for offices, retail and corporate environments.",
-    image: "/images/2026-02-img_0773.jpg",
+    image: "/images/2026-02-dji_0039.jpg",
   },
   {
     slug: "education-government",
     title: "Education & Government",
     blurb: "Trusted engineering for schools, civic buildings and public sector projects.",
-    image: "/images/2026-04-government-education.jpg",
+    image: "/images/2026-02-st-patricks-ns.jpg",
   },
   {
     slug: "hospitality-leisure-community",
@@ -936,8 +1136,9 @@ export const companyImages = {
     P + "2025-11-153a3630.jpg",
     P + "2025-11-153a3667-2.jpg",
   ],
-  brandedTeam: P + "2026-05-group-33.jpg",
-  brandedTeam2: P + "2026-05-group-34-1.jpg",
+  // real photography preferred over AI-generated imagery (client feedback)
+  brandedTeam: P + "2026-05-344a7050.jpg",
+  brandedTeam2: P + "2025-11-153a3905.jpg",
   cultureTeaser: P + "2026-05-group-49-2.jpg",
   careers: P + "2026-04-group-32.jpg",
   contact: P + "2026-05-team-meeting-2.webp",
@@ -945,6 +1146,38 @@ export const companyImages = {
   expertiseAlt: P + "2026-03-shutterstock_2715611483-1.jpg",
   homeStrip: P + "2026-02-shutterstock_761907343.webp",
   videoPoster: P + "2026-02-home-fallback.webp",
+};
+
+/**
+ * Services provided per project (new expertise slugs), shown as links in the
+ * "Services Provided" panel on each project page. AOCA will supply a summary
+ * for each — these are sensible defaults pending their list.
+ */
+export const projectServices: Record<string, string[]> = {
+  "the-glass-bottle-site": ["building-envelope-engineering", "specialist-services"],
+  "arklow-water-treatment-plant": ["civil-engineering", "structural-engineering", "project-construction-management"],
+  "portlaoise-retail-park": ["civil-engineering", "structural-engineering"],
+  "abbott-kilkenny": ["structural-engineering", "project-construction-management"],
+  "sdcc-dodder-valley-pavilions": ["structural-engineering", "civil-engineering"],
+  "people-first-credit-union-portlaoise": ["structural-engineering", "psdp-assigned-certifier"],
+  "st-patricks-national-school-newbridge-co-kildare": ["structural-engineering", "psdp-assigned-certifier"],
+  "grange-ns-carlow": ["structural-engineering", "psdp-assigned-certifier"],
+  "legal-aid-board": ["structural-engineering", "building-surveying"],
+  "st-brigids-national-school": ["structural-engineering", "psdp-assigned-certifier"],
+  "portlaoise-parish-centre": ["project-construction-management", "structural-engineering"],
+  "ratheniska-church": ["structural-engineering", "project-construction-management"],
+  "st-peter-pauls-church": ["structural-engineering", "project-construction-management"],
+  "heath-church": ["civil-engineering", "structural-engineering"],
+  "industrial-warehousing-portlaoise": ["structural-engineering", "civil-engineering"],
+  "corcorans-test-centre": ["structural-engineering", "civil-engineering"],
+  "equine-facility": ["structural-engineering", "civil-engineering"],
+  "b-braun-wellstone-midlands-renal-care-centre": ["structural-engineering", "civil-engineering"],
+  "the-hole-in-the-wall": ["civil-engineering", "structural-engineering", "psdp-assigned-certifier"],
+  "harper-street-mountmellick": ["civil-engineering", "psdp-assigned-certifier"],
+  "derry-road-durrow": ["civil-engineering", "structural-engineering"],
+  "droughhill-portarlington": ["civil-engineering", "structural-engineering"],
+  "the-cross-of-newtown-ballyroan-co-laois": ["civil-engineering", "structural-engineering"],
+  "gortnahoe-house": ["structural-engineering", "psdp-assigned-certifier"],
 };
 
 export function getService(slug: string) {

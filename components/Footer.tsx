@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin, Clock, Linkedin, Facebook, Instagram } from "lucide-react";
+import { MapPin, Clock, Linkedin, Facebook, Instagram } from "lucide-react";
 import { site, services, offices } from "@/lib/site";
 
 const socials = [
@@ -85,6 +85,11 @@ export default function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="/history" className="transition-colors hover:text-white">
+                Our History
+              </Link>
+            </li>
+            <li>
               <Link href="/culture" className="transition-colors hover:text-white">
                 Our Culture
               </Link>
@@ -107,43 +112,34 @@ export default function Footer() {
           </ul>
         </div>
 
-        {offices.slice(0, 2).map((o) => (
-          <div key={o.name}>
-            <h2 className="font-heading text-sm font-semibold uppercase tracking-wider text-white">
-              {o.name}
-            </h2>
-            <ul className="mt-5 space-y-4 text-sm">
-              <li className="flex items-start gap-3">
-                <MapPin size={16} className="mt-0.5 shrink-0 text-brand" aria-hidden />
-                <span>
-                  {o.address.map((line) => (
-                    <span key={line} className="block">
-                      {line}
-                    </span>
-                  ))}
-                </span>
+        <div>
+          <h2 className="font-heading text-sm font-semibold uppercase tracking-wider text-white">
+            Offices
+          </h2>
+          <ul className="mt-5 space-y-6 text-sm">
+            {offices.map((o) => (
+              <li key={o.name}>
+                <p className="flex items-start gap-3 font-medium text-white">
+                  <MapPin size={16} className="mt-0.5 shrink-0 text-brand" aria-hidden />
+                  {o.name}
+                </p>
+                <p className="mt-1 pl-7 text-navy-300">{o.address.join(", ")}</p>
+                <p className="mt-1 pl-7">
+                  <a href={o.phoneHref} className="transition-colors hover:text-white">
+                    {o.phone}
+                  </a>
+                  {" · "}
+                  <a
+                    href={`mailto:${o.email}`}
+                    className="transition-colors hover:text-white"
+                  >
+                    {o.email}
+                  </a>
+                </p>
               </li>
-              <li>
-                <a
-                  href={o.phoneHref}
-                  className="flex items-start gap-3 transition-colors hover:text-white"
-                >
-                  <Phone size={16} className="mt-0.5 shrink-0 text-brand" aria-hidden />
-                  {o.phone}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${o.email}`}
-                  className="flex items-start gap-3 transition-colors hover:text-white"
-                >
-                  <Mail size={16} className="mt-0.5 shrink-0 text-brand" aria-hidden />
-                  {o.email}
-                </a>
-              </li>
-            </ul>
-          </div>
-        ))}
+            ))}
+          </ul>
+        </div>
       </div>
 
       <div className="border-t border-white/10">
