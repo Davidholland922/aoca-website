@@ -1,1 +1,19 @@
-[]
+[
+  {
+    "slug": "e2e-test-project-51tg",
+    "title": "E2E Test Project",
+    "sector": "commercial",
+    "location": "Test",
+    "thumb": "/images/uploads/e2e-test-project-51tg-1.jpg",
+    "hero": "/images/uploads/e2e-test-project-51tg-1.jpg",
+    "gallery": [],
+    "summary": "Automated end-to-end test — will be reverted.",
+    "body": [
+      "Test paragraph."
+    ],
+    "featured": false,
+    "servicesProvided": [
+      "structural-engineering"
+    ]
+  }
+]
