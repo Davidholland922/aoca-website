@@ -62,6 +62,8 @@
 
   .btn {
     @apply inline-flex min-h-[44px] cursor-pointer items-center justify-center gap-2 px-6 py-3 text-sm font-semibold uppercase tracking-wider transition-colors duration-200;
+    /* clipped corner echoing the apex angle of the AOCA "A" */
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
   }
 
   .btn-primary {

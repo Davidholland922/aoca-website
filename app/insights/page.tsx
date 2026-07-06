@@ -6,6 +6,7 @@ import { insights } from "@/lib/insights";
 import Reveal from "@/components/Reveal";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
+import Swoosh from "@/components/Swoosh";
 
 export const metadata: Metadata = {
   title: "Insights",
@@ -49,7 +50,7 @@ export default function InsightsPage() {
                 <h2 className="mt-3 text-2xl font-semibold text-navy-900 group-hover:text-brand sm:text-3xl">
                   {lead.title}
                 </h2>
-                <div className="rule" />
+                <Swoosh />
                 <p className="mt-5 leading-relaxed text-navy-600">
                   {lead.excerpt}
                 </p>

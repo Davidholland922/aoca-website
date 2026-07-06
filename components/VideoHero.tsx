@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import AWatermark from "@/components/AWatermark";
 
 /**
  * Full-bleed background video (client-supplied) with poster fallback.
@@ -95,6 +96,7 @@ export default function VideoHero({
         className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-navy-950 to-transparent"
         aria-hidden
       />
+      <AWatermark className="pointer-events-none absolute -right-28 top-1/2 hidden h-[120%] w-auto -translate-y-1/2 select-none opacity-[0.08] lg:block" />
       <div className="relative flex min-h-svh items-center pt-24">
         {children}
       </div>

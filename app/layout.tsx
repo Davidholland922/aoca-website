@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: `${site.name} | Consulting Engineers, Ireland & UK`,
     description:
       "We turn vision into reality. Over 7,000 projects delivered since 1996 across Ireland, the UK and Europe.",
-    images: ["/aoca-logo-colour.png"],
+    images: ["/og.png"],
   },
   robots: {
     // Draft site: keep out of search indexes until production launch

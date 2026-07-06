@@ -6,6 +6,7 @@ import { site, companyImages, cultureImages } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
+import Swoosh from "@/components/Swoosh";
 
 export const metadata: Metadata = {
   title: "Careers",
@@ -105,7 +106,7 @@ export default function CareersPage() {
                 <h2 className="text-3xl font-semibold text-white sm:text-4xl">
                   Curious what the team is really like?
                 </h2>
-                <div className="rule" />
+                <Swoosh />
               </div>
               <Link href="/culture" className="btn-outline-light">
                 See our culture

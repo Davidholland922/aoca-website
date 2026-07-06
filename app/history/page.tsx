@@ -6,6 +6,7 @@ import { timeline, companyImages } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
+import Swoosh from "@/components/Swoosh";
 
 export const metadata: Metadata = {
   title: "Our History",
@@ -41,11 +42,19 @@ export default function HistoryPage() {
                       i % 2 ? "md:text-left" : ""
                     }`}
                   >
-                    {/* year node on the spine */}
+                    {/* year node on the spine — the A mark itself */}
                     <span
-                      className="absolute left-1/2 top-1/2 z-10 hidden h-4 w-4 -translate-x-1/2 -translate-y-1/2 rotate-45 border-2 border-brand bg-white md:block"
+                      className="absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 border border-navy-100 bg-white p-1.5 md:block"
                       aria-hidden
-                    />
+                    >
+                      <Image
+                        src="/a-mark.png"
+                        alt=""
+                        width={151}
+                        height={150}
+                        className="h-4 w-auto"
+                      />
+                    </span>
                     <div
                       className={`relative aspect-[16/10] overflow-hidden bg-navy-50 ${
                         i % 2 ? "md:order-2" : ""
@@ -71,7 +80,7 @@ export default function HistoryPage() {
                       <h2 className="mt-3 text-2xl font-semibold text-navy-900">
                         {t.title}
                       </h2>
-                      <div className="rule" />
+                      <Swoosh />
                       <p className="mt-4 leading-relaxed text-navy-600">
                         {t.text}
                       </p>

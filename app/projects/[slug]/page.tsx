@@ -13,6 +13,7 @@ import {
 import Reveal from "@/components/Reveal";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
+import Swoosh from "@/components/Swoosh";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -67,7 +68,7 @@ export default async function ProjectPage({
                   <h2 className="text-2xl font-semibold text-navy-900">
                     The Project
                   </h2>
-                  <div className="rule" />
+                  <Swoosh />
                   <div className="mt-5 space-y-5">
                     {project.body.map((para) => (
                       <p
@@ -90,7 +91,7 @@ export default async function ProjectPage({
                   >
                     In pictures
                   </h2>
-                  <div className="rule" />
+                  <Swoosh />
                   <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3">
                     {project.gallery.map((src, i) => (
                       <div

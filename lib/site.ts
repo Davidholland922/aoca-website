@@ -361,7 +361,7 @@ export const services: Service[] = [
     icon: "flame",
     short:
       "Specialist fire safety and accessibility consultancy through Fire Safety Consultants — our joint venture with OCF.",
-    image: "/images/2026-03-shutterstock_2715611483-1.jpg",
+    image: "/images/2026-02-1100x646-cover.jpg",
     gallery: [],
     intro:
       "AOCA, in conjunction with OCF, has established Fire Safety Consultants to pool our resources and expertise and provide specialist fire safety and accessibility consultancy services. Fire Safety Consultants brings together internationally recognised expertise in fire engineering, fire safety compliance, accessibility, inspection, due diligence and structural fire engineering.",
@@ -459,7 +459,7 @@ export const services: Service[] = [
     draft: true,
     short:
       "Hygrothermal modelling, condensation risk analysis and building physics for high-performance buildings.",
-    image: "/images/2026-04-adobestock_118976966.webp",
+    image: "/images/2026-02-20250402_120136.jpg",
     gallery: [],
     intro:
       "How a building manages heat, air and moisture decides how it performs for the next fifty years. AOCA's building science capability applies building physics to real construction — from condensation risk analysis on mission-critical facilities to thermal performance assessment of new and existing buildings.",
@@ -1129,7 +1129,7 @@ export const cultureImages = [
 ];
 
 export const companyImages = {
-  hero: P + "2026-05-group-46.jpg",
+  hero: P + "2026-05-344a6971.jpg",
   office: [
     P + "2025-11-153a3552.jpg",
     P + "2025-11-153a3905.jpg",
@@ -1137,14 +1137,14 @@ export const companyImages = {
     P + "2025-11-153a3667-2.jpg",
   ],
   // real photography preferred over AI-generated imagery (client feedback)
-  brandedTeam: P + "2026-05-344a7050.jpg",
+  brandedTeam: P + "2025-11-153a3667-2.jpg",
   brandedTeam2: P + "2025-11-153a3905.jpg",
   cultureTeaser: P + "2026-05-group-49-2.jpg",
-  careers: P + "2026-04-group-32.jpg",
+  careers: P + "2026-05-344a6993.jpg",
   contact: P + "2026-05-team-meeting-2.webp",
-  expertiseHero: P + "2026-04-adobestock_118976966.webp",
+  expertiseHero: P + "2026-02-arklow-waste-water-treatment-plant-clancy-moore-architects_16-1-1.jpg",
   expertiseAlt: P + "2026-03-shutterstock_2715611483-1.jpg",
-  homeStrip: P + "2026-02-shutterstock_761907343.webp",
+  homeStrip: P + "2026-02-arklow_hero_final_dou4go-1.jpg",
   videoPoster: P + "2026-02-home-fallback.webp",
 };
 

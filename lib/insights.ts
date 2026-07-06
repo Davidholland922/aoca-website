@@ -48,7 +48,7 @@ export const insights: Article[] = [
     "title": "The effects of climate change are increasingly visible in Ireland",
     "date": "2025-03-11",
     "displayDate": "March 2025",
-    "image": "/images/2026-02-shutterstock_761907343.webp",
+    "image": "/images/2026-02-arklowwwtpfeb25-1.jpg",
     "excerpt": "In recent years, Ireland has seen a significant rise in extreme weather events, raising public concern regarding the nation’s preparedness for future flooding. A survey by Engineer…",
     "body": [
       "In recent years, Ireland has seen a significant rise in extreme weather events, raising public concern regarding the nation’s preparedness for future flooding. A survey by Engineers Ireland found that 95% of the public are worried about potential flood risks, with 58% questioning the sufficiency of current flood defence infrastructure.",
@@ -112,7 +112,7 @@ export const insights: Article[] = [
     "title": "Government Announces Interim Fire Safety Funding for Celtic Tiger-Era Apartments",
     "date": "2023-12-20",
     "displayDate": "December 2023",
-    "image": "/images/2026-05-group-36.jpg",
+    "image": "/images/2026-02-dji_0871.jpg",
     "excerpt": "A significant development, Minister for Housing Darragh O’Brien has introduced a new interim fire safety funding scheme for owners of Celtic Tiger-era apartments. The initiative ai…",
     "body": [
       "A significant development, Minister for Housing Darragh O’Brien has introduced a new interim fire safety funding scheme for owners of Celtic Tiger-era apartments. The initiative aims to provide immediate assistance to the owners of up to 100,000 affected buildings while a comprehensive State support program is being finalised.",
@@ -128,7 +128,7 @@ export const insights: Article[] = [
     "title": "Unfortunate news for homeowners as the wait prolongs for apartment defects remediation until later in 2024.",
     "date": "2023-11-28",
     "displayDate": "November 2023",
-    "image": "/images/2026-05-group-40.jpg",
+    "image": "/images/2026-02-sam_9876.jpg",
     "excerpt": "Unfortunate news for homeowners as legislative hurdles prolong the wait for apartment defects remediation until later in 2024. Deputy Duncan Smith recently sought clarification fro…",
     "body": [
       "Unfortunate news for homeowners as legislative hurdles prolong the wait for apartment defects remediation until later in 2024. Deputy Duncan Smith recently sought clarification from the Minister for Housing, Local Government, and Heritage regarding the anticipated timeline for the draft legislation supporting the remediation of defects in apartments and duplexes constructed between 1991 and 2013.",
@@ -239,7 +239,7 @@ export const insights: Article[] = [
     "title": "AOCA Team Spreads Joy Through Community Service at LauraLynn Hospice",
     "date": "2023-08-10",
     "displayDate": "August 2023",
-    "image": "/images/2026-05-group-36.jpg",
+    "image": "/images/2026-02-dji_0871.jpg",
     "excerpt": "At AOCA, we believe in making a difference not only in the world of engineering and construction but also in the lives of those in our community. Recently, a group of our dedicated…",
     "body": [
       "At AOCA, we believe in making a difference not only in the world of engineering and construction but also in the lives of those in our community. Recently, a group of our dedicated team members, including Sarah, Eoin, Megan, Finn, and Nessa, had the privilege of contributing their time and skills to a heartwarming initiative at LauraLynn Hospice, Ireland’s Children’s Hospice.",
@@ -254,7 +254,7 @@ export const insights: Article[] = [
     "title": "Defective Block Works Crisis tackled by AOCA",
     "date": "2023-07-14",
     "displayDate": "July 2023",
-    "image": "/images/2026-05-group-40.jpg",
+    "image": "/images/2026-02-sam_9876.jpg",
     "excerpt": "At AOCA, we are delighted to announce that two of our valued team members, Aidan O’Connell and Colin Scott, are on the committee overseeing the implementation of the defective bloc…",
     "body": [
       "At AOCA, we are delighted to announce that two of our valued team members, Aidan O’Connell and Colin Scott, are on the committee overseeing the implementation of the defective block works scheme. Their participation speaks volumes about their dedication to the highest engineering standards, crucial in managing the defective concrete block crisis in Ireland.",
@@ -268,7 +268,7 @@ export const insights: Article[] = [
     "title": "An Overview of the Enhanced Defective Concrete Blocks Grant Scheme",
     "date": "2023-07-07",
     "displayDate": "July 2023",
-    "image": "/images/2026-03-shutterstock_2715611483-1.jpg",
+    "image": "/images/2026-02-dscn8508-1.jpg",
     "excerpt": "The recent amendments to the Defective Concrete Blocks Grant Scheme mark a significant development for homeowners grappling with the aftermath of pyrite and mica infestations. This…",
     "body": [
       "The recent amendments to the Defective Concrete Blocks Grant Scheme mark a significant development for homeowners grappling with the aftermath of pyrite and mica infestations. This government initiative, now known as the Enhanced Defective Concrete Blocks Grant Scheme , provides crucial financial support to affected homeowners, allowing them to repair or rebuild their homes.",
@@ -283,7 +283,7 @@ export const insights: Article[] = [
     "title": "When Should I Worry About Cracks in My Home?",
     "date": "2023-07-05",
     "displayDate": "July 2023",
-    "image": "/images/2026-04-adobestock_118976966.webp",
+    "image": "/images/2026-02-hole-in-the-wall-.jpg",
     "excerpt": "In every home, it’s normal to see minor cracks appear over time, especially in older buildings. But when should these cracks start raising alarm bells? Let’s delve into the subject…",
     "body": [
       "In every home, it’s normal to see minor cracks appear over time, especially in older buildings. But when should these cracks start raising alarm bells? Let’s delve into the subject to help you distinguish between normal house settling and more serious structural issues.",
@@ -299,7 +299,7 @@ export const insights: Article[] = [
     "title": "Why do I need a structural condition survey?",
     "date": "2023-07-05",
     "displayDate": "July 2023",
-    "image": "/images/2026-02-shutterstock_761907343.webp",
+    "image": "/images/2026-02-arklowwwtpfeb25-1.jpg",
     "excerpt": "Investing in a property is a major financial commitment, hence the importance of ensuring your investment is sound. A structural condition survey, performed by qualified and experi…",
     "body": [
       "Investing in a property is a major financial commitment, hence the importance of ensuring your investment is sound. A structural condition survey, performed by qualified and experienced engineers, provides a comprehensive understanding of the property’s structural integrity. But why is such a survey necessary , and what does the process involve? Let’s explore with the guidance of AOCA Engineering Consultants.",

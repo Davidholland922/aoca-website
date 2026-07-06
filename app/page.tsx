@@ -24,6 +24,7 @@ import VideoHero from "@/components/VideoHero";
 import CtaBand from "@/components/CtaBand";
 import StatCounter from "@/components/StatCounter";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
+import Swoosh from "@/components/Swoosh";
 
 export default function HomePage() {
   const featured = projects.filter((p) => p.featured);
@@ -85,7 +86,7 @@ export default function HomePage() {
             <h2 className="mt-4 text-3xl font-semibold leading-snug text-navy-900 sm:text-4xl">
               {mission}
             </h2>
-            <div className="rule" />
+            <Swoosh />
             <p className="mt-6 text-lg leading-relaxed text-navy-600">
               Over 27 years. Over 7,000 projects. The same uncompromising
               standard every time — from one-off houses to award-winning
@@ -206,7 +207,7 @@ export default function HomePage() {
                     <h3 className="mt-3 text-2xl font-semibold text-white sm:text-3xl">
                       {p.title}
                     </h3>
-                    <div className="rule" />
+                    <Swoosh />
                     <p className="mt-5 leading-relaxed text-navy-100">
                       {p.summary}
                     </p>
@@ -382,7 +383,14 @@ export default function HomePage() {
                 key={a}
                 className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-navy-600"
               >
-                <span className="h-1.5 w-1.5 rotate-45 bg-brand" aria-hidden />
+                <Image
+                  src="/a-mark.png"
+                  alt=""
+                  width={151}
+                  height={150}
+                  className="h-3 w-auto"
+                  aria-hidden
+                />
                 {a}
               </span>
             ))}

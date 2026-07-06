@@ -18,7 +18,7 @@ export default function ProjectsPage() {
         eyebrow="Projects"
         title="Some of the projects that have shaped who we are."
         lead="Three decades of engineering consultancy across Ireland, the UK and Europe."
-        image="/images/2026-04-group-27.jpg"
+        image="/images/2026-02-dji_0037.jpg"
         imageAlt="AOCA project montage"
         compact
       />

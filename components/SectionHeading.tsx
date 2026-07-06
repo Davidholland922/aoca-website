@@ -1,5 +1,6 @@
 import Image from "next/image";
 import clsx from "clsx";
+import Swoosh from "@/components/Swoosh";
 
 export default function SectionHeading({
   eyebrow,
@@ -41,7 +42,7 @@ export default function SectionHeading({
       >
         {title}
       </h2>
-      <div className={clsx("rule", center && "mx-auto")} />
+      <Swoosh className={clsx(center && "mx-auto")} />
       {lead && (
         <p
           className={clsx(

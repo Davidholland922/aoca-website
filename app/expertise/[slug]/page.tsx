@@ -7,6 +7,7 @@ import { services, getService } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
+import Swoosh from "@/components/Swoosh";
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -62,7 +63,7 @@ export default async function ServicePage({
                 <h2 className="mt-12 text-2xl font-semibold text-navy-900">
                   {sec.heading}
                 </h2>
-                <div className="rule" />
+                <Swoosh />
                 <p className="mt-5 leading-relaxed text-navy-700">{sec.body}</p>
               </Reveal>
             ))}

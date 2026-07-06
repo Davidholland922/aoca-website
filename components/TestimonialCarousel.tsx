@@ -68,7 +68,7 @@ export default function TestimonialCarousel({
               aria-selected={i === index}
               aria-label={`Testimonial ${i + 1}`}
               onClick={() => setIndex(i)}
-              className={`h-2.5 cursor-pointer transition-all duration-300 ${
+              className={`h-2.5 -skew-x-12 cursor-pointer transition-all duration-300 ${
                 i === index ? "w-8 bg-brand" : "w-2.5 bg-white/25 hover:bg-white/50"
               }`}
             />
