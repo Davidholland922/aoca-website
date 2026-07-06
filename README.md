@@ -35,6 +35,18 @@ npm run build    # production build (all routes prerender statically)
 - Footer carries a "Draft for review" notice.
 - Contact form simulates success (no backend yet).
 
+## Client project uploads (/admin)
+
+The client adds projects at **`/admin`** (password-protected; checked
+server-side on publish). Publishing commits the project JSON + resized
+photos to this GitHub repo in one commit (`content/projects.json` +
+`public/images/uploads/`), and the site rebuilds automatically once the
+Vercel project is connected to GitHub. Uploaded projects appear ahead of
+the built-in list everywhere (grid, filters, related, sitemap).
+
+Server env vars (set in Vercel, production): `GITHUB_TOKEN` (repo
+contents access), `ADMIN_PASSWORD`.
+
 ## Deploy (staging)
 
 ```bash
