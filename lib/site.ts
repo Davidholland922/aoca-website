@@ -98,13 +98,13 @@ export const timeline = [
     year: "2006",
     title: "A permanent home",
     text: "The practice moves to its current head office at Lismard House on the Timahoe Road, Portlaoise.",
-    image: "/images/2025-11-153a3552.jpg",
+    image: "/images/lismard-house-team.jpg",
   },
   {
     year: "2014",
     title: "Dublin calling",
     text: "A second office opens at Centrepoint Business Park, Clondalkin, to better serve the Eastern region — growing to offer the full range of engineering services along with pyrite investigation.",
-    image: "/images/2025-11-153a3630.jpg",
+    image: "/images/dublin-office.jpg",
   },
   {
     year: "2016–2023",
