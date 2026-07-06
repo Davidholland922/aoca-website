@@ -38,6 +38,8 @@ export default async function ProjectPage({
   if (!project) notFound();
 
   const sector = getSector(project.sector);
+  const servicesForProject =
+    projectServices[project.slug] ?? project.servicesProvided ?? [];
   const related = projects
     .filter((p) => p.sector === project.sector && p.slug !== project.slug)
     .slice(0, 3);
@@ -145,13 +147,13 @@ export default async function ProjectPage({
                       </dd>
                     </div>
                   </dl>
-                  {(projectServices[project.slug] ?? []).length > 0 && (
+                  {servicesForProject.length > 0 && (
                     <>
                       <h3 className="mt-7 font-heading text-sm font-semibold uppercase tracking-wider text-navy-900">
                         Services Provided
                       </h3>
                       <ul className="mt-4 space-y-2">
-                        {(projectServices[project.slug] ?? []).map((slug) => {
+                        {servicesForProject.map((slug) => {
                           const s = getService(slug);
                           if (!s) return null;
                           return (

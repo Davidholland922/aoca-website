@@ -2,7 +2,11 @@
  * ALL editable site content lives in this file.
  * Content sourced from the existing aoca.ie draft (crawled 2026-07-03).
  * Remaining placeholders are listed in PLACEHOLDERS.md.
+ *
+ * Projects added by the client through /admin land in content/projects.json
+ * and are merged (newest first) with the built-in list below.
  */
+import uploadedProjects from "../content/projects.json";
 
 export const site = {
   name: "AOCA Engineering Consultants",
@@ -544,11 +548,12 @@ export type Project = {
   summary: string;
   body: string[];
   featured?: boolean;
+  servicesProvided?: string[]; // expertise slugs (set by /admin uploads)
 };
 
 const P = "/images/";
 
-export const projects: Project[] = [
+const builtInProjects: Project[] = [
   {
     slug: "the-glass-bottle-site",
     title: "The Glass Bottle Site",
@@ -1057,6 +1062,12 @@ export const projects: Project[] = [
       "A 4-bedroom detached contemporary rural house delivered end-to-end: architectural design, planning permission and construction supervision.",
     ],
   },
+];
+
+/** Client-uploaded projects (via /admin) appear first. */
+export const projects: Project[] = [
+  ...(uploadedProjects as Project[]),
+  ...builtInProjects,
 ];
 
 export const testimonials = [

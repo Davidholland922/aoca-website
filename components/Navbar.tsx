@@ -182,7 +182,7 @@ export default function Navbar() {
             unoptimized
             className={clsx(
               "w-auto transition-all duration-300",
-              solid ? "h-12" : "h-[4.5rem]"
+              solid ? "h-14" : "h-20"
             )}
           />
         </Link>
