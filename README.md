@@ -37,7 +37,9 @@ npm run build    # production build (all routes prerender statically)
 
 ## Client project uploads (/admin)
 
-The client adds projects at **`/admin`** (password-protected; checked
+The client adds projects and news articles at **`/admin`**, and can
+remove/restore anything from the site via its Manage tab (reversible
+hiding through content/hidden.json). They add content at **`/admin`** (password-protected; checked
 server-side on publish). Publishing commits the project JSON + resized
 photos to this GitHub repo in one commit (`content/projects.json` +
 `public/images/uploads/`), and the site rebuilds automatically once the
