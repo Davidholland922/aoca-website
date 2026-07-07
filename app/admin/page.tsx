@@ -2,10 +2,19 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { CheckCircle2, ImagePlus, Loader2, X } from "lucide-react";
+import {
+  CheckCircle2,
+  ImagePlus,
+  Loader2,
+  Newspaper,
+  HardHat,
+  X,
+} from "lucide-react";
+import clsx from "clsx";
 import { sectors, services } from "@/lib/site";
 
 type Shot = { dataUrl: string; name: string };
+type Mode = "project" | "article";
 
 /** Downscale a photo in the browser so uploads stay small and consistent. */
 async function resizeImage(file: File, maxW = 1600): Promise<Shot> {
@@ -29,70 +38,98 @@ async function resizeImage(file: File, maxW = 1600): Promise<Shot> {
   return { dataUrl: canvas.toDataURL("image/jpeg", 0.82), name: file.name };
 }
 
+const inputCls =
+  "w-full min-h-[48px] border border-navy-200 bg-white px-4 py-3 text-navy-900 placeholder:text-navy-300 focus:border-navy-800";
+const labelCls = "mb-2 block text-sm font-medium text-navy-800";
+
 export default function AdminPage() {
   const [password, setPassword] = useState("");
   const [unlocked, setUnlocked] = useState(false);
+  const [mode, setMode] = useState<Mode>("project");
 
+  // shared
   const [title, setTitle] = useState("");
-  const [sector, setSector] = useState(sectors[0].slug);
-  const [location, setLocation] = useState("");
-  const [summary, setSummary] = useState("");
   const [body, setBody] = useState("");
-  const [selected, setSelected] = useState<string[]>([]);
-  const [featured, setFeatured] = useState(false);
   const [shots, setShots] = useState<Shot[]>([]);
   const [status, setStatus] = useState<"idle" | "busy" | "done">("idle");
   const [error, setError] = useState("");
   const [publishedSlug, setPublishedSlug] = useState("");
+  const [publishedMode, setPublishedMode] = useState<Mode>("project");
+
+  // project-only
+  const [sector, setSector] = useState(sectors[0].slug);
+  const [location, setLocation] = useState("");
+  const [summary, setSummary] = useState("");
+  const [selected, setSelected] = useState<string[]>([]);
+  const [featured, setFeatured] = useState(false);
+
+  const maxShots = mode === "project" ? 12 : 1;
 
   async function addFiles(files: FileList | null) {
     if (!files) return;
     setError("");
     const next = [...shots];
-    for (const f of Array.from(files).slice(0, 12 - next.length)) {
+    for (const f of Array.from(files).slice(0, maxShots - next.length)) {
       next.push(await resizeImage(f));
     }
-    setShots(next);
+    setShots(next.slice(0, maxShots));
+  }
+
+  function reset() {
+    setTitle(""); setLocation(""); setSummary(""); setBody("");
+    setSelected([]); setShots([]); setFeatured(false);
+    setStatus("idle"); setError("");
   }
 
   async function publish() {
     setError("");
-    if (!title.trim() || !summary.trim())
-      return setError("Project name and short summary are required.");
-    if (shots.length === 0)
-      return setError("Add at least one photo — the first becomes the cover.");
+    const paragraphs = body.split(/\n\s*\n/).filter((p) => p.trim());
+    if (!title.trim()) return setError("A title is required.");
+    if (mode === "project") {
+      if (!summary.trim()) return setError("The short summary is required.");
+      if (shots.length === 0)
+        return setError("Add at least one photo — the first becomes the cover.");
+    } else if (paragraphs.length === 0) {
+      return setError("Write the article text before publishing.");
+    }
+
     setStatus("busy");
     try {
-      const res = await fetch("/api/admin/add-project", {
+      const endpoint =
+        mode === "project" ? "/api/admin/add-project" : "/api/admin/add-article";
+      const payload =
+        mode === "project"
+          ? {
+              password,
+              project: {
+                title, sector, location, summary,
+                body: paragraphs,
+                servicesProvided: selected,
+                featured,
+              },
+              images: shots.map((s) => ({ dataUrl: s.dataUrl })),
+            }
+          : {
+              password,
+              article: { title, body: paragraphs },
+              image: shots[0] ? { dataUrl: shots[0].dataUrl } : undefined,
+            };
+
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          password,
-          project: {
-            title,
-            sector,
-            location,
-            summary,
-            body: body.split(/\n\s*\n/).filter((p) => p.trim()),
-            servicesProvided: selected,
-            featured,
-          },
-          images: shots.map((s) => ({ dataUrl: s.dataUrl })),
-        }),
+        body: JSON.stringify(payload),
       });
       const json = await res.json();
       if (!res.ok) throw new Error(json.error || "Something went wrong");
       setPublishedSlug(json.slug);
+      setPublishedMode(mode);
       setStatus("done");
     } catch (e) {
       setStatus("idle");
       setError(e instanceof Error ? e.message : "Something went wrong");
     }
   }
-
-  const input =
-    "w-full min-h-[48px] border border-navy-200 bg-white px-4 py-3 text-navy-900 placeholder:text-navy-300 focus:border-navy-800";
-  const label = "mb-2 block text-sm font-medium text-navy-800";
 
   if (!unlocked) {
     return (
@@ -113,7 +150,7 @@ export default function AdminPage() {
             className="h-12 w-auto"
           />
           <h1 className="mt-6 text-xl font-semibold text-white">
-            Project uploads
+            Website updates
           </h1>
           <div className="rule" />
           <label htmlFor="pw" className="mt-6 block text-sm text-navy-200">
@@ -139,32 +176,31 @@ export default function AdminPage() {
   }
 
   if (status === "done") {
+    const path =
+      publishedMode === "project"
+        ? `/projects/${publishedSlug}`
+        : `/insights/${publishedSlug}`;
     return (
       <div className="flex min-h-svh items-center justify-center bg-navy-50/60 px-5">
         <div className="w-full max-w-lg border border-navy-100 bg-white p-10 text-center">
           <CheckCircle2 size={48} className="mx-auto text-brand" aria-hidden />
           <h1 className="mt-5 text-2xl font-semibold text-navy-900">
-            Project published
+            {publishedMode === "project" ? "Project" : "Article"} published
           </h1>
           <div className="rule mx-auto" />
           <p className="mt-5 leading-relaxed text-navy-600">
-            <strong>{title}</strong> has been saved to the website. The site
-            rebuilds automatically — your project page will be live at{" "}
-            <span className="font-medium text-navy-900">
-              /projects/{publishedSlug}
-            </span>{" "}
-            in about two minutes.
+            <strong>{title}</strong> has been saved. The website rebuilds
+            automatically — it will be live at{" "}
+            <a
+              href={path}
+              className="font-medium text-brand underline-offset-2 hover:underline"
+            >
+              {path}
+            </a>{" "}
+            in about three minutes.
           </p>
-          <button
-            type="button"
-            className="btn-primary mt-8"
-            onClick={() => {
-              setTitle(""); setLocation(""); setSummary(""); setBody("");
-              setSelected([]); setShots([]); setFeatured(false);
-              setStatus("idle");
-            }}
-          >
-            Add another project
+          <button type="button" className="btn-primary mt-8" onClick={reset}>
+            Add another
           </button>
         </div>
       </div>
@@ -177,119 +213,216 @@ export default function AdminPage() {
         <div className="container-site py-12">
           <p className="eyebrow">AOCA admin</p>
           <h1 className="mt-2 text-3xl font-semibold text-white">
-            Add a project
+            Update the website
           </h1>
           <div className="rule" />
           <p className="mt-4 max-w-xl text-sm text-navy-200">
-            Fill this in, add your photos, press publish. The project appears
-            on the website automatically about two minutes later.
+            Fill this in and press publish — your update appears on the
+            website automatically a few minutes later.
           </p>
         </div>
       </div>
 
       <div className="container-site mt-10 grid max-w-4xl gap-6">
-        <div>
-          <label htmlFor="title" className={label}>
-            Project name <span className="text-brand">*</span>
-          </label>
-          <input id="title" className={input} value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="e.g. Mountrath Road Housing Scheme" />
+        {/* what are you adding? */}
+        <div className="grid grid-cols-2 gap-3">
+          {(
+            [
+              { key: "project", label: "A project", Icon: HardHat },
+              { key: "article", label: "A news article", Icon: Newspaper },
+            ] as const
+          ).map(({ key, label, Icon }) => (
+            <button
+              key={key}
+              type="button"
+              aria-pressed={mode === key}
+              onClick={() => {
+                setMode(key);
+                setShots((s) => s.slice(0, key === "article" ? 1 : 12));
+                setError("");
+              }}
+              className={clsx(
+                "flex min-h-[64px] cursor-pointer items-center justify-center gap-3 border text-sm font-semibold uppercase tracking-wider transition-colors",
+                mode === key
+                  ? "border-brand bg-brand text-white"
+                  : "border-navy-200 bg-white text-navy-700 hover:border-navy-800"
+              )}
+            >
+              <Icon size={20} aria-hidden />
+              {label}
+            </button>
+          ))}
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2">
-          <div>
-            <label htmlFor="sector" className={label}>
-              Sector <span className="text-brand">*</span>
-            </label>
-            <select id="sector" className={input} value={sector}
-              onChange={(e) => setSector(e.target.value)}>
-              {sectors.map((s) => (
-                <option key={s.slug} value={s.slug}>{s.title}</option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label htmlFor="location" className={label}>Location</label>
-            <input id="location" className={input} value={location}
-              onChange={(e) => setLocation(e.target.value)}
-              placeholder="e.g. Portlaoise, Co. Laois" />
-          </div>
-        </div>
-
         <div>
-          <label htmlFor="summary" className={label}>
-            Short summary (shown on the project card){" "}
+          <label htmlFor="title" className={labelCls}>
+            {mode === "project" ? "Project name" : "Article title"}{" "}
             <span className="text-brand">*</span>
           </label>
-          <textarea id="summary" rows={2} className={input} value={summary}
-            onChange={(e) => setSummary(e.target.value)}
-            placeholder="One or two sentences describing the project." />
+          <input
+            id="title"
+            className={inputCls}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder={
+              mode === "project"
+                ? "e.g. Mountrath Road Housing Scheme"
+                : "e.g. AOCA appointed on new data centre project"
+            }
+          />
         </div>
 
+        {mode === "project" && (
+          <>
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div>
+                <label htmlFor="sector" className={labelCls}>
+                  Sector <span className="text-brand">*</span>
+                </label>
+                <select
+                  id="sector"
+                  className={inputCls}
+                  value={sector}
+                  onChange={(e) => setSector(e.target.value)}
+                >
+                  {sectors.map((s) => (
+                    <option key={s.slug} value={s.slug}>
+                      {s.title}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label htmlFor="location" className={labelCls}>
+                  Location
+                </label>
+                <input
+                  id="location"
+                  className={inputCls}
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                  placeholder="e.g. Portlaoise, Co. Laois"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="summary" className={labelCls}>
+                Short summary (shown on the project card){" "}
+                <span className="text-brand">*</span>
+              </label>
+              <textarea
+                id="summary"
+                rows={2}
+                className={inputCls}
+                value={summary}
+                onChange={(e) => setSummary(e.target.value)}
+                placeholder="One or two sentences describing the project."
+              />
+            </div>
+          </>
+        )}
+
         <div>
-          <label htmlFor="body" className={label}>
-            The Project — full description (optional)
+          <label htmlFor="body" className={labelCls}>
+            {mode === "project"
+              ? "The Project — full description (optional)"
+              : "Article text"}{" "}
+            {mode === "article" && <span className="text-brand">*</span>}
           </label>
-          <textarea id="body" rows={6} className={input} value={body}
+          <textarea
+            id="body"
+            rows={mode === "article" ? 10 : 6}
+            className={inputCls}
+            value={body}
             onChange={(e) => setBody(e.target.value)}
-            placeholder={"Tell the story of the project. Leave an empty line between paragraphs."} />
+            placeholder="Leave an empty line between paragraphs."
+          />
         </div>
 
-        <fieldset>
-          <legend className={label}>Services provided</legend>
-          <div className="flex flex-wrap gap-2">
-            {services.map((s) => {
-              const on = selected.includes(s.slug);
-              return (
-                <button key={s.slug} type="button" aria-pressed={on}
-                  onClick={() =>
-                    setSelected((cur) =>
-                      on ? cur.filter((x) => x !== s.slug) : [...cur, s.slug]
-                    )
-                  }
-                  className={`min-h-[44px] cursor-pointer border px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors ${
-                    on
-                      ? "border-brand bg-brand text-white"
-                      : "border-navy-200 bg-white text-navy-700 hover:border-navy-800"
-                  }`}>
-                  {s.title}
-                </button>
-              );
-            })}
-          </div>
-        </fieldset>
+        {mode === "project" && (
+          <fieldset>
+            <legend className={labelCls}>Services provided</legend>
+            <div className="flex flex-wrap gap-2">
+              {services.map((s) => {
+                const on = selected.includes(s.slug);
+                return (
+                  <button
+                    key={s.slug}
+                    type="button"
+                    aria-pressed={on}
+                    onClick={() =>
+                      setSelected((cur) =>
+                        on ? cur.filter((x) => x !== s.slug) : [...cur, s.slug]
+                      )
+                    }
+                    className={clsx(
+                      "min-h-[44px] cursor-pointer border px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors",
+                      on
+                        ? "border-brand bg-brand text-white"
+                        : "border-navy-200 bg-white text-navy-700 hover:border-navy-800"
+                    )}
+                  >
+                    {s.title}
+                  </button>
+                );
+              })}
+            </div>
+          </fieldset>
+        )}
 
         <div>
-          <span className={label}>
-            Photos <span className="text-brand">*</span>{" "}
-            <span className="font-normal text-navy-500">
-              — first photo becomes the cover; up to 12
-            </span>
+          <span className={labelCls}>
+            {mode === "project" ? (
+              <>
+                Photos <span className="text-brand">*</span>{" "}
+                <span className="font-normal text-navy-500">
+                  — first photo becomes the cover; up to 12
+                </span>
+              </>
+            ) : (
+              <>
+                Cover photo{" "}
+                <span className="font-normal text-navy-500">
+                  — optional; one image
+                </span>
+              </>
+            )}
           </span>
           <label className="flex min-h-[7rem] cursor-pointer flex-col items-center justify-center gap-2 border-2 border-dashed border-navy-200 bg-white p-6 text-navy-500 transition-colors hover:border-brand hover:text-brand">
             <ImagePlus size={28} aria-hidden />
             <span className="text-sm font-medium">
               Click to choose photos (or take them on your phone)
             </span>
-            <input type="file" accept="image/*" multiple className="sr-only"
-              onChange={(e) => addFiles(e.target.files)} />
+            <input
+              type="file"
+              accept="image/*"
+              multiple={mode === "project"}
+              className="sr-only"
+              onChange={(e) => addFiles(e.target.files)}
+            />
           </label>
           {shots.length > 0 && (
             <div className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6">
               {shots.map((s, i) => (
                 <div key={i} className="group relative aspect-[4/3]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={s.dataUrl} alt={`Photo ${i + 1}`}
-                    className="h-full w-full object-cover" />
+                  <img
+                    src={s.dataUrl}
+                    alt={`Photo ${i + 1}`}
+                    className="h-full w-full object-cover"
+                  />
                   {i === 0 && (
                     <span className="absolute left-1 top-1 bg-brand px-1.5 py-0.5 text-[10px] font-semibold uppercase text-white">
                       Cover
                     </span>
                   )}
-                  <button type="button" aria-label={`Remove photo ${i + 1}`}
+                  <button
+                    type="button"
+                    aria-label={`Remove photo ${i + 1}`}
                     onClick={() => setShots(shots.filter((_, j) => j !== i))}
-                    className="absolute right-1 top-1 flex h-6 w-6 cursor-pointer items-center justify-center bg-navy-950/80 text-white hover:bg-brand">
+                    className="absolute right-1 top-1 flex h-6 w-6 cursor-pointer items-center justify-center bg-navy-950/80 text-white hover:bg-brand"
+                  >
                     <X size={13} aria-hidden />
                   </button>
                 </div>
@@ -298,22 +431,34 @@ export default function AdminPage() {
           )}
         </div>
 
-        <label className="flex cursor-pointer items-center gap-3 text-sm text-navy-700">
-          <input type="checkbox" checked={featured}
-            onChange={(e) => setFeatured(e.target.checked)}
-            className="h-5 w-5 accent-[#c8202f]" />
-          Feature this project on the homepage
-        </label>
+        {mode === "project" && (
+          <label className="flex cursor-pointer items-center gap-3 text-sm text-navy-700">
+            <input
+              type="checkbox"
+              checked={featured}
+              onChange={(e) => setFeatured(e.target.checked)}
+              className="h-5 w-5 accent-[#c8202f]"
+            />
+            Feature this project on the homepage
+          </label>
+        )}
 
         {error && (
-          <p role="alert" className="border border-brand/30 bg-brand/5 px-4 py-3 text-sm text-brand-dark">
+          <p
+            role="alert"
+            className="border border-brand/30 bg-brand/5 px-4 py-3 text-sm text-brand-dark"
+          >
             {error}
           </p>
         )}
 
         <div>
-          <button type="button" onClick={publish} disabled={status === "busy"}
-            className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto">
+          <button
+            type="button"
+            onClick={publish}
+            disabled={status === "busy"}
+            className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+          >
             {status === "busy" ? (
               <>
                 <Loader2 size={16} className="animate-spin" aria-hidden />

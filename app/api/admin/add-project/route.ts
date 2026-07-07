@@ -1,10 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
+import { commitFiles, readRepoJson, slugify } from "@/lib/github";
 
 export const runtime = "nodejs";
-
-const OWNER = "Davidholland922";
-const REPO = "aoca-website";
-const BRANCH = "main";
 
 type UploadImage = { dataUrl: string };
 type IncomingProject = {
@@ -16,33 +13,6 @@ type IncomingProject = {
   servicesProvided: string[];
   featured: boolean;
 };
-
-async function gh(path: string, init: RequestInit = {}) {
-  const res = await fetch(`https://api.github.com${path}`, {
-    ...init,
-    headers: {
-      Authorization: `token ${process.env.GITHUB_TOKEN}`,
-      Accept: "application/vnd.github+json",
-      "Content-Type": "application/json",
-      ...init.headers,
-    },
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`GitHub ${path} → ${res.status}: ${text.slice(0, 200)}`);
-  }
-  return res.json();
-}
-
-function slugify(title: string) {
-  return title
-    .toLowerCase()
-    .replace(/['’]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .slice(0, 60);
-}
 
 export async function POST(req: NextRequest) {
   try {
@@ -74,41 +44,19 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const slug = `${slugify(project.title)}-${Date.now().toString(36).slice(-4)}`;
-
-    // current head commit + tree
-    const ref = await gh(`/repos/${OWNER}/${REPO}/git/ref/heads/${BRANCH}`);
-    const headSha = ref.object.sha;
-    const headCommit = await gh(`/repos/${OWNER}/${REPO}/git/commits/${headSha}`);
-
-    // image blobs
-    const treeEntries: {
-      path: string;
-      mode: string;
-      type: string;
-      sha: string;
-    }[] = [];
+    const slug = slugify(project.title);
+    const files: Parameters<typeof commitFiles>[1] = [];
     const imagePaths: string[] = [];
-    for (let i = 0; i < Math.min(images.length, 12); i++) {
-      const base64 = images[i].dataUrl.split(",")[1];
-      if (!base64) continue;
-      const blob = await gh(`/repos/${OWNER}/${REPO}/git/blobs`, {
-        method: "POST",
-        body: JSON.stringify({ content: base64, encoding: "base64" }),
-      });
+
+    images.slice(0, 12).forEach((img, i) => {
+      const base64 = img.dataUrl.split(",")[1];
+      if (!base64) return;
       const path = `public/images/uploads/${slug}-${i + 1}.jpg`;
-      treeEntries.push({ path, mode: "100644", type: "blob", sha: blob.sha });
+      files.push({ path, base64 });
       imagePaths.push(`/${path.replace(/^public\//, "")}`);
-    }
+    });
 
-    // updated projects.json (new project first)
-    const currentFile = await gh(
-      `/repos/${OWNER}/${REPO}/contents/content/projects.json?ref=${BRANCH}`
-    );
-    const current = JSON.parse(
-      Buffer.from(currentFile.content, "base64").toString("utf8")
-    ) as unknown[];
-
+    const current = (await readRepoJson("content/projects.json")) as unknown[];
     const record = {
       slug,
       title: project.title.trim(),
@@ -122,43 +70,16 @@ export async function POST(req: NextRequest) {
       featured: !!project.featured,
       servicesProvided: project.servicesProvided ?? [],
     };
-
-    const updated = JSON.stringify([record, ...current], null, 2) + "\n";
-    const jsonBlob = await gh(`/repos/${OWNER}/${REPO}/git/blobs`, {
-      method: "POST",
-      body: JSON.stringify({ content: updated, encoding: "utf-8" }),
-    });
-    treeEntries.push({
+    files.push({
       path: "content/projects.json",
-      mode: "100644",
-      type: "blob",
-      sha: jsonBlob.sha,
+      utf8: JSON.stringify([record, ...current], null, 2) + "\n",
     });
 
-    // one atomic commit
-    const tree = await gh(`/repos/${OWNER}/${REPO}/git/trees`, {
-      method: "POST",
-      body: JSON.stringify({ base_tree: headCommit.tree.sha, tree: treeEntries }),
-    });
-    const commit = await gh(`/repos/${OWNER}/${REPO}/git/commits`, {
-      method: "POST",
-      body: JSON.stringify({
-        message: `Add project via admin: ${record.title}`,
-        tree: tree.sha,
-        parents: [headSha],
-        author: {
-          name: "AOCA Website Admin",
-          email: "admin@aoca.ie",
-          date: new Date().toISOString(),
-        },
-      }),
-    });
-    await gh(`/repos/${OWNER}/${REPO}/git/refs/heads/${BRANCH}`, {
-      method: "PATCH",
-      body: JSON.stringify({ sha: commit.sha }),
-    });
-
-    return NextResponse.json({ ok: true, slug, commit: commit.sha });
+    const commit = await commitFiles(
+      `Add project via admin: ${record.title}`,
+      files
+    );
+    return NextResponse.json({ ok: true, slug, commit });
   } catch (e) {
     return NextResponse.json(
       { error: e instanceof Error ? e.message : "Unexpected error" },

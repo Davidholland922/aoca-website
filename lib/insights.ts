@@ -1,7 +1,11 @@
 /**
  * Insights articles migrated from the previous aoca.ie site (crawled 2026-07-03).
  * Sorted newest first. Edit freely — plain strings only.
+ *
+ * Articles added by the client through /admin land in content/articles.json
+ * and are merged ahead of the migrated list below.
  */
+import uploadedArticles from "../content/articles.json";
 
 export type Article = {
   slug: string;
@@ -13,7 +17,7 @@ export type Article = {
   body: string[];
 };
 
-export const insights: Article[] = [
+const builtInInsights: Article[] = [
   {
     "slug": "arklow-wastewater-treatment-plant-recognised-with-prestigious-awards",
     "title": "Arklow Wastewater Treatment Plant Recognised with Prestigious Awards",
@@ -309,6 +313,12 @@ export const insights: Article[] = [
       "Trust in our expertise for comprehensive and understandable reports, aiding you in making informed decisions about your property. For more information or to schedule a survey, contact AOCA Engineering Consultants today."
     ]
   }
+];
+
+/** Client-uploaded articles (via /admin) appear first. */
+export const insights: Article[] = [
+  ...(uploadedArticles as Article[]),
+  ...builtInInsights,
 ];
 
 export function getArticle(slug: string) {
