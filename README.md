@@ -53,3 +53,5 @@ contents access), `ADMIN_PASSWORD`.
 npx vercel        # first run: log in (GitHub login easiest), accept defaults
 npx vercel --prod # promote to the stable staging URL
 ```
+
+<!-- auto-deploy verified 2026-07-07 -->
