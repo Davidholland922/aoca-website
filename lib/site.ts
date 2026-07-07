@@ -7,6 +7,10 @@
  * and are merged (newest first) with the built-in list below.
  */
 import uploadedProjects from "../content/projects.json";
+import hiddenSlugsJson from "../content/hidden.json";
+
+/** Slugs removed from the site via /admin (reversible). */
+export const hiddenSlugs = hiddenSlugsJson as string[];
 
 export const site = {
   name: "AOCA Engineering Consultants",
@@ -1064,11 +1068,16 @@ const builtInProjects: Project[] = [
   },
 ];
 
-/** Client-uploaded projects (via /admin) appear first. */
-export const projects: Project[] = [
+/** Every project, including ones hidden via /admin (used by the admin UI). */
+export const allProjects: Project[] = [
   ...(uploadedProjects as Project[]),
   ...builtInProjects,
 ];
+
+/** Client-uploaded projects (via /admin) appear first; hidden ones removed. */
+export const projects: Project[] = allProjects.filter(
+  (p) => !hiddenSlugs.includes(p.slug)
+);
 
 export const testimonials = [
   {

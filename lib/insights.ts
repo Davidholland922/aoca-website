@@ -6,6 +6,7 @@
  * and are merged ahead of the migrated list below.
  */
 import uploadedArticles from "../content/articles.json";
+import { hiddenSlugs } from "./site";
 
 export type Article = {
   slug: string;
@@ -315,11 +316,16 @@ const builtInInsights: Article[] = [
   }
 ];
 
-/** Client-uploaded articles (via /admin) appear first. */
-export const insights: Article[] = [
+/** Every article, including ones hidden via /admin (used by the admin UI). */
+export const allInsights: Article[] = [
   ...(uploadedArticles as Article[]),
   ...builtInInsights,
 ];
+
+/** Client-uploaded articles (via /admin) appear first; hidden ones removed. */
+export const insights: Article[] = allInsights.filter(
+  (a) => !hiddenSlugs.includes(a.slug)
+);
 
 export function getArticle(slug: string) {
   return insights.find((a) => a.slug === slug);

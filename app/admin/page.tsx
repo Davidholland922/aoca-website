@@ -9,12 +9,16 @@ import {
   Newspaper,
   HardHat,
   X,
+  ListChecks,
+  Trash2,
+  RotateCcw,
 } from "lucide-react";
 import clsx from "clsx";
-import { sectors, services } from "@/lib/site";
+import { sectors, services, allProjects, hiddenSlugs } from "@/lib/site";
+import { allInsights } from "@/lib/insights";
 
 type Shot = { dataUrl: string; name: string };
-type Mode = "project" | "article";
+type Mode = "project" | "article" | "manage";
 
 /** Downscale a photo in the browser so uploads stay small and consistent. */
 async function resizeImage(file: File, maxW = 1600): Promise<Shot> {
@@ -225,11 +229,12 @@ export default function AdminPage() {
 
       <div className="container-site mt-10 grid max-w-4xl gap-6">
         {/* what are you adding? */}
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-3 gap-3">
           {(
             [
               { key: "project", label: "A project", Icon: HardHat },
-              { key: "article", label: "A news article", Icon: Newspaper },
+              { key: "article", label: "News article", Icon: Newspaper },
+              { key: "manage", label: "Manage existing", Icon: ListChecks },
             ] as const
           ).map(({ key, label, Icon }) => (
             <button
@@ -254,6 +259,10 @@ export default function AdminPage() {
           ))}
         </div>
 
+        {mode === "manage" ? (
+          <ManagePanel password={password} />
+        ) : (
+          <>
         <div>
           <label htmlFor="title" className={labelCls}>
             {mode === "project" ? "Project name" : "Article title"}{" "}
@@ -469,7 +478,122 @@ export default function AdminPage() {
             )}
           </button>
         </div>
+          </>
+        )}
       </div>
+    </div>
+  );
+}
+
+function ManagePanel({ password }: { password: string }) {
+  const [hidden, setHidden] = useState<string[]>(hiddenSlugs);
+  const [busy, setBusy] = useState<string | null>(null);
+  const [err, setErr] = useState("");
+
+  async function toggle(slug: string, title: string, hide: boolean) {
+    setErr("");
+    setBusy(slug);
+    try {
+      const res = await fetch("/api/admin/manage", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          password,
+          action: hide ? "hide" : "restore",
+          slug,
+          title,
+        }),
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error || "Something went wrong");
+      setHidden((h) => (hide ? [...h, slug] : h.filter((s) => s !== slug)));
+    } catch (e) {
+      setErr(e instanceof Error ? e.message : "Something went wrong");
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  const renderRow = (slug: string, title: string, sub?: string) => {
+    const isHidden = hidden.includes(slug);
+    return (
+      <li
+        key={slug}
+        className={clsx(
+          "flex items-center justify-between gap-4 border border-navy-100 bg-white px-5 py-3",
+          isHidden && "opacity-60"
+        )}
+      >
+        <div className="min-w-0">
+          <p className="truncate font-medium text-navy-900">
+            {title}
+            {isHidden && (
+              <span className="ml-2 bg-navy-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-navy-500">
+                Removed
+              </span>
+            )}
+          </p>
+          {sub && <p className="truncate text-xs text-navy-400">{sub}</p>}
+        </div>
+        <button
+          type="button"
+          disabled={busy === slug}
+          onClick={() => toggle(slug, title, !isHidden)}
+          className={clsx(
+            "flex min-h-[40px] shrink-0 cursor-pointer items-center gap-2 border px-3 py-1.5 text-xs font-semibold uppercase tracking-wider transition-colors disabled:cursor-not-allowed disabled:opacity-50",
+            isHidden
+              ? "border-navy-300 text-navy-700 hover:border-navy-800"
+              : "border-brand/40 text-brand hover:bg-brand hover:text-white"
+          )}
+        >
+          {busy === slug ? (
+            <Loader2 size={14} className="animate-spin" aria-hidden />
+          ) : isHidden ? (
+            <RotateCcw size={14} aria-hidden />
+          ) : (
+            <Trash2 size={14} aria-hidden />
+          )}
+          {isHidden ? "Restore" : "Remove"}
+        </button>
+      </li>
+    );
+  };
+
+  return (
+    <div className="grid gap-10">
+      <p className="border border-navy-200 bg-white px-4 py-3 text-sm text-navy-600">
+        Removing takes something off the website within a few minutes — it is
+        never deleted, so you can restore it here any time.
+      </p>
+
+      {err && (
+        <p
+          role="alert"
+          className="border border-brand/30 bg-brand/5 px-4 py-3 text-sm text-brand-dark"
+        >
+          {err}
+        </p>
+      )}
+
+      <section>
+        <h2 className="mb-4 font-heading text-sm font-semibold uppercase tracking-wider text-navy-900">
+          Projects ({allProjects.length})
+        </h2>
+        <ul className="grid gap-2">
+          {allProjects.map((p) =>
+            renderRow(p.slug, p.title, p.location || p.sector)
+          )}
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="mb-4 font-heading text-sm font-semibold uppercase tracking-wider text-navy-900">
+          News articles ({allInsights.length})
+        </h2>
+        <ul className="grid gap-2">
+          {allInsights.map((a) => renderRow(a.slug, a.title, a.displayDate))}
+        </ul>
+      </section>
     </div>
   );
 }
