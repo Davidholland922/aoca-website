@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "slug": "e2e-test-article-25f4",
+    "title": "E2E Test Article",
+    "date": "2026-07-07",
+    "displayDate": "July 2026",
+    "image": "/images/uploads/e2e-test-article-25f4-cover.jpg",
+    "excerpt": "First test paragraph for the article flow.",
+    "body": [
+      "First test paragraph for the article flow.",
+      "Second paragraph."
+    ]
+  }
+]
