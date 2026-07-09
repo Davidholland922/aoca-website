@@ -41,6 +41,7 @@ export default function CulturePage() {
             <SectionVideo
               src="/video/culture.mp4"
               poster="/images/culture-video-poster.jpg"
+              withSound
             />
           </Reveal>
         </div>

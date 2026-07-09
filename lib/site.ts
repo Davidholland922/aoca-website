@@ -129,7 +129,7 @@ export const timeline = [
     year: "1996",
     title: "The beginning",
     text: "Aidan O'Connell & Associates is founded in Portlaoise — one engineer, a drawing board and a conviction that clients deserve consultants who take responsibility.",
-    image: "/images/2026-04-aoca-black.png",
+    image: "/images/history-4.jpg",
   },
   {
     year: "2006",
@@ -146,20 +146,20 @@ export const timeline = [
   {
     year: "2016–2023",
     title: "The remediation years",
-    text: "AOCA helps develop two NSAI National Standards for pyrite remediation and goes on to manage some of the largest residential remediation programmes in Ireland.",
-    image: "/images/2026-03-pyrite.jpg",
+    text: "AOCA helps develop two NSAI National Standards for pyrite remediation and goes on to manage some of the largest residential remediation programmes in Ireland — while the practice itself keeps building.",
+    image: "/images/history-3.jpg",
   },
   {
     year: "2024",
     title: "Recognised as Best in Class",
     text: "Shortlisted at the Irish Building & Design Awards, and appointed Design Lead and Project Manager on a £9m fire safety and cladding remediation project in the UK. Three offices now serve Ireland, the UK and Europe.",
-    image: "/images/2024-01-ibda-finalist-blue-1.png",
+    image: "/images/history-1.jpg",
   },
   {
     year: "2025",
-    title: "Award-winning infrastructure",
-    text: "The Arklow Wastewater Treatment Plant — delivered with AOCA on the team — is recognised with prestigious industry awards, and Fire Safety Consultants launches in partnership with OCF.",
-    image: "/images/2025-09-arklow_case_study_featured_ojg6cb.webp",
+    title: "A new chapter",
+    text: "The Arklow Wastewater Treatment Plant is recognised with prestigious industry awards, Fire Safety Consultants launches in partnership with OCF — and founder Aidan O'Connell hands the reins to a new generation of leadership.",
+    image: "/images/history-5.jpg",
   },
   {
     year: "Today",
@@ -557,37 +557,43 @@ export const sectors: Sector[] = [
     slug: "commercial",
     title: "Commercial & Retail",
     blurb: "Engineering solutions for offices, retail and corporate environments.",
-    image: "/images/2026-02-dji_0039.jpg",
+    image: "/images/sector-commercial.jpg",
   },
   {
     slug: "education-government",
-    title: "Education & Government",
-    blurb: "Trusted engineering for schools, civic buildings and public sector projects.",
-    image: "/images/2026-02-st-patricks-ns.jpg",
+    title: "Education",
+    blurb: "Trusted engineering for schools and places of learning.",
+    image: "/images/sector-education.jpg",
+  },
+  {
+    slug: "infrastructure-government",
+    title: "Infrastructure & Government",
+    blurb: "Delivering vital public infrastructure and civic buildings.",
+    image: "/images/sector-infrastructure.jpg",
   },
   {
     slug: "hospitality-leisure-community",
     title: "Hospitality, Leisure & Community",
     blurb: "Engineering welcoming, high-performance spaces for hotels, leisure and community use.",
-    image: "/images/2026-04-hospitality-leisure-community.jpg",
+    image: "/images/sector-hospitality.jpg",
   },
   {
     slug: "industrial-data-centres",
     title: "Industrial & Data Centres",
     blurb: "Delivering reliable, precision engineering for industrial and mission-critical facilities.",
-    image: "/images/2026-04-industrial-data.jpg",
+    image: "/images/sector-industrial.jpg",
   },
   {
     slug: "residential",
     title: "Residential",
     blurb: "Expert engineering for homes and residential developments of every scale.",
-    image: "/images/2026-04-residential.jpg",
+    image: "/images/sector-residential.avif",
   },
   {
     slug: "life-sciences-healthcare",
     title: "Life Sciences & Healthcare",
     blurb: "Specialist engineering for healthcare and life science environments.",
-    image: "/images/2026-04-life-science-health-care.jpg",
+    image: "/images/sector-life-sciences.jpg",
   },
 ];
 
@@ -637,7 +643,7 @@ const builtInProjects: Project[] = [
   {
     slug: "arklow-water-treatment-plant",
     title: "Arklow Water Treatment Plant",
-    sector: "commercial",
+    sector: "infrastructure-government",
     location: "Arklow, Co. Wicklow",
     thumb: P + "2026-02-thumb-1.jpg",
     hero: P + "2026-02-arklow_hero_final_dou4go-1.jpg",
@@ -779,7 +785,7 @@ const builtInProjects: Project[] = [
   {
     slug: "legal-aid-board",
     title: "Legal Aid Board",
-    sector: "education-government",
+    sector: "infrastructure-government",
     thumb: P + "2026-02-legal-aid-thumb.jpg",
     hero: P + "2026-02-img_2431.jpg",
     gallery: [
@@ -1193,6 +1199,9 @@ export const logoWall = [
 ];
 
 export const cultureImages = [
+  P + "dayout-pool.jpg",
+  P + "dayout-drone.jpg",
+  P + "dayout-344a7160.jpg",
   P + "2026-05-344a6971.jpg",
   P + "2026-05-344a6993.jpg",
   P + "2026-05-344a7050.jpg",

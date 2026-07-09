@@ -37,7 +37,7 @@ All editable content lives in **`lib/site.ts`** (and articles in
 | Team headshots | Client | Company page uses initials |
 
 
-| Official accreditation logo files | Client | Homepage & Company page show designed monogram badges; drop official logos into public/images/accreditations/ and swap in AccreditationBadges.tsx |
+| History photos 2.jpg & 6.jpg | Client | Supplied but too low-resolution for the timeline slots (206px/225px) — higher-res copies would let us add them |
 
 ## Technical before production launch
 

@@ -223,7 +223,8 @@ export default function CompanyPage() {
           <Reveal>
             <SectionHeading
               eyebrow="Accreditations & certifications"
-              title="Credentials you can check"
+              title="Independently certified. Professionally accountable."
+              lead="Our memberships and certifications are more than logos — they are external standards we are audited against, year after year."
             />
           </Reveal>
           <Reveal>

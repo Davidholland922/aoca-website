@@ -144,15 +144,19 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="Sectors"
               title="Wherever Ireland builds, we engineer"
-              lead="Three decades of consultancy across Ireland, the UK and Europe — six sectors, one standard."
+              lead="Three decades of consultancy across Ireland, the UK and Europe — seven sectors, one standard."
             />
           </Reveal>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {sectors.map((s, i) => (
-              <Reveal key={s.slug} delay={(i % 3) * 0.07}>
+              <Reveal
+                key={s.slug}
+                delay={(i % 4) * 0.06}
+                className={i === 0 ? "lg:col-span-2" : undefined}
+              >
                 <Link
                   href={`/projects?sector=${s.slug}`}
-                  className="group relative block aspect-[4/3] overflow-hidden"
+                  className="group relative block h-64 overflow-hidden sm:h-72"
                 >
                   <Image
                     src={s.image}

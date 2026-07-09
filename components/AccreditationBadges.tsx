@@ -1,11 +1,34 @@
-import { BadgeCheck } from "lucide-react";
-import { accreditations } from "@/lib/site";
+import Image from "next/image";
 
-/**
- * Accreditation badges styled as logo-cards. When AOCA supply the official
- * membership logo files, drop them in public/images/accreditations/ and swap
- * the monogram block for an <Image> — see PLACEHOLDERS.md.
- */
+/** Official accreditation & membership logos (client-supplied, July 2026). */
+const badges = [
+  {
+    src: "/images/accreditations/engineers-ireland.png",
+    alt: "Engineers Ireland — Corporate Member",
+    label: "Corporate Member of Engineers Ireland",
+  },
+  {
+    src: "/images/accreditations/nsai-iso9001.jpg",
+    alt: "NSAI Certified — ISO 9001:2015 Quality",
+    label: "ISO9001 Certification with NSAI",
+  },
+  {
+    src: "/images/accreditations/ife.png",
+    alt: "The Institution of Fire Engineers — Republic of Ireland Branch",
+    label: "Member of the Institute of Fire Engineers",
+  },
+  {
+    src: "/images/accreditations/phai.webp",
+    alt: "Passive House Association of Ireland",
+    label: "Member of Passive House Association of Ireland",
+  },
+  {
+    src: "/images/accreditations/greencert.jpg",
+    alt: "GreenCert — Certification of Green Education Centers in Europe",
+    label: "Green Cert Registered",
+  },
+];
+
 export default function AccreditationBadges({
   compact = false,
 }: {
@@ -13,36 +36,29 @@ export default function AccreditationBadges({
 }) {
   return (
     <div
-      className={`grid gap-3 ${
-        compact
-          ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-5"
-          : "sm:grid-cols-2 lg:grid-cols-5"
+      className={`grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 ${
+        compact ? "" : "gap-4"
       }`}
     >
-      {accreditations.map((a) => {
-        // monogram from the organisation's initials
-        const mono = a
-          .replace(/^(Member of the?|Corporate Member of|Member of)\s+/i, "")
-          .split(/\s+/)
-          .filter((w) => /^[A-Z0-9]/.test(w))
-          .slice(0, 3)
-          .map((w) => (/\d/.test(w) ? w.replace(/[^A-Z0-9]/gi, "") : w[0]))
-          .join("");
-        return (
-          <div
-            key={a}
-            className="flex h-full flex-col items-center border border-navy-100 bg-white p-5 text-center"
-          >
-            <span className="flex h-14 w-14 items-center justify-center border-2 border-navy-900 font-heading text-sm font-bold text-navy-900">
-              {mono.slice(0, 5)}
-            </span>
-            <p className="mt-3 flex-1 text-xs font-medium leading-snug text-navy-700">
-              {a}
-            </p>
-            <BadgeCheck size={15} className="mt-2 text-brand" aria-hidden />
-          </div>
-        );
-      })}
+      {badges.map((b) => (
+        <div
+          key={b.label}
+          className="flex h-full flex-col items-center justify-between gap-3 border border-navy-100 bg-white p-5 text-center"
+        >
+          <span className="flex min-h-[4rem] items-center justify-center">
+            <Image
+              src={b.src}
+              alt={b.alt}
+              width={220}
+              height={110}
+              className="max-h-16 w-auto max-w-full object-contain"
+            />
+          </span>
+          <p className="text-xs font-medium leading-snug text-navy-600">
+            {b.label}
+          </p>
+        </div>
+      ))}
     </div>
   );
 }
