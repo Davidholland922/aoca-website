@@ -54,23 +54,33 @@ export default function HistoryPage() {
                         className="h-6 w-auto"
                       />
                     </span>
-                    <div
-                      className={`relative aspect-[16/10] overflow-hidden bg-navy-50 ${
-                        i % 2 ? "md:order-2" : ""
-                      }`}
-                    >
-                      <Image
-                        src={t.image}
-                        alt={t.title}
-                        fill
-                        className={
-                          t.image.endsWith(".png")
-                            ? "object-contain p-10"
-                            : "object-cover"
-                        }
-                        sizes="(min-width: 768px) 32rem, 100vw"
-                        loading={i < 2 ? "eager" : "lazy"}
-                      />
+                    <div className={`relative ${i % 2 ? "md:order-2" : ""}`}>
+                      <div className="relative aspect-[16/10] overflow-hidden bg-navy-50">
+                        <Image
+                          src={t.image}
+                          alt={t.title}
+                          fill
+                          className={
+                            t.image.endsWith(".png")
+                              ? "object-contain p-10"
+                              : "object-cover"
+                          }
+                          sizes="(min-width: 768px) 32rem, 100vw"
+                          loading={i < 2 ? "eager" : "lazy"}
+                        />
+                      </div>
+                      {"clipping" in t && t.clipping && (
+                        /* floating press cutting */
+                        <div className="absolute -bottom-8 -left-3 w-28 -rotate-6 border-4 border-white bg-white shadow-xl shadow-navy-950/25 transition-transform duration-300 hover:rotate-0 sm:w-36 md:-left-6">
+                          <Image
+                            src={t.clipping}
+                            alt="Leinster Express front page featuring AOCA"
+                            width={500}
+                            height={625}
+                            className="w-full"
+                          />
+                        </div>
+                      )}
                     </div>
                     <div className={i % 2 ? "md:order-1 md:pr-16" : "md:pl-16"}>
                       <p className="font-heading text-5xl font-semibold text-brand">

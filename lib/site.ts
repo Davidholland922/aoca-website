@@ -136,6 +136,7 @@ export const timeline = [
     title: "A permanent home",
     text: "The practice moves to its current head office at Lismard House on the Timahoe Road, Portlaoise.",
     image: "/images/lismard-house-team.jpg",
+    clipping: "/images/aoca-newspaper.jpg",
   },
   {
     year: "2014",

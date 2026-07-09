@@ -368,50 +368,40 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* AWARDS, PRESS & RECOGNITION */}
+      {/* AWARDS & RECOGNITION */}
       <section className="border-b border-navy-100 bg-white">
-        <div className="container-site grid items-center gap-12 py-16 lg:grid-cols-[1fr,auto]">
+        <div className="container-site grid items-center gap-10 py-14 lg:grid-cols-[auto,1fr,auto]">
           <Reveal>
-            <p className="eyebrow">Recognition</p>
-            <h2 className="mt-2 text-2xl font-semibold text-navy-900 sm:text-3xl">
-              Award-recognised. In the news.
-            </h2>
             <Image
               src="/images/ibda-finalist-2024.png"
               alt="Irish Building & Design Awards 2024 — Finalist"
               width={700}
               height={300}
-              className="mt-6 h-24 w-auto object-contain sm:h-28"
+              className="mx-auto h-20 w-auto object-contain sm:h-24"
             />
-            <p className="mt-6 max-w-2xl leading-relaxed text-navy-600">
-              Shortlisted at the Irish Building &amp; Design Awards —
-              recognised as being &lsquo;Best in Class&rsquo; — part of the
-              team behind the multi-award-winning Arklow Wastewater Treatment
-              Plant, and featured in the press for three decades of
-              engineering across the region.
-            </p>
+          </Reveal>
+          <Reveal delay={0.06}>
+            <div>
+              <p className="eyebrow">Recognition</p>
+              <h2 className="mt-2 text-2xl font-semibold text-navy-900 sm:text-3xl">
+                Award-recognised engineering
+              </h2>
+              <p className="mt-3 max-w-2xl leading-relaxed text-navy-600">
+                Shortlisted at the Irish Building &amp; Design Awards —
+                recognised as being &lsquo;Best in Class&rsquo; — and part of
+                the team behind the multi-award-winning Arklow Wastewater
+                Treatment Plant.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
             <Link
               href="/insights/arklow-wastewater-treatment-plant-recognised-with-prestigious-awards"
-              className="btn-outline-dark mt-7"
+              className="btn-outline-dark whitespace-nowrap"
             >
               The Arklow story
               <ArrowRight size={16} aria-hidden />
             </Link>
-          </Reveal>
-          <Reveal delay={0.08}>
-            {/* press cutting — sits in the strip without claiming a section */}
-            <figure className="mx-auto w-56 rotate-2 border border-navy-100 bg-white p-2 shadow-xl shadow-navy-950/15 transition-transform duration-300 hover:rotate-0 sm:w-64">
-              <Image
-                src="/images/aoca-newspaper.jpg"
-                alt="Leinster Express front page featuring AOCA Engineering Consultants"
-                width={1000}
-                height={1250}
-                className="w-full"
-              />
-              <figcaption className="px-1 py-2 text-center text-[11px] uppercase tracking-wider text-navy-500">
-                As featured in the Leinster Express
-              </figcaption>
-            </figure>
           </Reveal>
         </div>
         {/* accreditations & certifications (exact client wording) */}
