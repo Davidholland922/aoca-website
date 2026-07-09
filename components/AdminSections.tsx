@@ -3,13 +3,20 @@
 import { useState } from "react";
 import { CheckCircle2, Loader2, Plus, Trash2 } from "lucide-react";
 import clsx from "clsx";
-import { team as currentTeam, stats as currentStats, offices as currentOffices } from "@/lib/site";
+import {
+  team as currentTeam,
+  stats as currentStats,
+  offices as currentOffices,
+  aboutParagraphs as currentAbout,
+  jobs as currentJobs,
+} from "@/lib/site";
 
-type Section = "team" | "stats" | "offices";
+type Section = "team" | "stats" | "offices" | "about" | "jobs";
 
 type TeamRow = { name: string; role: string; cred: string };
 type StatRow = { value: string; label: string };
 type OfficeRow = { name: string; address: string; phone: string; email: string };
+type JobRow = { title: string; location: string; type: string; summary: string };
 
 const input =
   "w-full min-h-[44px] border border-navy-200 bg-white px-3 py-2 text-sm text-navy-900 placeholder:text-navy-300 focus:border-navy-800";
@@ -27,6 +34,8 @@ export default function AdminSections({ password }: { password: string }) {
       email: o.email,
     }))
   );
+  const [about, setAbout] = useState<string>(currentAbout.join("\n\n"));
+  const [jobRows, setJobRows] = useState<JobRow[]>(currentJobs.map((j) => ({ ...j })));
   const [busy, setBusy] = useState(false);
   const [saved, setSaved] = useState(false);
   const [err, setErr] = useState("");
@@ -37,7 +46,15 @@ export default function AdminSections({ password }: { password: string }) {
     setBusy(true);
     try {
       const data =
-        section === "team" ? team : section === "stats" ? stats : offices;
+        section === "team"
+          ? team
+          : section === "stats"
+            ? stats
+            : section === "offices"
+              ? offices
+              : section === "about"
+                ? about.split(/\n\s*\n/).filter((p) => p.trim())
+                : jobRows;
       const res = await fetch("/api/admin/update-section", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -57,6 +74,8 @@ export default function AdminSections({ password }: { password: string }) {
     { key: "team", label: "Management team" },
     { key: "stats", label: "Homepage numbers" },
     { key: "offices", label: "Office details" },
+    { key: "about", label: "About us" },
+    { key: "jobs", label: "Job openings" },
   ];
 
   return (
@@ -145,6 +164,65 @@ export default function AdminSections({ password }: { password: string }) {
               </div>
             </div>
           ))}
+        </div>
+      )}
+
+      {section === "about" && (
+        <div className="grid gap-3">
+          <p className="text-sm text-navy-500">
+            The &ldquo;Our story&rdquo; text on the Company page. Leave an
+            empty line between paragraphs.
+          </p>
+          <textarea
+            className={input}
+            rows={12}
+            value={about}
+            aria-label="About us text"
+            onChange={(e) => setAbout(e.target.value)}
+          />
+        </div>
+      )}
+
+      {section === "jobs" && (
+        <div className="grid gap-3">
+          <p className="text-sm text-navy-500">
+            Positions listed on the Careers page. Applicants email{" "}
+            <strong>info@aoca.ie</strong> with the job title as the subject.
+          </p>
+          {jobRows.map((j, i) => (
+            <div key={i} className="grid gap-2 border border-navy-100 bg-white p-4">
+              <div className="flex gap-2">
+                <input className={input} placeholder="Job title (e.g. Senior Structural Engineer)"
+                  value={j.title}
+                  aria-label={`Job ${i + 1} title`}
+                  onChange={(e) => setJobRows(jobRows.map((x, k) => (k === i ? { ...x, title: e.target.value } : x)))} />
+                <button type="button" aria-label={`Remove job ${i + 1}`}
+                  onClick={() => setJobRows(jobRows.filter((_, k) => k !== i))}
+                  className="flex w-11 shrink-0 cursor-pointer items-center justify-center border border-navy-200 text-navy-400 hover:border-brand hover:text-brand">
+                  <Trash2 size={15} aria-hidden />
+                </button>
+              </div>
+              <div className="grid gap-2 sm:grid-cols-2">
+                <input className={input} placeholder="Location (e.g. Portlaoise or Dublin)"
+                  value={j.location}
+                  aria-label={`Job ${i + 1} location`}
+                  onChange={(e) => setJobRows(jobRows.map((x, k) => (k === i ? { ...x, location: e.target.value } : x)))} />
+                <input className={input} placeholder="Type (e.g. Full-time)"
+                  value={j.type}
+                  aria-label={`Job ${i + 1} type`}
+                  onChange={(e) => setJobRows(jobRows.map((x, k) => (k === i ? { ...x, type: e.target.value } : x)))} />
+              </div>
+              <textarea className={input} rows={3} placeholder="Short description of the role"
+                value={j.summary}
+                aria-label={`Job ${i + 1} description`}
+                onChange={(e) => setJobRows(jobRows.map((x, k) => (k === i ? { ...x, summary: e.target.value } : x)))} />
+            </div>
+          ))}
+          <button type="button"
+            onClick={() => setJobRows([...jobRows, { title: "", location: "", type: "", summary: "" }])}
+            className="flex min-h-[44px] cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-navy-200 text-sm font-medium text-navy-500 hover:border-brand hover:text-brand">
+            <Plus size={16} aria-hidden /> Add job opening
+          </button>
         </div>
       )}
 

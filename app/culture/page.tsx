@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { values, cultureImages, companyImages } from "@/lib/site";
 import Reveal from "@/components/Reveal";
+import SectionVideo from "@/components/SectionVideo";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
@@ -24,6 +25,26 @@ export default function CulturePage() {
         image={companyImages.cultureTeaser}
         imageAlt="The AOCA team"
       />
+
+      {/* BEHIND THE SCENES FILM */}
+      <section className="blueprint relative overflow-hidden bg-navy-950">
+        <div className="container-site section grid items-center gap-14 lg:grid-cols-2">
+          <Reveal>
+            <SectionHeading
+              dark
+              eyebrow="Behind the scenes"
+              title="A day with the AOCA team"
+              lead="Cameras followed the team for a day — office, sites and everything in between."
+            />
+          </Reveal>
+          <Reveal delay={0.1}>
+            <SectionVideo
+              src="/video/culture.mp4"
+              poster="/images/culture-video-poster.jpg"
+            />
+          </Reveal>
+        </div>
+      </section>
 
       {/* GALLERY */}
       <section className="section bg-white">

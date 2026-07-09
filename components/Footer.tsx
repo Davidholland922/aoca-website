@@ -35,9 +35,7 @@ export default function Footer() {
             className="h-14 w-auto"
           />
           <p className="mt-5 max-w-sm text-sm leading-relaxed">
-            {site.legalName} — consulting engineers since {site.founded}.
-            Civil &amp; structural engineering, project management and forensic
-            expertise across Ireland, the UK and Europe.
+            A leader in multidisciplinary engineering expertise.
           </p>
           <p className="mt-5 flex items-center gap-3 text-sm">
             <Clock size={15} className="shrink-0 text-brand" aria-hidden />

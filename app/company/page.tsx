@@ -10,8 +10,10 @@ import {
   team,
   offices,
   companyImages,
-  cultureImages,
+  aboutParagraphs,
 } from "@/lib/site";
+import SectionVideo from "@/components/SectionVideo";
+import AccreditationBadges from "@/components/AccreditationBadges";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
@@ -43,30 +45,9 @@ export default function CompanyPage() {
               title="From Portlaoise to projects across Europe"
             />
             <div className="mt-6 space-y-5 leading-relaxed text-navy-700">
-              <p>
-                With our head office located in Portlaoise, where the company
-                was established by Aidan O&apos;Connell, we opened a second
-                office in Dublin in May 2014. The Dublin office has expanded
-                considerably in the intervening period and offers the full
-                range of engineering services along with pyrite investigation.
-                Our offices share resources to ensure we provide the best
-                possible service to every client.
-              </p>
-              <p>
-                Since our initial steps on the ladder of engineering
-                consultancy, we have expanded and evolved to service all
-                sectors of the construction industry. This continuous growth is
-                testament to our commitment to the quality of service we
-                provide to all our clients.
-              </p>
-              <p>
-                Our business philosophy is, always, to provide the most
-                professional attention, together with the most practical
-                solution at a reasonable cost. Our professional staff are on
-                hand to discuss projects of any magnitude — simple or complex —
-                and will deliver the highest standard possible to help you
-                achieve your stated goal.
-              </p>
+              {aboutParagraphs.map((para) => (
+                <p key={para.slice(0, 40)}>{para}</p>
+              ))}
             </div>
           </Reveal>
           <Reveal delay={0.1}>
@@ -88,6 +69,26 @@ export default function CompanyPage() {
                 </div>
               ))}
             </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* FILM — AOCA from the air */}
+      <section className="blueprint relative overflow-hidden bg-navy-950">
+        <div className="container-site section grid items-center gap-14 lg:grid-cols-2">
+          <Reveal>
+            <SectionHeading
+              dark
+              eyebrow="See us at work"
+              title="Engineering, from a better angle"
+              lead="A minute above the projects and people that carry the AOCA name."
+            />
+          </Reveal>
+          <Reveal delay={0.1}>
+            <SectionVideo
+              src="/video/about.mp4"
+              poster="/images/about-video-poster.jpg"
+            />
           </Reveal>
         </div>
       </section>
@@ -211,6 +212,23 @@ export default function CompanyPage() {
               <Link href="/careers" className="btn-outline-dark">
                 Join the team
               </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ACCREDITATIONS */}
+      <section className="section bg-white">
+        <div className="container-site">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Accreditations & certifications"
+              title="Credentials you can check"
+            />
+          </Reveal>
+          <Reveal>
+            <div className="mt-10">
+              <AccreditationBadges />
             </div>
           </Reveal>
         </div>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, MapPin, GraduationCap, Users } from "lucide-react";
-import { site, companyImages, cultureImages } from "@/lib/site";
+import { site, companyImages, cultureImages, jobs } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
@@ -94,6 +94,64 @@ export default function CareersPage() {
               ))}
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* OPEN POSITIONS — posted by AOCA via /admin */}
+      <section className="section bg-navy-50/60" id="open-positions">
+        <div className="container-site">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Open positions"
+              title={jobs.length ? "We're hiring" : "Current openings"}
+              lead={
+                jobs.length
+                  ? "Apply by email with your CV — we reply to every application."
+                  : "There are no advertised openings right now — but we're always interested in talented engineers. Send us your CV and we'll keep it on file."
+              }
+            />
+          </Reveal>
+          <div className="mt-10 grid gap-4">
+            {jobs.map((j) => (
+              <Reveal key={j.title}>
+                <div className="flex flex-col gap-4 border border-navy-100 bg-white p-6 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold text-navy-900">
+                      {j.title}
+                    </h3>
+                    <p className="mt-1 text-xs uppercase tracking-wider text-navy-400">
+                      {[j.location, j.type].filter(Boolean).join(" · ")}
+                    </p>
+                    {j.summary && (
+                      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-navy-600">
+                        {j.summary}
+                      </p>
+                    )}
+                  </div>
+                  <a
+                    href={`mailto:${site.email}?subject=${encodeURIComponent(
+                      `Application: ${j.title}`
+                    )}`}
+                    className="btn-primary shrink-0"
+                  >
+                    Apply by email
+                  </a>
+                </div>
+              </Reveal>
+            ))}
+            {jobs.length === 0 && (
+              <Reveal>
+                <a
+                  href={`mailto:${site.email}?subject=${encodeURIComponent(
+                    "Speculative application"
+                  )}`}
+                  className="btn-primary w-fit"
+                >
+                  Send a speculative CV
+                </a>
+              </Reveal>
+            )}
+          </div>
         </div>
       </section>
 

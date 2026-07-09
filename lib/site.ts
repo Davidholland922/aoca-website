@@ -9,6 +9,7 @@
 import uploadedProjects from "../content/projects.json";
 import hiddenSlugsJson from "../content/hidden.json";
 import overridesJson from "../content/overrides.json";
+import uploadedServices from "../content/services.json";
 
 /** Sections editable by the client via /admin (content/overrides.json). */
 const overrides = overridesJson as Partial<{
@@ -21,7 +22,21 @@ const overrides = overridesJson as Partial<{
     phoneHref: string;
     email: string;
   }[];
+  about: string[];
+  featured: string[];
+  jobs: { title: string; location: string; type: string; summary: string }[];
 }>;
+
+/** "About us" story paragraphs — client-editable via /admin. */
+export const aboutParagraphs: string[] =
+  overrides.about ?? [
+    "With our head office located in Portlaoise, where the company was established by Aidan O'Connell, we opened a second office in Dublin in May 2014. The Dublin office has expanded considerably in the intervening period and offers the full range of engineering services along with pyrite investigation. Our offices share resources to ensure we provide the best possible service to every client.",
+    "Since our initial steps on the ladder of engineering consultancy, we have expanded and evolved to service all sectors of the construction industry. This continuous growth is testament to our commitment to the quality of service we provide to all our clients.",
+    "Our business philosophy is, always, to provide the most professional attention, together with the most practical solution at a reasonable cost. Our professional staff are on hand to discuss projects of any magnitude — simple or complex — and will deliver the highest standard possible to help you achieve your stated goal.",
+  ];
+
+/** Open job positions — client-editable via /admin. */
+export const jobs = overrides.jobs ?? [];
 
 /** Slugs removed from the site via /admin (reversible). */
 export const hiddenSlugs = hiddenSlugsJson as string[];
@@ -182,7 +197,7 @@ export type Service = {
  * Safety supplied by the client; Building Surveying / Specialist Services /
  * Building Science are marked draft pending their full copy.
  */
-export const services: Service[] = [
+const builtInServices: Service[] = [
   {
     slug: "insurance-forensic-engineering",
     title: "Insurance & Forensic Engineering",
@@ -506,6 +521,21 @@ export const services: Service[] = [
   },
 ];
 
+/**
+ * Expertise pages edited or added via /admin land in content/services.json
+ * and override built-in entries by slug; hidden slugs are removed site-wide.
+ */
+export const allServices: Service[] = [
+  ...(uploadedServices as Service[]),
+  ...builtInServices.filter(
+    (b) => !(uploadedServices as Service[]).some((u) => u.slug === b.slug)
+  ),
+];
+
+export const services: Service[] = allServices.filter(
+  (s) => !hiddenSlugs.includes(s.slug)
+);
+
 /** Accreditations & certifications — exact wording from AOCA, July 2026. */
 export const accreditations = [
   "Member of the Institute of Fire Engineers",
@@ -573,6 +603,7 @@ export type Project = {
   body: string[];
   featured?: boolean;
   servicesProvided?: string[]; // expertise slugs (set by /admin uploads)
+  servicesText?: string[]; // client-written "Services Provided" paragraphs
 };
 
 const P = "/images/";
@@ -1088,15 +1119,27 @@ const builtInProjects: Project[] = [
   },
 ];
 
-/** Every project, including ones hidden via /admin (used by the admin UI). */
+/** Every project, including ones hidden via /admin (used by the admin UI).
+ * Edited/uploaded records (content/projects.json) override built-ins by slug. */
 export const allProjects: Project[] = [
   ...(uploadedProjects as Project[]),
-  ...builtInProjects,
+  ...builtInProjects.filter(
+    (b) => !(uploadedProjects as Project[]).some((u) => u.slug === b.slug)
+  ),
 ];
 
 /** Client-uploaded projects (via /admin) appear first; hidden ones removed. */
 export const projects: Project[] = allProjects.filter(
   (p) => !hiddenSlugs.includes(p.slug)
+);
+
+/**
+ * Homepage featured projects. When the client has chosen a list via /admin
+ * (overrides.featured) it wins; otherwise the built-in flags apply.
+ */
+export const featuredSlugs: string[] | undefined = overrides.featured;
+export const featuredProjects: Project[] = projects.filter((p) =>
+  featuredSlugs ? featuredSlugs.includes(p.slug) : p.featured
 );
 
 export const testimonials = [

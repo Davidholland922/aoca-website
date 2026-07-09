@@ -9,12 +9,12 @@ import {
   services,
   sectors,
   projects,
+  featuredProjects,
   testimonials,
   partnerLogos,
   logoWall,
   cultureImages,
   companyImages,
-  accreditations,
 } from "@/lib/site";
 import ServiceIcon from "@/components/ServiceIcon";
 import { insights } from "@/lib/insights";
@@ -25,9 +25,10 @@ import CtaBand from "@/components/CtaBand";
 import StatCounter from "@/components/StatCounter";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
 import AWatermark from "@/components/AWatermark";
+import AccreditationBadges from "@/components/AccreditationBadges";
 
 export default function HomePage() {
-  const featured = projects.filter((p) => p.featured);
+  const featured = featuredProjects;
 
   return (
     <>
@@ -401,20 +402,12 @@ export default function HomePage() {
         </div>
         {/* accreditations & certifications (exact client wording) */}
         <div className="border-t border-navy-100 bg-navy-50/60">
-          <div className="container-site py-8">
+          <div className="container-site py-10">
             <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-navy-400">
               Accreditations &amp; Certifications
             </p>
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
-              {accreditations.map((a) => (
-                <span
-                  key={a}
-                  className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-navy-600"
-                >
-                  <span className="h-1.5 w-1.5 rotate-45 bg-brand" aria-hidden />
-                  {a}
-                </span>
-              ))}
+            <div className="mt-6">
+              <AccreditationBadges compact />
             </div>
           </div>
         </div>

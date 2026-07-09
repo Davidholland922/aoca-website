@@ -319,7 +319,9 @@ const builtInInsights: Article[] = [
 /** Every article, including ones hidden via /admin (used by the admin UI). */
 export const allInsights: Article[] = [
   ...(uploadedArticles as Article[]),
-  ...builtInInsights,
+  ...builtInInsights.filter(
+    (b) => !(uploadedArticles as Article[]).some((u) => u.slug === b.slug)
+  ),
 ];
 
 /** Client-uploaded articles (via /admin) appear first; hidden ones removed. */

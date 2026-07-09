@@ -118,13 +118,13 @@ function DesktopItem({
             : "pointer-events-none -translate-y-1 opacity-0"
         )}
       >
-        <div className="border border-white/10 bg-navy-950/98 shadow-xl shadow-navy-950/50 backdrop-blur">
-          <span className="block h-0.5 bg-brand" aria-hidden />
+        <div className="border border-navy-100 bg-white shadow-xl shadow-navy-950/25">
+          <span className="block h-1 bg-brand" aria-hidden />
           {item.children.map((c) => (
             <Link
               key={c.href}
               href={c.href}
-              className="block border-b border-white/5 px-5 py-3 text-sm text-navy-100 transition-colors last:border-0 hover:bg-white/5 hover:text-white"
+              className="block border-b border-navy-50 px-5 py-3 text-sm font-medium text-navy-800 transition-colors last:border-0 hover:bg-navy-50 hover:text-brand"
             >
               {c.label}
             </Link>
@@ -164,7 +164,7 @@ export default function Navbar() {
       <div
         className={clsx(
           "container-site flex items-center justify-between gap-4 transition-all duration-300",
-          solid ? "h-16" : "h-24"
+          solid ? "h-16 lg:h-20" : "h-24 lg:h-32"
         )}
       >
         <Link
@@ -182,7 +182,7 @@ export default function Navbar() {
             unoptimized
             className={clsx(
               "w-auto transition-all duration-300",
-              solid ? "h-14" : "h-20"
+              solid ? "h-14 lg:h-[4.25rem]" : "h-20 lg:h-28"
             )}
           />
         </Link>
