@@ -16,6 +16,8 @@ type Record_ = {
   featured?: boolean;
   servicesProvided?: string[];
   servicesText?: string[];
+  video?: string;
+  videoPoster?: string;
 };
 
 /** Create OR edit a project (upsert by slug into content/projects.json). */
@@ -84,6 +86,8 @@ export async function POST(req: NextRequest) {
       servicesText: (record.servicesText ?? [])
         .map((p) => p.trim())
         .filter(Boolean),
+      video: record.video?.trim() || undefined,
+      videoPoster: record.videoPoster?.trim() || undefined,
     };
     const next = [cleaned, ...current.filter((p) => p.slug !== slug)];
     files.push({

@@ -13,6 +13,7 @@ import {
 import Reveal from "@/components/Reveal";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
+import SectionVideo from "@/components/SectionVideo";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -107,6 +108,23 @@ export default async function ProjectPage({
                         {para}
                       </p>
                     ))}
+                  </div>
+                </Reveal>
+              )}
+
+              {/* optional case-study film — its own space on any project */}
+              {project.video && (
+                <Reveal>
+                  <h2 className="mt-14 text-2xl font-semibold text-navy-900">
+                    Watch the project
+                  </h2>
+                  <div className="rule" />
+                  <div className="mb-2 mt-8">
+                    <SectionVideo
+                      src={project.video}
+                      poster={project.videoPoster ?? project.hero ?? project.thumb}
+                      withSound
+                    />
                   </div>
                 </Reveal>
               )}

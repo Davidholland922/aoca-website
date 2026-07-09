@@ -610,6 +610,8 @@ export type Project = {
   featured?: boolean;
   servicesProvided?: string[]; // expertise slugs (set by /admin uploads)
   servicesText?: string[]; // client-written "Services Provided" paragraphs
+  video?: string; // optional case-study film (add via David — needs encoding)
+  videoPoster?: string;
 };
 
 const P = "/images/";
@@ -1027,6 +1029,8 @@ const builtInProjects: Project[] = [
     title: "Harbour Street, Mountmellick",
     sector: "residential",
     location: "Mountmellick, Co. Laois",
+    video: "/video/projects/harper-street-mountmellick.mp4",
+    videoPoster: "/images/harper-street-video-poster.jpg",
     thumb: P + "2026-02-harper-thumb.jpg",
     hero: P + "2026-02-dji_0807.jpg",
     gallery: [

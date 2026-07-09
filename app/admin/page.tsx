@@ -87,6 +87,7 @@ export default function AdminPage() {
   const [location, setLocation] = useState("");
   const [summary, setSummary] = useState("");
   const [servicesText, setServicesText] = useState("");
+  const [videoPath, setVideoPath] = useState("");
   const [selected, setSelected] = useState<string[]>([]);
   const [featured, setFeatured] = useState(false);
 
@@ -105,6 +106,7 @@ export default function AdminPage() {
   function reset() {
     setTitle(""); setLocation(""); setSummary(""); setBody("");
     setServicesText(""); setSelected([]); setShots([]); setFeatured(false);
+    setVideoPath("");
     setEditingSlug(null); setExistingImages({});
     setStatus("idle"); setError("");
   }
@@ -119,6 +121,7 @@ export default function AdminPage() {
     setSummary(p.summary);
     setBody(p.body.join("\n\n"));
     setServicesText((p.servicesText ?? []).join("\n\n"));
+    setVideoPath(p.video ?? "");
     setSelected(p.servicesProvided ?? []);
     setFeatured(
       featuredSlugs ? featuredSlugs.includes(p.slug) : !!p.featured
@@ -167,6 +170,8 @@ export default function AdminPage() {
                 thumb: existingImages.thumb,
                 hero: existingImages.hero,
                 gallery: existingImages.gallery,
+                video: videoPath || undefined,
+                videoPoster: undefined,
                 body: paragraphs,
                 servicesProvided: selected,
                 servicesText: servicesText
@@ -423,6 +428,20 @@ export default function AdminPage() {
                 value={servicesText}
                 onChange={(e) => setServicesText(e.target.value)}
                 placeholder="Describe what AOCA delivered on this project. Leave an empty line between paragraphs." />
+            </div>
+
+            <div>
+              <label htmlFor="videoPath" className={labelCls}>
+                Project film{" "}
+                <span className="font-normal text-navy-500">
+                  — optional; video files need compressing first, so send the
+                  film to David and he&apos;ll give you the address to paste
+                  here (e.g. /video/projects/my-project.mp4)
+                </span>
+              </label>
+              <input id="videoPath" className={inputCls} value={videoPath}
+                onChange={(e) => setVideoPath(e.target.value)}
+                placeholder="/video/projects/…" />
             </div>
 
             <fieldset>
