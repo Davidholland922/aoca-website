@@ -85,8 +85,10 @@ export default async function ProjectPage({
                 </Reveal>
               )}
 
-              {(servicesForProject.length > 0 ||
-                (project.servicesText ?? []).length > 0) && (
+              {/* Services Provided — client-written description (from the
+                  admin's description box); the ticked services list lives in
+                  the side panel below Location */}
+              {(project.servicesText ?? []).length > 0 && (
                 <Reveal>
                   <h2
                     className={`text-2xl font-semibold text-navy-900 ${
@@ -96,36 +98,16 @@ export default async function ProjectPage({
                     Services Provided
                   </h2>
                   <div className="rule" />
-                  {(project.servicesText ?? []).length > 0 && (
-                    <div className="mt-5 space-y-5">
-                      {(project.servicesText ?? []).map((para) => (
-                        <p
-                          key={para.slice(0, 40)}
-                          className="text-lg leading-relaxed text-navy-700"
-                        >
-                          {para}
-                        </p>
-                      ))}
-                    </div>
-                  )}
-                  {servicesForProject.length > 0 && (
-                    <div className="mt-6 flex flex-wrap gap-2">
-                      {servicesForProject.map((slug) => {
-                        const s = getService(slug);
-                        if (!s) return null;
-                        return (
-                          <Link
-                            key={slug}
-                            href={`/expertise/${slug}`}
-                            className="inline-flex items-center gap-2 border border-navy-200 bg-navy-50/50 px-4 py-2 text-sm font-medium text-navy-800 transition-colors hover:border-brand hover:text-brand"
-                          >
-                            <ArrowRight size={14} className="text-brand" aria-hidden />
-                            {s.title}
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  )}
+                  <div className="mt-5 space-y-5">
+                    {(project.servicesText ?? []).map((para) => (
+                      <p
+                        key={para.slice(0, 40)}
+                        className="text-lg leading-relaxed text-navy-700"
+                      >
+                        {para}
+                      </p>
+                    ))}
+                  </div>
                 </Reveal>
               )}
 
@@ -186,6 +168,35 @@ export default async function ProjectPage({
                       </div>
                     )}
                   </dl>
+                  {/* the services ticked for this project in the admin */}
+                  {servicesForProject.length > 0 && (
+                    <>
+                      <h3 className="mt-7 font-heading text-sm font-semibold uppercase tracking-wider text-navy-900">
+                        Services Provided
+                      </h3>
+                      <ul className="mt-4 space-y-2">
+                        {servicesForProject.map((slug) => {
+                          const s = getService(slug);
+                          if (!s) return null;
+                          return (
+                            <li key={slug}>
+                              <Link
+                                href={`/expertise/${slug}`}
+                                className="inline-flex items-start gap-2 text-sm text-navy-800 transition-colors hover:text-brand"
+                              >
+                                <ArrowRight
+                                  size={14}
+                                  className="mt-0.5 shrink-0 text-brand"
+                                  aria-hidden
+                                />
+                                {s.title}
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </>
+                  )}
                   <Link href="/contact" className="btn-primary mt-7 w-full">
                     Discuss a similar project
                   </Link>
