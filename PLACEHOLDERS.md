@@ -35,7 +35,9 @@ All editable content lives in **`lib/site.ts`** (and articles in
 | History milestones | Client | /history timeline entries 2016–2025 inferred from published material — need sign-off |
 | Fire Safety Consultants website URL | Client | Their copy says "visit the Fire Safety Consultants website" — link needed |
 | Team headshots | Client | Company page uses initials |
-| Accreditation logos | Client | Currently text badges; logos would be stronger |
+
+
+| Official accreditation logo files | Client | Homepage & Company page show designed monogram badges; drop official logos into public/images/accreditations/ and swap in AccreditationBadges.tsx |
 
 ## Technical before production launch
 
