@@ -153,7 +153,7 @@ export const timeline = [
     year: "2024",
     title: "Recognised as Best in Class",
     text: "Shortlisted at the Irish Building & Design Awards, and appointed Design Lead and Project Manager on a £9m fire safety and cladding remediation project in the UK. Three offices now serve Ireland, the UK and Europe.",
-    image: "/images/history-1.jpg",
+    image: "/images/ibda-finalist-2024.png",
   },
   {
     year: "2025",
@@ -165,7 +165,7 @@ export const timeline = [
     year: "Today",
     title: "7,000 projects and counting",
     text: "A multidisciplinary team across Portlaoise, Dublin and Manchester, delivering ten expertise areas to clients across Ireland, the UK and Europe — with the same uncompromising standard as 1996.",
-    image: "/images/2026-05-344a7050.jpg",
+    image: "/images/history-1.jpg",
   },
 ];
 
