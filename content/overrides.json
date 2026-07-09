@@ -1,1 +1,29 @@
-{}
+{
+  "team": [
+    {
+      "name": "Philip O'Connell",
+      "role": "Managing Director",
+      "cred": "MIEI"
+    },
+    {
+      "name": "Brian Byrne",
+      "role": "Director",
+      "cred": "FIEI"
+    },
+    {
+      "name": "Emmett O'Reilly",
+      "role": "Associate Director",
+      "cred": "FIEI"
+    },
+    {
+      "name": "Colin Scott",
+      "role": "Associate Director",
+      "cred": "FIEI"
+    },
+    {
+      "name": "E2E Test Engineer",
+      "role": "Test Role",
+      "cred": "TEST"
+    }
+  ]
+}
