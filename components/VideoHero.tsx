@@ -19,20 +19,10 @@ export default function VideoHero({
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const mobile = window.matchMedia("(max-width: 767px)");
-
-    const pick = () => {
-      if (reduce.matches) setSrc(null);
-      else setSrc(mobile.matches ? "/video/hero-mobile.mp4" : "/video/hero.mp4");
-    };
-
+    const pick = () => setSrc(reduce.matches ? null : "/video/hero.mp4");
     pick();
-    mobile.addEventListener("change", pick);
     reduce.addEventListener("change", pick);
-    return () => {
-      mobile.removeEventListener("change", pick);
-      reduce.removeEventListener("change", pick);
-    };
+    return () => reduce.removeEventListener("change", pick);
   }, []);
 
   // iOS Safari only allows autoplay when the `muted` ATTRIBUTE is present

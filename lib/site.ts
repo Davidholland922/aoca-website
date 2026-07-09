@@ -1185,7 +1185,7 @@ export const companyImages = {
   expertiseHero: P + "2026-02-arklow-waste-water-treatment-plant-clancy-moore-architects_16-1-1.jpg",
   expertiseAlt: P + "2026-03-shutterstock_2715611483-1.jpg",
   homeStrip: P + "2026-02-arklow_hero_final_dou4go-1.jpg",
-  videoPoster: P + "2026-02-home-fallback.webp",
+  videoPoster: P + "hero-poster.jpg",
 };
 
 /**
