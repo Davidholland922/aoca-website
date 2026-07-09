@@ -1,1 +1,25 @@
-[]
+[
+  {
+    "slug": "building-surveying",
+    "title": "Building Surveying",
+    "short": "Technical due diligence, digital and drone surveys, thermal imaging and moisture investigation.",
+    "icon": "scan",
+    "image": "/images/2026-02-dji_0871.jpg",
+    "gallery": [],
+    "intro": "From pre-acquisition due diligence to fit-out and refurbishment, AOCA's building surveying team gives owners, occupiers and investors a clear technical picture of the buildings they hold — using modern digital survey tools alongside three decades of engineering judgment.",
+    "sections": [
+      {
+        "heading": "What We Survey",
+        "body": "Technical due diligence for acquisitions and lettings; fit-out and refurbishment surveys; digital surveying and legal mapping; building thermal imaging; drone surveys of roofs and inaccessible fabric; and damp and moisture investigations."
+      }
+    ],
+    "highlights": [
+      "Technical due diligence",
+      "Fit-out & refurbishment",
+      "Digital surveying & legal mapping",
+      "Building thermal imaging",
+      "Drone surveys",
+      "Damp & moisture surveys"
+    ]
+  }
+]
