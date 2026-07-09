@@ -12,13 +12,15 @@ import {
   ListChecks,
   Trash2,
   RotateCcw,
+  Settings2,
 } from "lucide-react";
 import clsx from "clsx";
 import { sectors, services, allProjects, hiddenSlugs } from "@/lib/site";
 import { allInsights } from "@/lib/insights";
+import AdminSections from "@/components/AdminSections";
 
 type Shot = { dataUrl: string; name: string };
-type Mode = "project" | "article" | "manage";
+type Mode = "project" | "article" | "manage" | "details";
 
 /** Downscale a photo in the browser so uploads stay small and consistent. */
 async function resizeImage(file: File, maxW = 1600): Promise<Shot> {
@@ -229,12 +231,13 @@ export default function AdminPage() {
 
       <div className="container-site mt-10 grid max-w-4xl gap-6">
         {/* what are you adding? */}
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           {(
             [
               { key: "project", label: "A project", Icon: HardHat },
               { key: "article", label: "News article", Icon: Newspaper },
               { key: "manage", label: "Manage existing", Icon: ListChecks },
+              { key: "details", label: "Edit details", Icon: Settings2 },
             ] as const
           ).map(({ key, label, Icon }) => (
             <button
@@ -261,6 +264,8 @@ export default function AdminPage() {
 
         {mode === "manage" ? (
           <ManagePanel password={password} />
+        ) : mode === "details" ? (
+          <AdminSections password={password} />
         ) : (
           <>
         <div>

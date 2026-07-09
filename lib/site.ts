@@ -8,6 +8,20 @@
  */
 import uploadedProjects from "../content/projects.json";
 import hiddenSlugsJson from "../content/hidden.json";
+import overridesJson from "../content/overrides.json";
+
+/** Sections editable by the client via /admin (content/overrides.json). */
+const overrides = overridesJson as Partial<{
+  team: { name: string; role: string; cred: string }[];
+  stats: { value: string; label: string }[];
+  offices: {
+    name: string;
+    address: string[];
+    phone: string;
+    phoneHref: string;
+    email: string;
+  }[];
+}>;
 
 /** Slugs removed from the site via /admin (reversible). */
 export const hiddenSlugs = hiddenSlugsJson as string[];
@@ -25,7 +39,7 @@ export const site = {
   hours: "Monday to Friday, 8:30am – 5:00pm",
 };
 
-export const offices = [
+const builtInOffices = [
   {
     name: "Head Office — Portlaoise",
     address: ["Lismard House", "Timahoe Road", "Portlaoise, Co. Laois"],
@@ -53,12 +67,16 @@ export const offices = [
   },
 ];
 
-export const stats = [
+export const offices = overrides.offices ?? builtInOffices;
+
+const builtInStats = [
   { value: "1996", label: "In practice since" },
   { value: "7,000+", label: "Projects delivered" },
   { value: "3", label: "Offices — IRL & UK" },
   { value: "100+", label: "Claims investigated yearly" },
 ];
+
+export const stats = overrides.stats ?? builtInStats;
 
 export const mission =
   "To solve real engineering challenges with practical thinking, honest effort and genuine pride in the work that carries our name.";
@@ -136,12 +154,14 @@ export const timeline = [
   },
 ];
 
-export const team = [
+const builtInTeam = [
   { name: "Philip O'Connell", role: "Managing Director", cred: "MIEI" },
   { name: "Brian Byrne", role: "Director", cred: "FIEI" },
   { name: "Emmett O'Reilly", role: "Associate Director", cred: "FIEI" },
   { name: "Colin Scott", role: "Associate Director", cred: "FIEI" },
 ];
+
+export const team = overrides.team ?? builtInTeam;
 
 export type Service = {
   slug: string;
