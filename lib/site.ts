@@ -159,7 +159,7 @@ export const timeline = [
     year: "2025",
     title: "A new chapter",
     text: "The Arklow Wastewater Treatment Plant is recognised with prestigious industry awards, Fire Safety Consultants launches in partnership with OCF — and founder Aidan O'Connell hands the reins to a new generation of leadership.",
-    image: "/images/history-5.jpg",
+    image: "/images/2025-09-arklow_case_study_featured_ojg6cb.webp",
   },
   {
     year: "Today",
