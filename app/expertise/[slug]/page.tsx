@@ -72,25 +72,49 @@ export default async function ServicePage({
                 if (last && last.grid === grid) last.items.push(sec);
                 else runs.push({ grid, items: [sec] });
               }
+              // a lone short section (e.g. a closing invitation) reads as
+              // narrative, not as a one-item numbered list
+              for (const run of runs) {
+                if (run.grid && run.items.length < 3) run.grid = false;
+              }
               let splitCount = 0;
+              let gridCount = 0;
+              let itemNo = 0;
               return runs.map((run) =>
                 run.grid ? (
-                  <div
-                    key={run.items[0].heading}
-                    className="mt-10 grid gap-4 sm:grid-cols-2"
-                  >
-                    {run.items.map((sec) => (
-                      <Reveal key={sec.heading}>
-                        <div className="h-full border border-navy-100 bg-navy-50/40 p-6">
-                          <h2 className="font-heading text-base font-semibold text-navy-900">
-                            {sec.heading}
-                          </h2>
-                          <p className="mt-3 text-sm leading-relaxed text-navy-700">
-                            {sec.body}
-                          </p>
-                        </div>
+                  <div key={run.items[0].heading}>
+                    {gridCount++ === 0 && service.sectionsLabel && (
+                      <Reveal>
+                        <h2 className="mt-14 text-2xl font-semibold text-navy-900">
+                          {service.sectionsLabel}
+                        </h2>
+                        <div className="rule" />
                       </Reveal>
-                    ))}
+                    )}
+                    {/* numbered, open two-column run — the client's list in
+                        the client's order, read as a delivery sequence */}
+                    <div className="mt-4 grid gap-x-10 sm:grid-cols-2">
+                      {run.items.map((sec) => (
+                        <Reveal key={sec.heading}>
+                          <div className="border-t border-navy-100 py-6">
+                            <div className="flex items-baseline gap-3">
+                              <span
+                                aria-hidden
+                                className="font-heading text-sm font-bold tabular-nums text-brand"
+                              >
+                                {String(++itemNo).padStart(2, "0")}
+                              </span>
+                              <h3 className="font-heading text-base font-semibold text-navy-900">
+                                {sec.heading}
+                              </h3>
+                            </div>
+                            <p className="mt-2.5 pl-8 text-sm leading-relaxed text-navy-600">
+                              {sec.body}
+                            </p>
+                          </div>
+                        </Reveal>
+                      ))}
+                    </div>
                   </div>
                 ) : (
                   run.items.map((sec) => {
@@ -157,7 +181,11 @@ export default async function ServicePage({
 
             {service.gallery.length > 0 && (
               <Reveal>
-                <div className="mt-12 grid grid-cols-2 gap-4">
+                <h2 className="mt-14 text-2xl font-semibold text-navy-900">
+                  In pictures
+                </h2>
+                <div className="rule" />
+                <div className="mt-8 grid grid-cols-2 gap-4">
                   {service.gallery.map((src) => (
                     <div key={src} className="relative aspect-[4/3] overflow-hidden">
                       <Image

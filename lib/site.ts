@@ -209,6 +209,8 @@ export type Service = {
   intro: string;
   /** image renders the section as a split text/photo row (copy-heavy pages) */
   sections: { heading: string; body: string; image?: string }[];
+  /** heading shown above the condensed service-list block (copy-heavy pages) */
+  sectionsLabel?: string;
   highlights: string[];
   video?: string; // optional in-page film (shown before the gallery)
   videoPoster?: string;
@@ -411,6 +413,7 @@ const builtInServices: Service[] = [
     ],
     video: "/video/expertise-pm.mp4",
     videoPoster: "/images/2026-08-pamela-on-site.jpg",
+    sectionsLabel: "Project Management Services",
     intro:
       "AOCA provides project management services for construction, development, remediation and technical engineering projects across the residential, commercial, industrial, healthcare and public sectors. Our approach is built around technical understanding, clear communication and practical delivery: we act as the client's representative, coordinating design teams, contractors, consultants and statutory processes to keep projects moving, risks managed and decisions clearly documented.",
     sections: [
