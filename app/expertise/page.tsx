@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Check } from "lucide-react";
-import { services, companyImages } from "@/lib/site";
-import ServiceIcon from "@/components/ServiceIcon";
+import { ArrowRight } from "lucide-react";
+import { services } from "@/lib/site";
 import Reveal from "@/components/Reveal";
-import SectionHeading from "@/components/SectionHeading";
-import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
 
 export const metadata: Metadata = {
@@ -15,84 +12,146 @@ export const metadata: Metadata = {
     "Civil engineering, structural engineering, insurance engineering, pyrite remediation and consulting engineering services from AOCA.",
 };
 
+/* Corner notch echoing the apex angle of the AOCA "A" (same as .btn) */
+const apexClip = {
+  clipPath:
+    "polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%)",
+};
+
+const REV = "A · 08.2026";
+
 export default function ExpertisePage() {
   return (
     <>
-      <PageHero
-        eyebrow="Expertise"
-        title="Broad expertise. Singular focus."
-        lead="Every project brings its own pressures — regulatory complexity, tight budgets, competing priorities and the constant need for clear, reliable advice. The last thing you need is a consultant who only sees part of the picture."
-        image={companyImages.expertiseHero}
-        imageAlt="Engineering drawings and models"
-      />
-
-      <section className="section bg-white">
+      {/* ================= SHEET HEADER ================= */}
+      <section className="blueprint relative overflow-hidden bg-navy-950 pb-0 pt-28 sm:pt-36">
         <div className="container-site">
-          <Reveal>
-            <p className="max-w-3xl text-lg leading-relaxed text-navy-700">
-              Working across multiple jurisdictions for thirty years has made
-              us genuinely versatile. We&apos;ve encountered challenges that
-              most firms simply haven&apos;t — and that experience means we
-              spot things early, ask the right questions, and bring solutions
-              that actually hold up.
-            </p>
-          </Reveal>
-          <div className="mt-14 space-y-8">
-            {services.map((s, i) => (
-              <Reveal key={s.slug}>
-                <Link
-                  href={`/expertise/${s.slug}`}
-                  className="group grid overflow-hidden border border-navy-100 transition-all duration-200 hover:border-navy-800 hover:shadow-xl lg:grid-cols-5"
-                >
+          <div className="grid items-end gap-10 pb-14 sm:pb-20 lg:grid-cols-[1fr,20rem]">
+            <div>
+              <h1 className="max-w-3xl text-4xl font-bold leading-[1.05] text-white sm:text-6xl lg:text-7xl">
+                Broad expertise.
+                <br />
+                <span className="text-brand-light">Singular focus.</span>
+              </h1>
+              <div className="rule" />
+              <p className="mt-7 max-w-2xl text-lg leading-relaxed text-navy-200">
+                Every project brings its own pressures — regulatory
+                complexity, tight budgets and the constant need for clear,
+                reliable advice. Thirty years across multiple jurisdictions
+                means we&apos;ve met challenges most firms simply
+                haven&apos;t: we spot things early, ask the right questions,
+                and bring solutions that hold up.
+              </p>
+            </div>
+
+            {/* Drawing title block — the corner table on every AOCA drawing */}
+            <Reveal delay={0.1}>
+              <dl
+                className="hidden border border-white/20 text-[13px] leading-snug lg:block"
+                aria-label="Drawing register details"
+              >
+                <div className="flex items-center gap-3 border-b border-white/20 px-4 py-3">
+                  <Image
+                    src="/a-mark.png"
+                    alt=""
+                    width={151}
+                    height={150}
+                    className="h-7 w-auto brightness-0 invert"
+                    aria-hidden
+                  />
+                  <span className="font-heading font-semibold uppercase tracking-wider text-white">
+                    Drawing register
+                  </span>
+                </div>
+                {[
+                  ["Series", "Expertise"],
+                  ["Sheets", "01 — 09"],
+                  ["Rev", REV],
+                  ["Issued by", "Portlaoise · Dublin · Manchester"],
+                  ["Scope", "Ireland · UK · Europe"],
+                ].map(([k, v]) => (
                   <div
-                    className={`relative aspect-[16/9] lg:col-span-2 lg:aspect-auto lg:min-h-[20rem] ${
-                      i % 2 ? "lg:order-2" : ""
-                    }`}
+                    key={k}
+                    className="flex justify-between gap-6 border-b border-white/10 px-4 py-2 last:border-b-0"
                   >
-                    <Image
-                      src={s.image}
-                      alt={s.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                      sizes="(min-width: 1024px) 30rem, 100vw"
-                    />
+                    <dt className="uppercase tracking-wider text-navy-300">
+                      {k}
+                    </dt>
+                    <dd className="text-right text-navy-100">{v}</dd>
                   </div>
-                  <div className="flex flex-col justify-center p-8 lg:col-span-3 lg:p-12">
-                    <span className="flex items-center gap-4">
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-navy-950 text-brand-light">
-                        <ServiceIcon name={s.icon} size={22} />
-                      </span>
-                      <h2 className="text-2xl font-semibold text-navy-900 sm:text-3xl">
-                        {s.title}
-                      </h2>
-                    </span>
-                    <div className="rule" />
-                    <p className="mt-5 max-w-2xl leading-relaxed text-navy-600">
-                      {s.short}
-                    </p>
-                    <ul className="mt-5 grid gap-2 sm:grid-cols-2">
-                      {s.highlights.slice(0, 4).map((hl) => (
-                        <li
-                          key={hl}
-                          className="flex items-start gap-2 text-sm text-navy-600"
-                        >
-                          <Check size={15} className="mt-0.5 shrink-0 text-brand" aria-hidden />
-                          {hl}
-                        </li>
-                      ))}
-                    </ul>
-                    <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand">
-                      Explore {s.title}
-                      <ArrowRight
-                        size={14}
-                        className="transition-transform group-hover:translate-x-1"
+                ))}
+              </dl>
+            </Reveal>
+          </div>
+        </div>
+
+        {/* ================= THE REGISTER ================= */}
+        <div className="border-t border-white/15">
+          <div className="container-site">
+            <ol className="list-none">
+              {services.map((s, i) => (
+                <li
+                  key={s.slug}
+                  className={i > 0 ? "border-t border-white/10" : ""}
+                >
+                  <Reveal delay={Math.min(i * 0.04, 0.24)}>
+                    <Link
+                      href={`/expertise/${s.slug}`}
+                      className="group grid grid-cols-[3.25rem,1fr,auto] items-start gap-4 py-6 sm:grid-cols-[4.5rem,1fr,auto] sm:items-center sm:gap-8 sm:py-8"
+                    >
+                      {/* sheet number */}
+                      <span
                         aria-hidden
-                      />
-                    </span>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
+                        className="pt-1 font-heading text-xl font-semibold tabular-nums text-navy-500 transition-colors duration-300 group-hover:text-brand-light sm:pt-0 sm:text-2xl"
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+
+                      {/* title + one-liner */}
+                      <span className="min-w-0">
+                        <span className="block font-heading text-2xl font-bold leading-tight text-white transition-transform duration-300 ease-out group-hover:translate-x-1.5 sm:text-4xl lg:text-[2.75rem]">
+                          {s.title}
+                        </span>
+                        <span className="mt-2 block max-w-xl text-sm leading-relaxed text-navy-300 transition-colors duration-300 group-hover:text-navy-100 sm:text-base">
+                          {s.short}
+                        </span>
+                      </span>
+
+                      {/* plate photo + arrow */}
+                      <span className="flex items-center gap-4 self-center sm:gap-6">
+                        <span
+                          className="relative hidden h-20 w-32 shrink-0 overflow-hidden sm:block lg:h-28 lg:w-48"
+                          style={apexClip}
+                        >
+                          <Image
+                            src={s.image}
+                            alt=""
+                            fill
+                            sizes="12rem"
+                            className="object-cover opacity-50 saturate-0 transition-all duration-500 ease-out group-hover:scale-105 group-hover:opacity-100 group-hover:saturate-100 motion-reduce:transition-none"
+                            aria-hidden
+                          />
+                        </span>
+                        <ArrowRight
+                          size={22}
+                          className="shrink-0 text-navy-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-brand-light"
+                          aria-hidden
+                        />
+                      </span>
+                    </Link>
+                  </Reveal>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          {/* sheet footer rule, like the bottom edge of a drawing */}
+          <div className="border-t border-white/15 py-4">
+            <div className="container-site flex items-center justify-between text-xs uppercase tracking-wider text-navy-400">
+              <span>AOCA Engineering Consultants</span>
+              <span className="hidden sm:block">Expertise · Sheets 01—09</span>
+              <span>Rev {REV}</span>
+            </div>
           </div>
         </div>
       </section>
