@@ -24,7 +24,7 @@ const builtInInsights: Article[] = [
     "title": "A New Adventure – Fire Safety Consultants",
     "date": "2026-01-15",
     "displayDate": "January 2026",
-    "image": "/images/2026-01-fire-safety-consultants-launch.jpg",
+    "image": "/images/2026-02-20251003_091345484_ios.jpg",
     "excerpt": "AOCA, in conjunction with OCF, has established Fire Safety Consultants — pooling our resources and expertise to provide specialist fire safety and accessibility consultancy services across Ireland and the UK…",
     "body": [
       "AOCA is delighted to announce a new adventure: in conjunction with OCF, we have established Fire Safety Consultants, pooling the resources and expertise of two leading practices to provide specialist fire safety and accessibility consultancy services across Ireland and the UK.",
