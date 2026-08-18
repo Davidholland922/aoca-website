@@ -450,6 +450,10 @@ const builtInServices: Service[] = [
         heading: "Why AOCA",
         body: "AOCA combines project management experience with in-house civil, structural, fire engineering and building surveying expertise. This gives our clients a practical, technically informed project management service that goes beyond administration: we understand the design, the statutory process, the construction risks and the commercial pressures involved in delivering successful projects. Our experience in large-scale remediation also means we understand the importance of communication, sequencing, resident liaison, risk management and maintaining control on complex live projects.",
       },
+      {
+        heading: "Talk to AOCA",
+        body: "Whether you are planning a new development, managing a refurbishment, delivering a remediation project or progressing a statutory approval, AOCA can provide clear project leadership from start to finish.",
+      },
     ],
     highlights: [
       "Client representative & employer's agent",
@@ -722,6 +726,7 @@ const builtInProjects: Project[] = [
   // ---- Commercial & Retail -------------------------------------------------
   {
     slug: "portlaoise-retail-park",
+    video: "/video/projects/portlaoise-retail-park.mp4",
     title: "Portlaoise Retail Park",
     sector: "commercial",
     location: "Portlaoise, Co. Laois",
@@ -803,6 +808,7 @@ const builtInProjects: Project[] = [
   },
   {
     slug: "scoil-molaise-carlow",
+    video: "/video/projects/scoil-molaise-carlow.mp4",
     title: "Scoil Molaise, Carlow",
     sector: "education-government",
     location: "Co. Carlow",
@@ -827,6 +833,7 @@ const builtInProjects: Project[] = [
   },
   {
     slug: "st-patricks-national-school-newbridge-co-kildare",
+    video: "/video/projects/st-patricks-national-school-newbridge-co-kildare.mp4",
     title: "St. Patrick's National School, Newbridge",
     sector: "education-government",
     location: "Newbridge, Co. Kildare",
@@ -1154,9 +1161,10 @@ const builtInProjects: Project[] = [
     title: "Data Centre Projects",
     sector: "industrial-data-centres",
     location: "Ireland, UK & Europe",
-    thumb: P + "2026-08-dub1-aerial.jpg",
-    hero: P + "2026-08-dub1-aerial.jpg",
+    thumb: P + "2026-08-screenshot-2025-09-29-150238.jpg",
+    hero: P + "2026-08-screenshot-2025-09-29-150238.jpg",
     gallery: [
+      P + "2026-08-dub1-aerial.jpg",
       P + "2026-08-16mw-uk.jpg",
       P + "2026-08-northern-sweden.jpg",
       P + "2026-08-southern-sweden-data-centre-phase1.jpg",
@@ -1203,6 +1211,7 @@ const builtInProjects: Project[] = [
   },
   {
     slug: "industrial-warehousing-portlaoise",
+    video: "/video/projects/industrial-warehousing-portlaoise.mp4",
     title: "Industrial Warehousing Development",
     sector: "industrial-data-centres",
     location: "Portlaoise, Co. Laois",
@@ -1270,7 +1279,7 @@ const builtInProjects: Project[] = [
     title: "Abbeyleix Residential Development",
     sector: "residential",
     location: "Abbeyleix, Co. Laois",
-    thumb: P + "2026-08-picture1.jpg",
+    thumb: P + "2026-08-chatgpt-image-jul-10-2026-03-19-47-pm.jpg",
     hero: P + "2026-08-chatgpt-image-jul-10-2026-03-19-43-pm.jpg",
     gallery: [
       P + "2026-08-picture1.jpg",
@@ -1294,6 +1303,7 @@ const builtInProjects: Project[] = [
   },
   {
     slug: "the-hole-in-the-wall",
+    video: "/video/projects/the-hole-in-the-wall.mp4",
     title: "The Hole in the Wall",
     sector: "residential",
     location: "Dublin",
@@ -1326,7 +1336,7 @@ const builtInProjects: Project[] = [
     title: "Grange Manor, Harbour Street",
     sector: "residential",
     location: "Mountmellick, Co. Laois",
-    video: "/video/projects/harper-street-mountmellick.mp4",
+    video: "/video/projects/mountmellick-case-study.mp4",
     videoPoster: "/images/harper-street-video-poster.jpg",
     thumb: P + "2026-02-harper-thumb.jpg",
     hero: P + "2026-02-dji_0807.jpg",
@@ -1340,6 +1350,7 @@ const builtInProjects: Project[] = [
       P + "2026-02-20241017_104842393_ios.jpg",
       P + "2026-02-20241030_103550.jpg",
       P + "2026-08-spec-4.jpg",
+      P + "2026-08-grange-manor-images.jpg",
     ],
     summary:
       "54-unit residential development on a greenfield site — full civil engineering design, supervision and certification.",
@@ -1354,6 +1365,7 @@ const builtInProjects: Project[] = [
   },
   {
     slug: "derry-road-durrow",
+    video: "/video/projects/derry-road-durrow.mp4",
     title: "Derry Road, Durrow",
     sector: "residential",
     location: "Durrow, Co. Laois",
@@ -1402,6 +1414,7 @@ const builtInProjects: Project[] = [
   },
   {
     slug: "the-cross-of-newtown-ballyroan-co-laois",
+    video: "/video/projects/the-cross-of-newtown-ballyroan-co-laois.mp4",
     title: "The Cross of Newtown, Ballyroan",
     sector: "residential",
     location: "Ballyroan, Co. Laois",
@@ -1515,12 +1528,12 @@ const builtInProjects: Project[] = [
     title: "One-Off Bespoke Dwellings",
     sector: "residential",
     location: "Various locations throughout Ireland",
-    thumb: P + "2026-08-img-4495.jpg",
-    hero: P + "2026-08-img-4495.jpg",
+    thumb: P + "2026-08-img-1720.jpg",
+    hero: P + "2026-08-img-20210426-164434.jpg",
     gallery: [
       P + "2026-08-img-1720.jpg",
       P + "2026-08-img-20191118-105955.jpg",
-      P + "2026-08-img-20210426-164434.jpg",
+      P + "2026-08-img-4495.jpg",
       P + "2026-08-img-20220615-114033.jpg",
       P + "2026-08-img-20220623-094041.jpg",
     ],
@@ -1560,6 +1573,7 @@ const builtInProjects: Project[] = [
   // ---- Life Sciences & Healthcare -----------------------------------------
   {
     slug: "b-braun-wellstone-midlands-renal-care-centre",
+    video: "/video/projects/b-braun-wellstone-midlands-renal-care-centre.mp4",
     title: "B. Braun Renal Dialysis Facility",
     sector: "life-sciences-healthcare",
     location: "Portlaoise, Co. Laois",

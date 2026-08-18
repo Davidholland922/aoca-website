@@ -57,15 +57,53 @@ export default async function ServicePage({
               </p>
             </Reveal>
 
-            {service.sections.map((sec) => (
-              <Reveal key={sec.heading}>
-                <h2 className="mt-12 text-2xl font-semibold text-navy-900">
-                  {sec.heading}
-                </h2>
-                <div className="rule" />
-                <p className="mt-5 leading-relaxed text-navy-700">{sec.body}</p>
-              </Reveal>
-            ))}
+            {(() => {
+              // On copy-heavy pages (7+ sections), runs of shorter sections
+              // render as a two-column card grid so the page stays scannable;
+              // longer narrative sections keep the full-width treatment.
+              const useGrid = service.sections.length > 6;
+              const runs: { grid: boolean; items: typeof service.sections }[] =
+                [];
+              for (const sec of service.sections) {
+                const grid = useGrid && sec.body.length < 560;
+                const last = runs[runs.length - 1];
+                if (last && last.grid === grid) last.items.push(sec);
+                else runs.push({ grid, items: [sec] });
+              }
+              return runs.map((run) =>
+                run.grid ? (
+                  <div
+                    key={run.items[0].heading}
+                    className="mt-10 grid gap-4 sm:grid-cols-2"
+                  >
+                    {run.items.map((sec) => (
+                      <Reveal key={sec.heading}>
+                        <div className="h-full border border-navy-100 bg-navy-50/40 p-6">
+                          <h2 className="font-heading text-base font-semibold text-navy-900">
+                            {sec.heading}
+                          </h2>
+                          <p className="mt-3 text-sm leading-relaxed text-navy-700">
+                            {sec.body}
+                          </p>
+                        </div>
+                      </Reveal>
+                    ))}
+                  </div>
+                ) : (
+                  run.items.map((sec) => (
+                    <Reveal key={sec.heading}>
+                      <h2 className="mt-12 text-2xl font-semibold text-navy-900">
+                        {sec.heading}
+                      </h2>
+                      <div className="rule" />
+                      <p className="mt-5 leading-relaxed text-navy-700">
+                        {sec.body}
+                      </p>
+                    </Reveal>
+                  ))
+                )
+              );
+            })()}
 
             {service.gallery.length > 0 && (
               <Reveal>
