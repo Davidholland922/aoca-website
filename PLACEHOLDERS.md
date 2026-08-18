@@ -37,24 +37,49 @@ and the "AOCA Expertise — NEW" deck of August 2026.
 - /history page — "reeling in the years" timeline
 - Better sector tile photos (Commercial, Education)
 
+## Implemented from SharePoint "00 WEBSITE PROJECTS" drop (August 2026)
+
+- **All project pages rebuilt** from "All Project Information for website.docx":
+  client overviews, Services Provided text, locations. 14 new projects added
+  (Scoil Molaise, Stradbally Fire Station, Rosslare Europort, Domestic
+  Violence Refuge, Data Centre Projects, Abbeyleix, Bohernamona Road,
+  Rath Nua, Vista Montana, One-Off Bespoke Dwellings, Bristol-Myers Squibb,
+  Harold's Cross Hospice, Pharmaceutical Building Ireland + Grange Manor
+  retitle). ~190 new photos processed to `public/images/2026-08-*`.
+- "Abbott Kilkenny" replaced by the client's anonymised "Pharmaceutical
+  Building, Ireland" (same photos + theirs). St. Brigid's NS removed —
+  its gallery duplicated St. Patrick's and it's absent from the client's
+  definitive project list.
+- **Real testimonials** (Testimonies.docx): all 7 wired, incl. Alan Synnott
+  and Donal Fitzgerald; Stephen Nolan's role corrected.
+- **Management bios** (Management BIO's.docx) on the Company page.
+- Sector tiles replaced with the client's "Images for Sectors" set.
+- Insurance expertise gallery: client's subsidence/fire/flood/storm photos.
+  Civil gallery: geotechnical + water supply. Structural gallery: Revit/BIM.
+- History: 1996 entry now uses the archival 1999 photo; "Today" uses the
+  2025 management team photo. New culture photos added to the strip.
+- Contact page image → client's staged "Contact Us" photo.
+
 ## Waiting on the client (chase list)
 
 | Item | Who | Notes |
 |---|---|---|
 | Hero video merge | Client | Combine their own footage with the draft's video — "take the best bits from both" |
 | Featured projects list | Client | They'll confirm which projects to feature. HOW-TO: set `featured: true` on a project in `lib/site.ts` |
-| Better project/section photos & videos | Client | "We have more photos and videos… will use better photos" incl. Projects page hero, drone footage for Arklow |
-| Per-project "Services Provided" + summaries | Client | Defaults in `projectServices` (lib/site.ts) pending their list |
+| **Project videos ×28** | David | SharePoint zip (~6.6GB of mp4s in ~/Downloads/OneDrive_2026-08-18.zip) — encode/compress and wire into project pages (`video` field) |
+| Rosslare Europort copy | Client | docx says "Text Required" — page live with images + one-line summary only |
+| Data Centre Projects copy | Client | docx says "Require Text" — interim summary drafted by us, needs sign-off |
+| Bristol-Myers Squibb copy | Client | Folder of photos supplied but no text in the docx |
+| Portlaoise Retail Park size | Client | Their new copy says "20,000 sq ft" but the old site said 130,000 sq ft — confirm which; size omitted from our copy meanwhile |
+| Glass Bottle / Hole in the Wall status | Client | docx says "Ongoing / Completed (confirm as applicable)" |
 | Logo wall accuracy | **Ciara** | Verify all 30 client logos are current versions |
 | Office phone numbers | Client | "Multiple numbers so not sure this is 100% correct" |
-| New insights articles ×7 | Client | FM Design for High Value Buildings; Designing for the Data Centre Industry; What is Condensation Risk Analysis; An update on Pyrite in Ireland; A new adventure – Fire Safety Consultants; Structural Fire Engineering |
-| Copy for draft expertise pages | Client | Building Surveying, Specialist Services (both "work in progress" per their deck), Building Science (drafted by us — needs sign-off) |
+| New insights articles ×7 | Client | FM Design for High Value Buildings; Designing for the Data Centre Industry; What is Condensation Risk Analysis; An update on Pyrite in Ireland; A new adventure – Fire Safety Consultants; Structural Fire Engineering (list re-confirmed on slide 1 of the Aug 2026 expertise deck) |
+| Building Surveying sign-off | Client | Copy now live from their deck but deck marks it "work in progress" |
 | History milestones | Client | /history timeline entries 2016–2025 inferred from published material — need sign-off |
 | Fire Safety Consultants website URL | Client | Their copy says "visit the Fire Safety Consultants website" — link needed |
-| Team headshots | Client | Company page uses initials |
-
-
-| History photos 2.jpg & 6.jpg | Client | Supplied but too low-resolution for the timeline slots (206px/225px) — higher-res copies would let us add them |
+| Team headshots | Client | Company page uses initials (bios now live; photos would complete it) |
+| History photos 2.jpg & 6.jpg | Client | Copies in the SharePoint drop are the same low-res files (206px/225px) — still need higher-res originals |
 
 ## Technical before production launch
 

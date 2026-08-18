@@ -51,6 +51,10 @@ const nextConfig = {
       { source: "/expertise/specialist-services", destination: "/expertise/consulting-engineering", permanent: true },
       { source: "/expertise/building-science", destination: "/expertise/building-envelope-engineering", permanent: true },
 
+      // ---- project slugs retired in the August 2026 content round
+      { source: "/projects/abbott-kilkenny", destination: "/projects/pharmaceutical-building-ireland", permanent: true },
+      { source: "/projects/st-brigids-national-school", destination: "/projects", permanent: true },
+
       // ---- company pages
       { source: "/our-culture", destination: "/culture", permanent: true },
 

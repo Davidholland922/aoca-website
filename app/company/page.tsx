@@ -177,6 +177,11 @@ export default function CompanyPage() {
                   <p className="mt-1 text-xs uppercase tracking-wider text-navy-400">
                     {m.cred}
                   </p>
+                  {m.bio && (
+                    <p className="mt-4 text-sm leading-relaxed text-navy-600">
+                      {m.bio}
+                    </p>
+                  )}
                 </div>
               </Reveal>
             ))}

@@ -6,6 +6,24 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "port": 3000
+    },
+    {
+      "name": "down2earth-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "/Users/davidholland/Desktop/down2earth"],
+      "port": 3017
+    },
+    {
+      "name": "locate-laois-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "/Users/davidholland/Desktop/MAPTAP LAOIS/locate-laois", "--", "--port", "3021"],
+      "port": 3021
+    },
+    {
+      "name": "conroy-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "/Users/davidholland/Desktop/Ben Conroy Sliotars website/conroy-sliotars", "--", "--port", "3010"],
+      "port": 3010
     }
   ]
 }
