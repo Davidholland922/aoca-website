@@ -1336,7 +1336,7 @@ const builtInProjects: Project[] = [
     title: "Grange Manor, Harbour Street",
     sector: "residential",
     location: "Mountmellick, Co. Laois",
-    video: "/video/projects/mountmellick-case-study.mp4",
+    video: "/video/projects/harper-street-mountmellick.mp4",
     videoPoster: "/images/harper-street-video-poster.jpg",
     thumb: P + "2026-02-harper-thumb.jpg",
     hero: P + "2026-02-dji_0807.jpg",

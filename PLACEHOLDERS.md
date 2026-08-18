@@ -59,14 +59,20 @@ and the "AOCA Expertise — NEW" deck of August 2026.
 - History: 1996 entry now uses the archival 1999 photo; "Today" uses the
   2025 management team photo. New culture photos added to the strip.
 - Contact page image → client's staged "Contact Us" photo.
+- **Project films on 9 pages** ("Watch the project"): Retail Park, Scoil
+  Molaise, St. Patrick's, Industrial Warehousing, Cross of Newtown, Derry
+  Road, Hole in the Wall (edited film w/ sound), B. Braun, Grange Manor.
+  Drone raws trimmed to 60s, 1080p ≤2.5Mbps. NOTE: the zip's "FINAL INTRO
+  WEBSITE VIDEO" and "Mountmellick Case Study FINAL" are the files already
+  live as the homepage hero and Grange Manor film — hero-merge chase item
+  closed. Remaining Videography clips are b-roll (not wired). Second Derry
+  Road drone file (DJI_..._0076) unused — swap in if preferred.
 
 ## Waiting on the client (chase list)
 
 | Item | Who | Notes |
 |---|---|---|
-| Hero video merge | Client | Combine their own footage with the draft's video — "take the best bits from both" |
 | Featured projects list | Client | They'll confirm which projects to feature. HOW-TO: set `featured: true` on a project in `lib/site.ts` |
-| **Project videos ×28** | David | SharePoint zip (~6.6GB of mp4s in ~/Downloads/OneDrive_2026-08-18.zip) — encode/compress and wire into project pages (`video` field) |
 | Rosslare Europort copy | Client | docx says "Text Required" — page live with images + one-line summary only |
 | Data Centre Projects copy | Client | docx says "Require Text" — interim summary drafted by us, needs sign-off |
 | Bristol-Myers Squibb copy | Client | Folder of photos supplied but no text in the docx |
