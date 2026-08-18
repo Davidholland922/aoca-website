@@ -125,6 +125,36 @@ export default async function ServicePage({
           </div>
 
           <aside className="space-y-6">
+            {/* Fire safety is delivered through the FSC joint venture */}
+            {service.slug === "fire-safety-disability-access" && (
+              <Reveal>
+                <Link
+                  href="/fire-safety-consultants"
+                  className="group block bg-navy-950 p-7 transition-colors hover:bg-navy-900"
+                >
+                  <Image
+                    src="/fsc-logo-white.png"
+                    alt="Fire Safety Consultants"
+                    width={1600}
+                    height={1067}
+                    className="h-16 w-auto"
+                    sizes="12rem"
+                  />
+                  <p className="mt-4 text-sm leading-relaxed text-navy-200">
+                    Delivered through Fire Safety Consultants — our specialist
+                    joint venture with OCF.
+                  </p>
+                  <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#F5821F]">
+                    Meet Fire Safety Consultants
+                    <ArrowRight
+                      size={14}
+                      className="transition-transform group-hover:translate-x-1"
+                      aria-hidden
+                    />
+                  </span>
+                </Link>
+              </Reveal>
+            )}
             <Reveal>
               <div className="border border-navy-100 bg-navy-50/50 p-7">
                 <h2 className="font-heading text-sm font-semibold uppercase tracking-wider text-navy-900">

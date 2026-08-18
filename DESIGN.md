@@ -30,6 +30,14 @@ Amplify this language; don't import new ones.
 - Buttons: `.btn-primary` red, `.btn-outline-light/dark`.
 - Layout: `.container-site` max-w 76rem; `.section` py-16/24.
 
+## Sister-brand accent
+- **FSC orange `#F5821F`** (sampled from the Fire Safety Consultants flame
+  logo) appears ONLY on FSC surfaces: the homepage FSC banner, the
+  /fire-safety-consultants page and the FSC panel on the fire-safety
+  expertise page. Never elsewhere — it marks the other brand, not ours.
+- FSC logo asset: `public/fsc-logo-white.png` (white wordmark — dark
+  backgrounds only).
+
 ## Rules
 - Contrast: body ≥4.5:1 (navy-700+ on white; navy-100/200 on navy-950).
 - Motion: Reveal entrances OK; reduced-motion collapses all animation

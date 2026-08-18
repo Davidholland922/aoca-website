@@ -37,6 +37,7 @@ const links: NavItem[] = [
       { href: "/company", label: "About AOCA" },
       { href: "/history", label: "Our History" },
       { href: "/culture", label: "Our Culture" },
+      { href: "/fire-safety-consultants", label: "Fire Safety Consultants" },
       { href: "/careers", label: "Careers" },
     ],
   },

@@ -26,6 +26,7 @@ import StatCounter from "@/components/StatCounter";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
 import AWatermark from "@/components/AWatermark";
 import AccreditationBadges from "@/components/AccreditationBadges";
+import FscBanner from "@/components/FscBanner";
 
 export default function HomePage() {
   const featured = featuredProjects;
@@ -299,6 +300,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* FIRE SAFETY CONSULTANTS — sister company */}
+      <FscBanner />
 
       {/* VALUES */}
       {/* bg-fixed is intentionally avoided — iOS Safari renders it broken */}

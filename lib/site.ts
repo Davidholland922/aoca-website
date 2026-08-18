@@ -357,7 +357,7 @@ const builtInServices: Service[] = [
     icon: "flame",
     short:
       "Specialist fire safety and accessibility consultancy through Fire Safety Consultants — our joint venture with OCF.",
-    image: "/images/2026-02-1100x646-cover.jpg",
+    image: "/images/2026-02-dji_20250601131323_0012_d.jpg",
     gallery: [],
     intro:
       "AOCA, in conjunction with OCF, has established Fire Safety Consultants to pool our resources and expertise and provide specialist fire safety and accessibility consultancy services. Fire Safety Consultants brings together internationally recognised expertise in fire engineering, fire safety compliance, accessibility, inspection, due diligence and structural fire engineering. For specialist fire safety services, please visit the Fire Safety Consultants website.",
@@ -470,7 +470,7 @@ const builtInServices: Service[] = [
     icon: "briefcase",
     short:
       "Remediation, latent defect investigation, expert witness, planning and PSDP services — built on over 30 years of practice.",
-    image: "/images/2025-11-153a3552.jpg",
+    image: "/images/2026-08-philip-and-brian-edit.jpg",
     gallery: [],
     intro:
       "AOCA's consulting engineering team supports clients across remediation, latent defects, litigation, planning and health and safety — delivering technically sound, site-specific solutions informed by decades of hands-on engineering practice in Ireland and the UK.",

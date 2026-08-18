@@ -83,7 +83,7 @@ and the "AOCA Expertise — NEW" deck of August 2026.
 | New insights articles ×7 | Client | FM Design for High Value Buildings; Designing for the Data Centre Industry; What is Condensation Risk Analysis; An update on Pyrite in Ireland; A new adventure – Fire Safety Consultants; Structural Fire Engineering (list re-confirmed on slide 1 of the Aug 2026 expertise deck) |
 | Building Surveying sign-off | Client | Copy now live from their deck but deck marks it "work in progress" |
 | History milestones | Client | /history timeline entries 2016–2025 inferred from published material — need sign-off |
-| Fire Safety Consultants website URL | Client | Their copy says "visit the Fire Safety Consultants website" — link needed |
+| ~~Fire Safety Consultants website URL~~ | Done | Linked to firesafetyconsultants.ie; dedicated /fire-safety-consultants page + homepage banner added Aug 2026 |
 | Team headshots | Client | Company page uses initials (bios now live; photos would complete it) |
 | History photos 2.jpg & 6.jpg | Client | Copies in the SharePoint drop are the same low-res files (206px/225px) — still need higher-res originals |
 
