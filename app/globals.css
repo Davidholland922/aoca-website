@@ -97,4 +97,38 @@
   .rule {
     @apply mt-4 h-[3px] w-14 bg-brand;
   }
+
+  /* Stencil numeral: outlined figure that fills on activation
+     (expertise register). Falls back to solid colour where
+     text-stroke is unsupported. */
+  .stencil-num {
+    color: transparent;
+    -webkit-text-stroke: 1.5px theme("colors.navy.400");
+    transition:
+      color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      -webkit-text-stroke-color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  @supports not (-webkit-text-stroke: 1px black) {
+    .stencil-num {
+      color: theme("colors.navy.400");
+    }
+  }
+  .stencil-num-active {
+    color: theme("colors.brand.light");
+    -webkit-text-stroke-color: theme("colors.brand.light");
+  }
+
+  /* Slow drift on the active register plate */
+  .kenburns {
+    animation: kenburns 8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+}
+
+@keyframes kenburns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.07);
+  }
 }
