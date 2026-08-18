@@ -2,14 +2,15 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import SectionVideo from "@/components/SectionVideo";
-import StatCounter from "@/components/StatCounter";
 
 const EASE = [0.16, 1, 0.3, 1] as const; // ease-out-expo
 
+// Founded 1996 — always current, never reads 0
+const YEARS = new Date().getFullYear() - 1996;
+
 const stats = [
-  { value: "30", label: "Years in practice" },
+  { value: `${YEARS}`, label: "Years in practice" },
   { value: "7,000+", label: "Projects delivered" },
-  { value: "9", label: "Disciplines" },
   { value: "3", label: "Offices" },
 ];
 
@@ -89,7 +90,7 @@ export default function ExpertiseHero() {
           {stats.map((s) => (
             <div key={s.label}>
               <dd className="font-heading text-3xl font-bold text-white sm:text-4xl">
-                <StatCounter value={s.value} />
+                {s.value}
               </dd>
               <dt className="mt-1 text-xs uppercase tracking-wider text-navy-300">
                 {s.label}
