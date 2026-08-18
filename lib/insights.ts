@@ -20,6 +20,22 @@ export type Article = {
 
 const builtInInsights: Article[] = [
   {
+    "slug": "a-new-adventure-fire-safety-consultants",
+    "title": "A New Adventure – Fire Safety Consultants",
+    "date": "2026-01-15",
+    "displayDate": "January 2026",
+    "image": "/images/2026-01-fire-safety-consultants-launch.jpg",
+    "excerpt": "AOCA, in conjunction with OCF, has established Fire Safety Consultants — pooling our resources and expertise to provide specialist fire safety and accessibility consultancy services across Ireland and the UK…",
+    "body": [
+      "AOCA is delighted to announce a new adventure: in conjunction with OCF, we have established Fire Safety Consultants, pooling the resources and expertise of two leading practices to provide specialist fire safety and accessibility consultancy services across Ireland and the UK.",
+      "Fire safety has never mattered more. With legacy defects affecting apartment buildings constructed during the Celtic Tiger era, the Government's remediation programme under way, and ever-higher expectations of building performance, clients need advisers who combine deep fire engineering knowledge with practical, buildable solutions. Fire Safety Consultants brings together internationally recognised expertise in fire engineering, fire safety compliance, accessibility, inspection, due diligence and structural fire engineering to meet exactly that need.",
+      "The new practice offers a complete service: performance-based and prescriptive fire engineering design; fire safety review and assessment of new and existing buildings; Fire Safety Certificate and Disability Access Certificate applications; fire risk assessments; inspections of fire doors, emergency lighting, alarm systems and passive fire protection; fire detection and alarm system design; emergency lighting design; structural fire engineering; and independent due diligence and third-party checking for acquisitions, developments, design teams, contractors and building owners.",
+      "The team is led by people our clients already know. Aidan O'Connell — founder of AOCA, Fellow of Engineers Ireland and an Expert Contributor to the NSAI — brings over 38 years of engineering judgment to the practice, while AOCA Managing Director Philip O'Connell leads business development, specialising in fire safety assessment and remediation of multi-unit residential developments.",
+      "Fire Safety Consultants is already hard at work, remediating apartment schemes throughout Ireland under the Apartment Remediation Defect Scheme, and operates from offices in Dublin, Portlaoise and Charleville, Co. Cork.",
+      "You can learn more on our Fire Safety Consultants page, visit www.firesafetyconsultants.ie , or call us on 057 8663244 to talk about the fire safety dimension of your next project."
+    ]
+  },
+  {
     "slug": "arklow-wastewater-treatment-plant-recognised-with-prestigious-awards",
     "title": "Arklow Wastewater Treatment Plant Recognised with Prestigious Awards",
     "date": "2025-09-11",
