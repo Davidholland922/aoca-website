@@ -27,6 +27,7 @@ import TestimonialCarousel from "@/components/TestimonialCarousel";
 import AWatermark from "@/components/AWatermark";
 import AccreditationBadges from "@/components/AccreditationBadges";
 import FscBanner from "@/components/FscBanner";
+import CultureMarquee from "@/components/CultureMarquee";
 
 export default function HomePage() {
   const featured = featuredProjects;
@@ -517,25 +518,10 @@ export default function HomePage() {
               </Link>
             </div>
           </Reveal>
-          <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4">
-            {cultureImages.slice(0, 8).map((src, i) => (
-              <Reveal key={src} delay={i * 0.06}>
-                <div
-                  className={`relative overflow-hidden ${
-                    i % 2 ? "aspect-[3/4]" : "aspect-square md:mt-10"
-                  }`}
-                >
-                  <Image
-                    src={src}
-                    alt="Life at AOCA"
-                    fill
-                    className="object-cover transition-transform duration-500 hover:scale-105"
-                    sizes="(min-width: 768px) 25vw, 50vw"
-                  />
-                </div>
-              </Reveal>
-            ))}
-          </div>
+        </div>
+        {/* full-bleed drifting film strip — pauses on hover */}
+        <div className="mt-12">
+          <CultureMarquee images={cultureImages} />
         </div>
       </section>
 

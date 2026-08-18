@@ -1192,6 +1192,9 @@ const builtInProjects: Project[] = [
       P + "2026-08-e62ffcab-e96b-4a28-a7d8-616901fb1741.jpg",
       P + "2026-08-c5cd74a5-6c4f-45ab-a8a9-8e0de95bd53f.jpg",
       P + "2026-08-dub1.jpg",
+      P + "2026-08-screenshot-2025-09-29-144442.jpg",
+      P + "2026-08-69957162-1ff6-4e70-84cb-902937699ced.jpg",
+      P + "2026-08-0d6bf748-b53d-4c79-a951-620ebe8dddea.jpg",
     ],
     summary:
       "Building envelope and structural engineering for mission-critical facilities across Europe — from 16MW to 52MW campuses.",
@@ -1801,6 +1804,14 @@ export const cultureImages = [
   P + "2026-08-whatsapp-image-2026-06-09-at-16-03-09.jpg",
   P + "2026-08-img-4313.jpg",
   P + "2026-08-dji-fly-20230511-125242-867-1683805975036-photo-optimized.jpg",
+  P + "2026-08-pool-2.jpg",
+  P + "2026-08-pool-4.jpg",
+  P + "2026-08-pam-pool-1.jpg",
+  P + "2026-08-whatsapp-image-2026-06-09-at-16-03-11.jpg",
+  P + "2026-08-20230511-140725.jpg",
+  P + "2026-08-20230511-141813.jpg",
+  P + "2026-08-img-20250902-wa0039.jpg",
+  P + "2026-08-img-20250902-wa0048.jpg",
 ];
 
 export const companyImages = {

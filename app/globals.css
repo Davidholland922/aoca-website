@@ -97,4 +97,30 @@
   .rule {
     @apply mt-4 h-[3px] w-14 bg-brand;
   }
+
+  /* Drifting culture film strip (CultureMarquee). Pauses on hover.
+     Reduced motion: no drift — the strip stays a scrollable row. */
+  .marquee {
+    overflow-x: hidden;
+  }
+  .marquee-track {
+    animation: marquee-drift 70s linear infinite;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee {
+      overflow-x: auto;
+    }
+    .marquee-track {
+      animation: none !important;
+    }
+  }
+}
+
+@keyframes marquee-drift {
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
 }

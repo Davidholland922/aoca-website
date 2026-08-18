@@ -14,6 +14,7 @@ import Reveal from "@/components/Reveal";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
 import SectionVideo from "@/components/SectionVideo";
+import ProjectGallery from "@/components/ProjectGallery";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -139,27 +140,38 @@ export default async function ProjectPage({
                     In pictures
                   </h2>
                   <div className="rule" />
-                  <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3">
-                    {project.gallery.map((src, i) => (
-                      <div
-                        key={src}
-                        className={`relative overflow-hidden ${
-                          i % 5 === 0
-                            ? "col-span-2 aspect-[16/9]"
-                            : "aspect-[4/3]"
-                        }`}
-                      >
-                        <Image
-                          src={src}
-                          alt={`${project.title} — photo ${i + 1}`}
-                          fill
-                          className="object-cover transition-transform duration-500 hover:scale-105"
-                          sizes="(min-width: 1024px) 30rem, 50vw"
-                          loading="lazy"
-                        />
-                      </div>
-                    ))}
-                  </div>
+                  {project.gallery.length > 4 ? (
+                    // larger sets get the slider — best shots lead,
+                    // the page stays a sensible length
+                    <div className="mt-8">
+                      <ProjectGallery
+                        images={project.gallery}
+                        title={project.title}
+                      />
+                    </div>
+                  ) : (
+                    <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3">
+                      {project.gallery.map((src, i) => (
+                        <div
+                          key={src}
+                          className={`relative overflow-hidden ${
+                            i % 5 === 0
+                              ? "col-span-2 aspect-[16/9]"
+                              : "aspect-[4/3]"
+                          }`}
+                        >
+                          <Image
+                            src={src}
+                            alt={`${project.title} — photo ${i + 1}`}
+                            fill
+                            className="object-cover transition-transform duration-500 hover:scale-105"
+                            sizes="(min-width: 1024px) 30rem, 50vw"
+                            loading="lazy"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </Reveal>
               )}
             </div>
