@@ -207,8 +207,11 @@ export type Service = {
   image: string;
   gallery: string[];
   intro: string;
-  sections: { heading: string; body: string }[];
+  /** image renders the section as a split text/photo row (copy-heavy pages) */
+  sections: { heading: string; body: string; image?: string }[];
   highlights: string[];
+  video?: string; // optional in-page film (shown before the gallery)
+  videoPoster?: string;
   draft?: boolean; // copy still awaited from AOCA — see PLACEHOLDERS.md
 };
 
@@ -398,13 +401,23 @@ const builtInServices: Service[] = [
     short:
       "Engineering-led project management from concept to completion — including Ireland's largest residential remediation programmes.",
     image: "/images/2026-05-team-meeting-2.webp",
-    gallery: [],
+    gallery: [
+      "/images/2026-08-checking-drawings-2.jpg",
+      "/images/2026-08-site-image-1.jpg",
+      "/images/2026-08-pamela-on-site.jpg",
+      "/images/2026-02-img_20240212_125033.jpg",
+      "/images/2026-02-20240708_132741914_ios.jpg",
+      "/images/2026-08-team-shot-3.jpg",
+    ],
+    video: "/video/expertise-pm.mp4",
+    videoPoster: "/images/2026-08-pamela-on-site.jpg",
     intro:
       "AOCA provides project management services for construction, development, remediation and technical engineering projects across the residential, commercial, industrial, healthcare and public sectors. Our approach is built around technical understanding, clear communication and practical delivery: we act as the client's representative, coordinating design teams, contractors, consultants and statutory processes to keep projects moving, risks managed and decisions clearly documented.",
     sections: [
       {
         heading: "An Engineering-Led Perspective",
         body: "We bring an engineering-led perspective to project management. This allows us to identify technical issues early, challenge design assumptions, manage programme risks and support clients through planning, procurement, construction and handover. AOCA has particular expertise in building defect remediation and has managed some of the largest residential remediation programmes in Ireland, including major pyrite remediation projects — experience that brings a strong understanding of complex stakeholder management, phased construction works, occupied buildings, technical investigations, statutory compliance, cost control and programme delivery.",
+        image: "/images/2026-08-checking-drawings.jpg",
       },
       {
         heading: "Strategic Project Advice",
@@ -449,6 +462,7 @@ const builtInServices: Service[] = [
       {
         heading: "Why AOCA",
         body: "AOCA combines project management experience with in-house civil, structural, fire engineering and building surveying expertise. This gives our clients a practical, technically informed project management service that goes beyond administration: we understand the design, the statutory process, the construction risks and the commercial pressures involved in delivering successful projects. Our experience in large-scale remediation also means we understand the importance of communication, sequencing, resident liaison, risk management and maintaining control on complex live projects.",
+        image: "/images/2026-08-team-meeting-1.jpg",
       },
       {
         heading: "Talk to AOCA",

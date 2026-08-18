@@ -6,6 +6,8 @@ import { ArrowRight, Check } from "lucide-react";
 import { services, getService } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import PageHero from "@/components/PageHero";
+import SectionVideo from "@/components/SectionVideo";
+import FscShowcase from "@/components/FscShowcase";
 import CtaBand from "@/components/CtaBand";
 
 export function generateStaticParams() {
@@ -70,6 +72,7 @@ export default async function ServicePage({
                 if (last && last.grid === grid) last.items.push(sec);
                 else runs.push({ grid, items: [sec] });
               }
+              let splitCount = 0;
               return runs.map((run) =>
                 run.grid ? (
                   <div
@@ -90,20 +93,67 @@ export default async function ServicePage({
                     ))}
                   </div>
                 ) : (
-                  run.items.map((sec) => (
-                    <Reveal key={sec.heading}>
-                      <h2 className="mt-12 text-2xl font-semibold text-navy-900">
-                        {sec.heading}
-                      </h2>
-                      <div className="rule" />
-                      <p className="mt-5 leading-relaxed text-navy-700">
-                        {sec.body}
-                      </p>
-                    </Reveal>
-                  ))
+                  run.items.map((sec) => {
+                    if (!sec.image) {
+                      return (
+                        <Reveal key={sec.heading}>
+                          <h2 className="mt-12 text-2xl font-semibold text-navy-900">
+                            {sec.heading}
+                          </h2>
+                          <div className="rule" />
+                          <p className="mt-5 leading-relaxed text-navy-700">
+                            {sec.body}
+                          </p>
+                        </Reveal>
+                      );
+                    }
+                    // photo sections alternate sides for rhythm
+                    const flip = splitCount++ % 2 === 1;
+                    return (
+                      <Reveal key={sec.heading}>
+                        <div className="mt-12 grid items-center gap-8 lg:grid-cols-2">
+                          <div className={flip ? "lg:order-2" : ""}>
+                            <h2 className="text-2xl font-semibold text-navy-900">
+                              {sec.heading}
+                            </h2>
+                            <div className="rule" />
+                            <p className="mt-5 leading-relaxed text-navy-700">
+                              {sec.body}
+                            </p>
+                          </div>
+                          <div className="relative aspect-[4/3] overflow-hidden">
+                            <Image
+                              src={sec.image}
+                              alt={sec.heading}
+                              fill
+                              className="object-cover transition-transform duration-500 hover:scale-105"
+                              sizes="(min-width: 1024px) 24rem, 100vw"
+                              loading="lazy"
+                            />
+                          </div>
+                        </div>
+                      </Reveal>
+                    );
+                  })
                 )
               );
             })()}
+
+            {/* optional in-page film */}
+            {service.video && (
+              <Reveal>
+                <h2 className="mt-14 text-2xl font-semibold text-navy-900">
+                  On site with AOCA
+                </h2>
+                <div className="rule" />
+                <div className="mb-2 mt-8">
+                  <SectionVideo
+                    src={service.video}
+                    poster={service.videoPoster ?? service.image}
+                  />
+                </div>
+              </Reveal>
+            )}
 
             {service.gallery.length > 0 && (
               <Reveal>
@@ -195,6 +245,10 @@ export default async function ServicePage({
           </aside>
         </div>
       </section>
+
+      {/* fire safety is delivered through the FSC joint venture — give
+          the hand-off a stage of its own */}
+      {service.slug === "fire-safety-disability-access" && <FscShowcase />}
 
       <CtaBand
         title={`Need ${service.title.toLowerCase()} support?`}
