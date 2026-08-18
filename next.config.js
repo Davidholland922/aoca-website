@@ -44,7 +44,12 @@ const nextConfig = {
       { source: "/structural-engineering", destination: "/expertise/structural-engineering", permanent: true },
       { source: "/insurance-engineering", destination: "/expertise/insurance-forensic-engineering", permanent: true },
       { source: "/pyrite-remediation", destination: "/expertise/insurance-forensic-engineering", permanent: true },
-      { source: "/consulting-engineers", destination: "/expertise/project-construction-management", permanent: true },
+      { source: "/consulting-engineers", destination: "/expertise/consulting-engineering", permanent: true },
+
+      // ---- expertise slugs retired in the August 2026 restructure
+      { source: "/expertise/psdp-assigned-certifier", destination: "/expertise/assigned-certifier", permanent: true },
+      { source: "/expertise/specialist-services", destination: "/expertise/consulting-engineering", permanent: true },
+      { source: "/expertise/building-science", destination: "/expertise/building-envelope-engineering", permanent: true },
 
       // ---- company pages
       { source: "/our-culture", destination: "/culture", permanent: true },

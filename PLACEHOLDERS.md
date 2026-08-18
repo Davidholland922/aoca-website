@@ -1,7 +1,24 @@
 # Content status & outstanding items
 
 All editable content lives in **`lib/site.ts`** (and articles in
-**`lib/insights.ts`**). Updated after the client feedback round of July 2026.
+**`lib/insights.ts`**). Updated after the client feedback round of July 2026
+and the "AOCA Expertise — NEW" deck of August 2026.
+
+## Implemented from "AOCA Expertise — NEW" deck (August 2026)
+
+- Expertise restructured to the deck's nine areas, in deck order:
+  Insurance & Forensic / Civil / Structural / Fire Safety & Disability Access /
+  Project & Construction Management / **Consulting Engineering (new)** /
+  Building Envelope (unchanged per deck) / Building Surveying /
+  **Assigned Certifier & Regulatory Compliance** (was PSDP / Assigned Certifier)
+- Specialist Services and Building Science pages retired — content absorbed
+  into Consulting Engineering / Assigned Certifier / Building Envelope.
+  301 redirects added in `next.config.js`; project "Services Provided"
+  mappings updated.
+- Building Surveying now uses client copy (deck still marks it
+  "work in progress" — expect revisions).
+- Deck slide 1 re-confirms the seven insights articles still to come
+  (adds "Structural Fire Engineering" to the list below).
 
 ## Implemented from client feedback (P. O'Connell, July 2026)
 
