@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ArrowRight, Check, Flame, MapPin, Phone } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
+import ProjectGallery from "@/components/ProjectGallery";
 import CtaBand from "@/components/CtaBand";
 
 export const metadata: Metadata = {
@@ -179,8 +180,40 @@ export default function FireSafetyConsultantsPage() {
         </div>
       </section>
 
-      {/* ---------- who's behind it ---------- */}
+      {/* ---------- their work, from firesafetyconsultants.ie ---------- */}
       <section className="section bg-navy-50/60">
+        <div className="container-site">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Recent projects"
+              title="Fire safety, on real buildings"
+              lead="From cladding remediation on 11-storey apartment schemes in Poole and Sheffield to fire door and compartmentation inspections across Ireland — a look at Fire Safety Consultants' work on site."
+            />
+          </Reveal>
+          <Reveal delay={0.08}>
+            <div className="mt-12">
+              <ProjectGallery
+                accent="fsc"
+                title="Fire Safety Consultants projects"
+                images={[
+                  "/images/2026-08-fsc-sheffield-uk1-min.jpg",
+                  "/images/2026-08-fsc-poole-uk-images-fire-safety-final-png.jpg",
+                  "/images/2026-08-fsc-poole-uk-images-fire-afety-final-png-1.jpg",
+                  "/images/2026-08-fsc-sheffield-uk2-min.jpg",
+                  "/images/2026-08-fsc-poole-uk-images-fire-afety-final-png.jpg",
+                  "/images/2026-08-fsc-dublin-111.jpg",
+                  "/images/2026-08-fsc-tralee-fire-safety1.jpg",
+                  "/images/2026-08-fsc-tralee-fire-safety3.jpg",
+                  "/images/2026-08-fsc-fire-safety-consuktants-team-120-x-60-cm.jpg",
+                ]}
+              />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ---------- who's behind it ---------- */}
+      <section className="section bg-white">
         <div className="container-site grid items-start gap-12 lg:grid-cols-2">
           <Reveal>
             <div>

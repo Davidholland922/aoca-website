@@ -16,13 +16,33 @@ const apexClip = {
  * tab and a thumbnail rail. All images stay mounted (lazy-loaded) so
  * navigation is instant; reduced motion swaps without transition.
  */
+/* Accent variants: AOCA red (default) or the FSC sister-brand orange.
+   Class strings stay literal so Tailwind compiles them. */
+const ACCENTS = {
+  brand: {
+    frame: "border-brand",
+    counter: "bg-brand",
+    control: "hover:border-brand hover:bg-brand",
+    ring: "ring-brand",
+  },
+  fsc: {
+    frame: "border-[#F5821F]",
+    counter: "bg-[#F5821F]",
+    control: "hover:border-[#F5821F] hover:bg-[#F5821F]",
+    ring: "ring-[#F5821F]",
+  },
+} as const;
+
 export default function ProjectGallery({
   images,
   title,
+  accent = "brand",
 }: {
   images: string[];
   title: string;
+  accent?: keyof typeof ACCENTS;
 }) {
+  const a = ACCENTS[accent];
   const [index, setIndex] = useState(0);
   const reduce = useReducedMotion();
   const railRef = useRef<HTMLDivElement>(null);
@@ -64,12 +84,12 @@ export default function ProjectGallery({
       <div className="relative mr-4 mt-4">
         {/* offset red frame, the site's media motif */}
         <div
-          className="absolute -right-4 -top-4 h-full w-full border-2 border-brand"
+          className={`absolute -right-4 -top-4 h-full w-full border-2 ${a.frame}`}
           aria-hidden
         />
         {/* plate-style counter riding the frame */}
         <div
-          className="absolute -top-4 right-4 z-10 -translate-y-full bg-brand px-3 py-1 font-heading text-xs font-semibold tabular-nums tracking-wider text-white"
+          className={`absolute -top-4 right-4 z-10 -translate-y-full ${a.counter} px-3 py-1 font-heading text-xs font-semibold tabular-nums tracking-wider text-white`}
           aria-hidden
         >
           {String(index + 1).padStart(2, "0")} — {String(total).padStart(2, "0")}
@@ -112,7 +132,7 @@ export default function ProjectGallery({
             type="button"
             onClick={() => go(-1)}
             aria-label="Previous photo"
-            className="absolute bottom-3 left-3 flex h-11 w-11 cursor-pointer items-center justify-center border border-white/30 bg-navy-950/70 text-white backdrop-blur transition-colors hover:border-brand hover:bg-brand"
+            className={`absolute bottom-3 left-3 flex h-11 w-11 cursor-pointer items-center justify-center border border-white/30 bg-navy-950/70 text-white backdrop-blur transition-colors ${a.control}`}
           >
             <ArrowLeft size={18} aria-hidden />
           </button>
@@ -120,7 +140,7 @@ export default function ProjectGallery({
             type="button"
             onClick={() => go(1)}
             aria-label="Next photo"
-            className="absolute bottom-3 left-[4.25rem] flex h-11 w-11 cursor-pointer items-center justify-center border border-white/30 bg-navy-950/70 text-white backdrop-blur transition-colors hover:border-brand hover:bg-brand"
+            className={`absolute bottom-3 left-[4.25rem] flex h-11 w-11 cursor-pointer items-center justify-center border border-white/30 bg-navy-950/70 text-white backdrop-blur transition-colors ${a.control}`}
           >
             <ArrowRight size={18} aria-hidden />
           </button>
@@ -141,7 +161,7 @@ export default function ProjectGallery({
             onClick={() => goTo(i)}
             className={`relative h-16 w-24 shrink-0 cursor-pointer overflow-hidden transition-all duration-300 sm:h-20 sm:w-32 ${
               index === i
-                ? "opacity-100 ring-2 ring-brand ring-offset-2"
+                ? `opacity-100 ring-2 ${a.ring} ring-offset-2`
                 : "opacity-55 hover:opacity-90"
             }`}
             style={apexClip}
