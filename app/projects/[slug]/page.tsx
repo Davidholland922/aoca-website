@@ -67,7 +67,9 @@ export default async function ProjectPage({
       <section className="section bg-white">
         <div className="container-site">
           <div className="grid gap-14 lg:grid-cols-[1fr,300px]">
-            <div>
+            {/* min-w-0: the gallery thumbnail rail must not widen this
+                column past its track (grid min-width:auto trap) */}
+            <div className="min-w-0">
               {project.body.length > 0 && (
                 <Reveal>
                   <h2 className="text-2xl font-semibold text-navy-900">

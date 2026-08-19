@@ -52,7 +52,8 @@ export default async function ServicePage({
 
       <section className="section bg-white">
         <div className="container-site grid gap-14 lg:grid-cols-[1fr,340px]">
-          <div>
+          {/* min-w-0 guards the column against wide intrinsic children */}
+          <div className="min-w-0">
             <Reveal>
               <p className="text-lg leading-relaxed text-navy-700">
                 {service.intro}
