@@ -51,23 +51,14 @@ export default function CompanyPage() {
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="grid grid-cols-2 gap-4">
-              {companyImages.office.map((src, i) => (
-                <div
-                  key={src}
-                  className={`relative overflow-hidden ${
-                    i % 2 ? "aspect-[3/4] md:mt-8" : "aspect-[3/4]"
-                  }`}
-                >
-                  <Image
-                    src={src}
-                    alt="Inside the AOCA offices"
-                    fill
-                    className="object-cover transition-transform duration-500 hover:scale-105"
-                    sizes="(min-width: 1024px) 20rem, 50vw"
-                  />
-                </div>
-              ))}
+            <div className="relative aspect-[4/3] overflow-hidden">
+              <Image
+                src={companyImages.office[0]}
+                alt="The AOCA head office in Portlaoise"
+                fill
+                className="object-cover transition-transform duration-500 hover:scale-105"
+                sizes="(min-width: 1024px) 40rem, 100vw"
+              />
             </div>
           </Reveal>
         </div>
@@ -80,8 +71,8 @@ export default function CompanyPage() {
             <SectionHeading
               dark
               eyebrow="See us at work"
-              title="Engineering, from a better angle"
-              lead="A minute above the projects and people that carry the AOCA name."
+              title="Engineering in Action"
+              lead="Discover how AOCA's expertise comes to life through projects that demonstrate our commitment to quality, innovation and effective Engineering solutions."
             />
           </Reveal>
           <Reveal delay={0.1}>
@@ -166,12 +157,24 @@ export default function CompanyPage() {
             {team.map((m, i) => (
               <Reveal key={m.name} delay={i * 0.06}>
                 <div className="border border-navy-100 bg-white p-7">
-                  <span className="flex h-12 w-12 items-center justify-center bg-navy-950 font-heading text-lg font-semibold text-brand-light">
-                    {m.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </span>
+                  {m.photo ? (
+                    <div className="relative -mx-7 -mt-7 aspect-[4/5] overflow-hidden">
+                      <Image
+                        src={m.photo}
+                        alt={m.name}
+                        fill
+                        className="object-cover object-top"
+                        sizes="(min-width: 1024px) 18rem, 50vw"
+                      />
+                    </div>
+                  ) : (
+                    <span className="flex h-12 w-12 items-center justify-center bg-navy-950 font-heading text-lg font-semibold text-brand-light">
+                      {m.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
+                    </span>
+                  )}
                   <h3 className="mt-5 font-semibold text-navy-900">{m.name}</h3>
                   <p className="mt-1 text-sm text-brand">{m.role}</p>
                   <p className="mt-1 text-xs uppercase tracking-wider text-navy-400">

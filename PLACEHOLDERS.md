@@ -72,24 +72,26 @@ and the "AOCA Expertise — NEW" deck of August 2026.
 
 | Item | Who | Notes |
 |---|---|---|
-| Featured projects list | Client | They'll confirm which projects to feature. HOW-TO: set `featured: true` on a project in `lib/site.ts` |
+| ~~Featured projects list~~ | Done | Aug 2026 notes: Stradbally Fire Station, Data Centre Projects, Hole in the Wall (set in content/overrides.json) |
 | Rosslare Europort copy | Client | docx says "Text Required" — page live with images + one-line summary only |
 | Data Centre Projects copy | Client | docx says "Require Text" — interim summary drafted by us, needs sign-off |
 | Bristol-Myers Squibb copy | Client | Folder of photos supplied but no text in the docx |
 | Portlaoise Retail Park size | Client | Their new copy says "20,000 sq ft" but the old site said 130,000 sq ft — confirm which; size omitted from our copy meanwhile |
 | Glass Bottle / Hole in the Wall status | Client | docx says "Ongoing / Completed (confirm as applicable)" |
 | Logo wall accuracy | **Ciara** | Verify all 30 client logos are current versions |
+| Testimonial company names | Client | Aug 2026 notes ask for company under each testimonial — only Peter Mulvaney's (Property Claims Loss Assessors) is known; need companies for Jonathan Marais, Fiona Beirne, Stephen Nolan + others |
+| DNCF replacement logo | Client | DNCF logo removed from the logo wall per Aug 2026 notes — client to send the replacement logo mentioned |
 | Office phone numbers | Client | "Multiple numbers so not sure this is 100% correct" |
 | New insights articles ×6 | Client | FM Design for High Value Buildings; Designing for the Data Centre Industry; What is Condensation Risk Analysis; An update on Pyrite in Ireland; Structural Fire Engineering (list from slide 1 of the Aug 2026 deck). "A New Adventure – Fire Safety Consultants" written by us Aug 2026 (dated Jan 2026 per David) — needs client sign-off |
 | Building Surveying sign-off | Client | Copy now live from their deck but deck marks it "work in progress" |
 | History milestones | Client | /history timeline entries 2016–2025 inferred from published material — need sign-off |
 | ~~Fire Safety Consultants website URL~~ | Done | Linked to firesafetyconsultants.ie; dedicated /fire-safety-consultants page + homepage banner added Aug 2026 |
-| Team headshots | Client | Company page uses initials (bios now live; photos would complete it) |
+| ~~Team headshots~~ | Done | Studio portraits now on the company-page team cards (Philip, Brian, Emmett, Colin) |
 | History photos 2.jpg & 6.jpg | Client | Copies in the SharePoint drop are the same low-res files (206px/225px) — still need higher-res originals |
 
 ## Technical before production launch
 
-- Contact form backend (`components/ContactForm.tsx`) — still simulates success.
+- Contact form backend (`components/ContactForm.tsx`) — still simulates success. When wired, submissions must go to BOTH info@aoca.ie and info@aoca.co.uk (Aug 2026 notes).
 - Re-enable indexing (`app/layout.tsx` robots + `app/robots.ts`).
 - Update `site.url` in `lib/site.ts` to https://aoca.ie.
 - Cookie/privacy policy pages.

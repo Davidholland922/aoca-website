@@ -13,7 +13,7 @@ import uploadedServices from "../content/services.json";
 
 /** Sections editable by the client via /admin (content/overrides.json). */
 const overrides = overridesJson as Partial<{
-  team: { name: string; role: string; cred: string; bio?: string }[];
+  team: { name: string; role: string; cred: string; bio?: string; photo?: string }[];
   stats: { value: string; label: string }[];
   offices: {
     name: string;
@@ -148,7 +148,7 @@ export const timeline = [
     year: "2016–2023",
     title: "The remediation years",
     text: "AOCA helps develop two NSAI National Standards for pyrite remediation and goes on to manage some of the largest residential remediation programmes in Ireland — while the practice itself keeps building.",
-    image: "/images/history-3.jpg",
+    image: "/images/history-remediation.jpg",
   },
   {
     year: "2024",
@@ -175,24 +175,28 @@ const builtInTeam = [
     name: "Philip O'Connell",
     role: "Managing Director",
     cred: "MIEI",
+    photo: "/images/2025-11-153a3552.jpg",
     bio: "Over 11 years' experience in civil engineering, project management and fire safety consultancy, specialising in fire safety assessment and remediation of multi-unit residential developments. BEng (Hons) in Civil Engineering, MSc in Project Management, currently completing a Level 9 Certificate in Fire Safety. Member of Engineers Ireland and the Passive House Association of Ireland.",
   },
   {
     name: "Brian Byrne",
     role: "Director",
     cred: "FIEI",
+    photo: "/images/2025-11-153a3905.jpg",
     bio: "Chartered Engineer with over 26 years' experience in civil and structural engineering. Leads the design of residential and commercial developments, with expertise in drainage, infrastructure and project delivery. An experienced forensic engineer and expert witness specialising in structural defects and insurance-related claims. Fellow of Engineers Ireland.",
   },
   {
     name: "Emmett O'Reilly",
     role: "Associate Director",
     cred: "FIEI",
+    photo: "/images/2025-11-153a3630.jpg",
     bio: "Chartered Engineer with over 25 years' experience in civil and structural engineering, specialising in structural design and wind load analysis across residential, commercial and data centre projects. An experienced forensic engineer and expert witness on structural defects and insurance-related claims. Fellow of Engineers Ireland and an Ancillary Design Certifier.",
   },
   {
     name: "Colin Scott",
     role: "Associate Director",
     cred: "FIEI",
+    photo: "/images/2025-11-153a3667-2.jpg",
     bio: "Chartered Engineer with over 25 years' experience in civil and structural engineering. Manages AOCA's Dublin office and leads major residential, commercial and remediation projects, including large-scale pyrite remediation programmes. Acts as an expert witness in engineering and construction disputes. Fellow of Engineers Ireland, with additional qualifications in renewable energy and construction law.",
   },
 ];
@@ -230,7 +234,7 @@ const builtInServices: Service[] = [
     icon: "scale",
     short:
       "A leading European provider of insurance and forensic engineering — several hundred insurance inspections carried out every year.",
-    image: "/images/2026-03-insurance.jpg",
+    image: "/images/ins-flood-full.jpg",
     gallery: [
       "/images/2026-08-ins-subsidence-1.jpg",
       "/images/2026-08-fire-damage.jpg",
@@ -277,10 +281,12 @@ const builtInServices: Service[] = [
       "Roads, active travel, cut/fill, drainage, water supply and geotechnics — the infrastructure that makes development possible.",
     image: "/images/2026-02-dji_20250526051209_0006_d.jpg",
     gallery: [
-      "/images/2026-08-geotechnical-engineering.jpg",
+      "/images/civil-roads.jpg",
+      "/images/civil-suds.jpg",
       "/images/2026-08-water-supply.jpg",
-      "/images/2026-02-dji_0807.jpg",
-      "/images/2026-05-geo.jpg",
+      "/images/civil-pumping-stations.jpg",
+      "/images/2026-08-geotechnical-engineering.jpg",
+      "/images/civil-flood-risk.jpg",
     ],
     intro:
       "Our role is central to ensuring the safe, timely and well-resourced completion of projects — from feasibility, pre-planning and Uisce Éireann liaison through to handover — on new development and upgrade or retrofit works, across sustainable design and inspection of civil infrastructure, roads and active travel, waste management and geotechnical engineering. Our philosophy at all times is to meet the design brief by producing the most cost-effective and appropriate construction solution.",
@@ -321,12 +327,12 @@ const builtInServices: Service[] = [
     icon: "building",
     short:
       "Structural design and inspection across the commercial, industrial, residential and community sectors — in Ireland, the UK and Europe.",
-    image: "/images/2026-02-1950x1462-cover-1.jpg",
+    image: "/images/2026-02-dji_20250601131323_0012_d.jpg",
     gallery: [
-      "/images/2026-08-image.jpg",
-      "/images/2026-08-image-1.jpg",
-      "/images/2026-02-20240926_090259262_ios.jpg",
-      "/images/2026-02-sam_9514.jpg",
+      "/images/structural-bim.jpg",
+      "/images/structural-condition.jpg",
+      "/images/structural-steel-concrete.jpg",
+      "/images/structural-mmc.jpg",
     ],
     intro:
       "AOCA delivers structural engineering solutions that combine technical excellence with practical construction insight. We provide full structural design and inspection services across the commercial, industrial, residential and community sectors. Our engineers are fully conversant with the Eurocodes and current building regulations, enabling us to develop efficient, buildable and economical structural solutions tailored to each project — with projects carried out across multiple countries including Ireland, the UK and Europe.",
@@ -362,7 +368,7 @@ const builtInServices: Service[] = [
     icon: "flame",
     short:
       "Specialist fire safety and accessibility consultancy through Fire Safety Consultants — our joint venture with OCF.",
-    image: "/images/2026-02-dji_20250601131323_0012_d.jpg",
+    image: "/images/fs-apartments.jpg",
     gallery: [],
     intro:
       "AOCA, in conjunction with OCF, has established Fire Safety Consultants to pool our resources and expertise and provide specialist fire safety and accessibility consultancy services. Fire Safety Consultants brings together internationally recognised expertise in fire engineering, fire safety compliance, accessibility, inspection, due diligence and structural fire engineering. For specialist fire safety services, please visit the Fire Safety Consultants website.",
@@ -532,7 +538,7 @@ const builtInServices: Service[] = [
     icon: "layers",
     short:
       "Roof and façade engineering for data centre, pharmaceutical and mission-critical buildings across Europe.",
-    image: "/images/2026-02-20241121_102059.jpg",
+    image: "/images/arklow-fins.jpg",
     gallery: [
       "/images/2026-02-20250402_120133.jpg",
       "/images/2026-02-20251009_114732.jpg",
@@ -568,7 +574,11 @@ const builtInServices: Service[] = [
     short:
       "Fitout and refurbishment, digital and drone surveys, legal mapping, thermal imaging and moisture investigation.",
     image: "/images/2026-02-dji_0871.jpg",
-    gallery: [],
+    gallery: [
+      "/images/surveying-digital.jpg",
+      "/images/surveying-drone.jpg",
+      "/images/surveying-damp.jpg",
+    ],
     intro:
       "From fitout and refurbishment to digital surveying and moisture investigation, AOCA's building surveying team gives owners, occupiers and investors a clear technical picture of the buildings they hold — using modern digital survey tools alongside three decades of engineering judgment.",
     sections: [
@@ -612,7 +622,7 @@ const builtInServices: Service[] = [
     icon: "shield",
     short:
       "Assigned Certifier under BCAR, independent third-party and LDI inspections, technical due diligence and design review.",
-    image: "/images/2026-02-20241017_104842393_ios.jpg",
+    image: "/images/ac-housing.jpg",
     gallery: [],
     intro:
       "Having managed complex projects across multiple sectors, we offer hands-on guidance to achieve full regulatory compliance in Ireland, the UK and Europe. Our team coordinates with design teams and local authorities to navigate building control processes efficiently, ensuring timely certification and risk mitigation.",
@@ -905,7 +915,7 @@ const builtInProjects: Project[] = [
     sector: "infrastructure-government",
     location: "Arklow, Co. Wicklow",
     thumb: P + "2026-02-thumb-1.jpg",
-    hero: P + "2026-02-arklow_hero_final_dou4go-1.jpg",
+    hero: P + "arklow-aerial-2026.jpg",
     gallery: [
       P + "2026-02-arklow-waste-water-treatment-plant-clancy-moore-architects_16-1-1.jpg",
       P + "2026-02-arklow-wwtp-site_june-2022-1.jpg",
@@ -1738,6 +1748,7 @@ export const testimonials = [
       "Property Claims Loss Assessors have worked with the AOCA team for many years now. We love their service because of their rapid response times and the level of detail in their reporting — leaving no stone unturned, and always available to discuss ongoing projects.",
     author: "Peter Mulvaney",
     role: "Director",
+    company: "Property Claims Loss Assessors",
   },
   {
     quote:
@@ -1771,7 +1782,7 @@ export const logoWall = [
   ...["10", "12", "14", "15", "17"].map((n) => `/images/2025-11-image-${n}.jpg`),
   ...[
     "18", "21-1", "22", "23", "24", "25", "26", "27", "28", "29", "30",
-    "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41",
+    "31", "32", "33", "35", "36", "37", "38", "39", "40", "41",
     "42", "43",
   ].map((n) => `/images/2026-03-image-${n}.jpg`),
 ];
@@ -1816,15 +1827,10 @@ export const cultureImages = [
 
 export const companyImages = {
   hero: P + "2026-05-344a6971.jpg",
-  office: [
-    P + "2025-11-153a3552.jpg",
-    P + "2025-11-153a3905.jpg",
-    P + "2025-11-153a3630.jpg",
-    P + "2025-11-153a3667-2.jpg",
-  ],
+  office: [P + "office-building.jpg"],
   // real photography preferred over AI-generated imagery (client feedback)
   brandedTeam: P + "2026-05-dji_0603.jpg",
-  brandedTeam2: P + "2025-11-153a3905.jpg",
+  brandedTeam2: P + "tamara-reception.jpg",
   cultureTeaser: P + "2026-05-group-49-2.jpg",
   careers: P + "2026-05-344a6993.jpg",
   contact: P + "2026-08-contact-us.jpg",

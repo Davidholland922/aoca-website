@@ -8,9 +8,9 @@ import clsx from "clsx";
 export default function AWatermark({ className }: { className?: string }) {
   return (
     <Image
-      src="/a-mark.png"
+      src="/a-mark-light.png"
       alt=""
-      width={604}
+      width={580}
       height={600}
       aria-hidden
       className={clsx(

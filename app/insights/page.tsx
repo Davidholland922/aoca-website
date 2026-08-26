@@ -20,8 +20,8 @@ export default function InsightsPage() {
     <>
       <PageHero
         eyebrow="Insights"
-        title="What we're thinking, building and winning."
-        lead="News, awards and practical engineering insight from the AOCA team."
+        title="Knowledge Built on Experience"
+        lead="Ideas, expertise and perspectives from our team. Discover the latest industry trends, project stories and Engineering knowledge from AOCA Engineering Consultants."
         image={lead.image}
         imageAlt=""
         compact

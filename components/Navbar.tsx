@@ -175,10 +175,10 @@ export default function Navbar() {
           onClick={() => setOpen(false)}
         >
           <Image
-            src="/aoca-logo-white.png"
-            alt="AOCA Engineering Consultants"
-            width={190}
-            height={95}
+            src="/aoca-logo-nav.png"
+            alt="AOCA"
+            width={438}
+            height={146}
             priority
             unoptimized
             className={clsx(

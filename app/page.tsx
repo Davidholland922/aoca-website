@@ -48,10 +48,10 @@ export default function HomePage() {
             {/* the brand's arrow-A stands in as the "A" of "A leader" */}
             <p className="mt-7 flex max-w-2xl items-baseline gap-2.5 text-xl font-medium leading-relaxed text-white sm:text-2xl">
               <Image
-                src="/a-mark.png"
+                src="/a-mark-light.png"
                 alt="A"
-                width={151}
-                height={150}
+                width={146}
+                height={151}
                 className="inline-block h-[1.15em] w-auto translate-y-[0.18em]"
               />
               <span>leader in multidisciplinary engineering expertise.</span>
@@ -145,7 +145,7 @@ export default function HomePage() {
           <Reveal>
             <SectionHeading
               eyebrow="Sectors"
-              title="Wherever Ireland builds, we engineer"
+              title="Wherever Ireland builds, we Engineer"
               lead="Three decades of consultancy across Ireland, the UK and Europe — seven sectors, one standard."
             />
           </Reveal>

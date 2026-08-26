@@ -4,7 +4,12 @@ import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-type Testimonial = { quote: string; author: string; role: string };
+type Testimonial = {
+  quote: string;
+  author: string;
+  role: string;
+  company?: string;
+};
 
 /** Auto-advancing testimonial carousel with manual controls. */
 export default function TestimonialCarousel({
@@ -53,7 +58,12 @@ export default function TestimonialCarousel({
             </blockquote>
             <figcaption className="mt-6">
               <p className="font-semibold text-white">{t.author}</p>
-              <p className="text-sm text-navy-300">{t.role}</p>
+              <p className="text-sm text-navy-300">
+                {t.role}
+                {t.company && (
+                  <span className="text-navy-400"> — {t.company}</span>
+                )}
+              </p>
             </figcaption>
           </motion.figure>
         </AnimatePresence>
