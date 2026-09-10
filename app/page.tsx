@@ -15,6 +15,7 @@ import {
   logoWall,
   cultureImages,
   companyImages,
+  shortLocation,
 } from "@/lib/site";
 import ServiceIcon from "@/components/ServiceIcon";
 import { insights } from "@/lib/insights";
@@ -233,7 +234,7 @@ export default function HomePage() {
                   <div className="flex flex-col justify-center p-8 lg:col-span-2 lg:p-12">
                     <p className="eyebrow">
                       {sectors.find((s) => s.slug === p.sector)?.title}
-                      {p.location ? ` · ${p.location}` : ""}
+                      {p.location ? ` · ${shortLocation(p.location)}` : ""}
                     </p>
                     <h3 className="mt-3 text-2xl font-semibold text-white sm:text-3xl">
                       {p.title}

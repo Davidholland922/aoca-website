@@ -9,6 +9,7 @@ type Testimonial = {
   author: string;
   role: string;
   company?: string;
+  logo?: string;
 };
 
 /** Auto-advancing testimonial carousel with manual controls. */
@@ -64,6 +65,15 @@ export default function TestimonialCarousel({
                   <span className="text-navy-400"> — {t.company}</span>
                 )}
               </p>
+              {t.logo && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={t.logo}
+                  alt={t.company ?? ""}
+                  className="mt-3 h-9 w-auto"
+                  loading="lazy"
+                />
+              )}
             </figcaption>
           </motion.figure>
         </AnimatePresence>

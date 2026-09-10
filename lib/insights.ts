@@ -85,7 +85,7 @@ const builtInInsights: Article[] = [
     "title": "Government Prioritises Apartment and Duplex Defects Remediation Bill 2024",
     "date": "2024-09-19",
     "displayDate": "September 2024",
-    "image": "/images/2026-03-insurance.jpg",
+    "image": "/images/2026-08-near-finish.jpg",
     "excerpt": "The Irish government has approved the priority drafting of the Apartment and Duplex Defects Remediation Bill 2024 , which addresses fire safety, structural, and water ingress issue…",
     "body": [
       "The Irish government has approved the priority drafting of the Apartment and Duplex Defects Remediation Bill 2024 , which addresses fire safety, structural, and water ingress issues in buildings constructed between 1991 and 2013. Under the new legislation, 100% of eligible remediation costs will be covered.",
@@ -117,7 +117,7 @@ const builtInInsights: Article[] = [
     "title": "Shortlisted for the Irish Building and Design Awards, recognised as being ‘Best in Class’",
     "date": "2024-01-31",
     "displayDate": "January 2024",
-    "image": "/images/2026-05-geo.jpg",
+    "image": "/images/2026-08-geotechnical-engineering.jpg",
     "excerpt": "This project has been shortlisted for the Irish Building and Design Awards, recognised as being ‘Best in Class’ both nationally and internationally. The IBDAs recognise excellence …",
     "body": [
       "This project has been shortlisted for the Irish Building and Design Awards, recognised as being ‘Best in Class’ both nationally and internationally. The IBDAs recognise excellence in build, design, people, and creativity. The winners of the awards will be announced on March 8th, 2024.",
@@ -228,7 +228,7 @@ const builtInInsights: Article[] = [
     "title": "Zero Emission Concrete on the Horizon as Industry Standard",
     "date": "2023-09-06",
     "displayDate": "September 2023",
-    "image": "/images/2026-03-pyrite.jpg",
+    "image": "/images/2026-09-pyrite-infill.jpg",
     "excerpt": "In the ever-evolving landscape of Construction and Engineering, sustainability has become an imperative driving force. Amidst this dynamic shift, a groundbreaking innovation known …",
     "body": [
       "In the ever-evolving landscape of Construction and Engineering, sustainability has become an imperative driving force. Amidst this dynamic shift, a groundbreaking innovation known as zero emission concrete is emerging, poised to redefine the industry’s environmental footprint. This revolutionary advancement holds the potential to not only reduce emissions but also reshape the construction world’s entire foundation.",
@@ -244,7 +244,7 @@ const builtInInsights: Article[] = [
     "title": "Retrofitting Buildings for a Sustainable Future",
     "date": "2023-08-31",
     "displayDate": "August 2023",
-    "image": "/images/2026-05-geo.jpg",
+    "image": "/images/2026-08-geotechnical-engineering.jpg",
     "excerpt": "In the face of escalating urbanisation and climate change, reducing urban carbon emissions has emerged as a pressing imperative. An effective strategy in this endeavour is retrofit…",
     "body": [
       "In the face of escalating urbanisation and climate change, reducing urban carbon emissions has emerged as a pressing imperative. An effective strategy in this endeavour is retrofitting buildings for a sustainable future, a process that optimises existing structures to be more energy-efficient and environmentally responsible.",

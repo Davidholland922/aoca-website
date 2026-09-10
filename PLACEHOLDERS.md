@@ -68,6 +68,31 @@ and the "AOCA Expertise — NEW" deck of August 2026.
   closed. Remaining Videography clips are b-roll (not wired). Second Derry
   Road drone file (DJI_..._0076) unused — swap in if preferred.
 
+## Implemented from Ciara's "Update Notes 01-09-26" (Sept 2026)
+
+- Client logo wall: old Crown wordmark replaced with new Crown logo;
+  DNCF added back (new artwork). Testimonial logos under names
+  (O'Gorman → Crown, Mulvaney → PCLA).
+- Hole in the Wall: finished-building photo (homepage featured + hero).
+- Expertise detail pages: topic photos now sit beside each section's text
+  (insurance / civil / structural / envelope / surveying) — bottom
+  galleries removed as requested.
+- Insights: the three old "shaped" WordPress images replaced with full
+  photos (apartments / pyrite infill / geotechnical rig).
+- History: 2006 entry → AOCA building photo; remediation years → real
+  pyrite-infill photo; **new 2017 "Rebranded" milestone added with
+  Ciara's copy — YEAR NEEDS PHILIP'S CONFIRMATION.**
+- Projects: green-field photo removed (warehousing); Abbeyleix gallery
+  reordered per notes; "Grange Manor Mountmellick" rename; every gallery
+  (2+ photos) now uses the enlargeable slider (Harold's Cross fixed);
+  cards show county/city only under titles.
+- Contact form: /api/contact wired for Resend → info@aoca.ie +
+  info@aoca.co.uk. **David: set RESEND_API_KEY (and CONTACT_FROM after
+  verifying aoca.ie in Resend) in Vercel env to switch on delivery** —
+  until then the form reports a simulated send.
+- Projects nav dropdown: verified working (?sector= filter applies);
+  left in place.
+
 ## Waiting on the client (chase list)
 
 | Item | Who | Notes |

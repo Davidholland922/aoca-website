@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import clsx from "clsx";
 import { motion } from "framer-motion";
+import { shortLocation } from "@/lib/site";
 import type { Project, Sector } from "@/lib/site";
 
 /** Filterable project grid; honours ?sector= in the URL on first load. */
@@ -91,7 +92,7 @@ export default function ProjectsExplorer({
                 </h2>
                 {p.location && (
                   <p className="mt-1 text-xs uppercase tracking-wider text-navy-400">
-                    {p.location}
+                    {shortLocation(p.location)}
                   </p>
                 )}
                 <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-navy-600">

@@ -135,7 +135,7 @@ export const timeline = [
     year: "2006",
     title: "A permanent home",
     text: "The practice moves to its current head office at Lismard House on the Timahoe Road, Portlaoise.",
-    image: "/images/lismard-house-team.jpg",
+    image: "/images/office-building.jpg",
     clipping: "/images/aoca-newspaper.jpg",
   },
   {
@@ -145,10 +145,17 @@ export const timeline = [
     image: "/images/dublin-office.jpg",
   },
   {
+    year: "2017",
+    title: "Rebranded",
+    // [PLACEHOLDER] year to be confirmed by Philip (Ciara, Sept 2026 notes)
+    text: "AOCA rebranded to create a more inclusive identity that reflected the people and values behind the business. The new name represented the company's growth from a small regional consultancy into a national and international engineering practice.",
+    image: "/images/2026-08-aoca-engineering-portlaoise-dbp-01-03-17-1-of-3-003.jpg",
+  },
+  {
     year: "2016–2023",
     title: "The remediation years",
     text: "AOCA helps develop two NSAI National Standards for pyrite remediation and goes on to manage some of the largest residential remediation programmes in Ireland — while the practice itself keeps building.",
-    image: "/images/history-remediation.jpg",
+    image: "/images/2026-09-pyrite-infill.jpg",
   },
   {
     year: "2024",
@@ -235,34 +242,34 @@ const builtInServices: Service[] = [
     short:
       "A leading European provider of insurance and forensic engineering — several hundred insurance inspections carried out every year.",
     image: "/images/ins-flood-full.jpg",
-    gallery: [
-      "/images/2026-08-ins-subsidence-1.jpg",
-      "/images/2026-08-fire-damage.jpg",
-      "/images/2026-08-ins-flood-181.jpg",
-      "/images/2026-08-storm-damage.jpg",
-    ],
+    gallery: [],
     intro:
       "AOCA is recognised as a leading provider of expert insurance and forensic engineering services in Europe. We carry out several hundred insurance-related inspections annually, delivering clear, objective and technically robust reports for insurers, loss adjusters, legal teams and private clients. We cover Ireland, the UK and Europe, with active live cases all over the continent.",
     sections: [
       {
         heading: "Subsidence",
         body: "We regularly investigate subsidence-related claims, identifying the true cause of movement, assessing damage and recommending appropriate remediation. Our investigations may include trial holes, drainage surveys, monitoring and specialist testing.",
+        image: "/images/2026-09-sec-ins-subsidence.jpg",
       },
       {
         heading: "Structural Damage",
         body: "AOCA investigates a wide range of building damage claims, from minor defects to major structural failures. Our focus is on establishing causation, extent of damage and compliance with policy definitions.",
+        image: "/images/2026-09-sec-ins-structural-damage.jpg",
       },
       {
         heading: "Flooding",
         body: "We undertake detailed flood investigations to determine contributory factors, including site alterations, culverted watercourses and drainage failures. Our reports address both causation and remediation requirements.",
+        image: "/images/2026-09-sec-ins-flooding.jpg",
       },
       {
         heading: "Fire Damage",
         body: "We assess fire-damaged buildings to determine structural integrity, repair feasibility and compliance with current regulations. Our inspections consider both visible damage and hidden structural implications, and our forensic fire investigation team also analyses scenes to determine the cause and mode of a fire.",
+        image: "/images/2026-09-sec-ins-fire-damage.jpg",
       },
       {
         heading: "Storm Damage",
         body: "AOCA investigates storm-related damage, particularly wind-induced failures. Our assessments distinguish between genuine storm events and defects arising from poor workmanship or material failure.",
+        image: "/images/2026-09-sec-ins-storm-damage.jpg",
       },
     ],
     highlights: [
@@ -280,36 +287,34 @@ const builtInServices: Service[] = [
     short:
       "Roads, active travel, cut/fill, drainage, water supply and geotechnics — the infrastructure that makes development possible.",
     image: "/images/2026-02-dji_20250526051209_0006_d.jpg",
-    gallery: [
-      "/images/civil-roads.jpg",
-      "/images/civil-suds.jpg",
-      "/images/2026-08-water-supply.jpg",
-      "/images/civil-pumping-stations.jpg",
-      "/images/2026-08-geotechnical-engineering.jpg",
-      "/images/civil-flood-risk.jpg",
-    ],
+    gallery: [],
     intro:
       "Our role is central to ensuring the safe, timely and well-resourced completion of projects — from feasibility, pre-planning and Uisce Éireann liaison through to handover — on new development and upgrade or retrofit works, across sustainable design and inspection of civil infrastructure, roads and active travel, waste management and geotechnical engineering. Our philosophy at all times is to meet the design brief by producing the most cost-effective and appropriate construction solution.",
     sections: [
       {
         heading: "Roads & Infrastructure",
         body: "Road design, DMURS-compliant street and active travel design, Road Safety Audits, and Traffic and Transport Assessments — from residential estate roads and junctions through to strategic infrastructure delivered with Local Authorities.",
+        image: "/images/civil-roads.jpg",
       },
       {
         heading: "Surface Water & Sustainable Drainage",
         body: "Sustainable collection and discharge of surface water run-off from the built environment is an essential element in delivering sustainable development. We design Nature Based Solutions and SuDS-led drainage strategies that enhance biodiversity and amenity value, satisfy planning authorities and perform over the life of the development — including blue and green roofs designed with architects as part of the sustainable drainage strategy.",
+        image: "/images/civil-suds.jpg",
       },
       {
         heading: "Flood Risk Assessment",
         body: "Flood Risk Assessments, flood modelling and Surface Water Management Plans are developed to reduce flood risk to developments and their environs into the future with our changing climate.",
+        image: "/images/civil-flood-risk.jpg",
       },
       {
         heading: "Pumping Stations",
         body: "Where gravity drainage is not feasible, AOCA designs and oversees the installation of foul water pumping stations tailored to the scale and operational needs of each development — from small residential schemes to large multi-unit developments. We work closely with local authorities and specialist suppliers to ensure reliable operation, resilience and long-term maintainability of pumping infrastructure.",
+        image: "/images/civil-pumping-stations.jpg",
       },
       {
         heading: "Geotechnical Engineering",
         body: "We provide a full geotechnical design and consultation service — utilities and topographical surveys, infiltration tests, CBR tests, boreholes, in-situ soil sampling, laboratory testing and trial holes — because understanding the ground early is the cheapest risk management a project can buy.",
+        image: "/images/2026-08-geotechnical-engineering.jpg",
       },
     ],
     highlights: [
@@ -328,30 +333,29 @@ const builtInServices: Service[] = [
     short:
       "Structural design and inspection across the commercial, industrial, residential and community sectors — in Ireland, the UK and Europe.",
     image: "/images/2026-02-dji_20250601131323_0012_d.jpg",
-    gallery: [
-      "/images/structural-bim.jpg",
-      "/images/structural-condition.jpg",
-      "/images/structural-steel-concrete.jpg",
-      "/images/structural-mmc.jpg",
-    ],
+    gallery: [],
     intro:
       "AOCA delivers structural engineering solutions that combine technical excellence with practical construction insight. We provide full structural design and inspection services across the commercial, industrial, residential and community sectors. Our engineers are fully conversant with the Eurocodes and current building regulations, enabling us to develop efficient, buildable and economical structural solutions tailored to each project — with projects carried out across multiple countries including Ireland, the UK and Europe.",
     sections: [
       {
         heading: "BIM",
         body: "BIM is embedded in our engineering workflows, supporting coordinated, efficient and accurate design delivery. Our engineers use BIM tools daily to develop intelligent 3D models, coordinate structural elements with other disciplines, identify clashes early, streamline design changes and produce clear, consistent information throughout the project lifecycle for our clients.",
+        image: "/images/structural-bim.jpg",
       },
       {
         heading: "Structural Condition Assessments",
         body: "Our Structural Condition Assessments provide a detailed evaluation of the condition, integrity and performance of existing buildings and structures. We identify defects, deterioration and potential structural risks, and provide clear recommendations for repair, remediation or further investigation — helping clients make informed decisions, maintain safety and compliance, and extend the service life of their assets.",
+        image: "/images/structural-condition.jpg",
       },
       {
         heading: "Steel & Concrete Design",
         body: "We provide structural design expertise across both steel and reinforced concrete construction, delivering safe, efficient and practical solutions for projects of all scales. Our engineers consider buildability, economy, durability and long-term performance from the outset, producing coordinated designs that meet regulatory requirements while responding to the specific demands of each project.",
+        image: "/images/structural-steel-concrete.jpg",
       },
       {
         heading: "Modern Methods of Construction (MMC)",
         body: "We support Modern Methods of Construction manufacturers in developing robust, compliant and certifiable structural systems. Our experience includes timber frame, light-gauge steel and other innovative construction systems, providing structural design and technical documentation for NSAI Agrément certification and compliance with Part D of the Building Regulations. We work closely with manufacturers to resolve technical issues early and help achieve a smooth, successful certification process.",
+        image: "/images/structural-mmc.jpg",
       },
     ],
     highlights: [
@@ -539,20 +543,19 @@ const builtInServices: Service[] = [
     short:
       "Roof and façade engineering for data centre, pharmaceutical and mission-critical buildings across Europe.",
     image: "/images/arklow-fins.jpg",
-    gallery: [
-      "/images/2026-02-20250402_120133.jpg",
-      "/images/2026-02-20251009_114732.jpg",
-    ],
+    gallery: [],
     intro:
       "AOCA provides specialist building envelope engineering services for data centre, pharmaceutical, industrial and other mission-critical buildings. Our role is to ensure that roof and façade systems are structurally sound, fire safe, moisture robust, thermally efficient and compliant with the project specification. We support clients, design teams and specialist contractors through design, review and site inspection services.",
     sections: [
       {
         heading: "Design & Analysis",
         body: "Roof and façade structural design; wind load design to Eurocode and FM Global requirements across multiple European jurisdictions; and finite element analysis for bespoke details and complex geometry.",
+        image: "/images/2026-02-20250402_120133.jpg",
       },
       {
         heading: "Performance & Compliance",
         body: "Fire engineering review of façade, roof and cavity barrier systems; condensation risk analysis and hygrothermal modelling; U-value, thermal bridge and energy performance assessments; and architectural engineering specification advice.",
+        image: "/images/2026-02-20251009_114732.jpg",
       },
       {
         heading: "Assurance On Site",
@@ -574,11 +577,7 @@ const builtInServices: Service[] = [
     short:
       "Fitout and refurbishment, digital and drone surveys, legal mapping, thermal imaging and moisture investigation.",
     image: "/images/2026-02-dji_0871.jpg",
-    gallery: [
-      "/images/surveying-digital.jpg",
-      "/images/surveying-drone.jpg",
-      "/images/surveying-damp.jpg",
-    ],
+    gallery: [],
     intro:
       "From fitout and refurbishment to digital surveying and moisture investigation, AOCA's building surveying team gives owners, occupiers and investors a clear technical picture of the buildings they hold — using modern digital survey tools alongside three decades of engineering judgment.",
     sections: [
@@ -589,6 +588,7 @@ const builtInServices: Service[] = [
       {
         heading: "Digital Surveying",
         body: "We use digital surveying technologies to capture accurate building data, improving design coordination, condition assessment, measurement, documentation and project efficiency.",
+        image: "/images/surveying-digital.jpg",
       },
       {
         heading: "Legal Mapping",
@@ -601,10 +601,12 @@ const builtInServices: Service[] = [
       {
         heading: "Drone Surveys",
         body: "Our drone surveys provide safe, efficient access to roofs, façades and difficult locations, capturing high-quality visual information for assessment purposes.",
+        image: "/images/surveying-drone.jpg",
       },
       {
         heading: "Damp & Moisture Surveys",
         body: "We investigate damp and moisture problems using targeted surveys, testing and analysis to identify causes and recommend appropriate remedial solutions.",
+        image: "/images/surveying-damp.jpg",
       },
     ],
     highlights: [
@@ -771,7 +773,7 @@ const builtInProjects: Project[] = [
       "Full civil and structural design, supervision and certification for one of AOCA's flagship retail and road-infrastructure projects.",
     body: [
       "AOCA delivered the full civil and structural engineering design, supervision and certification for the Portlaoise Retail Park development. The project included a section of the Portlaoise Southern Orbital Route with two major roundabouts and required extensive coordination with Laois County Council, Inland Fisheries and other stakeholders.",
-      "Significant engineering challenges included a 4-metre retaining wall adjacent to the Triogue River, temporary river diversion works and oversized attenuation infrastructure. The completed development remains one of AOCA's flagship projects and is now a key transport and retail destination within Portlaoise.",
+      "Significant engineering challenges included a 4-metre retaining wall adjacent to the Triogue River, temporary river diversion works and oversized attenuation infrastructure. Extending to 11,748 sq m (126,450 sq ft), the completed development remains one of AOCA's flagship projects and is now a key transport and retail destination within Portlaoise.",
     ],
     servicesText: [
       "Civil engineering design, structural engineering design, site supervision, construction certification, road and infrastructure design, retaining wall design and stormwater attenuation design.",
@@ -1248,7 +1250,6 @@ const builtInProjects: Project[] = [
     thumb: P + "2026-02-warehouse-thumb.jpg",
     hero: P + "2026-02-dji_0871.jpg",
     gallery: [
-      P + "2026-02-dji_0877.jpg",
       P + "2026-02-dji_0878.jpg",
       P + "2026-02-dji_0885.jpg",
       P + "2026-02-dji_0952.jpg",
@@ -1312,11 +1313,9 @@ const builtInProjects: Project[] = [
     thumb: P + "2026-08-chatgpt-image-jul-10-2026-03-19-47-pm.jpg",
     hero: P + "2026-08-chatgpt-image-jul-10-2026-03-19-43-pm.jpg",
     gallery: [
-      P + "2026-08-picture1.jpg",
-      P + "2026-08-picture2.jpg",
-      P + "2026-08-picture3.jpg",
       P + "2026-08-chatgpt-image-jul-10-2026-03-19-47-pm.jpg",
       P + "2026-08-chatgpt-image-jul-10-2026-03-19-52-pm.jpg",
+      P + "2026-08-picture2.jpg",
     ],
     summary:
       "Planning secured at An Coimisiún Pleanála — project management and civil engineering through a complex environmental planning process.",
@@ -1337,8 +1336,8 @@ const builtInProjects: Project[] = [
     title: "The Hole in the Wall",
     sector: "residential",
     location: "Dublin",
-    thumb: P + "2026-02-holeinthewall-thumb.jpg",
-    hero: P + "2026-02-hole-in-the-wall-.jpg",
+    thumb: P + "2026-09-hole-in-the-wall-finished.jpg",
+    hero: P + "2026-09-hole-in-the-wall-finished.jpg",
     gallery: [
       P + "2026-02-20240926_090259262_ios.jpg",
       P + "2026-02-20241007_125128936_ios.jpg",
@@ -1363,7 +1362,7 @@ const builtInProjects: Project[] = [
   },
   {
     slug: "harper-street-mountmellick",
-    title: "Grange Manor, Harbour Street",
+    title: "Grange Manor Mountmellick",
     sector: "residential",
     location: "Mountmellick, Co. Laois",
     video: "/video/projects/harper-street-mountmellick.mp4",
@@ -1730,6 +1729,8 @@ export const testimonials = [
       "What sets AOCA apart is not just their technical expertise, but their reliability and professionalism. They are approachable, proactive, and always willing to go the extra mile to ensure projects run smoothly. We would have no hesitation in recommending AOCA to others.",
     author: "Owen O'Gorman",
     role: "Managing Director",
+    company: "Crown Roofing & Cladding",
+    logo: "/images/2026-09-logo-crown.png",
   },
   {
     quote:
@@ -1749,6 +1750,7 @@ export const testimonials = [
     author: "Peter Mulvaney",
     role: "Director",
     company: "Property Claims Loss Assessors",
+    logo: "/images/2026-06-pcla.png",
   },
   {
     quote:
@@ -1783,8 +1785,10 @@ export const logoWall = [
   ...[
     "18", "21-1", "22", "23", "24", "25", "26", "27", "28", "29", "30",
     "31", "32", "33", "35", "36", "37", "38", "39", "40", "41",
-    "42", "43",
+    "42",
   ].map((n) => `/images/2026-03-image-${n}.jpg`),
+  "/images/2026-09-logo-crown.png",
+  "/images/2026-09-logo-dncf.png",
 ];
 
 export const cultureImages = [
@@ -1882,6 +1886,13 @@ export const projectServices: Record<string, string[]> = {
   "one-off-bespoke-dwellings": ["civil-engineering", "structural-engineering"],
   "gortnahoe-house": ["structural-engineering", "assigned-certifier"],
 };
+
+/** Card-friendly location: just the county/city, not "Town, Co. X" twice
+ *  under a title that already names the town (Ciara, Sept 2026 notes). */
+export function shortLocation(location: string) {
+  const last = location.split(",").pop()?.trim();
+  return last && last.length > 2 ? last : location;
+}
 
 export function getService(slug: string) {
   return services.find((s) => s.slug === slug);

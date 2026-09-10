@@ -9,6 +9,7 @@ import {
   getSector,
   getService,
   projectServices,
+  shortLocation,
 } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import PageHero from "@/components/PageHero";
@@ -142,7 +143,7 @@ export default async function ProjectPage({
                     In pictures
                   </h2>
                   <div className="rule" />
-                  {project.gallery.length > 4 ? (
+                  {project.gallery.length > 1 ? (
                     // larger sets get the slider — best shots lead,
                     // the page stays a sensible length
                     <div className="mt-8">
@@ -275,7 +276,7 @@ export default async function ProjectPage({
                         </h3>
                         {p.location && (
                           <p className="mt-1 text-xs uppercase tracking-wider text-navy-400">
-                            {p.location}
+                            {shortLocation(p.location)}
                           </p>
                         )}
                       </div>
