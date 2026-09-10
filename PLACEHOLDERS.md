@@ -86,9 +86,9 @@ and the "AOCA Expertise — NEW" deck of August 2026.
   reordered per notes; "Grange Manor Mountmellick" rename; every gallery
   (2+ photos) now uses the enlargeable slider (Harold's Cross fixed);
   cards show county/city only under titles.
-- Contact form: /api/contact wired for Resend → info@aoca.ie +
-  info@aoca.co.uk. **David: set RESEND_API_KEY (and CONTACT_FROM after
-  verifying aoca.ie in Resend) in Vercel env to switch on delivery** —
+- Contact form: /api/contact ready for Web3Forms (no DNS) or Resend → info@aoca.ie +
+  info@aoca.co.uk. **Ciara: get a free Web3Forms access key with info@aoca.ie; David: set WEB3FORMS_ACCESS_KEY in Vercel (Resend alternative needs
+  a DNS TXT record, so avoid)** —
   until then the form reports a simulated send.
 - Projects nav dropdown: verified working (?sector= filter applies);
   left in place.
