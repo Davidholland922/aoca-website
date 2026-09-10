@@ -89,6 +89,7 @@ export default function HomePage() {
 
       {/* MISSION — brand feature panel built around the A */}
       <section className="blueprint relative overflow-hidden bg-navy-950">
+        {/* giant ghost A anchors the design */}
         <div className="container-site section relative grid items-center gap-14 lg:grid-cols-2">
           <Reveal>
             <p className="eyebrow">Our mission</p>
