@@ -25,6 +25,7 @@ import VideoHero from "@/components/VideoHero";
 import CtaBand from "@/components/CtaBand";
 import StatCounter from "@/components/StatCounter";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
+import AWatermark from "@/components/AWatermark";
 import AccreditationBadges from "@/components/AccreditationBadges";
 import FscBanner from "@/components/FscBanner";
 import CultureMarquee from "@/components/CultureMarquee";
@@ -90,6 +91,7 @@ export default function HomePage() {
       {/* MISSION — brand feature panel built around the A */}
       <section className="blueprint relative overflow-hidden bg-navy-950">
         {/* giant ghost A anchors the design */}
+        <AWatermark className="pointer-events-none absolute -left-32 top-1/2 h-[150%] w-auto -translate-y-1/2 select-none opacity-[0.06]" />
         <div className="container-site section relative grid items-center gap-14 lg:grid-cols-2">
           <Reveal>
             <p className="eyebrow">Our mission</p>

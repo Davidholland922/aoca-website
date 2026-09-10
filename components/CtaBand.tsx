@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
 import { site } from "@/lib/site";
 import Reveal from "@/components/Reveal";
+import AWatermark from "@/components/AWatermark";
 
 export default function CtaBand({
   title = "Talk to an engineer, not a switchboard.",
@@ -12,6 +13,7 @@ export default function CtaBand({
 }) {
   return (
     <section className="blueprint relative overflow-hidden bg-navy-950">
+      <AWatermark />
       <div className="container-site section relative">
         <Reveal>
           <div className="flex flex-col items-start gap-8 lg:flex-row lg:items-center lg:justify-between">
