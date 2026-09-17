@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { MapPin, Clock, Linkedin, Facebook, Instagram } from "lucide-react";
 import { site, offices } from "@/lib/site";
 
@@ -23,44 +22,9 @@ const socials = [
 export default function Footer() {
   return (
     <footer className="blueprint bg-navy-950 text-navy-200">
-      <div className="container-site py-16">
-        {/* Brand row */}
-        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
-          <div>
-            <Image
-              src="/aoca-logo-nav.png"
-              alt="AOCA"
-              width={438}
-              height={146}
-              unoptimized
-              className="h-14 w-auto"
-            />
-            <p className="mt-5 max-w-sm text-sm leading-relaxed">
-              A leader in multidisciplinary engineering expertise.
-            </p>
-            <p className="mt-5 flex items-center gap-3 text-sm">
-              <Clock size={15} className="shrink-0 text-brand" aria-hidden />
-              {site.hours}
-            </p>
-          </div>
-          <div className="flex gap-3">
-            {socials.map(({ href, label, Icon }) => (
-              <a
-                key={href}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="flex h-11 w-11 items-center justify-center border border-white/15 text-navy-200 transition-colors hover:border-brand hover:bg-brand hover:text-white"
-              >
-                <Icon size={18} aria-hidden />
-              </a>
-            ))}
-          </div>
-        </div>
-
-        {/* Offices — horizontal, full width */}
-        <div className="mt-14 border-t border-white/10 pt-12">
+      {/* No logo/strapline block — it repeated the header (Ciara, Sept 2026) */}
+      <div className="container-site py-14">
+        <div>
           <h2 className="font-heading text-sm font-semibold uppercase tracking-wider text-white">
             Offices
           </h2>
@@ -97,6 +61,26 @@ export default function Footer() {
               </li>
             ))}
           </ul>
+          <div className="mt-10 flex flex-wrap items-center justify-between gap-6 border-t border-white/10 pt-8">
+            <p className="flex items-center gap-3 text-sm">
+              <Clock size={15} className="shrink-0 text-brand" aria-hidden />
+              {site.hours}
+            </p>
+            <div className="flex gap-3">
+              {socials.map(({ href, label, Icon }) => (
+                <a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="flex h-11 w-11 items-center justify-center border border-white/15 text-navy-200 transition-colors hover:border-brand hover:bg-brand hover:text-white"
+                >
+                  <Icon size={18} aria-hidden />
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 

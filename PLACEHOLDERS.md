@@ -92,6 +92,9 @@ and the "AOCA Expertise — NEW" deck of August 2026.
   until then the form reports a simulated send.
 - Projects nav dropdown: verified working (?sector= filter applies);
   left in place.
+- Footer: logo/strapline block removed (repeated the header) — offices
+  row + hours + socials only, per Ciara mock. Hero ghost A watermark
+  removed from the homepage video (17 Sept, David).
 
 ## Waiting on the client (chase list)
 
