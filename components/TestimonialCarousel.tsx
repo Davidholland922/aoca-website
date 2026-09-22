@@ -10,6 +10,7 @@ type Testimonial = {
   role: string;
   company?: string;
   logo?: string;
+  logoTall?: boolean;
 };
 
 /** Auto-advancing testimonial carousel with manual controls. */
@@ -70,7 +71,7 @@ export default function TestimonialCarousel({
                 <img
                   src={t.logo}
                   alt={t.company ?? ""}
-                  className="mt-3 h-9 w-auto"
+                  className={t.logoTall ? "mt-3 h-16 w-auto" : "mt-3 h-9 w-auto"}
                   loading="lazy"
                 />
               )}

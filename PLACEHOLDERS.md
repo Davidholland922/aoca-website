@@ -96,6 +96,25 @@ and the "AOCA Expertise — NEW" deck of August 2026.
   row + hours + socials only, per Ciara mock. Hero ghost A watermark
   removed from the homepage video (17 Sept, David).
 
+## Implemented from Ciara's "Update Notes 16-09-26" (22 Sept 2026)
+
+- All A marks + nav/footer logo + favicon + og image rebuilt from the
+  official artwork in the shared "AOCA Logo" folder — no more pixelation
+  or white outline. Hero-video watermark stays removed.
+- PCLA testimonial logo enlarged (squarish logos render taller now).
+- Consulting Engineers page: photos beside Remediation & Reinstatement
+  and Surveys & Mapping sections.
+- History per Ciara's red wording: 2024 → Old Bank of Ireland Tuam
+  restoration; 2025 split into "Recognised with prestigious industry
+  awards" (Arklow) + "A new chapter" (Philip steps in as MD, portrait
+  photo); Today text confirmed; newspaper clipping moved 2006 → 2017.
+- Projects nav dropdown bug FIXED (second sector pick now re-filters —
+  the grid follows ?sector= URL changes).
+- Hidden /terms-of-business page scaffolded: unlisted (no nav/footer/
+  sitemap links), noindex. **Waiting on the Terms of Business document
+  from the client — nothing was ever shared (searched the whole
+  SharePoint drop + all notes docs, 22 Sept).**
+
 ## Waiting on the client (chase list)
 
 | Item | Who | Notes |
@@ -109,6 +128,8 @@ and the "AOCA Expertise — NEW" deck of August 2026.
 | Logo wall accuracy | **Ciara** | Verify all 30 client logos are current versions |
 | Testimonial company names | Client | Aug 2026 notes ask for company under each testimonial — only Peter Mulvaney's (Property Claims Loss Assessors) is known; need companies for Jonathan Marais, Fiona Beirne, Stephen Nolan + others |
 | DNCF replacement logo | Client | DNCF logo removed from the logo wall per Aug 2026 notes — client to send the replacement logo mentioned |
+| Terms of Business content | Client | Hidden /terms-of-business page is scaffolded; no terms document was ever shared — need the actual terms text (and confirm link-only vs footer link) |
+| Testimonial logos (rest) | Client | Crown ok, PCLA enlarged; logos for the remaining testimonials never supplied |
 | Office phone numbers | Client | "Multiple numbers so not sure this is 100% correct" |
 | New insights articles ×6 | Client | FM Design for High Value Buildings; Designing for the Data Centre Industry; What is Condensation Risk Analysis; An update on Pyrite in Ireland; Structural Fire Engineering (list from slide 1 of the Aug 2026 deck). "A New Adventure – Fire Safety Consultants" written by us Aug 2026 (dated Jan 2026 per David) — needs client sign-off |
 | Building Surveying sign-off | Client | Copy now live from their deck but deck marks it "work in progress" |

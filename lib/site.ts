@@ -136,7 +136,6 @@ export const timeline = [
     title: "A permanent home",
     text: "The practice moves to its current head office at Lismard House on the Timahoe Road, Portlaoise.",
     image: "/images/office-building.jpg",
-    clipping: "/images/aoca-newspaper.jpg",
   },
   {
     year: "2014",
@@ -150,6 +149,7 @@ export const timeline = [
     // [PLACEHOLDER] year to be confirmed by Philip (Ciara, Sept 2026 notes)
     text: "AOCA rebranded to create a more inclusive identity that reflected the people and values behind the business. The new name represented the company's growth from a small regional consultancy into a national and international engineering practice.",
     image: "/images/2026-08-aoca-engineering-portlaoise-dbp-01-03-17-1-of-3-003.jpg",
+    clipping: "/images/aoca-newspaper.jpg",
   },
   {
     year: "2016–2023",
@@ -160,14 +160,20 @@ export const timeline = [
   {
     year: "2024",
     title: "Recognised as Best in Class",
-    text: "Shortlisted at the Irish Building & Design Awards, and appointed Design Lead and Project Manager on a £9m fire safety and cladding remediation project in the UK. Three offices now serve Ireland, the UK and Europe.",
+    text: "Shortlisted at the Irish Building & Design Awards, and appointed Design Lead and Project Manager on the restoration of the historic Old Bank of Ireland Building in Tuam — converting it into modern offices for the Department of Social Protection.",
     image: "/images/ibda-finalist-2024.png",
   },
   {
     year: "2025",
-    title: "A new chapter",
-    text: "The Arklow Wastewater Treatment Plant is recognised with prestigious industry awards, Fire Safety Consultants launches in partnership with OCF — and founder Aidan O'Connell hands the reins to a new generation of leadership.",
+    title: "Recognised with prestigious industry awards",
+    text: "The Arklow Wastewater Treatment Plant is recognised with prestigious industry awards.",
     image: "/images/2025-09-arklow_case_study_featured_ojg6cb.webp",
+  },
+  {
+    year: "2025",
+    title: "A new chapter",
+    text: "After nearly three decades, founder Aidan O'Connell hands the reins to a new generation of leadership as Philip O'Connell steps in as Managing Director.",
+    image: "/images/2025-11-153a3552.jpg",
   },
   {
     year: "Today",
@@ -505,6 +511,7 @@ const builtInServices: Service[] = [
       {
         heading: "Remediation & Reinstatement",
         body: "Our team has extensive experience assessing and remediating damaged or defective buildings, including pyrite-affected homes, fire-damaged structures, flood-impacted properties and subsidence cases. We deliver technically sound, site-specific solutions informed by decades of hands-on engineering practice and knowledge of local conditions.",
+        image: "/images/2026-09-pyrite-infill.jpg",
       },
       {
         heading: "Construction Latent Defect Remediation",
@@ -521,6 +528,7 @@ const builtInServices: Service[] = [
       {
         heading: "Surveys & Mapping",
         body: "We provide land surveying, mapping, setting-out and boundary services to support planning, design and construction activities.",
+        image: "/images/2026-05-geo.jpg",
       },
       {
         heading: "Project Supervisor Design Process (PSDP)",
@@ -1751,6 +1759,7 @@ export const testimonials = [
     role: "Director",
     company: "Property Claims Loss Assessors",
     logo: "/images/2026-06-pcla.png",
+    logoTall: true,
   },
   {
     quote:

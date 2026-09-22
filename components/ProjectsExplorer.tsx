@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import clsx from "clsx";
@@ -8,7 +9,7 @@ import { motion } from "framer-motion";
 import { shortLocation } from "@/lib/site";
 import type { Project, Sector } from "@/lib/site";
 
-/** Filterable project grid; honours ?sector= in the URL on first load. */
+/** Filterable project grid; follows ?sector= in the URL (navbar dropdown). */
 export default function ProjectsExplorer({
   projects,
   sectors,
@@ -17,11 +18,18 @@ export default function ProjectsExplorer({
   sectors: Sector[];
 }) {
   const [active, setActive] = useState<string>("all");
+  const searchParams = useSearchParams();
+  const sectorParam = searchParams.get("sector");
 
+  // Track the URL param so picking a second sector from the navbar
+  // dropdown re-filters (the page does not remount on same-route nav).
   useEffect(() => {
-    const param = new URLSearchParams(window.location.search).get("sector");
-    if (param && sectors.some((s) => s.slug === param)) setActive(param);
-  }, [sectors]);
+    if (sectorParam && sectors.some((s) => s.slug === sectorParam)) {
+      setActive(sectorParam);
+    } else if (!sectorParam) {
+      setActive("all");
+    }
+  }, [sectorParam, sectors]);
 
   const shown =
     active === "all" ? projects : projects.filter((p) => p.sector === active);

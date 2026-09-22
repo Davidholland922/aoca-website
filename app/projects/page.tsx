@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { projects, sectors } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import PageHero from "@/components/PageHero";
@@ -26,7 +27,10 @@ export default function ProjectsPage() {
       <section className="section bg-white">
         <div className="container-site">
           <Reveal>
-            <ProjectsExplorer projects={projects} sectors={sectors} />
+            {/* Suspense: ProjectsExplorer reads useSearchParams */}
+            <Suspense>
+              <ProjectsExplorer projects={projects} sectors={sectors} />
+            </Suspense>
           </Reveal>
         </div>
       </section>

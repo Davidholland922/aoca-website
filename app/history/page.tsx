@@ -35,7 +35,7 @@ export default function HistoryPage() {
             />
             <div className="space-y-16 md:space-y-24">
               {timeline.map((t, i) => (
-                <Reveal key={t.year}>
+                <Reveal key={`${t.year}-${t.title}`}>
                   <div
                     className={`relative grid items-center gap-8 md:grid-cols-2 md:gap-16 ${
                       i % 2 ? "md:text-left" : ""

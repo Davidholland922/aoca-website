@@ -177,12 +177,12 @@ export default function Navbar() {
           <Image
             src="/aoca-logo-nav.png"
             alt="AOCA"
-            width={438}
-            height={146}
+            width={1496}
+            height={494}
             priority
             unoptimized
             className={clsx(
-              "w-auto transition-all duration-300",
+              "w-auto object-contain object-left transition-all duration-300",
               solid ? "h-14 lg:h-[4.25rem]" : "h-20 lg:h-28"
             )}
           />
