@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import {
-  site,
   stats,
   mission,
   values,
@@ -38,10 +37,7 @@ export default function HomePage() {
       <VideoHero poster={companyImages.videoPoster}>
         <div className="container-site py-24">
           <Reveal>
-            <p className="eyebrow">
-              Consulting Engineers · Ireland &amp; UK · Since {site.founded}
-            </p>
-            <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-[1.05] text-white sm:text-6xl lg:text-7xl">
+            <h1 className="max-w-4xl text-4xl font-semibold leading-[1.05] text-white sm:text-6xl lg:text-7xl">
               We turn vision{" "}
               <span className="text-brand-light">into reality.</span>
             </h1>
