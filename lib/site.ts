@@ -1664,7 +1664,7 @@ const builtInProjects: Project[] = [
   },
   {
     slug: "pharmaceutical-facility-extension",
-    title: "Pharmaceutical Building, Ireland",
+    title: "Pharmaceutical Building Extension, Ireland",
     sector: "life-sciences-healthcare",
     location: "Ireland",
     thumb: P + "2026-09-pharma-ext-render-1.jpg",

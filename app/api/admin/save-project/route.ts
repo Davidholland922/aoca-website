@@ -18,6 +18,8 @@ type Record_ = {
   servicesText?: string[];
   video?: string;
   videoPoster?: string;
+  /** Existing photos the editor kept, in order (first = cover). */
+  keptImages?: string[];
 };
 
 /** Create OR edit a project (upsert by slug into content/projects.json). */
@@ -47,19 +49,27 @@ export async function POST(req: NextRequest) {
     let hero = record.hero;
     let gallery = record.gallery ?? [];
 
+    const kept = (record.keptImages ?? []).filter(
+      (s) => typeof s === "string" && s.startsWith("/images/")
+    );
+    const newPaths: string[] = [];
     if (newImages?.length) {
       const stamp = Date.now().toString(36).slice(-5);
-      const paths: string[] = [];
       newImages.slice(0, 12).forEach((img, i) => {
         const base64 = img.dataUrl.split(",")[1];
         if (!base64) return;
         const path = `public/images/uploads/${slug}-${stamp}-${i + 1}.jpg`;
         files.push({ path, base64 });
-        paths.push(`/${path.replace(/^public\//, "")}`);
+        newPaths.push(`/${path.replace(/^public\//, "")}`);
       });
-      thumb = paths[0];
-      hero = paths[0];
-      gallery = paths.slice(1);
+    }
+    if (record.keptImages !== undefined || newPaths.length) {
+      // The editor sent an explicit photo list: kept photos first (their
+      // order preserved), new uploads appended; first overall is the cover.
+      const combined = [...kept, ...newPaths].slice(0, 12);
+      thumb = combined[0];
+      hero = combined[0];
+      gallery = combined.slice(1);
     }
     if (!thumb) {
       return NextResponse.json(

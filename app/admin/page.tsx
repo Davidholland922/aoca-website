@@ -77,6 +77,8 @@ export default function AdminPage() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [shots, setShots] = useState<Shot[]>([]);
+  // existing photos kept on an edited project (first is the cover)
+  const [keptImages, setKeptImages] = useState<string[]>([]);
   const [status, setStatus] = useState<"idle" | "busy" | "done">("idle");
   const [error, setError] = useState("");
   const [publishedSlug, setPublishedSlug] = useState("");
@@ -91,7 +93,8 @@ export default function AdminPage() {
   const [selected, setSelected] = useState<string[]>([]);
   const [featured, setFeatured] = useState(false);
 
-  const maxShots = mode === "project" ? 12 : 1;
+  const maxShots =
+    mode === "project" ? Math.max(0, 12 - keptImages.length) : 1;
 
   async function addFiles(files: FileList | null) {
     if (!files) return;
@@ -108,6 +111,7 @@ export default function AdminPage() {
     setServicesText(""); setSelected([]); setShots([]); setFeatured(false);
     setVideoPath("");
     setEditingSlug(null); setExistingImages({});
+    setKeptImages([]);
     setStatus("idle"); setError("");
   }
 
@@ -127,6 +131,11 @@ export default function AdminPage() {
       featuredSlugs ? featuredSlugs.includes(p.slug) : !!p.featured
     );
     setExistingImages({ thumb: p.thumb, hero: p.hero, gallery: p.gallery });
+    setKeptImages(
+      [p.thumb, p.hero, ...(p.gallery ?? [])].filter(
+        (src, i, arr): src is string => !!src && arr.indexOf(src) === i
+      )
+    );
     window.scrollTo({ top: 0 });
   }
 
@@ -150,7 +159,7 @@ export default function AdminPage() {
     if (!title.trim()) return setError("A title is required.");
     if (mode === "project") {
       if (!summary.trim()) return setError("The short summary is required.");
-      if (shots.length === 0 && !existingImages.thumb)
+      if (shots.length === 0 && keptImages.length === 0)
         return setError("Add at least one photo — the first becomes the cover.");
     } else if (paragraphs.length === 0) {
       return setError("Write the article text before publishing.");
@@ -170,6 +179,7 @@ export default function AdminPage() {
                 thumb: existingImages.thumb,
                 hero: existingImages.hero,
                 gallery: existingImages.gallery,
+                keptImages: editingSlug ? keptImages : undefined,
                 video: videoPath || undefined,
                 videoPoster: undefined,
                 body: paragraphs,
@@ -351,8 +361,9 @@ export default function AdminPage() {
           <>
         {editingSlug && (
           <p className="border border-navy-200 bg-white px-4 py-3 text-sm text-navy-600">
-            You are editing an existing {mode}. Photos are kept unless you add
-            new ones (new photos replace the old set).
+            You are editing an existing {mode}. Its current photos are shown
+            below — click the &times; on a photo to take it off, and any new
+            photos you add go on the end.
             <button
               type="button"
               onClick={reset}
@@ -476,9 +487,67 @@ export default function AdminPage() {
           </>
         )}
 
+        {mode === "project" && editingSlug && keptImages.length > 0 && (
+          <div>
+            <span className={labelCls}>
+              Current photos{" "}
+              <span className="font-normal text-navy-500">
+                — click &times; to remove one; the first is the cover
+              </span>
+            </span>
+            <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6">
+              {keptImages.map((src, i) => (
+                <div key={src} className="group relative aspect-[4/3]">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={src}
+                    alt={`Current photo ${i + 1}`}
+                    className="h-full w-full bg-navy-50 object-contain"
+                  />
+                  {i === 0 && (
+                    <span className="absolute left-1 top-1 bg-brand px-1.5 py-0.5 text-[10px] font-semibold uppercase text-white">
+                      Cover
+                    </span>
+                  )}
+                  <button
+                    type="button"
+                    aria-label={`Remove current photo ${i + 1}`}
+                    onClick={() =>
+                      setKeptImages(keptImages.filter((_, j) => j !== i))
+                    }
+                    className="absolute right-1 top-1 flex h-6 w-6 cursor-pointer items-center justify-center bg-navy-950/80 text-white hover:bg-brand"
+                  >
+                    <X size={13} aria-hidden />
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {mode === "article" && editingSlug && existingImages.image && (
+          <div>
+            <span className={labelCls}>
+              Current cover{" "}
+              <span className="font-normal text-navy-500">
+                — add a new photo below to replace it
+              </span>
+            </span>
+            <div className="relative aspect-[16/9] w-48">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={existingImages.image}
+                alt="Current cover"
+                className="h-full w-full bg-navy-50 object-contain"
+              />
+            </div>
+          </div>
+        )}
+
         <div>
           <span className={labelCls}>
-            Photos {mode === "project" && !editingSlug && <span className="text-brand">*</span>}{" "}
+            {editingSlug && mode === "project" ? "Add photos" : "Photos"}{" "}
+            {mode === "project" && !editingSlug && <span className="text-brand">*</span>}{" "}
             <span className="font-normal text-navy-500">
               {mode === "project"
                 ? "— first photo becomes the cover; up to 12"
@@ -501,7 +570,7 @@ export default function AdminPage() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={s.dataUrl} alt={`Photo ${i + 1}`}
                     className="h-full w-full object-cover" />
-                  {i === 0 && (
+                  {i === 0 && keptImages.length === 0 && (
                     <span className="absolute left-1 top-1 bg-brand px-1.5 py-0.5 text-[10px] font-semibold uppercase text-white">
                       Cover
                     </span>

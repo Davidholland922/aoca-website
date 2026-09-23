@@ -130,7 +130,13 @@ and the "AOCA Expertise — NEW" deck of August 2026.
 - Project galleries now show each photo IN FULL (no corner cropping) —
   slider and grid letterbox instead of crop.
 - Ciara has the admin login (aoca-draft.vercel.app/admin) for
-  self-service image management.
+  self-service image management. Editor upgraded 23 Sept after her
+  feedback: editing a project now SHOWS its current photos with per-photo
+  remove; new uploads append instead of replacing the set.
+- Second pharma project renamed "Pharmaceutical Building Extension,
+  Ireland" (Ciara approved).
+- Testimonial logos: Ciara emailed the testimonials + logos 23 Sept —
+  files still to be saved from the email and wired in.
 
 ## Waiting on the client (chase list)
 
