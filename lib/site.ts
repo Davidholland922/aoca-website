@@ -1740,12 +1740,16 @@ export const testimonials = [
       "Their team brings genuine technical expertise to every project, and their ability to engage practically and collaboratively with our architectural practice makes the design and delivery process genuinely seamless. We value their engineering knowledge, professionalism and responsiveness — and recommend without hesitation.",
     author: "Jonathan Marais",
     role: "Head of Operations",
+    company: "RDF Architects & Planning",
+    logo: "/images/2026-06-rdf.png",
   },
   {
     quote:
       "The professionalism and expert guidance AOCA have afforded in their investigations have left no stones unturned. I consider AOCA a problem solver who consistently delivers high quality work, and to date their assistance has been invaluable.",
     author: "Fiona Beirne",
     role: "Senior Claims Associate",
+    company: "Davies",
+    logo: "/images/2026-06-davies-rgb-white-copy.png",
   },
   {
     quote:
@@ -1761,6 +1765,8 @@ export const testimonials = [
       "I have worked alongside many consulting professionals over the years, but few demonstrate the consistency, integrity, impartiality, and technical competence that AOCA has shown time and again. Their team has provided high-quality, objective engineering services on a wide range of domestic and commercial property damage claims.",
     author: "Stephen Nolan",
     role: "Major & Complex Loss Specialist",
+    company: "OMC Claims",
+    logo: "/images/2026-06-omc-logo.png",
   },
   {
     quote:
@@ -1773,6 +1779,8 @@ export const testimonials = [
       "I have worked with AOCA on various projects over many years. In all situations they have been diligent, professional, approachable and delivered a high quality service. The staff are committed and client focused, ensuring the delivery of projects.",
     author: "Donal Fitzgerald",
     role: "Director",
+    company: "DNCF",
+    logo: "/images/2026-09-logo-dncf-light.png",
   },
 ];
 
