@@ -157,7 +157,7 @@ export default async function ProjectPage({
                       {project.gallery.map((src, i) => (
                         <div
                           key={src}
-                          className={`relative overflow-hidden ${
+                          className={`relative overflow-hidden bg-navy-50 ${
                             i % 5 === 0
                               ? "col-span-2 aspect-[16/9]"
                               : "aspect-[4/3]"
@@ -167,7 +167,7 @@ export default async function ProjectPage({
                             src={src}
                             alt={`${project.title} — photo ${i + 1}`}
                             fill
-                            className="object-cover transition-transform duration-500 hover:scale-105"
+                            className="object-contain"
                             sizes="(min-width: 1024px) 30rem, 50vw"
                             loading="lazy"
                           />

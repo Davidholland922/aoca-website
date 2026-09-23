@@ -107,7 +107,7 @@ export default function ProjectGallery({
               fill
               loading={i === 0 ? "eager" : "lazy"}
               sizes="(min-width: 1024px) 44rem, 100vw"
-              className={`object-cover transition-opacity duration-500 ease-out motion-reduce:transition-none ${
+              className={`object-contain transition-opacity duration-500 ease-out motion-reduce:transition-none ${
                 index === i ? "opacity-100" : "opacity-0"
               }`}
               aria-hidden={index !== i}

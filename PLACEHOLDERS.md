@@ -115,6 +115,23 @@ and the "AOCA Expertise — NEW" deck of August 2026.
   from the client — nothing was ever shared (searched the whole
   SharePoint drop + all notes docs, 22 Sept).**
 
+## Implemented from Ciara's "Update Notes 23-09-26" + email (23 Sept 2026)
+
+- Life Sciences anonymisation per client contract: both pharma projects
+  now "Pharmaceutical Building, Ireland" — operator names removed from
+  titles, text, URLs (new slug pharmaceutical-facility-extension) AND
+  images (branded photos deleted; watermarked aerials cropped clean;
+  files with the operator's name in the filename removed/renamed).
+- Homepage: logo strip under the testimonials removed.
+- History 2025 "A new chapter" → photo of Aidan & Philip together
+  (from Ciara's notes doc).
+- Structural Engineering expertise: both sideways photos rotated upright.
+- St. Patrick's NS: toilet photo removed (not in the client's folder).
+- Project galleries now show each photo IN FULL (no corner cropping) —
+  slider and grid letterbox instead of crop.
+- Ciara has the admin login (aoca-draft.vercel.app/admin) for
+  self-service image management.
+
 ## Waiting on the client (chase list)
 
 | Item | Who | Notes |
@@ -122,7 +139,7 @@ and the "AOCA Expertise — NEW" deck of August 2026.
 | ~~Featured projects list~~ | Done | Aug 2026 notes: Stradbally Fire Station, Data Centre Projects, Hole in the Wall (set in content/overrides.json) |
 | Rosslare Europort copy | Client | docx says "Text Required" — page live with images + one-line summary only |
 | Data Centre Projects copy | Client | docx says "Require Text" — interim summary drafted by us, needs sign-off |
-| Bristol-Myers Squibb copy | Client | Folder of photos supplied but no text in the docx |
+| Pharma extension copy | Client | (Project formerly named after its operator — anonymised 23 Sept per contract; no names in title, text, images or URLs.) Photos live, still no body text |
 | Portlaoise Retail Park size | Client | Their new copy says "20,000 sq ft" but the old site said 130,000 sq ft — confirm which; size omitted from our copy meanwhile |
 | Glass Bottle / Hole in the Wall status | Client | docx says "Ongoing / Completed (confirm as applicable)" |
 | Logo wall accuracy | **Ciara** | Verify all 30 client logos are current versions |

@@ -11,7 +11,6 @@ import {
   projects,
   featuredProjects,
   testimonials,
-  partnerLogos,
   logoWall,
   cultureImages,
   companyImages,
@@ -436,20 +435,6 @@ export default function HomePage() {
           <Reveal>
             <div className="mt-12">
               <TestimonialCarousel testimonials={testimonials} />
-            </div>
-          </Reveal>
-          <Reveal>
-            <div className="mt-12 flex flex-wrap items-center justify-center gap-x-14 gap-y-8 border-t border-white/10 pt-10">
-              {partnerLogos.map((l) => (
-                <Image
-                  key={l.alt}
-                  src={l.src}
-                  alt={l.alt}
-                  width={140}
-                  height={56}
-                  className="h-9 w-auto object-contain opacity-70 transition-opacity hover:opacity-100"
-                />
-              ))}
             </div>
           </Reveal>
         </div>
