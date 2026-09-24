@@ -1773,6 +1773,8 @@ export const testimonials = [
       "No nonsense, straight talking expert advice in a timely manner.",
     author: "Alan Synnott",
     role: "Stephen MacKenzie & Co",
+    logo: "/images/2026-09-logo-mackenzie-light.png",
+    logoTall: true,
   },
   {
     quote:
