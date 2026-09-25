@@ -3,11 +3,11 @@ import { commitFiles, readRepoJson } from "@/lib/github";
 
 export const runtime = "nodejs";
 
-const SECTIONS = ["team", "stats", "offices", "about", "jobs", "featured", "banners", "timeline"] as const;
+const SECTIONS = ["team", "stats", "offices", "about", "jobs", "featured", "banners", "timeline", "contactKeys"] as const;
 type Section = (typeof SECTIONS)[number];
 
 // sections that may legitimately be saved as an empty list
-const MAY_BE_EMPTY: Section[] = ["jobs", "featured"];
+const MAY_BE_EMPTY: Section[] = ["jobs", "featured", "contactKeys"];
 
 function telHref(phone: string) {
   const digits = phone.replace(/[^\d+]/g, "").replace(/(?!^)\+/g, "");
@@ -69,6 +69,28 @@ export async function POST(req: NextRequest) {
           ...(m.clipping ? { clipping: m.clipping } : {}),
         }))
         .filter((m) => m.year && m.title && m.text);
+    } else if (section === "contactKeys") {
+      // Web3Forms access keys are UUIDs; anything else is a paste mistake
+      const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+      const rows = (data as { inbox?: string; accessKey?: string }[]).map(
+        (k) => ({
+          inbox: (k.inbox ?? "").trim(),
+          accessKey: (k.accessKey ?? "").trim(),
+        })
+      );
+      const badKey = rows.find((k) => k.accessKey && !uuid.test(k.accessKey));
+      if (badKey) {
+        return NextResponse.json(
+          {
+            error:
+              "That doesn't look like a Web3Forms access key — it should look like 1a2b3c4d-1234-1234-1234-123456abcdef. Copy it exactly from web3forms.com.",
+          },
+          { status: 400 }
+        );
+      }
+      clean = rows.filter(
+        (k) => ["ie", "uk"].includes(k.inbox) && k.accessKey
+      );
     } else if (section === "banners") {
       clean = (data as { key?: string; title?: string; body?: string }[])
         .map((b) => ({

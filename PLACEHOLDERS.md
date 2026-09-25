@@ -172,7 +172,10 @@ and the "AOCA Expertise — NEW" deck of August 2026.
 
 ## Technical before production launch
 
-- Contact form backend (`components/ContactForm.tsx`) — still simulates success. When wired, submissions must go to BOTH info@aoca.ie and info@aoca.co.uk (Aug 2026 notes).
+- Contact form: SELF-SERVICE since 26 Sept — admin "Edit details → Contact
+  form" tab; client creates a Web3Forms account with info@aoca.ie (and
+  optionally info@aoca.co.uk), pastes the access key(s) there, form goes
+  live. Until then the form simulates. Env vars still override if set.
 - Re-enable indexing (`app/layout.tsx` robots + `app/robots.ts`).
 - Update `site.url` in `lib/site.ts` to https://aoca.ie.
 - Cookie/privacy policy pages.

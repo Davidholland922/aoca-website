@@ -11,6 +11,7 @@ import {
   jobs as currentJobs,
   banners as currentBanners,
   timeline as currentTimeline,
+  contactKeys as currentContactKeys,
 } from "@/lib/site";
 
 type Section =
@@ -20,7 +21,8 @@ type Section =
   | "about"
   | "jobs"
   | "banners"
-  | "timeline";
+  | "timeline"
+  | "contactKeys";
 
 type TimelineRow = {
   year: string;
@@ -56,6 +58,13 @@ export default function AdminSections({ password }: { password: string }) {
   const [timelineRows, setTimelineRows] = useState<TimelineRow[]>(
     currentTimeline.map((m) => ({ ...m }))
   );
+  const [keyRows, setKeyRows] = useState(
+    (["ie", "uk"] as const).map((inbox) => ({
+      inbox,
+      accessKey:
+        currentContactKeys.find((k) => k.inbox === inbox)?.accessKey ?? "",
+    }))
+  );
   const [bannerRows, setBannerRows] = useState(
     (["home", "projects"] as const).map((key) => ({
       key,
@@ -85,7 +94,9 @@ export default function AdminSections({ password }: { password: string }) {
                   ? bannerRows
                   : section === "timeline"
                     ? timelineRows
-                    : jobRows;
+                    : section === "contactKeys"
+                      ? keyRows.filter((k) => k.accessKey.trim())
+                      : jobRows;
       const res = await fetch("/api/admin/update-section", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -109,6 +120,7 @@ export default function AdminSections({ password }: { password: string }) {
     { key: "jobs", label: "Job openings" },
     { key: "banners", label: "Page banners" },
     { key: "timeline", label: "History timeline" },
+    { key: "contactKeys", label: "Contact form" },
   ];
 
   return (
@@ -333,6 +345,53 @@ export default function AdminSections({ password }: { password: string }) {
             className="flex min-h-[44px] cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-navy-200 text-sm font-medium text-navy-500 hover:border-brand hover:text-brand">
             <Plus size={16} aria-hidden /> Add milestone
           </button>
+        </div>
+      )}
+
+      {section === "contactKeys" && (
+        <div className="grid gap-3">
+          <div className="border border-navy-100 bg-white p-4 text-sm leading-relaxed text-navy-600">
+            <p className="font-semibold text-navy-900">
+              Connect the contact form to your inbox (one-off, ~2 minutes)
+            </p>
+            <ol className="mt-2 list-decimal space-y-1 pl-5">
+              <li>
+                Go to{" "}
+                <a
+                  href="https://app.web3forms.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-brand underline-offset-2 hover:underline"
+                >
+                  app.web3forms.com
+                </a>{" "}
+                and choose <strong>Continue with Email</strong> using{" "}
+                <strong>info@aoca.ie</strong> (it sends a sign-in link to that
+                inbox).
+              </li>
+              <li>Once signed in, copy the Access Key it shows you.</li>
+              <li>Paste it below and press Save changes.</li>
+            </ol>
+            <p className="mt-2">
+              From then on, every website enquiry lands in info@aoca.ie. To
+              also get copies in info@aoca.co.uk, repeat the steps with that
+              address and paste its key in the second box.
+            </p>
+          </div>
+          {keyRows.map((k, i) => (
+            <div key={k.inbox} className="grid gap-2 border border-navy-100 bg-white p-4">
+              <p className="text-xs font-semibold uppercase tracking-wider text-navy-500">
+                {k.inbox === "ie"
+                  ? "Access key for info@aoca.ie"
+                  : "Access key for info@aoca.co.uk (optional)"}
+              </p>
+              <input className={input}
+                placeholder="e.g. 1a2b3c4d-1234-1234-1234-123456abcdef"
+                value={k.accessKey}
+                aria-label={`Access key ${k.inbox}`}
+                onChange={(e) => setKeyRows(keyRows.map((x, j) => (j === i ? { ...x, accessKey: e.target.value } : x)))} />
+            </div>
+          ))}
         </div>
       )}
 

@@ -26,6 +26,7 @@ const overrides = overridesJson as Partial<{
   featured: string[];
   jobs: { title: string; location: string; type: string; summary: string }[];
   banners: { key: string; title: string; body: string }[];
+  contactKeys: { inbox: string; accessKey: string }[];
   timeline: {
     year: string;
     title: string;
@@ -49,6 +50,11 @@ const bannerDefaults = {
 const bannerOverrides = Object.fromEntries(
   (overrides.banners ?? []).map((b) => [b.key, { title: b.title, body: b.body }])
 );
+/** Web3Forms access keys pasted by the client in /admin (public-safe by
+ * Web3Forms design — they only allow sending mail TO the linked inbox). */
+export const contactKeys: { inbox: string; accessKey: string }[] =
+  overrides.contactKeys ?? [];
+
 export const banners = {
   home: bannerOverrides.home ?? bannerDefaults.home,
   projects: bannerOverrides.projects ?? bannerDefaults.projects,

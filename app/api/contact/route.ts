@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { contactKeys } from "@/lib/site";
 
 /**
  * Contact form endpoint. Delivery options, in order of preference:
@@ -32,8 +33,10 @@ export async function POST(req: Request) {
   // One key per destination inbox: WEB3FORMS_ACCESS_KEY (info@aoca.ie)
   // and optionally WEB3FORMS_ACCESS_KEY_UK (info@aoca.co.uk).
   const w3keys = [
-    process.env.WEB3FORMS_ACCESS_KEY,
-    process.env.WEB3FORMS_ACCESS_KEY_UK,
+    process.env.WEB3FORMS_ACCESS_KEY ??
+      contactKeys.find((k) => k.inbox === "ie")?.accessKey,
+    process.env.WEB3FORMS_ACCESS_KEY_UK ??
+      contactKeys.find((k) => k.inbox === "uk")?.accessKey,
   ].filter((k): k is string => !!k);
   if (w3keys.length) {
     const results = await Promise.all(
