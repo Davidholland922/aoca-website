@@ -218,7 +218,18 @@ export default function AdminPage() {
       setStatus("done");
     } catch (e) {
       setStatus("idle");
-      setError(e instanceof Error ? e.message : "Something went wrong");
+      let msg = e instanceof Error ? e.message : "Something went wrong";
+      if (/bad credentials|401|403/i.test(msg)) {
+        msg =
+          "The website's secure connection for saving changes has expired — nothing was saved. Please tell David and he'll renew it (your changes here are safe to redo afterwards).";
+      }
+      setError(msg);
+      // the error box sits above the save button — make sure it's on screen
+      setTimeout(() => {
+        document
+          .querySelector('[role="alert"]')
+          ?.scrollIntoView({ block: "center", behavior: "smooth" });
+      }, 50);
     }
   }
 
