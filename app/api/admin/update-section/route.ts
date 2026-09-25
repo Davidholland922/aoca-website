@@ -3,7 +3,7 @@ import { commitFiles, readRepoJson } from "@/lib/github";
 
 export const runtime = "nodejs";
 
-const SECTIONS = ["team", "stats", "offices", "about", "jobs", "featured", "banners", "timeline", "contactKeys"] as const;
+const SECTIONS = ["team", "stats", "offices", "about", "jobs", "featured", "banners", "timeline", "contactKeys", "mission"] as const;
 type Section = (typeof SECTIONS)[number];
 
 // sections that may legitimately be saved as an empty list
@@ -134,6 +134,14 @@ export async function POST(req: NextRequest) {
           };
         })
         .filter((o) => o.name && o.phone);
+    } else if (section === "mission") {
+      clean = (data as string[]).map((p) => String(p).trim()).slice(0, 2);
+      if (clean.some((p) => !p)) {
+        return NextResponse.json(
+          { error: "Both mission lines are required" },
+          { status: 400 }
+        );
+      }
     } else if (section === "about") {
       clean = (data as string[]).map((p) => String(p).trim()).filter(Boolean);
     } else if (section === "jobs") {

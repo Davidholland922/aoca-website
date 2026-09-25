@@ -12,6 +12,8 @@ import {
   banners as currentBanners,
   timeline as currentTimeline,
   contactKeys as currentContactKeys,
+  mission as currentMission,
+  missionNote as currentMissionNote,
 } from "@/lib/site";
 
 type Section =
@@ -22,7 +24,8 @@ type Section =
   | "jobs"
   | "banners"
   | "timeline"
-  | "contactKeys";
+  | "contactKeys"
+  | "mission";
 
 type TimelineRow = {
   year: string;
@@ -58,6 +61,10 @@ export default function AdminSections({ password }: { password: string }) {
   const [timelineRows, setTimelineRows] = useState<TimelineRow[]>(
     currentTimeline.map((m) => ({ ...m }))
   );
+  const [missionRows, setMissionRows] = useState<string[]>([
+    currentMission,
+    currentMissionNote,
+  ]);
   const [keyRows, setKeyRows] = useState(
     (["ie", "uk"] as const).map((inbox) => ({
       inbox,
@@ -96,7 +103,9 @@ export default function AdminSections({ password }: { password: string }) {
                     ? timelineRows
                     : section === "contactKeys"
                       ? keyRows.filter((k) => k.accessKey.trim())
-                      : jobRows;
+                      : section === "mission"
+                        ? missionRows
+                        : jobRows;
       const res = await fetch("/api/admin/update-section", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -121,6 +130,7 @@ export default function AdminSections({ password }: { password: string }) {
     { key: "banners", label: "Page banners" },
     { key: "timeline", label: "History timeline" },
     { key: "contactKeys", label: "Contact form" },
+    { key: "mission", label: "Our mission" },
   ];
 
   return (
@@ -392,6 +402,28 @@ export default function AdminSections({ password }: { password: string }) {
                 onChange={(e) => setKeyRows(keyRows.map((x, j) => (j === i ? { ...x, accessKey: e.target.value } : x)))} />
             </div>
           ))}
+        </div>
+      )}
+
+      {section === "mission" && (
+        <div className="grid gap-3">
+          <p className="text-sm text-navy-500">
+            The &ldquo;Our mission&rdquo; section on the homepage.
+          </p>
+          <div className="grid gap-2 border border-navy-100 bg-white p-4">
+            <p className="text-xs font-semibold uppercase tracking-wider text-navy-500">
+              Mission statement (the big heading)
+            </p>
+            <textarea className={input} rows={3} value={missionRows[0]}
+              aria-label="Mission statement"
+              onChange={(e) => setMissionRows([e.target.value, missionRows[1]])} />
+            <p className="text-xs font-semibold uppercase tracking-wider text-navy-500">
+              Supporting line underneath
+            </p>
+            <textarea className={input} rows={3} value={missionRows[1]}
+              aria-label="Mission supporting line"
+              onChange={(e) => setMissionRows([missionRows[0], e.target.value])} />
+          </div>
         </div>
       )}
 

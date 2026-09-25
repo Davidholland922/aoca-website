@@ -5,6 +5,7 @@ import {
   banners,
   stats,
   mission,
+  missionNote,
   values,
   services,
   sectors,
@@ -100,9 +101,7 @@ export default function HomePage() {
             </h2>
             <div className="rule" />
             <p className="mt-6 text-lg leading-relaxed text-navy-100">
-              30 years in practice. Over 7,000 projects. The same uncompromising
-              standard every time — from one-off houses to award-winning
-              national infrastructure.
+              {missionNote}
             </p>
             <Link href="/company" className="btn-outline-light mt-8">
               About AOCA

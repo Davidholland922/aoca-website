@@ -125,8 +125,13 @@ const builtInStats = [
 
 export const stats = overrides.stats ?? builtInStats;
 
+/** Homepage mission statement + supporting line — client-editable. */
 export const mission =
+  overrides.mission?.[0] ??
   "To solve real engineering challenges with practical thinking, honest effort and genuine pride in the work that carries our name.";
+export const missionNote =
+  overrides.mission?.[1] ??
+  "30 years in practice. Over 7,000 projects. The same uncompromising standard every time — from one-off houses to award-winning national infrastructure.";
 
 export const values = [
   {
