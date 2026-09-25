@@ -1,5 +1,31 @@
 [
   {
+    "slug": "sdcc-dodder-valley-pavilions",
+    "title": "SDCC Dodder Valley Pavilions",
+    "sector": "infrastructure-government",
+    "location": "Dodder Valley, Dublin",
+    "thumb": "/images/2026-02-dodder-valley-thumb.jpg",
+    "hero": "/images/2026-02-dodder-valley-thumb.jpg",
+    "gallery": [
+      "/images/2026-02-1950x1462-cover-1.jpg",
+      "/images/2026-02-1100x679-cover.jpg",
+      "/images/2026-08-corkagh-park-aerial-view.jpg",
+      "/images/2026-08-dodder-valley-pavilion.jpg",
+      "/images/uploads/sdcc-dodder-valley-pavilions-wfxli-1.jpg"
+    ],
+    "summary": "Design & Build sports pavilion for South Dublin County Council — bespoke foundations and SuDS drainage on challenging ground.",
+    "body": [
+      "AOCA, in collaboration with JSD Contracting, delivered the civil and structural engineering design for a new sports pavilion on behalf of South Dublin County Council at Dodder Valley. Procured as a Design & Build project, the development provides modern changing and support facilities for the numerous sports teams using the adjacent playing pitches.",
+      "The project presented several engineering challenges, including poor ground conditions across part of the building footprint, requiring the design of a bespoke foundation solution to ensure long-term structural performance. AOCA also designed a sustainable stormwater drainage system incorporating attenuation swales adjacent to the site entrance and car park, providing an environmentally responsible drainage solution while meeting the project's performance requirements.",
+      "The completed pavilion delivers high-quality changing facilities with secure electronic access, providing a modern and efficient amenity for local sports clubs and the wider community."
+    ],
+    "featured": false,
+    "servicesProvided": [],
+    "servicesText": [
+      "Civil engineering design, structural engineering design, foundation design, sustainable drainage (SuDS) design, planning and construction stage services and construction certification."
+    ]
+  },
+  {
     "slug": "grange-ns-carlow",
     "title": "Grange National School, Carlow",
     "sector": "education-government",
