@@ -34,6 +34,7 @@ const overrides = overridesJson as Partial<{
     image?: string;
     clipping?: string;
   }[];
+  mission: string[];
 }>;
 
 /** Big call-to-action banners — client-editable via /admin (Edit details). */
