@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "slug": "test-project-please-ignore-dl75",
+    "title": "Test project please ignore",
+    "sector": "residential",
+    "thumb": "/images/civil-roads.jpg",
+    "hero": "/images/civil-roads.jpg",
+    "gallery": [],
+    "summary": "Temporary test of the admin save connection.",
+    "body": [],
+    "featured": false,
+    "servicesProvided": [],
+    "servicesText": []
+  }
+]
