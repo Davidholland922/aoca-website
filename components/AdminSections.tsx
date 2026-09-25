@@ -10,9 +10,25 @@ import {
   aboutParagraphs as currentAbout,
   jobs as currentJobs,
   banners as currentBanners,
+  timeline as currentTimeline,
 } from "@/lib/site";
 
-type Section = "team" | "stats" | "offices" | "about" | "jobs" | "banners";
+type Section =
+  | "team"
+  | "stats"
+  | "offices"
+  | "about"
+  | "jobs"
+  | "banners"
+  | "timeline";
+
+type TimelineRow = {
+  year: string;
+  title: string;
+  text: string;
+  image?: string;
+  clipping?: string;
+};
 
 type TeamRow = { name: string; role: string; cred: string };
 type StatRow = { value: string; label: string };
@@ -37,6 +53,9 @@ export default function AdminSections({ password }: { password: string }) {
   );
   const [about, setAbout] = useState<string>(currentAbout.join("\n\n"));
   const [jobRows, setJobRows] = useState<JobRow[]>(currentJobs.map((j) => ({ ...j })));
+  const [timelineRows, setTimelineRows] = useState<TimelineRow[]>(
+    currentTimeline.map((m) => ({ ...m }))
+  );
   const [bannerRows, setBannerRows] = useState(
     (["home", "projects"] as const).map((key) => ({
       key,
@@ -64,7 +83,9 @@ export default function AdminSections({ password }: { password: string }) {
                 ? about.split(/\n\s*\n/).filter((p) => p.trim())
                 : section === "banners"
                   ? bannerRows
-                  : jobRows;
+                  : section === "timeline"
+                    ? timelineRows
+                    : jobRows;
       const res = await fetch("/api/admin/update-section", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -87,6 +108,7 @@ export default function AdminSections({ password }: { password: string }) {
     { key: "about", label: "About us" },
     { key: "jobs", label: "Job openings" },
     { key: "banners", label: "Page banners" },
+    { key: "timeline", label: "History timeline" },
   ];
 
   return (
@@ -256,6 +278,41 @@ export default function AdminSections({ password }: { password: string }) {
                 onChange={(e) => setBannerRows(bannerRows.map((x, j) => (j === i ? { ...x, body: e.target.value } : x)))} />
             </div>
           ))}
+        </div>
+      )}
+
+      {section === "timeline" && (
+        <div className="grid gap-3">
+          <p className="text-sm text-navy-500">
+            The milestones on the Our History page, oldest first. Each
+            milestone keeps its photo — to change a photo, send it to David.
+          </p>
+          {timelineRows.map((m, i) => (
+            <div key={i} className="grid gap-2 border border-navy-100 bg-white p-4">
+              <div className="flex gap-2">
+                <input className={clsx(input, "max-w-[10rem]")} placeholder="Year (e.g. 2017)"
+                  value={m.year}
+                  aria-label={`Milestone ${i + 1} year`}
+                  onChange={(e) => setTimelineRows(timelineRows.map((x, j) => (j === i ? { ...x, year: e.target.value } : x)))} />
+                <input className={input} placeholder="Milestone title" value={m.title}
+                  aria-label={`Milestone ${i + 1} title`}
+                  onChange={(e) => setTimelineRows(timelineRows.map((x, j) => (j === i ? { ...x, title: e.target.value } : x)))} />
+                <button type="button" aria-label={`Remove milestone ${i + 1}`}
+                  onClick={() => setTimelineRows(timelineRows.filter((_, j) => j !== i))}
+                  className="flex w-11 shrink-0 cursor-pointer items-center justify-center border border-navy-200 text-navy-400 hover:border-brand hover:text-brand">
+                  <Trash2 size={15} aria-hidden />
+                </button>
+              </div>
+              <textarea className={input} rows={3} placeholder="What happened" value={m.text}
+                aria-label={`Milestone ${i + 1} text`}
+                onChange={(e) => setTimelineRows(timelineRows.map((x, j) => (j === i ? { ...x, text: e.target.value } : x)))} />
+            </div>
+          ))}
+          <button type="button"
+            onClick={() => setTimelineRows([...timelineRows, { year: "", title: "", text: "" }])}
+            className="flex min-h-[44px] cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-navy-200 text-sm font-medium text-navy-500 hover:border-brand hover:text-brand">
+            <Plus size={16} aria-hidden /> Add milestone
+          </button>
         </div>
       )}
 

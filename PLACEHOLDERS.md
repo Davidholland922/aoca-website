@@ -129,6 +129,10 @@ and the "AOCA Expertise — NEW" deck of August 2026.
 - St. Patrick's NS: toilet photo removed (not in the client's folder).
 - Project galleries now show each photo IN FULL (no corner cropping) —
   slider and grid letterbox instead of crop.
+- Admin "Edit details" now has a History timeline tab too (25 Sept):
+  years, titles and text of every /history milestone are client-editable
+  (photos stay attached; new milestones render a branded placeholder
+  until a photo is supplied). History-years sign-off is now self-service.
 - Admin "Edit details" now has a Page banners tab (25 Sept): the client
   edits the homepage + Projects-page CTA banner wording themselves —
   Philip's pending banner-wording decision is now self-service.

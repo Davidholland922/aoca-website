@@ -26,6 +26,13 @@ const overrides = overridesJson as Partial<{
   featured: string[];
   jobs: { title: string; location: string; type: string; summary: string }[];
   banners: { key: string; title: string; body: string }[];
+  timeline: {
+    year: string;
+    title: string;
+    text: string;
+    image?: string;
+    clipping?: string;
+  }[];
 }>;
 
 /** Big call-to-action banners — client-editable via /admin (Edit details). */
@@ -143,7 +150,7 @@ export const values = [
  * [PLACEHOLDER] — milestones marked `confirm` are inferred from published
  * material and need AOCA sign-off; they will also want to add their own.
  */
-export const timeline = [
+const builtInTimeline = [
   {
     year: "1996",
     title: "The beginning",
@@ -201,6 +208,10 @@ export const timeline = [
     image: "/images/2026-08-management-team-2025.jpg",
   },
 ];
+
+/** History milestones — client-editable via /admin (Edit details). */
+export const timeline: typeof builtInTimeline =
+  (overrides.timeline as typeof builtInTimeline) ?? builtInTimeline;
 
 const builtInTeam = [
   {

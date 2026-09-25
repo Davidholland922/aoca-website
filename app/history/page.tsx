@@ -56,18 +56,32 @@ export default function HistoryPage() {
                     </span>
                     <div className={`relative ${i % 2 ? "md:order-2" : ""}`}>
                       <div className="relative aspect-[16/10] overflow-hidden bg-navy-50">
-                        <Image
-                          src={t.image}
-                          alt={t.title}
-                          fill
-                          className={
-                            t.image.endsWith(".png")
-                              ? "object-contain p-10"
-                              : "object-cover"
-                          }
-                          sizes="(min-width: 768px) 32rem, 100vw"
-                          loading={i < 2 ? "eager" : "lazy"}
-                        />
+                        {t.image ? (
+                          <Image
+                            src={t.image}
+                            alt={t.title}
+                            fill
+                            className={
+                              t.image.endsWith(".png")
+                                ? "object-contain p-10"
+                                : "object-cover"
+                            }
+                            sizes="(min-width: 768px) 32rem, 100vw"
+                            loading={i < 2 ? "eager" : "lazy"}
+                          />
+                        ) : (
+                          /* milestone added via /admin without a photo yet */
+                          <div className="blueprint flex h-full items-center justify-center bg-navy-950">
+                            <Image
+                              src="/a-mark-light.png"
+                              alt=""
+                              width={146}
+                              height={151}
+                              className="h-16 w-auto opacity-40"
+                              aria-hidden
+                            />
+                          </div>
+                        )}
                       </div>
                       {"clipping" in t && t.clipping && (
                         /* floating press cutting */

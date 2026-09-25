@@ -3,7 +3,7 @@ import { commitFiles, readRepoJson } from "@/lib/github";
 
 export const runtime = "nodejs";
 
-const SECTIONS = ["team", "stats", "offices", "about", "jobs", "featured", "banners"] as const;
+const SECTIONS = ["team", "stats", "offices", "about", "jobs", "featured", "banners", "timeline"] as const;
 type Section = (typeof SECTIONS)[number];
 
 // sections that may legitimately be saved as an empty list
@@ -50,6 +50,25 @@ export async function POST(req: NextRequest) {
           ...(m.photo ? { photo: m.photo } : {}),
         }))
         .filter((m) => m.name);
+    } else if (section === "timeline") {
+      clean = (
+        data as {
+          year?: string;
+          title?: string;
+          text?: string;
+          image?: string;
+          clipping?: string;
+        }[]
+      )
+        .map((m) => ({
+          year: (m.year ?? "").trim(),
+          title: (m.title ?? "").trim(),
+          text: (m.text ?? "").trim(),
+          // photos stay attached to their milestone through edits
+          ...(m.image ? { image: m.image } : {}),
+          ...(m.clipping ? { clipping: m.clipping } : {}),
+        }))
+        .filter((m) => m.year && m.title && m.text);
     } else if (section === "banners") {
       clean = (data as { key?: string; title?: string; body?: string }[])
         .map((b) => ({
