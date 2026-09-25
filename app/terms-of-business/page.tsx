@@ -1,17 +1,15 @@
 import type { Metadata } from "next";
-import { site } from "@/lib/site";
+import { termsIntro, termsSections } from "@/lib/terms";
 import Reveal from "@/components/Reveal";
 
 /**
  * Hidden Terms of Business page (client request, Sept 2026).
  * Reachable only by direct link: not in the nav, footer, or sitemap,
  * and noindexed so search engines never list it.
- *
- * [PLACEHOLDER] Awaiting the Terms of Business document from AOCA —
- * replace the sections below with the real terms when Ciara sends them.
+ * Content is generated verbatim from the client's document — see lib/terms.ts.
  */
 export const metadata: Metadata = {
-  title: "Terms of Business",
+  title: "General Terms of Business",
   robots: { index: false, follow: false },
 };
 
@@ -20,9 +18,9 @@ export default function TermsOfBusinessPage() {
     <>
       <section className="blueprint bg-navy-950 pb-16 pt-40">
         <div className="container-site">
-          <p className="eyebrow">{site.legalName}</p>
+          <p className="eyebrow">AOCA Engineering Consultants Ltd</p>
           <h1 className="mt-4 max-w-3xl text-4xl font-semibold text-white sm:text-5xl">
-            Terms of Business
+            General Terms of Business
           </h1>
           <div className="mt-6 h-1 w-24 bg-brand" />
         </div>
@@ -32,22 +30,37 @@ export default function TermsOfBusinessPage() {
         <div className="container-site max-w-3xl">
           <Reveal>
             <p className="text-lg leading-relaxed text-navy-700">
-              These terms of business set out the basis on which{" "}
-              {site.legalName.replace(/\.$/, "")} (&ldquo;AOCA&rdquo;) provides
-              professional engineering services to its clients.
+              {termsIntro}
             </p>
-            <div className="mt-10 border border-dashed border-navy-200 bg-navy-50/50 p-8 text-navy-600">
-              <p className="font-heading text-sm font-semibold uppercase tracking-wider text-navy-900">
-                Content pending
-              </p>
-              <p className="mt-3 text-sm leading-relaxed">
-                The full Terms of Business will appear here once supplied by
-                AOCA. This page is unlisted: it does not appear in the site
-                navigation or search engines, and is reachable only by this
-                direct link.
-              </p>
-            </div>
           </Reveal>
+          {termsSections.map((s, i) => (
+            <Reveal key={s.title}>
+              <h2 className="mt-12 flex items-baseline gap-3 text-xl font-semibold text-navy-900">
+                <span
+                  aria-hidden
+                  className="font-heading text-sm font-bold tabular-nums text-brand"
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                {s.title.replace(/^\d+\.\s*/, "")}
+              </h2>
+              <div className="rule" />
+              <div className="mt-4 space-y-3">
+                {s.clauses.map((c) => (
+                  <p
+                    key={c.slice(0, 40)}
+                    className="text-sm leading-relaxed text-navy-700"
+                  >
+                    {c}
+                  </p>
+                ))}
+              </div>
+            </Reveal>
+          ))}
+          <p className="mt-14 border-t border-navy-100 pt-6 text-xs uppercase tracking-wider text-navy-400">
+            AOCA Engineering Consultants Ltd — General Terms of Business, 25
+            September 2026
+          </p>
         </div>
       </section>
     </>

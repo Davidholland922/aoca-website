@@ -88,7 +88,6 @@ const builtInStats = [
   { value: "1996", label: "In practice since" },
   { value: "7,000+", label: "Projects delivered" },
   { value: "3", label: "Offices — IRL & UK" },
-  { value: "100+", label: "Claims investigated yearly" },
 ];
 
 export const stats = overrides.stats ?? builtInStats;

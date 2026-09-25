@@ -67,7 +67,11 @@ export default function HomePage() {
 
       {/* STATS */}
       <section className="border-b border-navy-100 bg-white">
-        <div className="container-site grid grid-cols-2 gap-y-10 py-14 lg:grid-cols-4">
+        <div
+          className={`container-site grid grid-cols-2 gap-y-10 py-14 ${
+            stats.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4"
+          }`}
+        >
           {stats.map((s, i) => (
             <Reveal key={s.label} delay={i * 0.06}>
               <div className="border-l-2 border-brand pl-5">
