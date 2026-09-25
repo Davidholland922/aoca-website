@@ -29,5 +29,62 @@
       "title": "Your project could be next.",
       "body": "Bring us the awkward site, the tight programme, the building nobody has drawings for. That's the work we like."
     }
+  ],
+  "timeline": [
+    {
+      "year": "1996",
+      "title": "The beginning",
+      "text": "Aidan O'Connell & Associates is founded in Portlaoise — one engineer, a drawing board and a conviction that clients deserve consultants who take responsibility.",
+      "image": "/images/2026-08-aidan-on-computer-27th-march-1999.jpg"
+    },
+    {
+      "year": "2006",
+      "title": "A permanent home",
+      "text": "The practice moves to its current head office at Lismard House on the Timahoe Road, Portlaoise.",
+      "image": "/images/office-building.jpg"
+    },
+    {
+      "year": "2014",
+      "title": "Dublin calling",
+      "text": "A second office opens at Centrepoint Business Park, Clondalkin, to better serve the Eastern region — growing to offer the full range of engineering services along with pyrite investigation.",
+      "image": "/images/dublin-office.jpg"
+    },
+    {
+      "year": "2017",
+      "title": "Rebranded",
+      "text": "AOCA rebranded to create a more inclusive identity that reflected the people and values behind the business. The new name represented the company's growth from a small regional consultancy into a national and international engineering practice.",
+      "image": "/images/2026-08-aoca-engineering-portlaoise-dbp-01-03-17-1-of-3-003.jpg",
+      "clipping": "/images/aoca-newspaper.jpg"
+    },
+    {
+      "year": "2016–2023",
+      "title": "The remediation years",
+      "text": "AOCA helps develop two NSAI National Standards for pyrite remediation and goes on to manage some of the largest residential remediation programmes in Ireland — while the practice itself keeps building.",
+      "image": "/images/2026-09-pyrite-infill.jpg"
+    },
+    {
+      "year": "2024",
+      "title": "Recognised as Best in Class",
+      "text": "Shortlisted at the Irish Building & Design Awards, and appointed Design Lead and Project Manager on the restoration of the historic Old Bank of Ireland Building in Tuam — converting it into modern offices for the Department of Social Protection.",
+      "image": "/images/ibda-finalist-2024.png"
+    },
+    {
+      "year": "2025",
+      "title": "Recognised with prestigious industry awards",
+      "text": "The Arklow Wastewater Treatment Plant is recognised with prestigious industry awards.",
+      "image": "/images/2025-09-arklow_case_study_featured_ojg6cb.webp"
+    },
+    {
+      "year": "2025",
+      "title": "A new chapter",
+      "text": "After nearly three decades, founder Aidan O'Connell hands the reins to a new generation of leadership as Philip O'Connell steps in as Managing Director.",
+      "image": "/images/aidan-philip-2025.jpg"
+    },
+    {
+      "year": "Today",
+      "title": "7,000 projects and counting",
+      "text": "A multidisciplinary team across Portlaoise, Dublin and Manchester, delivering nine expertise areas to clients across Ireland, the UK and Europe — with the same uncompromising standard as 1996.",
+      "image": "/images/2026-08-management-team-2025.jpg"
+    }
   ]
 }
