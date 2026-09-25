@@ -3,5 +3,19 @@
     "stradbally-fire-station",
     "data-centre-projects",
     "the-hole-in-the-wall"
+  ],
+  "stats": [
+    {
+      "value": "1996",
+      "label": "In practice since"
+    },
+    {
+      "value": "7,000+",
+      "label": "Projects delivered"
+    },
+    {
+      "value": "3",
+      "label": "Offices — IRL & UK"
+    }
   ]
 }
