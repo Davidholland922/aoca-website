@@ -1,5 +1,31 @@
 [
   {
+    "slug": "ratheniska-church",
+    "title": "Ratheniska Church",
+    "sector": "hospitality-leisure-community",
+    "location": "Ratheniska, Co. Laois",
+    "thumb": "/images/2026-02-niskathumb.jpg",
+    "hero": "/images/2026-02-niskathumb.jpg",
+    "gallery": [
+      "/images/2026-02-header.webp",
+      "/images/2026-08-dji-0928.jpg",
+      "/images/2026-02-before-0.jpg",
+      "/images/2026-02-roof-complete.jpg",
+      "/images/2026-02-finished-8.jpg",
+      "/images/2026-02-finished-16.jpg"
+    ],
+    "summary": "Refurbishment and extension of an important community building — planning, tender, fire safety and accessibility upgrades.",
+    "body": [
+      "AOCA provided full planning and tender package services for the refurbishment and extension works at Ratheniska Church. The project involved the careful coordination of improvements to this important community building, including the installation of a new roof covering, upgrades to the existing heating system and internal renovations.",
+      "The works also incorporated fire safety and accessibility upgrades, ensuring the building met current regulatory requirements while improving comfort, safety and usability for all visitors. AOCA managed the preparation of the necessary documentation and design information to support the successful delivery of the refurbishment works."
+    ],
+    "featured": false,
+    "servicesProvided": [],
+    "servicesText": [
+      "Planning permission services, tender package preparation, building design coordination, fire safety certification, disability access certification and renovation and refurbishment design."
+    ]
+  },
+  {
     "slug": "stradbally-fire-station",
     "title": "Stradbally Fire Station",
     "sector": "infrastructure-government",
