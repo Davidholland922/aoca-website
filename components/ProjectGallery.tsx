@@ -58,13 +58,22 @@ export default function ProjectGallery({
     [total]
   );
 
-  // keep the active thumbnail in view
+  // keep the active thumbnail centred in the rail. Scroll ONLY the rail
+  // (never scrollIntoView: that also scrolls the page, which yanked the
+  // viewport down to the gallery on page load), and skip the initial
+  // mount so a fresh page always opens at the top.
+  const mounted = useRef(false);
   useEffect(() => {
-    const thumb = railRef.current?.children[index] as HTMLElement | undefined;
-    thumb?.scrollIntoView({
+    if (!mounted.current) {
+      mounted.current = true;
+      return;
+    }
+    const rail = railRef.current;
+    const thumb = rail?.children[index] as HTMLElement | undefined;
+    if (!rail || !thumb) return;
+    rail.scrollTo({
+      left: thumb.offsetLeft - (rail.clientWidth - thumb.clientWidth) / 2,
       behavior: reduce ? "auto" : "smooth",
-      inline: "center",
-      block: "nearest",
     });
   }, [index, reduce]);
 
