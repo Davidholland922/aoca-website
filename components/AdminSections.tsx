@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2, Loader2, Plus, Trash2 } from "lucide-react";
+import { ArrowDown, ArrowUp, CheckCircle2, Loader2, Plus, Trash2 } from "lucide-react";
 import clsx from "clsx";
 import {
   team as currentTeam,
@@ -162,7 +162,7 @@ export default function AdminSections({ password }: { password: string }) {
       {section === "stats" && (
         <div className="grid gap-3">
           <p className="text-sm text-navy-500">
-            The four numbers across the top of the homepage.
+            The numbers across the top of the homepage.
           </p>
           {stats.map((s, i) => (
             <div key={i} className="grid gap-2 border border-navy-100 bg-white p-4 sm:grid-cols-[10rem,1fr]">
@@ -297,6 +297,26 @@ export default function AdminSections({ password }: { password: string }) {
                 <input className={input} placeholder="Milestone title" value={m.title}
                   aria-label={`Milestone ${i + 1} title`}
                   onChange={(e) => setTimelineRows(timelineRows.map((x, j) => (j === i ? { ...x, title: e.target.value } : x)))} />
+                <button type="button" aria-label={`Move milestone ${i + 1} up`}
+                  disabled={i === 0}
+                  onClick={() => {
+                    const next = [...timelineRows];
+                    [next[i - 1], next[i]] = [next[i], next[i - 1]];
+                    setTimelineRows(next);
+                  }}
+                  className="flex w-11 shrink-0 cursor-pointer items-center justify-center border border-navy-200 text-navy-400 hover:border-navy-800 hover:text-navy-800 disabled:cursor-not-allowed disabled:opacity-30">
+                  <ArrowUp size={15} aria-hidden />
+                </button>
+                <button type="button" aria-label={`Move milestone ${i + 1} down`}
+                  disabled={i === timelineRows.length - 1}
+                  onClick={() => {
+                    const next = [...timelineRows];
+                    [next[i], next[i + 1]] = [next[i + 1], next[i]];
+                    setTimelineRows(next);
+                  }}
+                  className="flex w-11 shrink-0 cursor-pointer items-center justify-center border border-navy-200 text-navy-400 hover:border-navy-800 hover:text-navy-800 disabled:cursor-not-allowed disabled:opacity-30">
+                  <ArrowDown size={15} aria-hidden />
+                </button>
                 <button type="button" aria-label={`Remove milestone ${i + 1}`}
                   onClick={() => setTimelineRows(timelineRows.filter((_, j) => j !== i))}
                   className="flex w-11 shrink-0 cursor-pointer items-center justify-center border border-navy-200 text-navy-400 hover:border-brand hover:text-brand">
