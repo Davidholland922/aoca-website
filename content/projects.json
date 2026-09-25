@@ -1,5 +1,30 @@
 [
   {
+    "slug": "portlaoise-retail-park",
+    "title": "Portlaoise Retail Park",
+    "sector": "commercial",
+    "location": "Portlaoise, Co. Laois",
+    "thumb": "/images/2026-02-img_0769.jpg",
+    "hero": "/images/2026-02-img_0769.jpg",
+    "gallery": [
+      "/images/2026-02-dji_0039.jpg",
+      "/images/2026-02-img_0762.jpg",
+      "/images/2026-02-img_0773.jpg",
+      "/images/2026-08-feature-image-1030x485.jpg"
+    ],
+    "summary": "Full civil and structural design, supervision and certification for one of AOCA's flagship retail and road-infrastructure projects.",
+    "body": [
+      "AOCA delivered the full civil and structural engineering design, supervision and certification for the Portlaoise Retail Park development. The project included a section of the Portlaoise Southern Orbital Route with two major roundabouts and required extensive coordination with Laois County Council, Inland Fisheries and other stakeholders.",
+      "Significant engineering challenges included a 4-metre retaining wall adjacent to the Triogue River, temporary river diversion works and oversized attenuation infrastructure. Extending to 11,748 sq m (126,450 sq ft), the completed development remains one of AOCA's flagship projects and is now a key transport and retail destination within Portlaoise."
+    ],
+    "featured": false,
+    "servicesProvided": [],
+    "servicesText": [
+      "Civil engineering design, structural engineering design, site supervision, construction certification, road and infrastructure design, retaining wall design and stormwater attenuation design."
+    ],
+    "video": "/video/projects/portlaoise-retail-park.mp4"
+  },
+  {
     "slug": "sdcc-dodder-valley-pavilions",
     "title": "SDCC Dodder Valley Pavilions",
     "sector": "infrastructure-government",
@@ -74,32 +99,6 @@
     "servicesText": [
       "Project management, construction supervision, quality control and inspection, construction coordination, contract administration, construction certification and façade engineering."
     ]
-  },
-  {
-    "slug": "portlaoise-retail-park",
-    "title": "Portlaoise Retail Park",
-    "sector": "commercial",
-    "location": "Portlaoise, Co. Laois",
-    "thumb": "/images/2026-02-img_0769.jpg",
-    "hero": "/images/2026-02-img_0769.jpg",
-    "gallery": [
-      "/images/2026-02-dji_0037.jpg",
-      "/images/2026-02-dji_0039.jpg",
-      "/images/2026-02-img_0762.jpg",
-      "/images/2026-02-img_0773.jpg",
-      "/images/2026-08-feature-image-1030x485.jpg"
-    ],
-    "summary": "Full civil and structural design, supervision and certification for one of AOCA's flagship retail and road-infrastructure projects.",
-    "body": [
-      "AOCA delivered the full civil and structural engineering design, supervision and certification for the Portlaoise Retail Park development. The project included a section of the Portlaoise Southern Orbital Route with two major roundabouts and required extensive coordination with Laois County Council, Inland Fisheries and other stakeholders.",
-      "Significant engineering challenges included a 4-metre retaining wall adjacent to the Triogue River, temporary river diversion works and oversized attenuation infrastructure. Extending to 11,748 sq m (126,450 sq ft), the completed development remains one of AOCA's flagship projects and is now a key transport and retail destination within Portlaoise."
-    ],
-    "featured": false,
-    "servicesProvided": [],
-    "servicesText": [
-      "Civil engineering design, structural engineering design, site supervision, construction certification, road and infrastructure design, retaining wall design and stormwater attenuation design."
-    ],
-    "video": "/video/projects/portlaoise-retail-park.mp4"
   },
   {
     "slug": "rosslare-europort",
