@@ -1,5 +1,30 @@
 [
   {
+    "slug": "harolds-cross-hospice-refurbishment",
+    "title": "Harold's Cross Hospice Refurbishment",
+    "sector": "life-sciences-healthcare",
+    "location": "Dublin",
+    "thumb": "/images/2026-08-img-5076.jpg",
+    "hero": "/images/2026-08-img-5076.jpg",
+    "gallery": [
+      "/images/2026-08-img-4232.jpg",
+      "/images/2026-08-img-9942.jpg",
+      "/images/uploads/harolds-cross-hospice-refurbishment-xw172-1.jpg"
+    ],
+    "summary": "Comprehensive refurbishment and building upgrade — roof replacement, plant deck, solar integration and hydrotherapy pool works.",
+    "body": [
+      "AOCA provided engineering and project management services for the refurbishment and upgrade works at Harold's Cross Hospice. The project involved a comprehensive programme of building improvements, including replacement of the existing roof, installation of new parapet capping, implementation of a fall arrest system and guardrails, and the integration of solar panels to improve the building's energy performance.",
+      "The works also included the construction of a new raised roof plant deck, replacement of air handling units, upgrades to internal and external lighting systems, replacement of roof glazing and automatic opening vents (AOVs), together with internal redecoration works throughout the facility.",
+      "In addition to the building refurbishment works, AOCA supported the enhancement of the hydrotherapy pool facilities. This included complete pool retiling with improved definition of steps and level changes, the decommissioning and recommissioning of associated equipment, and refurbishment of all pool handrails to improve safety, accessibility and usability.",
+      "The completed works have enhanced the functionality, safety and operational performance of the hospice, providing an improved environment for patients, staff and visitors."
+    ],
+    "featured": false,
+    "servicesProvided": [],
+    "servicesText": [
+      "Project management, structural engineering design, building refurbishment coordination, roof upgrade design and supervision, plant deck structural works, building services coordination and construction supervision."
+    ]
+  },
+  {
     "slug": "one-off-bespoke-dwellings",
     "title": "One-Off Bespoke Dwellings",
     "sector": "residential",
