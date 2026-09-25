@@ -1,5 +1,33 @@
 [
   {
+    "slug": "grange-ns-carlow",
+    "title": "Grange National School, Carlow",
+    "sector": "education-government",
+    "location": "Co. Carlow",
+    "thumb": "/images/2026-02-grange-thumb.jpg",
+    "hero": "/images/2026-02-grange-thumb.jpg",
+    "gallery": [
+      "/images/2026-02-20230712_100150.jpg",
+      "/images/2026-02-20230712_095506.jpg",
+      "/images/2026-02-20230712_095450.jpg",
+      "/images/2026-02-20230712_095528.jpg",
+      "/images/2026-02-20230712_095754.jpg",
+      "/images/2026-02-20230712_100228.jpg",
+      "/images/2026-02-20230712_100528.jpg"
+    ],
+    "summary": "New ASD Unit extension delivered through planning, tender and construction — modern specialist facilities for students with additional needs.",
+    "body": [
+      "AOCA provided full Civil and Structural Engineering services throughout the Planning, Tender and Construction stages for the delivery of a new ASD Unit extension to an existing school. Designed by McLoughlin Architecture, the development provides modern specialist educational facilities, including multi-sensory and safe spaces, a central activity hall, sensory gardens and soft play areas to support students with additional needs.",
+      "The approximately 480 m² extension was constructed on precast piles with reinforced concrete ground beams and suspended precast ground floors. The superstructure comprised traditional masonry construction with structural steel supports and prefabricated timber roof trusses, delivering a robust and efficient building solution.",
+      "The project also included significant civil engineering works, comprising a new watermain connection, a new wastewater treatment system, sustainable stormwater attenuation infrastructure and additional car parking facilities, ensuring the development was fully serviced and integrated with the existing school campus."
+    ],
+    "featured": false,
+    "servicesProvided": [],
+    "servicesText": [
+      "Civil engineering design, structural engineering design, planning stage services, tender stage services, construction stage services and construction certification."
+    ]
+  },
+  {
     "slug": "people-first-credit-union-portlaoise",
     "title": "People First Credit Union, Portlaoise",
     "sector": "commercial",
