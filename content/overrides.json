@@ -17,5 +17,17 @@
       "value": "3",
       "label": "Offices — IRL & UK"
     }
+  ],
+  "banners": [
+    {
+      "key": "home",
+      "title": "Talk to an engineer, not a switchboard.",
+      "body": "Tell us what you're planning and we'll give you a straight view on feasibility, cost and programme — before you commit."
+    },
+    {
+      "key": "projects",
+      "title": "Your project could be next.",
+      "body": "Bring us the awkward site, the tight programme, the building nobody has drawings for. That's the work we like."
+    }
   ]
 }
