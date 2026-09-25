@@ -1,5 +1,28 @@
 [
   {
+    "slug": "stradbally-fire-station",
+    "title": "Stradbally Fire Station",
+    "sector": "infrastructure-government",
+    "location": "Stradbally, Co. Laois",
+    "thumb": "/images/2026-08-stradbally-fire-station-new-0.jpg",
+    "hero": "/images/2026-08-stradbally-fire-station-new-0.jpg",
+    "gallery": [
+      "/images/2026-08-24-nod-node-architects-fire-station-stradbally.jpg",
+      "/images/uploads/stradbally-fire-station-x0e77-1.jpg"
+    ],
+    "summary": "Civil and structural engineering within the multidisciplinary team delivering the new €3.2m two-bay fire station for Laois Fire & Rescue.",
+    "body": [
+      "AOCA Engineering Consultants formed part of the multidisciplinary design team delivering the new €3.2 million, two-bay Fire Station in Stradbally. Working alongside the lead architects and wider consultant team, AOCA provided Civil and Structural Engineering services to support the development of this modern emergency services facility.",
+      "Our role included the design and coordination of the civil and structural engineering elements, ensuring the building and associated infrastructure met the operational requirements of Laois Fire & Rescue Service while complying with current safety, regulatory and engineering standards.",
+      "The completed fire station provides a purpose-built, state-of-the-art facility designed to support emergency response operations and enhance resilience for the local community. AOCA is proud to have contributed to the successful delivery of this important public infrastructure project."
+    ],
+    "featured": true,
+    "servicesProvided": [],
+    "servicesText": [
+      "Civil engineering design, structural engineering design, multidisciplinary design coordination, planning and design stage services, construction stage engineering support and construction certification."
+    ]
+  },
+  {
     "slug": "rosslare-europort",
     "title": "Rosslare Europort",
     "sector": "infrastructure-government",
