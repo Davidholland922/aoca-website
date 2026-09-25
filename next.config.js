@@ -39,6 +39,11 @@ const nextConfig = {
    */
   async redirects() {
     return [
+      // ---- short aliases for the hidden Terms of Business page (the
+      // client quotes this address in fee proposals and letters)
+      { source: "/terms", destination: "/terms-of-business", permanent: true },
+      { source: "/termsofbusiness", destination: "/terms-of-business", permanent: true },
+      { source: "/terms-of-business/", destination: "/terms-of-business", permanent: true },
       // ---- old service pages → new expertise structure
       { source: "/civil-engineering", destination: "/expertise/civil-engineering", permanent: true },
       { source: "/structural-engineering", destination: "/expertise/structural-engineering", permanent: true },
