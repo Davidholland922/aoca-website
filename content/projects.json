@@ -1,5 +1,33 @@
 [
   {
+    "slug": "droughhill-portarlington",
+    "title": "Droughhill, Portarlington",
+    "sector": "residential",
+    "location": "Portarlington, Co. Laois",
+    "thumb": "/images/2026-08-screenshot-2026-04-09-140459.jpg",
+    "hero": "/images/2026-08-screenshot-2026-04-09-140459.jpg",
+    "gallery": [
+      "/images/2026-08-screenshot-2026-04-09-140635.jpg",
+      "/images/2026-08-screenshot-2026-04-09-140716.jpg",
+      "/images/2026-02-dscn1764.jpg",
+      "/images/2026-02-dscn8476.jpg",
+      "/images/uploads/droughhill-portarlington-xnt60-1.jpg"
+    ],
+    "summary": "26-unit residential development — complete design and engineering from housing design and planning to supervision and certification.",
+    "body": [
+      "AOCA provided a complete design and engineering service for this 26-unit residential development located on the northern side of Portarlington. Our involvement extended from the initial design of the housing units and planning process through to construction supervision and final certification of the completed works.",
+      "The project was delivered in close collaboration with the developer, whose commitment to quality and attention to detail ensured a successful outcome. The high standards established at the outset were maintained throughout the construction period, allowing the development to be completed on programme and within budget.",
+      "The site presented a number of engineering challenges, particularly due to variable and poor ground conditions in certain areas. To address these constraints, AOCA designed bespoke foundation solutions for a number of dwellings, incorporating widened foundations to provide suitable bearing capacity and ensure long-term structural performance.",
+      "A dedicated foul water pumping station was also required to facilitate wastewater disposal from the development. AOCA was responsible for the design, sizing, location and coordination of the pumping station installation, working closely with Irish Water to achieve an agreed and effective solution.",
+      "Now fully occupied, the development continues to provide high-quality homes and remains a testament to the successful collaboration between the client, design team and contractor."
+    ],
+    "featured": false,
+    "servicesProvided": [],
+    "servicesText": [
+      "Residential building design, planning permission services, civil engineering design, structural engineering design, foundation design, foul water pumping station design, construction supervision and completion certification."
+    ]
+  },
+  {
     "slug": "ratheniska-church",
     "title": "Ratheniska Church",
     "sector": "hospitality-leisure-community",
