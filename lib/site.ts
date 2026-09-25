@@ -35,7 +35,28 @@ const overrides = overridesJson as Partial<{
     clipping?: string;
   }[];
   mission: string[];
+  hero: string[];
+  sectorText: { slug: string; title: string; blurb: string }[];
+  values: { title: string; body: string }[];
+  accreditations: string[];
+  testimonials: {
+    quote: string;
+    author: string;
+    role: string;
+    company?: string;
+    logo?: string;
+    logoTall?: boolean;
+  }[];
 }>;
+
+/** Homepage hero wording — client-editable via /admin (Edit details). */
+export const heroText = {
+  headline: overrides.hero?.[0] ?? "We turn vision",
+  headlineAccent: overrides.hero?.[1] ?? "into reality.",
+  // rendered after the brand's arrow-A standing in for the word "A"
+  subline:
+    overrides.hero?.[2] ?? "leader in multidisciplinary engineering expertise.",
+};
 
 /** Big call-to-action banners — client-editable via /admin (Edit details). */
 const bannerDefaults = {
@@ -134,7 +155,7 @@ export const missionNote =
   overrides.mission?.[1] ??
   "30 years in practice. Over 7,000 projects. The same uncompromising standard every time — from one-off houses to award-winning national infrastructure.";
 
-export const values = [
+const builtInValues = [
   {
     title: "Straight Talking",
     body: "We tell you what you need to hear, not what you want to hear. Our reputation has been built on honest advice over nearly 30 years.",
@@ -156,6 +177,9 @@ export const values = [
     body: "Irish owned and independently run since 1996. No corporate hierarchy, no distant boardrooms — just a team that genuinely cares about the outcome and each other.",
   },
 ];
+
+/** Values — client-editable via /admin. */
+export const values = overrides.values ?? builtInValues;
 
 /**
  * Company history for the /history page ("reeling in the years").
@@ -722,13 +746,17 @@ export const services: Service[] = allServices.filter(
 );
 
 /** Accreditations & certifications — exact wording from AOCA, July 2026. */
-export const accreditations = [
+const builtInAccreditations = [
   "Member of the Institute of Fire Engineers",
   "Corporate Member of Engineers Ireland",
   "ISO9001 Certification with NSAI",
   "Member of Passive House Association of Ireland",
   "Green Cert Registered",
 ];
+
+/** Accreditation list (text) — client-editable; badge logos via David. */
+export const accreditations =
+  overrides.accreditations ?? builtInAccreditations;
 
 export type Sector = {
   slug: string;
@@ -737,7 +765,7 @@ export type Sector = {
   image: string;
 };
 
-export const sectors: Sector[] = [
+const builtInSectors: Sector[] = [
   {
     slug: "commercial",
     title: "Commercial & Retail",
@@ -781,6 +809,12 @@ export const sectors: Sector[] = [
     image: "/images/2026-08-life-science-and-health-care.jpg",
   },
 ];
+
+/** Sector titles/blurbs — client-editable; slugs and images stay fixed. */
+export const sectors: Sector[] = builtInSectors.map((s) => {
+  const o = overrides.sectorText?.find((x) => x.slug === s.slug);
+  return o ? { ...s, title: o.title, blurb: o.blurb } : s;
+});
 
 export type Project = {
   slug: string;
@@ -1768,7 +1802,7 @@ export const featuredProjects: Project[] = projects.filter((p) =>
   featuredSlugs ? featuredSlugs.includes(p.slug) : p.featured
 );
 
-export const testimonials = [
+const builtInTestimonials = [
   {
     quote:
       "What sets AOCA apart is not just their technical expertise, but their reliability and professionalism. They are approachable, proactive, and always willing to go the extra mile to ensure projects run smoothly. We would have no hesitation in recommending AOCA to others.",
@@ -1827,6 +1861,9 @@ export const testimonials = [
     logo: "/images/2026-09-logo-dncf-light.png",
   },
 ];
+
+/** Testimonials — client-editable via /admin (logos added by David). */
+export const testimonials = overrides.testimonials ?? builtInTestimonials;
 
 export const partnerLogos = [
   { src: "/images/2026-06-davies-rgb-white-copy.png", alt: "Davies" },

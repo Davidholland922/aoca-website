@@ -129,6 +129,11 @@ and the "AOCA Expertise — NEW" deck of August 2026.
 - St. Patrick's NS: toilet photo removed (not in the client's folder).
 - Project galleries now show each photo IN FULL (no corner cropping) —
   slider and grid letterbox instead of crop.
+- Admin editable-everything batch (26 Sept): Homepage headline (hero),
+  Sector cards, Our values, Accreditations (text; badge logos via David),
+  Testimonials (logos ride along), Our mission — all under Edit details.
+  Remaining non-editable by design: imagery/video, client logo wall,
+  page micro-headings, terms page (legal via Philip).
 - Admin "Edit details" now has a History timeline tab too (25 Sept):
   years, titles and text of every /history milestone are client-editable
   (photos stay attached; new milestones render a branded placeholder

@@ -14,6 +14,11 @@ import {
   contactKeys as currentContactKeys,
   mission as currentMission,
   missionNote as currentMissionNote,
+  heroText as currentHero,
+  sectors as currentSectors,
+  values as currentValues,
+  accreditations as currentAccreditations,
+  testimonials as currentTestimonials,
 } from "@/lib/site";
 
 type Section =
@@ -25,7 +30,21 @@ type Section =
   | "banners"
   | "timeline"
   | "contactKeys"
-  | "mission";
+  | "mission"
+  | "hero"
+  | "sectorText"
+  | "values"
+  | "accreditations"
+  | "testimonials";
+
+type TestimonialRow = {
+  quote: string;
+  author: string;
+  role: string;
+  company?: string;
+  logo?: string;
+  logoTall?: boolean;
+};
 
 type TimelineRow = {
   year: string;
@@ -65,6 +84,23 @@ export default function AdminSections({ password }: { password: string }) {
     currentMission,
     currentMissionNote,
   ]);
+  const [heroRows, setHeroRows] = useState<string[]>([
+    currentHero.headline,
+    currentHero.headlineAccent,
+    currentHero.subline,
+  ]);
+  const [sectorRows, setSectorRows] = useState(
+    currentSectors.map((s) => ({ slug: s.slug, title: s.title, blurb: s.blurb }))
+  );
+  const [valueRows, setValueRows] = useState(
+    currentValues.map((v) => ({ ...v }))
+  );
+  const [accredRows, setAccredRows] = useState<string[]>([
+    ...currentAccreditations,
+  ]);
+  const [testimonialRows, setTestimonialRows] = useState<TestimonialRow[]>(
+    currentTestimonials.map((x) => ({ ...x }))
+  );
   const [keyRows, setKeyRows] = useState(
     (["ie", "uk"] as const).map((inbox) => ({
       inbox,
@@ -105,7 +141,17 @@ export default function AdminSections({ password }: { password: string }) {
                       ? keyRows.filter((k) => k.accessKey.trim())
                       : section === "mission"
                         ? missionRows
-                        : jobRows;
+                        : section === "hero"
+                          ? heroRows
+                          : section === "sectorText"
+                            ? sectorRows
+                            : section === "values"
+                              ? valueRows
+                              : section === "accreditations"
+                                ? accredRows.filter((a) => a.trim())
+                                : section === "testimonials"
+                                  ? testimonialRows
+                                  : jobRows;
       const res = await fetch("/api/admin/update-section", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -131,6 +177,11 @@ export default function AdminSections({ password }: { password: string }) {
     { key: "timeline", label: "History timeline" },
     { key: "contactKeys", label: "Contact form" },
     { key: "mission", label: "Our mission" },
+    { key: "hero", label: "Homepage headline" },
+    { key: "sectorText", label: "Sector cards" },
+    { key: "values", label: "Our values" },
+    { key: "accreditations", label: "Accreditations" },
+    { key: "testimonials", label: "Testimonials" },
   ];
 
   return (
@@ -424,6 +475,139 @@ export default function AdminSections({ password }: { password: string }) {
               aria-label="Mission supporting line"
               onChange={(e) => setMissionRows([missionRows[0], e.target.value])} />
           </div>
+        </div>
+      )}
+
+      {section === "hero" && (
+        <div className="grid gap-3">
+          <p className="text-sm text-navy-500">
+            The big opening text over the homepage video. The first part is
+            white, the second part red; the strapline appears underneath
+            after the brand&rsquo;s A mark, so start it without the word
+            &ldquo;A&rdquo;.
+          </p>
+          <div className="grid gap-2 border border-navy-100 bg-white p-4">
+            <p className="text-xs font-semibold uppercase tracking-wider text-navy-500">Headline — white part</p>
+            <input className={input} value={heroRows[0]} aria-label="Hero headline"
+              onChange={(e) => setHeroRows([e.target.value, heroRows[1], heroRows[2]])} />
+            <p className="text-xs font-semibold uppercase tracking-wider text-navy-500">Headline — red part</p>
+            <input className={input} value={heroRows[1]} aria-label="Hero headline accent"
+              onChange={(e) => setHeroRows([heroRows[0], e.target.value, heroRows[2]])} />
+            <p className="text-xs font-semibold uppercase tracking-wider text-navy-500">Strapline (rendered after the A mark)</p>
+            <input className={input} value={heroRows[2]} aria-label="Hero strapline"
+              onChange={(e) => setHeroRows([heroRows[0], heroRows[1], e.target.value])} />
+          </div>
+        </div>
+      )}
+
+      {section === "sectorText" && (
+        <div className="grid gap-3">
+          <p className="text-sm text-navy-500">
+            The seven sector tiles on the homepage — names and one-line
+            descriptions. Photos on the tiles are changed by David.
+          </p>
+          {sectorRows.map((s, i) => (
+            <div key={s.slug} className="grid gap-2 border border-navy-100 bg-white p-4">
+              <input className={input} value={s.title} aria-label={`Sector ${i + 1} name`}
+                onChange={(e) => setSectorRows(sectorRows.map((x, j) => (j === i ? { ...x, title: e.target.value } : x)))} />
+              <textarea className={input} rows={2} value={s.blurb} aria-label={`Sector ${i + 1} description`}
+                onChange={(e) => setSectorRows(sectorRows.map((x, j) => (j === i ? { ...x, blurb: e.target.value } : x)))} />
+            </div>
+          ))}
+        </div>
+      )}
+
+      {section === "values" && (
+        <div className="grid gap-3">
+          <p className="text-sm text-navy-500">
+            The &ldquo;What it&rsquo;s like to work with us&rdquo; list on the
+            homepage (numbering is automatic).
+          </p>
+          {valueRows.map((v, i) => (
+            <div key={i} className="grid gap-2 border border-navy-100 bg-white p-4">
+              <div className="flex gap-2">
+                <input className={input} placeholder="Value name" value={v.title} aria-label={`Value ${i + 1} name`}
+                  onChange={(e) => setValueRows(valueRows.map((x, j) => (j === i ? { ...x, title: e.target.value } : x)))} />
+                <button type="button" aria-label={`Remove value ${i + 1}`}
+                  onClick={() => setValueRows(valueRows.filter((_, j) => j !== i))}
+                  className="flex w-11 shrink-0 cursor-pointer items-center justify-center border border-navy-200 text-navy-400 hover:border-brand hover:text-brand">
+                  <Trash2 size={15} aria-hidden />
+                </button>
+              </div>
+              <textarea className={input} rows={2} value={v.body} aria-label={`Value ${i + 1} text`}
+                onChange={(e) => setValueRows(valueRows.map((x, j) => (j === i ? { ...x, body: e.target.value } : x)))} />
+            </div>
+          ))}
+          <button type="button"
+            onClick={() => setValueRows([...valueRows, { title: "", body: "" }])}
+            className="flex min-h-[44px] cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-navy-200 text-sm font-medium text-navy-500 hover:border-brand hover:text-brand">
+            <Plus size={16} aria-hidden /> Add value
+          </button>
+        </div>
+      )}
+
+      {section === "accreditations" && (
+        <div className="grid gap-3">
+          <p className="text-sm text-navy-500">
+            The accreditations &amp; certifications list on the homepage. The
+            badge logos are matched up by David — send him the logo for any
+            new accreditation.
+          </p>
+          {accredRows.map((a, i) => (
+            <div key={i} className="flex gap-2">
+              <input className={input} value={a} aria-label={`Accreditation ${i + 1}`}
+                onChange={(e) => setAccredRows(accredRows.map((x, j) => (j === i ? e.target.value : x)))} />
+              <button type="button" aria-label={`Remove accreditation ${i + 1}`}
+                onClick={() => setAccredRows(accredRows.filter((_, j) => j !== i))}
+                className="flex w-11 shrink-0 cursor-pointer items-center justify-center border border-navy-200 text-navy-400 hover:border-brand hover:text-brand">
+                <Trash2 size={15} aria-hidden />
+              </button>
+            </div>
+          ))}
+          <button type="button"
+            onClick={() => setAccredRows([...accredRows, ""])}
+            className="flex min-h-[44px] cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-navy-200 text-sm font-medium text-navy-500 hover:border-brand hover:text-brand">
+            <Plus size={16} aria-hidden /> Add accreditation
+          </button>
+        </div>
+      )}
+
+      {section === "testimonials" && (
+        <div className="grid gap-3">
+          <p className="text-sm text-navy-500">
+            What clients say on the homepage. Logos stay attached to each
+            testimonial — send David the logo for any new one.
+          </p>
+          {testimonialRows.map((x, i) => (
+            <div key={i} className="grid gap-2 border border-navy-100 bg-white p-4">
+              <div className="flex items-start gap-2">
+                <textarea className={input} rows={3} placeholder="The quote" value={x.quote}
+                  aria-label={`Testimonial ${i + 1} quote`}
+                  onChange={(e) => setTestimonialRows(testimonialRows.map((y, j) => (j === i ? { ...y, quote: e.target.value } : y)))} />
+                <button type="button" aria-label={`Remove testimonial ${i + 1}`}
+                  onClick={() => setTestimonialRows(testimonialRows.filter((_, j) => j !== i))}
+                  className="flex w-11 shrink-0 cursor-pointer items-center justify-center border border-navy-200 text-navy-400 hover:border-brand hover:text-brand">
+                  <Trash2 size={15} aria-hidden />
+                </button>
+              </div>
+              <div className="grid gap-2 sm:grid-cols-3">
+                <input className={input} placeholder="Name" value={x.author}
+                  aria-label={`Testimonial ${i + 1} name`}
+                  onChange={(e) => setTestimonialRows(testimonialRows.map((y, j) => (j === i ? { ...y, author: e.target.value } : y)))} />
+                <input className={input} placeholder="Role (e.g. Director)" value={x.role}
+                  aria-label={`Testimonial ${i + 1} role`}
+                  onChange={(e) => setTestimonialRows(testimonialRows.map((y, j) => (j === i ? { ...y, role: e.target.value } : y)))} />
+                <input className={input} placeholder="Company (optional)" value={x.company ?? ""}
+                  aria-label={`Testimonial ${i + 1} company`}
+                  onChange={(e) => setTestimonialRows(testimonialRows.map((y, j) => (j === i ? { ...y, company: e.target.value } : y)))} />
+              </div>
+            </div>
+          ))}
+          <button type="button"
+            onClick={() => setTestimonialRows([...testimonialRows, { quote: "", author: "", role: "" }])}
+            className="flex min-h-[44px] cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-navy-200 text-sm font-medium text-navy-500 hover:border-brand hover:text-brand">
+            <Plus size={16} aria-hidden /> Add testimonial
+          </button>
         </div>
       )}
 

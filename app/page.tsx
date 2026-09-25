@@ -6,6 +6,7 @@ import {
   stats,
   mission,
   missionNote,
+  heroText,
   values,
   services,
   sectors,
@@ -40,8 +41,8 @@ export default function HomePage() {
         <div className="container-site py-24">
           <Reveal>
             <h1 className="max-w-4xl text-4xl font-semibold leading-[1.05] text-white sm:text-6xl lg:text-7xl">
-              We turn vision{" "}
-              <span className="text-brand-light">into reality.</span>
+              {heroText.headline}{" "}
+              <span className="text-brand-light">{heroText.headlineAccent}</span>
             </h1>
             {/* the brand's arrow-A stands in as the "A" of "A leader" */}
             <p className="mt-7 flex max-w-2xl items-baseline gap-2.5 text-xl font-medium leading-relaxed text-white sm:text-2xl">
@@ -52,7 +53,7 @@ export default function HomePage() {
                 height={151}
                 className="inline-block h-[1.15em] w-auto translate-y-[0.18em]"
               />
-              <span>leader in multidisciplinary engineering expertise.</span>
+              <span>{heroText.subline}</span>
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Link href="/projects" className="btn-primary">

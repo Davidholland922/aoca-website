@@ -3,7 +3,11 @@ import { commitFiles, readRepoJson } from "@/lib/github";
 
 export const runtime = "nodejs";
 
-const SECTIONS = ["team", "stats", "offices", "about", "jobs", "featured", "banners", "timeline", "contactKeys", "mission"] as const;
+const SECTIONS = [
+  "team", "stats", "offices", "about", "jobs", "featured", "banners",
+  "timeline", "contactKeys", "mission", "hero", "sectorText", "values",
+  "accreditations", "testimonials",
+] as const;
 type Section = (typeof SECTIONS)[number];
 
 // sections that may legitimately be saved as an empty list
@@ -134,6 +138,52 @@ export async function POST(req: NextRequest) {
           };
         })
         .filter((o) => o.name && o.phone);
+    } else if (section === "hero") {
+      clean = (data as string[]).map((p) => String(p).trim()).slice(0, 3);
+      if (clean.length !== 3 || clean.some((p) => !p)) {
+        return NextResponse.json(
+          { error: "All three hero lines are required" },
+          { status: 400 }
+        );
+      }
+    } else if (section === "sectorText") {
+      clean = (data as { slug?: string; title?: string; blurb?: string }[])
+        .map((s) => ({
+          slug: (s.slug ?? "").trim(),
+          title: (s.title ?? "").trim(),
+          blurb: (s.blurb ?? "").trim(),
+        }))
+        .filter((s) => s.slug && s.title && s.blurb);
+    } else if (section === "values") {
+      clean = (data as { title?: string; body?: string }[])
+        .map((v) => ({
+          title: (v.title ?? "").trim(),
+          body: (v.body ?? "").trim(),
+        }))
+        .filter((v) => v.title && v.body);
+    } else if (section === "accreditations") {
+      clean = (data as string[]).map((p) => String(p).trim()).filter(Boolean);
+    } else if (section === "testimonials") {
+      clean = (
+        data as {
+          quote?: string;
+          author?: string;
+          role?: string;
+          company?: string;
+          logo?: string;
+          logoTall?: boolean;
+        }[]
+      )
+        .map((x) => ({
+          quote: (x.quote ?? "").trim(),
+          author: (x.author ?? "").trim(),
+          role: (x.role ?? "").trim(),
+          ...(x.company?.trim() ? { company: x.company.trim() } : {}),
+          // logos stay attached to their testimonial through edits
+          ...(x.logo ? { logo: x.logo } : {}),
+          ...(x.logoTall ? { logoTall: true } : {}),
+        }))
+        .filter((x) => x.quote && x.author);
     } else if (section === "mission") {
       clean = (data as string[]).map((p) => String(p).trim()).slice(0, 2);
       if (clean.some((p) => !p)) {
