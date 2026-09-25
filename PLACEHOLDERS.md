@@ -160,7 +160,7 @@ and the "AOCA Expertise — NEW" deck of August 2026.
 | Logo wall accuracy | **Ciara** | Verify all 30 client logos are current versions |
 | ~~Testimonial company names~~ | Done | From Ciara's Testimonies doc, 23 Sept |
 | DNCF replacement logo | Client | DNCF logo removed from the logo wall per Aug 2026 notes — client to send the replacement logo mentioned |
-| ~~Terms of Business content~~ | Done | Philip sent the final document 25 Sept — live verbatim on the hidden /terms-of-business page (generated into lib/terms.ts) |
+| ~~Terms of Business content~~ | Done | Philip sent the final document 25 Sept — live verbatim on the hidden /terms page (moved from /terms-of-business 26 Sept per Philip; old spellings redirect) (generated into lib/terms.ts) |
 | ~~Testimonial logos~~ | Done | All supplied 23 Sept: Crown, Davies, DNCF (white variant made for dark bg), OMC Claims, PCLA, RDF; Alan Synnott's (Stephen MacKenzie & Co Solicitors) added 24 Sept, white-text variant made |
 | Office phone numbers | Client | "Multiple numbers so not sure this is 100% correct" |
 | New insights articles ×6 | Client | FM Design for High Value Buildings; Designing for the Data Centre Industry; What is Condensation Risk Analysis; An update on Pyrite in Ireland; Structural Fire Engineering (list from slide 1 of the Aug 2026 deck). "A New Adventure – Fire Safety Consultants" written by us Aug 2026 (dated Jan 2026 per David) — needs client sign-off |

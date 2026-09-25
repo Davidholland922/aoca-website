@@ -4,7 +4,7 @@ import Reveal from "@/components/Reveal";
 
 /**
  * Hidden Terms of Business page (client request, Sept 2026).
- * Reachable only by direct link: not in the nav, footer, or sitemap,
+ * Lives at /terms (Philip). Reachable only by direct link: not in the nav, footer, or sitemap,
  * and noindexed so search engines never list it.
  * Content is generated verbatim from the client's document — see lib/terms.ts.
  */
