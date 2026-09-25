@@ -3,7 +3,7 @@ import { commitFiles, readRepoJson } from "@/lib/github";
 
 export const runtime = "nodejs";
 
-const SECTIONS = ["team", "stats", "offices", "about", "jobs", "featured"] as const;
+const SECTIONS = ["team", "stats", "offices", "about", "jobs", "featured", "banners"] as const;
 type Section = (typeof SECTIONS)[number];
 
 // sections that may legitimately be saved as an empty list
@@ -32,13 +32,34 @@ export async function POST(req: NextRequest) {
 
     let clean: unknown[];
     if (section === "team") {
-      clean = (data as { name?: string; role?: string; cred?: string }[])
+      clean = (
+        data as {
+          name?: string;
+          role?: string;
+          cred?: string;
+          bio?: string;
+          photo?: string;
+        }[]
+      )
         .map((m) => ({
           name: (m.name ?? "").trim(),
           role: (m.role ?? "").trim(),
           cred: (m.cred ?? "").trim(),
+          // keep the bios and headshots that live on the website
+          ...(m.bio?.trim() ? { bio: m.bio.trim() } : {}),
+          ...(m.photo ? { photo: m.photo } : {}),
         }))
         .filter((m) => m.name);
+    } else if (section === "banners") {
+      clean = (data as { key?: string; title?: string; body?: string }[])
+        .map((b) => ({
+          key: (b.key ?? "").trim(),
+          title: (b.title ?? "").trim(),
+          body: (b.body ?? "").trim(),
+        }))
+        .filter(
+          (b) => ["home", "projects"].includes(b.key) && b.title && b.body
+        );
     } else if (section === "stats") {
       clean = (data as { value?: string; label?: string }[])
         .map((s) => ({

@@ -129,6 +129,11 @@ and the "AOCA Expertise — NEW" deck of August 2026.
 - St. Patrick's NS: toilet photo removed (not in the client's folder).
 - Project galleries now show each photo IN FULL (no corner cropping) —
   slider and grid letterbox instead of crop.
+- Admin "Edit details" now has a Page banners tab (25 Sept): the client
+  edits the homepage + Projects-page CTA banner wording themselves —
+  Philip's pending banner-wording decision is now self-service.
+- update-section team save now preserves bios and headshots (was
+  silently stripping them).
 - Ciara has the admin login (aoca-draft.vercel.app/admin) for
   self-service image management. Editor upgraded 23 Sept after her
   feedback: editing a project now SHOWS its current photos with per-photo

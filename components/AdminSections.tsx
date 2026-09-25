@@ -9,9 +9,10 @@ import {
   offices as currentOffices,
   aboutParagraphs as currentAbout,
   jobs as currentJobs,
+  banners as currentBanners,
 } from "@/lib/site";
 
-type Section = "team" | "stats" | "offices" | "about" | "jobs";
+type Section = "team" | "stats" | "offices" | "about" | "jobs" | "banners";
 
 type TeamRow = { name: string; role: string; cred: string };
 type StatRow = { value: string; label: string };
@@ -36,6 +37,13 @@ export default function AdminSections({ password }: { password: string }) {
   );
   const [about, setAbout] = useState<string>(currentAbout.join("\n\n"));
   const [jobRows, setJobRows] = useState<JobRow[]>(currentJobs.map((j) => ({ ...j })));
+  const [bannerRows, setBannerRows] = useState(
+    (["home", "projects"] as const).map((key) => ({
+      key,
+      title: currentBanners[key].title,
+      body: currentBanners[key].body,
+    }))
+  );
   const [busy, setBusy] = useState(false);
   const [saved, setSaved] = useState(false);
   const [err, setErr] = useState("");
@@ -54,7 +62,9 @@ export default function AdminSections({ password }: { password: string }) {
               ? offices
               : section === "about"
                 ? about.split(/\n\s*\n/).filter((p) => p.trim())
-                : jobRows;
+                : section === "banners"
+                  ? bannerRows
+                  : jobRows;
       const res = await fetch("/api/admin/update-section", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -76,6 +86,7 @@ export default function AdminSections({ password }: { password: string }) {
     { key: "offices", label: "Office details" },
     { key: "about", label: "About us" },
     { key: "jobs", label: "Job openings" },
+    { key: "banners", label: "Page banners" },
   ];
 
   return (
@@ -223,6 +234,28 @@ export default function AdminSections({ password }: { password: string }) {
             className="flex min-h-[44px] cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-navy-200 text-sm font-medium text-navy-500 hover:border-brand hover:text-brand">
             <Plus size={16} aria-hidden /> Add job opening
           </button>
+        </div>
+      )}
+
+      {section === "banners" && (
+        <div className="grid gap-3">
+          <p className="text-sm text-navy-500">
+            The big red-button banners at the bottom of the homepage and the
+            Projects page.
+          </p>
+          {bannerRows.map((b, i) => (
+            <div key={b.key} className="grid gap-2 border border-navy-100 bg-white p-4">
+              <p className="text-xs font-semibold uppercase tracking-wider text-navy-500">
+                {b.key === "home" ? "Homepage banner" : "Projects page banner"}
+              </p>
+              <input className={input} placeholder="Banner heading" value={b.title}
+                aria-label={`${b.key} banner heading`}
+                onChange={(e) => setBannerRows(bannerRows.map((x, j) => (j === i ? { ...x, title: e.target.value } : x)))} />
+              <textarea className={input} rows={3} placeholder="Banner text" value={b.body}
+                aria-label={`${b.key} banner text`}
+                onChange={(e) => setBannerRows(bannerRows.map((x, j) => (j === i ? { ...x, body: e.target.value } : x)))} />
+            </div>
+          ))}
         </div>
       )}
 

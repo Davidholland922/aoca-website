@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { projects, sectors } from "@/lib/site";
+import { banners, projects, sectors } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import PageHero from "@/components/PageHero";
 import ProjectsExplorer from "@/components/ProjectsExplorer";
@@ -35,10 +35,7 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <CtaBand
-        title="Your project could be next."
-        body="Bring us the awkward site, the tight programme, the building nobody has drawings for. That's the work we like."
-      />
+      <CtaBand title={banners.projects.title} body={banners.projects.body} />
     </>
   );
 }

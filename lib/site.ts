@@ -25,7 +25,27 @@ const overrides = overridesJson as Partial<{
   about: string[];
   featured: string[];
   jobs: { title: string; location: string; type: string; summary: string }[];
+  banners: { key: string; title: string; body: string }[];
 }>;
+
+/** Big call-to-action banners — client-editable via /admin (Edit details). */
+const bannerDefaults = {
+  home: {
+    title: "Talk to an engineer, not a switchboard.",
+    body: "Tell us what you're planning and we'll give you a straight view on feasibility, cost and programme — before you commit.",
+  },
+  projects: {
+    title: "Your project could be next.",
+    body: "Bring us the awkward site, the tight programme, the building nobody has drawings for. That's the work we like.",
+  },
+};
+const bannerOverrides = Object.fromEntries(
+  (overrides.banners ?? []).map((b) => [b.key, { title: b.title, body: b.body }])
+);
+export const banners = {
+  home: bannerOverrides.home ?? bannerDefaults.home,
+  projects: bannerOverrides.projects ?? bannerDefaults.projects,
+};
 
 /** "About us" story paragraphs — client-editable via /admin. */
 export const aboutParagraphs: string[] =

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import {
+  banners,
   stats,
   mission,
   values,
@@ -511,7 +512,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <CtaBand />
+      <CtaBand title={banners.home.title} body={banners.home.body} />
     </>
   );
 }
