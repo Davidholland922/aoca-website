@@ -29,23 +29,36 @@ export async function POST(req: Request) {
   // Preferred: Web3Forms — no DNS changes needed. Ciara requests a free
   // access key at web3forms.com using info@aoca.ie (it emails the key to
   // that inbox); enquiries then land there. Add copies in the dashboard.
-  const w3 = process.env.WEB3FORMS_ACCESS_KEY;
-  if (w3) {
-    const r = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({
-        access_key: w3,
-        subject: `Project enquiry from ${name}`,
-        from_name: "AOCA Website",
-        name,
-        email,
-        phone,
-        message,
-      }),
-    });
-    if (!r.ok) {
-      console.error("[contact] Web3Forms error:", r.status, await r.text());
+  // One key per destination inbox: WEB3FORMS_ACCESS_KEY (info@aoca.ie)
+  // and optionally WEB3FORMS_ACCESS_KEY_UK (info@aoca.co.uk).
+  const w3keys = [
+    process.env.WEB3FORMS_ACCESS_KEY,
+    process.env.WEB3FORMS_ACCESS_KEY_UK,
+  ].filter((k): k is string => !!k);
+  if (w3keys.length) {
+    const results = await Promise.all(
+      w3keys.map((key) =>
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            access_key: key,
+            subject: `Project enquiry from ${name}`,
+            from_name: "AOCA Website",
+            name,
+            email,
+            phone,
+            message,
+          }),
+        }).catch(() => null)
+      )
+    );
+    // the enquiry counts as delivered if the primary inbox got it
+    if (!results[0]?.ok) {
+      console.error("[contact] Web3Forms error:", results[0]?.status);
       return NextResponse.json({ error: "Send failed" }, { status: 502 });
     }
     return NextResponse.json({ ok: true });
