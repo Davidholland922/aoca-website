@@ -1,5 +1,33 @@
 [
   {
+    "slug": "one-off-bespoke-dwellings",
+    "title": "One-Off Bespoke Dwellings",
+    "sector": "residential",
+    "location": "Various locations throughout Ireland",
+    "thumb": "/images/2026-08-img-20191118-105955.jpg",
+    "hero": "/images/2026-08-img-20191118-105955.jpg",
+    "gallery": [
+      "/images/2026-08-img-4495.jpg",
+      "/images/2026-08-img-20220615-114033.jpg",
+      "/images/2026-08-img-20220623-094041.jpg",
+      "/images/uploads/one-off-bespoke-dwellings-xqs7z-1.jpg",
+      "/images/uploads/one-off-bespoke-dwellings-xqs7z-2.jpg",
+      "/images/uploads/one-off-bespoke-dwellings-xqs7z-3.jpg"
+    ],
+    "summary": "Almost 30 years of bespoke one-off homes — from rural bungalows to contemporary houses with basements and pool annexes.",
+    "body": [
+      "Since establishing practice almost 30 years ago, AOCA has successfully delivered a wide range of one-off bespoke residential dwellings, providing tailored architectural and engineering solutions to suit each individual client, site and brief. These projects have included everything from modest rural bungalows located adjacent to family farms to complex contemporary homes incorporating basements, swimming pool annexes, bespoke structural systems and challenging site conditions.",
+      "AOCA's experience in one-off housing covers a broad range of construction methods and materials, including traditional masonry construction, timber frame systems, reinforced concrete structures and insulated concrete formwork. External finishes and roof systems have varied significantly, incorporating natural slate, concrete tiles, standing-seam zinc, waterproof membranes and specialist cladding solutions designed to complement their rural surroundings.",
+      "Every site presents its own unique engineering requirements, with careful consideration given to ground conditions, site topography and environmental constraints. AOCA has designed solutions for properties located on steeply sloping sites, flat rural plots and complex landscapes, providing bespoke foundation designs together with associated infrastructure including stormwater soakaways, septic tanks, wastewater treatment systems and percolation areas.",
+      "One-off dwellings have remained a fundamental part of AOCA's practice since its early years, with many original clients returning for further projects, reflecting the trust and quality of service delivered. As a rural-based consultancy, AOCA understands the importance of creating homes that are unique to each client and location, and continues to regard these projects as some of the most rewarding within our portfolio."
+    ],
+    "featured": false,
+    "servicesProvided": [],
+    "servicesText": [
+      "Residential building design, planning permission services, civil engineering design, structural engineering design, foundation design, site investigation and assessment, drainage and wastewater design, construction supervision and completion certification."
+    ]
+  },
+  {
     "slug": "droughhill-portarlington",
     "title": "Droughhill, Portarlington",
     "sector": "residential",
