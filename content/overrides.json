@@ -86,5 +86,57 @@
       "text": "A multidisciplinary team across Portlaoise, Dublin and Manchester, delivering nine expertise areas to clients across Ireland, the UK and Europe — with the same uncompromising standard as 1996.",
       "image": "/images/2026-08-management-team-2025.jpg"
     }
+  ],
+  "testimonials": [
+    {
+      "quote": "What sets AOCA apart is not just their technical expertise, but their reliability and professionalism. They are approachable, proactive, and always willing to go the extra mile to ensure projects run smoothly. We would have no hesitation in recommending AOCA to others.",
+      "author": "Owen O'Gorman",
+      "role": "Managing Director",
+      "company": "Crown Roofing & Cladding",
+      "logo": "/images/2026-09-logo-crown.png"
+    },
+    {
+      "quote": "Their team brings genuine technical expertise to every project, and their ability to engage practically and collaboratively with our architectural practice makes the design and delivery process genuinely seamless. We value their engineering knowledge, professionalism and responsiveness — and recommend without hesitation.",
+      "author": "Jonathan Marais",
+      "role": "Head of Operations",
+      "company": "RDF Architects & Planning",
+      "logo": "/images/2026-06-rdf.png"
+    },
+    {
+      "quote": "The professionalism and expert guidance AOCA have afforded in their investigations have left no stones unturned. I consider AOCA a problem solver who consistently delivers high quality work, and to date their assistance has been invaluable.",
+      "author": "Fiona Beirne",
+      "role": "Senior Claims Associate",
+      "company": "Davies",
+      "logo": "/images/2026-06-davies-rgb-white-copy.png"
+    },
+    {
+      "quote": "Property Claims Loss Assessors have worked with the AOCA team for many years now. We love their service because of their rapid response times and the level of detail in their reporting — leaving no stone unturned, and always available to discuss ongoing projects.",
+      "author": "Peter Mulvaney",
+      "role": "Director",
+      "company": "Property Claims Loss Assessors",
+      "logo": "/images/2026-06-pcla.png",
+      "logoTall": true
+    },
+    {
+      "quote": "I have worked alongside many consulting professionals over the years, but few demonstrate the consistency, integrity, impartiality, and technical competence that AOCA has shown time and again. Their team has provided high-quality, objective engineering services on a wide range of domestic and commercial property damage claims.",
+      "author": "Stephen Nolan",
+      "role": "Major & Complex Loss Specialist",
+      "company": "OMC Claims",
+      "logo": "/images/2026-06-omc-logo.png"
+    },
+    {
+      "quote": "No nonsense, straight talking expert advice in a timely manner.",
+      "author": "Alan Synnott",
+      "role": "Stephen MacKenzie & Co",
+      "logo": "/images/2026-09-logo-mackenzie-light.png",
+      "logoTall": true
+    },
+    {
+      "quote": "I have worked with AOCA on various projects over many years. In all situations they have been diligent, professional, approachable and delivered a high quality service. The staff are committed and client focused, ensuring the delivery of projects.",
+      "author": "Donal Fitzgerald",
+      "role": "Director",
+      "company": "DNCF",
+      "logo": "/images/2026-09-logo-dncf-light.png"
+    }
   ]
 }
