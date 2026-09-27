@@ -38,14 +38,16 @@ export default function VideoHero({
     tryPlay();
     el.addEventListener("loadedmetadata", tryPlay, { once: true });
     el.addEventListener("canplay", tryPlay, { once: true });
-    // last resort: first user interaction unlocks playback
+    // last resort: first user interaction unlocks playback (battery-saver
+    // and data-saver modes block autoplay until the user does anything)
+    const events = ["touchstart", "scroll", "pointerdown", "mousemove", "keydown"];
     const unlock = () => {
       tryPlay();
-      window.removeEventListener("touchstart", unlock);
-      window.removeEventListener("scroll", unlock);
+      events.forEach((e) => window.removeEventListener(e, unlock));
     };
-    window.addEventListener("touchstart", unlock, { passive: true, once: true });
-    window.addEventListener("scroll", unlock, { passive: true, once: true });
+    events.forEach((e) =>
+      window.addEventListener(e, unlock, { passive: true, once: true })
+    );
   }, []);
 
   return (
