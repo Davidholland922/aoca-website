@@ -1,5 +1,27 @@
 [
   {
+    "slug": "pharmaceutical-facility-extension",
+    "title": "Pharmaceutical Building Extension, Ireland",
+    "sector": "life-sciences-healthcare",
+    "location": "Ireland",
+    "thumb": "/images/2026-09-pharma-ext-render-1.jpg",
+    "hero": "/images/2026-09-pharma-ext-render-1.jpg",
+    "gallery": [
+      "/images/2026-09-pharma-ext-render-2.jpg",
+      "/images/2026-08-capture-png1.jpg",
+      "/images/2026-09-pharma-campus-aerial.jpg"
+    ],
+    "summary": "Engineering services on a major extension at a pharmaceutical facility in Ireland.",
+    "body": [
+      "A biopharmaceutical campus expansion, delivering a new Sterile Drug Product facility for biologics manufacturing alongside existing bulk drug substance operations for a large American multinational. The building is FM insured and therefore required compliance with both Eurocode and FM Datasheet Design codes."
+    ],
+    "featured": false,
+    "servicesProvided": [],
+    "servicesText": [
+      "Wind load design calculations for the building envelope to FM wind load design requirements."
+    ]
+  },
+  {
     "slug": "harolds-cross-hospice-refurbishment",
     "title": "Harold's Cross Hospice Refurbishment",
     "sector": "life-sciences-healthcare",
