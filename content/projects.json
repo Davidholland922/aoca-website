@@ -1,5 +1,32 @@
 [
   {
+    "slug": "100-mw-hyperscale-data-centre-campus-finland-7xh1",
+    "title": "100 MW Hyperscale Data Centre Campus, Finland",
+    "sector": "industrial-data-centres",
+    "location": "Finland",
+    "thumb": "/images/uploads/100-mw-hyperscale-data-centre-campus-finland-7xh1-b7xh1-1.jpg",
+    "hero": "/images/uploads/100-mw-hyperscale-data-centre-campus-finland-7xh1-b7xh1-1.jpg",
+    "gallery": [
+      "/images/uploads/100-mw-hyperscale-data-centre-campus-finland-7xh1-e1adh-1.jpg",
+      "/images/uploads/100-mw-hyperscale-data-centre-campus-finland-7xh1-e1adh-2.jpg",
+      "/images/uploads/100-mw-hyperscale-data-centre-campus-finland-7xh1-e1adh-3.jpg",
+      "/images/uploads/100-mw-hyperscale-data-centre-campus-finland-7xh1-e1adh-4.jpg"
+    ],
+    "summary": "A hyperscale data centre campus in Finland comprising three steel-framed data centres.",
+    "body": [
+      "A hyperscale data centre campus in Finland comprising three steel-framed data centres across a c.122-hectare site with c.100MW capacity, delivering waste heat for carbon-neutral district heating and utilising rainwater harvesting. Each building includes two levels plus admin and ancillary facilities, supporting the building envelope contractor's façade and cladding engineering scope.",
+      "AOCA were involved at various levels of design in all three of these data centres for both the main contractor and building envelope contractors."
+    ],
+    "featured": false,
+    "servicesProvided": [
+      "structural-engineering",
+      "consulting-engineering"
+    ],
+    "servicesText": [
+      "Primary wind load design for roof waterproofing system, roof deck, and cladding\nStructural fire engineering calculations for loadbearing capacity of the entire roof deck during fire event.\nTemporary works design and structural calculations to place a 2.7 tonne spider crane onto metal deck roof in order to built 3 storey exhaust stacks on roof\nFull structural engineering design for large permanent walkway subject to very high drifted snows loads of up to 8Kn/m2\nPeer reviewed complete roof design for the main contractor including review of the subcontractor’s wind load design, compliance with Finnish Building Code relating to Fire, condensation risk analysis and client specification compliance."
+    ]
+  },
+  {
     "slug": "52-mw-data-centre-dublin-bjd6",
     "title": "52 MW Data Centre, Dublin",
     "sector": "industrial-data-centres",
@@ -47,33 +74,6 @@
     ],
     "servicesText": [
       "Building Envelope Quality Auditor\nBuilding Envelope Design Review"
-    ]
-  },
-  {
-    "slug": "100-mw-hyperscale-data-centre-campus-finland-7xh1",
-    "title": "100 MW Hyperscale Data Centre Campus, Finland",
-    "sector": "industrial-data-centres",
-    "location": "Finland",
-    "thumb": "/images/uploads/100-mw-hyperscale-data-centre-campus-finland-7xh1-b7xh1-1.jpg",
-    "hero": "/images/uploads/100-mw-hyperscale-data-centre-campus-finland-7xh1-b7xh1-1.jpg",
-    "gallery": [
-      "/images/uploads/100-mw-hyperscale-data-centre-campus-finland-7xh1-b7xh1-2.jpg",
-      "/images/uploads/100-mw-hyperscale-data-centre-campus-finland-7xh1-b7xh1-3.jpg",
-      "/images/uploads/100-mw-hyperscale-data-centre-campus-finland-7xh1-b7xh1-4.jpg",
-      "/images/uploads/100-mw-hyperscale-data-centre-campus-finland-7xh1-b7xh1-5.jpg"
-    ],
-    "summary": "A hyperscale data centre campus in Finland comprising three steel-framed data centres.",
-    "body": [
-      "A hyperscale data centre campus in Finland comprising three steel-framed data centres across a c.122-hectare site with c.100MW capacity, delivering waste heat for carbon-neutral district heating and utilising rainwater harvesting. Each building includes two levels plus admin and ancillary facilities, supporting the building envelope contractor's façade and cladding engineering scope.",
-      "AOCA were involved at various levels of design in all three of these data centres for both the main contractor and building envelope contractors."
-    ],
-    "featured": false,
-    "servicesProvided": [
-      "structural-engineering",
-      "consulting-engineering"
-    ],
-    "servicesText": [
-      "Primary wind load design for roof waterproofing system, roof deck, and cladding\nStructural fire engineering calculations for loadbearing capacity of the entire roof deck during fire event.\nTemporary works design and structural calculations to place a 2.7 tonne spider crane onto metal deck roof in order to built 3 storey exhaust stacks on roof\nFull structural engineering design for large permanent walkway subject to very high drifted snows loads of up to 8Kn/m2\nPeer reviewed complete roof design for the main contractor including review of the subcontractor’s wind load design, compliance with Finnish Building Code relating to Fire, condensation risk analysis and client specification compliance."
     ]
   },
   {
