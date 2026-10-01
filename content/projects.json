@@ -1,5 +1,32 @@
 [
   {
+    "slug": "16-mw-data-centre-dqm3",
+    "title": "16 MW Data Centre",
+    "sector": "infrastructure-government",
+    "location": "United Kingdom",
+    "thumb": "/images/uploads/16-mw-data-centre-dqm3-adqm3-1.jpg",
+    "hero": "/images/uploads/16-mw-data-centre-dqm3-adqm3-1.jpg",
+    "gallery": [
+      "/images/uploads/16-mw-data-centre-dqm3-adqm3-2.jpg",
+      "/images/uploads/16-mw-data-centre-dqm3-adqm3-3.jpg"
+    ],
+    "summary": "16 MW UK data centre project involving third-party building envelope design review, quality auditing, and construction inspection, covering structural, thermal, fire, airtightness, and drainage performance.",
+    "body": [
+      "AOCA acted as 3rd party design audit and construction inspection auditor for the building envelope contractor. Our peer design review covered all aspects of the building envelope including:",
+      "Roof and cladding wind load design to Eurocode EN 1991-1-4 .\nFixing calculations by client cladding and roofing suppliers\nRoo\nThermal U-value calculations and Condensation Risk Analysis to ISO13788\nCurtain wall calculations\nReview of fire stopping and compartmentation details\nReview of air tightness detailing for all elements of the building including all outbuildings\nReview of gutter bracket and roof drainage calculations"
+    ],
+    "featured": false,
+    "servicesProvided": [
+      "fire-safety-disability-access",
+      "structural-engineering",
+      "consulting-engineering",
+      "building-envelope-engineering"
+    ],
+    "servicesText": [
+      "Building Envelope Quality Auditor\nBuilding Envelope Design Review"
+    ]
+  },
+  {
     "slug": "rosslare-europort",
     "title": "Rosslare Europort",
     "sector": "infrastructure-government",
