@@ -4,10 +4,18 @@ import { useState } from "react";
 import { Send, CheckCircle2 } from "lucide-react";
 
 /**
- * Posts to /api/contact (Resend → info@aoca.ie + info@aoca.co.uk once
- * RESEND_API_KEY is configured; simulated on the draft until then).
+ * Sends enquiries straight from the visitor's browser to Web3Forms, using
+ * the access key(s) the client pasted in /admin. Web3Forms' free plan
+ * rejects server-side submissions, so this must stay client-side (the keys
+ * are public by design — they can only deliver mail TO the linked inbox).
+ * With no key saved it falls back to /api/contact, which simulates.
  */
-export default function ContactForm() {
+export default function ContactForm({
+  accessKeys = [],
+}: {
+  /** primary inbox first (info@aoca.ie), optional copy second */
+  accessKeys?: string[];
+}) {
   const [status, setStatus] = useState<
     "idle" | "sending" | "sent" | "simulated" | "error"
   >("idle");
@@ -17,7 +25,43 @@ export default function ContactForm() {
     const form = e.currentTarget;
     setStatus("sending");
     try {
-      const data = Object.fromEntries(new FormData(form).entries());
+      const data = Object.fromEntries(new FormData(form).entries()) as Record<
+        string,
+        string
+      >;
+      // hidden honeypot: real people never fill it, bots usually do
+      if (data.botcheck) {
+        setStatus("sent");
+        return;
+      }
+      delete data.botcheck;
+
+      if (accessKeys.length) {
+        const results = await Promise.all(
+          accessKeys.map((access_key) =>
+            fetch("https://api.web3forms.com/submit", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+              body: JSON.stringify({
+                access_key,
+                subject: `Website enquiry from ${data.name}`,
+                from_name: "AOCA Website",
+                ...data,
+              }),
+            })
+              .then((r) => r.json() as Promise<{ success?: boolean }>)
+              .catch(() => ({ success: false }))
+          )
+        );
+        // delivered if the main inbox (info@aoca.ie) got it
+        if (!results[0]?.success) throw new Error("send failed");
+        setStatus("sent");
+        return;
+      }
+
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -55,6 +99,14 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} className="grid gap-5 sm:grid-cols-2">
+      <input
+        type="checkbox"
+        name="botcheck"
+        tabIndex={-1}
+        autoComplete="off"
+        className="hidden"
+        aria-hidden
+      />
       <div className="flex flex-col gap-2">
         <label htmlFor="name" className="text-sm font-medium text-navy-800">
           Name <span className="text-brand">*</span>

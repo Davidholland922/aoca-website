@@ -561,7 +561,7 @@ export default function AdminPage() {
             {mode === "project" && !editingSlug && <span className="text-brand">*</span>}{" "}
             <span className="font-normal text-navy-500">
               {mode === "project"
-                ? "— first photo becomes the cover; up to 12"
+                ? "— first photo becomes the cover; up to 12. Landscape photos fill the frame best (ideally 1600 × 1000 px); other shapes still show in full."
                 : "— one cover image (optional)"}
             </span>
           </span>

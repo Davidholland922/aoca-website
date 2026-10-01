@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
-import { site, offices, companyImages } from "@/lib/site";
+import { site, offices, companyImages, contactKeys } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
 import PageHero from "@/components/PageHero";
@@ -90,7 +90,11 @@ export default function ContactPage() {
               {site.hours}
             </p>
             <div className="mt-8">
-              <ContactForm />
+              <ContactForm
+                accessKeys={(["ie", "uk"] as const)
+                  .map((inbox) => contactKeys.find((k) => k.inbox === inbox)?.accessKey)
+                  .filter((k): k is string => !!k)}
+              />
             </div>
           </Reveal>
           <Reveal delay={0.08}>

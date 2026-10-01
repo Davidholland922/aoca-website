@@ -109,18 +109,33 @@ export default function ProjectGallery({
           style={apexClip}
         >
           {images.map((src, i) => (
-            <Image
+            <div
               key={src}
-              src={src}
-              alt={`${title} — photo ${i + 1} of ${total}`}
-              fill
-              loading={i === 0 ? "eager" : "lazy"}
-              sizes="(min-width: 1024px) 44rem, 100vw"
-              className={`object-contain transition-opacity duration-500 ease-out motion-reduce:transition-none ${
+              className={`absolute inset-0 transition-opacity duration-500 ease-out motion-reduce:transition-none ${
                 index === i ? "opacity-100" : "opacity-0"
               }`}
               aria-hidden={index !== i}
-            />
+            >
+              {/* photos of any shape show in full; a blurred copy of the
+                  same photo fills the frame instead of empty bands */}
+              <Image
+                src={src}
+                alt=""
+                fill
+                loading={i === 0 ? "eager" : "lazy"}
+                sizes="20rem"
+                className="scale-110 object-cover opacity-70 blur-2xl"
+                aria-hidden
+              />
+              <Image
+                src={src}
+                alt={`${title} — photo ${i + 1} of ${total}`}
+                fill
+                loading={i === 0 ? "eager" : "lazy"}
+                sizes="(min-width: 1024px) 44rem, 100vw"
+                className="object-contain"
+              />
+            </div>
           ))}
 
           {/* swipe surface */}
