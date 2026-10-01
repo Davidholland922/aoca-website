@@ -1,5 +1,31 @@
 [
   {
+    "slug": "16-mw-data-centre-dqm3",
+    "title": "16 MW Data Centre, Wales, UK.",
+    "sector": "industrial-data-centres",
+    "location": "Wales, United Kingdom",
+    "thumb": "/images/uploads/16-mw-data-centre-dqm3-adqm3-1.jpg",
+    "hero": "/images/uploads/16-mw-data-centre-dqm3-adqm3-1.jpg",
+    "gallery": [
+      "/images/uploads/16-mw-data-centre-dqm3-adqm3-2.jpg",
+      "/images/uploads/16-mw-data-centre-dqm3-adqm3-3.jpg"
+    ],
+    "summary": "This is a new 16MW data centre located in Wales, UK.",
+    "body": [
+      "AOCA acted as 3rd party design audit and construction inspection auditor for the building envelope contractor. Our peer design review covered all aspects of the building envelope including:",
+      "Roof and cladding wind load design to Eurocode EN 1991-1-4 .\nFixing calculations by client cladding and roofing suppliers\nRoo\nThermal U-value calculations and Condensation Risk Analysis to ISO13788\nCurtain wall calculations\nReview of fire stopping and compartmentation details\nReview of air tightness detailing for all elements of the building including all outbuildings\nReview of gutter bracket and roof drainage calculations"
+    ],
+    "featured": false,
+    "servicesProvided": [
+      "building-envelope-engineering",
+      "fire-safety-disability-access",
+      "consulting-engineering"
+    ],
+    "servicesText": [
+      "Building Envelope Quality Auditor\nBuilding Envelope Design Review"
+    ]
+  },
+  {
     "slug": "52-mw-data-centre-dublin-bjd6",
     "title": "52 MW Data Centre, Dublin",
     "sector": "industrial-data-centres",
@@ -49,32 +75,6 @@
     ],
     "servicesText": [
       "Primary wind load design for roof waterproofing system, roof deck, and cladding\nStructural fire engineering calculations for loadbearing capacity of the entire roof deck during fire event.\nTemporary works design and structural calculations to place a 2.7 tonne spider crane onto metal deck roof in order to built 3 storey exhaust stacks on roof\nFull structural engineering design for large permanent walkway subject to very high drifted snows loads of up to 8Kn/m2\nPeer reviewed complete roof design for the main contractor including review of the subcontractor’s wind load design, compliance with Finnish Building Code relating to Fire, condensation risk analysis and client specification compliance."
-    ]
-  },
-  {
-    "slug": "16-mw-data-centre-dqm3",
-    "title": "16 MW Data Centre",
-    "sector": "infrastructure-government",
-    "location": "United Kingdom",
-    "thumb": "/images/uploads/16-mw-data-centre-dqm3-adqm3-1.jpg",
-    "hero": "/images/uploads/16-mw-data-centre-dqm3-adqm3-1.jpg",
-    "gallery": [
-      "/images/uploads/16-mw-data-centre-dqm3-adqm3-2.jpg",
-      "/images/uploads/16-mw-data-centre-dqm3-adqm3-3.jpg"
-    ],
-    "summary": "This is a new 16MW data centre located in Wales, UK.",
-    "body": [
-      "AOCA acted as 3rd party design audit and construction inspection auditor for the building envelope contractor. Our peer design review covered all aspects of the building envelope including:",
-      "Roof and cladding wind load design to Eurocode EN 1991-1-4 .\nFixing calculations by client cladding and roofing suppliers\nRoo\nThermal U-value calculations and Condensation Risk Analysis to ISO13788\nCurtain wall calculations\nReview of fire stopping and compartmentation details\nReview of air tightness detailing for all elements of the building including all outbuildings\nReview of gutter bracket and roof drainage calculations"
-    ],
-    "featured": false,
-    "servicesProvided": [
-      "building-envelope-engineering",
-      "fire-safety-disability-access",
-      "consulting-engineering"
-    ],
-    "servicesText": [
-      "Building Envelope Quality Auditor\nBuilding Envelope Design Review"
     ]
   },
   {
