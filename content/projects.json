@@ -1,5 +1,30 @@
 [
   {
+    "slug": "52-mw-data-centre-dublin-bjd6",
+    "title": "52 MW Data Centre, Dublin",
+    "sector": "industrial-data-centres",
+    "location": "Dublin, Ireland",
+    "thumb": "/images/uploads/52-mw-data-centre-dublin-bjd6-bbjd6-1.jpg",
+    "hero": "/images/uploads/52-mw-data-centre-dublin-bjd6-bbjd6-1.jpg",
+    "gallery": [
+      "/images/uploads/52-mw-data-centre-dublin-bjd6-bbjd6-2.jpg",
+      "/images/uploads/52-mw-data-centre-dublin-bjd6-bbjd6-4.jpg",
+      "/images/uploads/52-mw-data-centre-dublin-bjd6-bocxi-1.jpg"
+    ],
+    "summary": "A data centre campus development comprising two two-storey facilities of 32MW and 20MW, delivering 52MW of critical IT load across a 22-acre site.",
+    "body": [
+      "A data centre campus development comprising two two-storey facilities of 32MW and 20MW, delivering 52MW of critical IT load across a 22-acre site. AOCA were appointed by the main contractor as quality auditor during construction to ensure the building envelope was installed as per design and specification. AOCA were on-site bi-weekly for the duration of the project inspecting all roofing and cladding elements across the campus."
+    ],
+    "featured": false,
+    "servicesProvided": [
+      "structural-engineering",
+      "consulting-engineering"
+    ],
+    "servicesText": [
+      "Design review of roofing and cladding elements\nQuality audit inspections during construction\nAs there was substantial M&E work carried out on the roof post completion by the roofing contractor, AOCA installed wireless temperature and humidity probes in the roof build up to ensure any potential water leaks were detected post PC of the roof."
+    ]
+  },
+  {
     "slug": "16-mw-data-centre-dqm3",
     "title": "16 MW Data Centre, Wales, UK.",
     "sector": "industrial-data-centres",
@@ -23,31 +48,6 @@
     ],
     "servicesText": [
       "Building Envelope Quality Auditor\nBuilding Envelope Design Review"
-    ]
-  },
-  {
-    "slug": "52-mw-data-centre-dublin-bjd6",
-    "title": "52 MW Data Centre, Dublin",
-    "sector": "industrial-data-centres",
-    "location": "Dublin, Ireland",
-    "thumb": "/images/uploads/52-mw-data-centre-dublin-bjd6-bbjd6-1.jpg",
-    "hero": "/images/uploads/52-mw-data-centre-dublin-bjd6-bbjd6-1.jpg",
-    "gallery": [
-      "/images/uploads/52-mw-data-centre-dublin-bjd6-bbjd6-2.jpg",
-      "/images/uploads/52-mw-data-centre-dublin-bjd6-bbjd6-3.jpg",
-      "/images/uploads/52-mw-data-centre-dublin-bjd6-bbjd6-4.jpg"
-    ],
-    "summary": "A data centre campus development comprising two two-storey facilities of 32MW and 20MW, delivering 52MW of critical IT load across a 22-acre site.",
-    "body": [
-      "A data centre campus development comprising two two-storey facilities of 32MW and 20MW, delivering 52MW of critical IT load across a 22-acre site. AOCA were appointed by the main contractor as quality auditor during construction to ensure the building envelope was installed as per design and specification. AOCA were on-site bi-weekly for the duration of the project inspecting all roofing and cladding elements across the campus."
-    ],
-    "featured": false,
-    "servicesProvided": [
-      "structural-engineering",
-      "consulting-engineering"
-    ],
-    "servicesText": [
-      "Design review of roofing and cladding elements\nQuality audit inspections during construction\nAs there was substantial M&E work carried out on the roof post completion by the roofing contractor, AOCA installed wireless temperature and humidity probes in the roof build up to ensure any potential water leaks were detected post PC of the roof."
     ]
   },
   {
