@@ -2,7 +2,7 @@
   {
     "slug": "16-mw-data-centre-dqm3",
     "title": "16 MW Data Centre",
-    "sector": "industrial-data-centres",
+    "sector": "infrastructure-government",
     "location": "United Kingdom",
     "thumb": "/images/uploads/16-mw-data-centre-dqm3-adqm3-1.jpg",
     "hero": "/images/uploads/16-mw-data-centre-dqm3-adqm3-1.jpg",
@@ -16,12 +16,7 @@
       "Roof and cladding wind load design to Eurocode EN 1991-1-4 .\nFixing calculations by client cladding and roofing suppliers\nRoo\nThermal U-value calculations and Condensation Risk Analysis to ISO13788\nCurtain wall calculations\nReview of fire stopping and compartmentation details\nReview of air tightness detailing for all elements of the building including all outbuildings\nReview of gutter bracket and roof drainage calculations"
     ],
     "featured": false,
-    "servicesProvided": [
-      "fire-safety-disability-access",
-      "structural-engineering",
-      "consulting-engineering",
-      "building-envelope-engineering"
-    ],
+    "servicesProvided": [],
     "servicesText": [
       "Building Envelope Quality Auditor\nBuilding Envelope Design Review"
     ]
