@@ -14,7 +14,7 @@ export default function AWatermark({ className }: { className?: string }) {
       height={262}
       aria-hidden
       className={clsx(
-        "pointer-events-none absolute select-none opacity-[0.07]",
+        "pointer-events-none absolute max-w-none select-none opacity-[0.07]",
         className ?? "-right-24 top-1/2 h-[130%] w-auto -translate-y-1/2"
       )}
     />
