@@ -8,6 +8,7 @@ import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/insights" },
   title: "Insights",
   description:
     "News, awards and engineering insight from AOCA — from national infrastructure recognition to practical guidance on defects, remediation and sustainability.",

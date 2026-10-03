@@ -10,8 +10,8 @@ export default function AWatermark({ className }: { className?: string }) {
     <Image
       src="/a-mark-light.png"
       alt=""
-      width={580}
-      height={600}
+      width={253}
+      height={262}
       aria-hidden
       className={clsx(
         "pointer-events-none absolute select-none opacity-[0.07]",

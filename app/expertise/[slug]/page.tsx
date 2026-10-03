@@ -21,7 +21,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const service = getService((await params).slug);
   if (!service) return {};
-  return { title: service.title, description: service.short };
+  return {
+    title: service.title,
+    description: service.short,
+    alternates: { canonical: `/expertise/${service.slug}` },
+  };
 }
 
 export default async function ServicePage({

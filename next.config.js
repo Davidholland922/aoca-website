@@ -27,9 +27,8 @@ const OLD_ROOT_ARTICLES = [
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    // Assets are pre-sized (max 1600px) at build time; serving them directly
-    // keeps the Vercel free-tier image-optimization quota untouched.
-    unoptimized: true,
+    // Vercel Pro: let the optimizer serve responsive AVIF/WebP variants
+    formats: ["image/avif", "image/webp"],
   },
 
   /**

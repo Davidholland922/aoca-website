@@ -10,6 +10,7 @@ import SectionVideo from "@/components/SectionVideo";
 import CtaBand from "@/components/CtaBand";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/expertise" },
   title: "Expertise",
   description:
     "Civil engineering, structural engineering, insurance engineering, pyrite remediation and consulting engineering services from AOCA.",

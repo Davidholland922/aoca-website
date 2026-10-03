@@ -7,6 +7,7 @@ import ContactForm from "@/components/ContactForm";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/contact" },
   title: "Contact",
   description:
     "Contact AOCA Engineering Consultants — offices in Portlaoise, Dublin and Manchester. Email us or call and one of the team will get back to you shortly.",

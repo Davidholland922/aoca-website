@@ -20,6 +20,7 @@ import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/company" },
   title: "Company",
   description:
     "Aidan O'Connell & Associates — one of Ireland's leading engineering consultancies since 1996, with offices in Portlaoise, Dublin and Manchester.",

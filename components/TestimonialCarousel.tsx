@@ -71,6 +71,8 @@ export default function TestimonialCarousel({
                 <img
                   src={t.logo}
                   alt={t.company ?? ""}
+                  width={160}
+                  height={64}
                   className={t.logoTall ? "mt-3 h-16 w-auto" : "mt-3 h-9 w-auto"}
                   loading="lazy"
                 />

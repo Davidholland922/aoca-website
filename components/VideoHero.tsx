@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import Image from "next/image";
 
 /**
  * Full-bleed background video (client-supplied) with poster fallback.
@@ -18,10 +19,28 @@ export default function VideoHero({
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const pick = () => setSrc(reduce.matches ? null : "/video/hero.mp4");
-    pick();
-    reduce.addEventListener("change", pick);
-    return () => reduce.removeEventListener("change", pick);
+    const narrow = window.matchMedia("(max-width: 767px)");
+    const pick = () =>
+      setSrc(
+        reduce.matches
+          ? null
+          : narrow.matches
+            ? "/video/hero-mobile.mp4"
+            : "/video/hero.mp4"
+      );
+    // let the poster and headline paint first; the film comes in behind
+    const start = () => {
+      pick();
+      reduce.addEventListener("change", pick);
+      narrow.addEventListener("change", pick);
+    };
+    if (document.readyState === "complete") start();
+    else window.addEventListener("load", start, { once: true });
+    return () => {
+      window.removeEventListener("load", start);
+      reduce.removeEventListener("change", pick);
+      narrow.removeEventListener("change", pick);
+    };
   }, []);
 
   // iOS Safari only allows autoplay when the `muted` ATTRIBUTE is present
@@ -52,9 +71,16 @@ export default function VideoHero({
 
   return (
     <section className="relative min-h-svh overflow-hidden bg-navy-950">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${poster})` }}
+      {/* poster paints first (optimized + preloaded); the film fades in behind */}
+      <Image
+        src={poster}
+        alt=""
+        fill
+        priority
+        fetchPriority="high"
+        sizes="100vw"
+        quality={70}
+        className="object-cover"
         aria-hidden
       />
       {src && (
@@ -67,7 +93,7 @@ export default function VideoHero({
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
           poster={poster}
           aria-hidden
         />

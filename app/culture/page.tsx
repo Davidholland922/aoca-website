@@ -10,6 +10,7 @@ import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/culture" },
   title: "Our Culture",
   description:
     "Life at AOCA — a people-first engineering consultancy where ideas are valued, collaboration is encouraged and careers are built.",

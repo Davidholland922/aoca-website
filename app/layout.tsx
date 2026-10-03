@@ -63,6 +63,13 @@ const jsonLd = {
     address: o.address.join(", "),
   })),
   areaServed: ["Ireland", "United Kingdom"],
+  logo: `${site.url}/aoca-logo-nav.png`,
+  image: `${site.url}/og.png`,
+  sameAs: [
+    "https://www.linkedin.com/company/aidan-o'connell-&-associates",
+    "https://www.facebook.com/aoca.ie",
+    "https://instagram.com/aocaengineering",
+  ],
   description:
     "Civil & structural engineering, insurance engineering, pyrite remediation and consulting engineering services since 1996.",
 };

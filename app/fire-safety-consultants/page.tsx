@@ -7,6 +7,7 @@ import SectionHeading from "@/components/SectionHeading";
 import CtaBand from "@/components/CtaBand";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/fire-safety-consultants" },
   title: "Fire Safety Consultants",
   description:
     "Fire Safety Consultants — AOCA and OCF's specialist fire safety and accessibility consultancy. Fire engineering, certificates, risk assessments and defect remediation across Ireland and the UK.",

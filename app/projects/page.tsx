@@ -7,6 +7,7 @@ import ProjectsExplorer from "@/components/ProjectsExplorer";
 import CtaBand from "@/components/CtaBand";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/projects" },
   title: "Projects",
   description:
     "Three decades of engineering consultancy across Ireland, the UK and Europe — explore AOCA projects by sector.",

@@ -59,7 +59,7 @@ export default function FscBanner() {
         <div className="flex flex-col items-center gap-3 lg:items-end">
           <Link
             href="/fire-safety-consultants"
-            className="btn text-white transition-colors"
+            className="btn text-navy-950 transition-colors"
             style={{ backgroundColor: FSC_ORANGE }}
           >
             Discover Fire Safety Consultants

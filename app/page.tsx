@@ -31,6 +31,8 @@ import AccreditationBadges from "@/components/AccreditationBadges";
 import FscBanner from "@/components/FscBanner";
 import CultureMarquee from "@/components/CultureMarquee";
 
+export const metadata = { alternates: { canonical: "/" } };
+
 export default function HomePage() {
   const featured = featuredProjects;
 
@@ -413,7 +415,7 @@ export default function HomePage() {
         {/* accreditations & certifications (exact client wording) */}
         <div className="border-t border-navy-100 bg-navy-50/60">
           <div className="container-site py-10">
-            <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-navy-400">
+            <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-navy-500">
               Accreditations &amp; Certifications
             </p>
             <div className="mt-6">

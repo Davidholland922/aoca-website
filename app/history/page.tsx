@@ -8,6 +8,7 @@ import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/history" },
   title: "Our History",
   description:
     "Three decades of AOCA — from a one-engineer practice in Portlaoise to a multidisciplinary consultancy across Ireland, the UK and Europe.",
