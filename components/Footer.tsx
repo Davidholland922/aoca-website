@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { MapPin, Clock, Linkedin, Facebook, Instagram } from "lucide-react";
 import { site, offices } from "@/lib/site";
 
@@ -88,6 +89,10 @@ export default function Footer() {
         <div className="container-site flex flex-col gap-2 py-6 text-xs text-navy-300 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {site.legalName} All rights reserved.
+            {" · "}
+            <Link href="/privacy" className="transition-colors hover:text-white">
+              Privacy
+            </Link>
           </p>
           <p className="uppercase tracking-wider">
             Draft for review — not for public circulation

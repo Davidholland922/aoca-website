@@ -183,5 +183,5 @@ and the "AOCA Expertise — NEW" deck of August 2026.
   live. Until then the form simulates. Env vars still override if set.
 - Re-enable indexing (`app/layout.tsx` robots + `app/robots.ts`).
 - Update `site.url` in `lib/site.ts` to https://aoca.ie.
-- Cookie/privacy policy pages.
+- ~~Cookie/privacy policy pages~~ → /privacy added 3 Oct (factual: contact form via Web3Forms, cookieless Vercel analytics, no cookies). **Client to read once before launch.**
 - Compressed webm variant of hero videos.
