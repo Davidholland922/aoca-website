@@ -22,7 +22,7 @@ const body = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} | Consulting Engineers, Ireland & UK`,
+    default: "Consulting Engineers Portlaoise, Dublin & Manchester | AOCA Engineering Consultants",
     template: `%s | ${site.shortName} Engineering Consultants`,
   },
   description:
