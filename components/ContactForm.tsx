@@ -35,6 +35,14 @@ export default function ContactForm({
         return;
       }
       delete data.botcheck;
+      // belt-and-braces copy for the admin "Enquiries" tab (never blocks the user)
+      const record = (delivered: boolean) =>
+        fetch("/api/enquiry", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...data, delivered }),
+          keepalive: true,
+        }).catch(() => {});
 
       if (accessKeys.length) {
         const results = await Promise.all(
@@ -58,7 +66,9 @@ export default function ContactForm({
           )
         );
         // delivered if the main inbox (info@aoca.ie) got it
-        if (!results[0]?.success) throw new Error("send failed");
+        const delivered = !!results[0]?.success;
+        void record(delivered);
+        if (!delivered) throw new Error("send failed");
         setStatus("sent");
         window.gtag?.("event", "generate_lead", { method: "contact_form" });
         return;
