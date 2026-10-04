@@ -1,5 +1,14 @@
 # Go-live runbook — aoca.ie → new site
 
+**LAUNCHED 4 Oct 2026.** Launch commit 2799b5a pushed ~18:30; Blacknight A
+records (@ and www) changed to 76.76.21.21 at 17:50 BST; Vercel confirmed
+both domains configured by 18:55; Let's Encrypt cert for www.aoca.ie
+issued 18:59; site serving with valid HTTPS. Old hosting (80.93.26.192)
+left untouched as rollback; offline copy of the old public site in
+`portfolio/old-site-backup/` and `~/Downloads/aoca.ie-old-site-backup-2026-10-04.zip`.
+Post-launch: Search Console + GA4 (needs David's Google login), email
+delivery test to info@aoca.ie (MX untouched), cancel old hosting after ~2 weeks.
+
 Status (2 Oct 2026): everything is pre-staged. Launch is two DNS edits at
 Blacknight plus one small code commit. Email is untouched throughout.
 

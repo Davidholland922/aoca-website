@@ -175,7 +175,7 @@ and the "AOCA Expertise — NEW" deck of August 2026.
 | ~~Team headshots~~ | Done | Studio portraits now on the company-page team cards (Philip, Brian, Emmett, Colin) |
 | History photos 2.jpg & 6.jpg | Client | Copies in the SharePoint drop are the same low-res files (206px/225px) — still need higher-res originals |
 
-## Technical before production launch
+## Technical before production launch — DONE 4 Oct 2026 (site live on www.aoca.ie)
 
 - Contact form: SELF-SERVICE since 26 Sept — admin "Edit details → Contact
   form" tab; client creates a Web3Forms account with info@aoca.ie (and
