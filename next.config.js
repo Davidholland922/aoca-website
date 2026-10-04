@@ -53,6 +53,13 @@ const nextConfig = {
 
   async redirects() {
     return [
+      // ---- the review address keeps working but sends people to the real site
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "aoca-draft.vercel.app" }],
+        destination: "https://www.aoca.ie/:path*",
+        permanent: true,
+      },
       // ---- Terms of Business lives at /terms (Philip's preference);
       // longer spellings land there too
       { source: "/terms-of-business", destination: "/terms", permanent: true },

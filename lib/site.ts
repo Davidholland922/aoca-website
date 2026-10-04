@@ -101,7 +101,7 @@ export const site = {
   legalName: "Aidan O'Connell & Associates Ltd.",
   shortName: "AOCA",
   tagline: "We turn vision into reality.",
-  url: "https://aoca-draft.vercel.app",
+  url: "https://www.aoca.ie",
   phone: "+353 (0)57 866 3244",
   phoneHref: "tel:+353578663244",
   email: "info@aoca.ie",

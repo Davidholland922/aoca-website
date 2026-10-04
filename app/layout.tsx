@@ -34,11 +34,7 @@ export const metadata: Metadata = {
       "We turn vision into reality. Over 7,000 projects delivered since 1996 across Ireland, the UK and Europe.",
     images: ["/og.png"],
   },
-  robots: {
-    // Draft site: keep out of search indexes until production launch
-    index: false,
-    follow: false,
-  },
+  robots: { index: true, follow: true },
 };
 
 const jsonLd = {

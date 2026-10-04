@@ -95,7 +95,7 @@ export default function Footer() {
             </Link>
           </p>
           <p className="uppercase tracking-wider">
-            Draft for review — not for public circulation
+            Consulting Engineers · Portlaoise · Dublin · Manchester
           </p>
         </div>
       </div>
