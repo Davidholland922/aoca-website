@@ -36,6 +36,21 @@ const nextConfig = {
    * This is what carries the existing Google presence across at go-live —
    * harmless on the staging domain (those paths never existed here).
    */
+  // security headers (HSTS is added by Vercel itself)
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+        ],
+      },
+    ];
+  },
+
   async redirects() {
     return [
       // ---- Terms of Business lives at /terms (Philip's preference);
