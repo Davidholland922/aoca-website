@@ -47,7 +47,7 @@ export default function ContactForm({
               },
               body: JSON.stringify({
                 access_key,
-                subject: `Website enquiry from ${data.name}`,
+                subject: `Website enquiry from ${data.name} (${data.email})`,
                 from_name: "AOCA Website",
                 replyto: data.email,
                 ...data,
