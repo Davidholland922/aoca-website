@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -18,24 +18,15 @@ export default function ProjectsExplorer({
   sectors: Sector[];
 }) {
   const [active, setActive] = useState<string>("all");
-  const searchParams = useSearchParams();
-  const sectorParam = searchParams.get("sector");
-
-  // Track the URL param so picking a second sector from the navbar
-  // dropdown re-filters (the page does not remount on same-route nav).
-  useEffect(() => {
-    if (sectorParam && sectors.some((s) => s.slug === sectorParam)) {
-      setActive(sectorParam);
-    } else if (!sectorParam) {
-      setActive("all");
-    }
-  }, [sectorParam, sectors]);
 
   const shown =
     active === "all" ? projects : projects.filter((p) => p.sector === active);
 
   return (
     <div>
+      <Suspense fallback={null}>
+        <SectorFromUrl sectors={sectors} onChange={setActive} />
+      </Suspense>
       <div
         className="flex flex-wrap gap-2"
         role="tablist"
@@ -99,7 +90,7 @@ export default function ProjectsExplorer({
                   {p.title}
                 </h2>
                 {p.location && (
-                  <p className="mt-1 text-xs uppercase tracking-wider text-navy-400">
+                  <p className="mt-1 text-xs uppercase tracking-wider text-navy-500">
                     {shortLocation(p.location)}
                   </p>
                 )}
@@ -113,4 +104,28 @@ export default function ProjectsExplorer({
       </div>
     </div>
   );
+}
+
+/**
+ * Keeps the active sector in step with ?sector= in the URL, so picking a
+ * second sector from the navbar dropdown re-filters (the page does not
+ * remount on same-route navigation). Isolated here so the grid itself
+ * renders on the server — only this null-rendering child is deferred.
+ */
+function SectorFromUrl({
+  sectors,
+  onChange,
+}: {
+  sectors: Sector[];
+  onChange: (slug: string) => void;
+}) {
+  const sectorParam = useSearchParams().get("sector");
+  useEffect(() => {
+    if (sectorParam && sectors.some((s) => s.slug === sectorParam)) {
+      onChange(sectorParam);
+    } else if (!sectorParam) {
+      onChange("all");
+    }
+  }, [sectorParam, sectors, onChange]);
+  return null;
 }

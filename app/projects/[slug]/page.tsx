@@ -279,7 +279,7 @@ export default async function ProjectPage({
                           {p.title}
                         </h3>
                         {p.location && (
-                          <p className="mt-1 text-xs uppercase tracking-wider text-navy-400">
+                          <p className="mt-1 text-xs uppercase tracking-wider text-navy-500">
                             {shortLocation(p.location)}
                           </p>
                         )}
