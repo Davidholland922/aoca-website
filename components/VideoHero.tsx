@@ -98,11 +98,14 @@ export default function VideoHero({
           aria-hidden
         />
       )}
-      {/* legibility scrims */}
+      {/* legibility scrims — the side gradient suits wide screens; phones
+          stack the headline over the brightest part of the film, so they
+          get an even darkening as well */}
       <div
         className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-950/60 to-navy-950/30"
         aria-hidden
       />
+      <div className="absolute inset-0 bg-navy-950/45 md:hidden" aria-hidden />
       {/* top scrim keeps the floating menu legible; fades out well inside the
           hero so there is no visible edge at the header boundary */}
       <div
