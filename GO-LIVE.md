@@ -15,19 +15,33 @@ Blacknight plus one small code commit. Email is untouched throughout.
 - 301 redirect map from every old WordPress URL (next.config.js).
 - Admin fully self-service; GitHub token never expires.
 
-## Current DNS at Blacknight (recorded 2 Oct 2026 — rollback reference)
+## Exact DNS zone at Blacknight (read from the panel 4 Oct 2026 — rollback reference)
 
-| Record | Name | Value | Action at launch |
-|---|---|---|---|
-| A | `@` (aoca.ie) | 80.93.26.192 | **change** → `76.76.21.21` |
-| A | `www` | 80.93.26.192 | **change** → `76.76.21.21` |
-| MX | `@` | 10 aoca-ie.mail.protection.outlook.com | **leave** (Microsoft 365 email) |
-| TXT | `@` | v=spf1 ip4:213.191.225.59 ip4:83.70.179.45 ip4:80.93.26.192 include:spf.protection.outlook.com -all | **leave** |
-| TXT | `@` | 8mqfd9202mju34ti3cg38128a6 | **leave** (domain verification) |
-| anything else (autodiscover, _dmarc, DKIM selectors…) | | | **leave** |
+Panel: cp.blacknighthosting.com → Domains → aoca.ie → Manage DNS Records
+(DNSManager3 zone id 26435). David has account access (invite accepted
+4 Oct). Nameservers ns1–ns4.blacknight.com (zone is live here).
 
-Email lives entirely on the MX/TXT records → cannot be affected by the two
-A-record changes. Rollback = set both A records back to 80.93.26.192.
+| Name | Type | TTL | Value | Launch action |
+|---|---|---|---|---|
+| @ | A | 3600 | 80.93.26.192 | **edit → 76.76.21.21** |
+| www | A | 3600 | 80.93.26.192 | **edit → 76.76.21.21** |
+| exchange | A | 3600 | 213.191.225.59 | leave (legacy) |
+| @ | NS | 3600 | ns1/ns2.blacknight.com | leave (never remove) |
+| @ | MX | 300 | 10 aoca-ie.mail.protection.outlook.com | **leave — email** |
+| @ | TXT | 3600 | v=spf1 … include:spf.protection.outlook.com -all | **leave — email** |
+| @ | TXT | 3600 | 8mqfd9202mju34ti3cg38128a6 | leave (verification) |
+| _acme-challenge.www | TXT | 3600 | 9oZFEiiKk… | leave (old host cert) |
+| autodiscover | CNAME | 3600 | autodiscover.outlook.com | **leave — email** |
+| k2._domainkey / k3._domainkey | CNAME | 3600 | dkim2/dkim3.mcsv.net | **leave — Mailchimp email** |
+| hs1-27138842._domainkey | CNAME | 3600 | …dkim.hubspotemail.net | **leave — HubSpot email** |
+| enterpriseenrollment / enterpriseregistration | CNAME | 3600 | Microsoft Intune | leave |
+
+Only the two bold A records change. Every email-related record (MX, SPF,
+autodiscover, Mailchimp/HubSpot DKIM) is untouched. Rollback = set the two
+A records back to 80.93.26.192 (takes effect within the 3600s TTL).
+
+The go-live code flip is parked on local git branch `launch` (commit
+builds clean); pushing it to main is step 1 on launch day.
 
 ## Launch day (≈30 min, best early morning)
 
