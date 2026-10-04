@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { site } from "@/lib/site";
 import Reveal from "@/components/Reveal";
+import CookieReset from "@/components/CookieReset";
 
 /**
  * Privacy notice. Factual description of what this site actually does with
@@ -27,14 +28,14 @@ const sections: { title: string; body: string[] }[] = [
     body: [
       "Contact form: when you send an enquiry we collect the name, email address, phone number (optional) and message you provide. We use this solely to respond to your enquiry and, where you engage us, to deliver our services. The legal basis is our legitimate interest in responding to enquiries and, where applicable, taking steps at your request before entering into a contract.",
       "Enquiries are delivered to our inbox by Web3Forms, a form-delivery service, which processes the submission on our behalf and retains a copy for a limited period for delivery and spam-prevention purposes.",
-      "Website analytics: we use Vercel Web Analytics to understand how the site is used (pages visited, country, device type). This is privacy-friendly analytics that does not use cookies and does not identify individual visitors.",
+      "Website analytics: we use Vercel Web Analytics, which does not use cookies and does not identify individual visitors, and, only if you accept it on the cookie notice, Google Analytics 4. Google Analytics tells us which pages are visited, roughly where visitors are and how they found the site. IP addresses are anonymised and we do not use the data for advertising. Google LLC processes this data on our behalf under its standard EU data-protection terms.",
       "Career applications: if you apply for a position by email, we process the information in your application to assess your suitability for the role.",
     ],
   },
   {
     title: "Cookies",
     body: [
-      "This website does not set tracking or advertising cookies. The site functions without storing identifying information in your browser.",
+      "The site works without any tracking cookies. If you accept analytics on the cookie notice, Google Analytics sets cookies beginning with _ga (kept for up to 13 months) to tell returning visits apart. Your choice is remembered in your browser. We never set advertising cookies.",
     ],
   },
   {
@@ -104,7 +105,7 @@ export default function PrivacyPage() {
             </Reveal>
           ))}
           <p className="mt-14 border-t border-navy-100 pt-6 text-sm text-navy-500">
-            Questions about this notice? Email{" "}
+            You can <CookieReset /> at any time. Questions about this notice? Email{" "}
             <a
               href={`mailto:${site.email}`}
               className="font-medium text-brand underline-offset-2 hover:underline"

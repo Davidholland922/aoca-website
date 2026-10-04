@@ -59,6 +59,7 @@ export default function ContactForm({
         // delivered if the main inbox (info@aoca.ie) got it
         if (!results[0]?.success) throw new Error("send failed");
         setStatus("sent");
+        window.gtag?.("event", "generate_lead", { method: "contact_form" });
         return;
       }
 
