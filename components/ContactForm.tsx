@@ -58,6 +58,9 @@ export default function ContactForm({
                 subject: `Website enquiry from ${data.name} (${data.email})`,
                 from_name: "AOCA Website",
                 replyto: data.email,
+                // shown in the notification body: a fresh email avoids the
+                // quoted notification that spam filters dislike
+                how_to_reply: `Start a new email to . Replying to this notification can land in the sender's spam folder.`,
                 ...data,
               }),
             })
