@@ -29,7 +29,7 @@ export async function generateMetadata({
   const count = projects.filter((p) => p.sector === sector.slug).length;
   return {
     title: `${sector.title} Engineering Projects`,
-    description: `${sector.blurb} ${count} ${sector.title.toLowerCase()} project${count === 1 ? "" : "s"} by AOCA Engineering Consultants across Ireland and the UK.`,
+    description: `${count} ${sector.title.toLowerCase()} project${count === 1 ? "" : "s"} by AOCA, consulting engineers in Ireland and the UK. ${sector.blurb}`.slice(0, 158),
     alternates: { canonical: `/projects/sector/${sector.slug}` },
     openGraph: { images: [sector.image] },
   };

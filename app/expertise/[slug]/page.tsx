@@ -13,6 +13,19 @@ import JsonLd from "@/components/JsonLd";
 import ProjectCard from "@/components/ProjectCard";
 import { projectsForService, serviceJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
+/** search-led page titles: what people type, plus where we are */
+const SEO_LABEL: Record<string, string> = {
+  "structural-engineering": "Structural Engineers",
+  "civil-engineering": "Civil Engineers",
+  "insurance-forensic-engineering": "Insurance & Forensic Engineers",
+  "fire-safety-disability-access": "Fire Safety Consultants",
+  "building-surveying": "Building Surveyors",
+  "assigned-certifier": "Assigned Certifier",
+  "project-construction-management": "Project & Construction Management",
+  "consulting-engineering": "Consulting Engineers",
+  "building-envelope-engineering": "Building Envelope Engineers",
+};
+
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
 }
@@ -24,9 +37,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const service = getService((await params).slug);
   if (!service) return {};
+  const label = SEO_LABEL[service.slug] ?? service.title;
+  const short = service.short.length > 105 ? service.short.slice(0, service.short.lastIndexOf(" ", 105)) + "." : service.short;
   return {
-    title: `${service.title}, Portlaoise, Dublin & Manchester`,
-    description: `${service.short} ${service.title} consultants at AOCA Engineering Consultants, serving Ireland and the UK from Portlaoise, Dublin and Manchester since 1996.`,
+    title: `${label}, Portlaoise, Dublin & UK`,
+    description: `${short} AOCA, Portlaoise, Dublin and Manchester.`,
     alternates: { canonical: `/expertise/${service.slug}` },
     openGraph: { images: [service.image] },
   };

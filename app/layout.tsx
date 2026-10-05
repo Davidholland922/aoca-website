@@ -25,10 +25,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
     default: "Consulting Engineers Portlaoise, Dublin & Manchester | AOCA Engineering Consultants",
-    template: `%s | ${site.shortName} Engineering Consultants`,
+    template: `%s | ${site.shortName}`,
   },
   description:
-    "Aidan O'Connell & Associates — civil & structural engineering, insurance engineering, pyrite remediation and consulting engineers since 1996. Offices in Portlaoise, Dublin and Manchester.",
+    "Civil, structural, insurance and forensic engineers since 1996. Offices in Portlaoise, Dublin and Manchester. 38 case studies, 9 areas of expertise.",
   openGraph: {
     type: "website",
     siteName: site.name,

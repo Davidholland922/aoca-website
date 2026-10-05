@@ -34,7 +34,7 @@ export async function generateMetadata({
   if (!office) return {};
   return {
     title: `Consulting Engineers in ${office.city}`,
-    description: `AOCA Engineering Consultants, ${office.city} office. Civil, structural, insurance and forensic engineering, fire safety and building surveying. ${office.address.join(", ")}. Call ${office.phone}.`,
+    description: `Civil, structural, insurance and forensic engineers in ${office.city}. ${office.address.filter((l) => !l.startsWith("(")).join(", ")}. ${office.phone}.`,
     alternates: { canonical: `/offices/${office.slug}` },
     openGraph: { images: [office.image] },
   };
