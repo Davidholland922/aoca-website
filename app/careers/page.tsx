@@ -9,7 +9,7 @@ import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/careers" },
-  title: "Careers",
+  title: "Engineering Careers in Portlaoise, Dublin & Manchester",
   description:
     "Careers at AOCA Engineering Consultants — join a team where ideas are valued, collaboration is encouraged and professional growth is supported.",
 };

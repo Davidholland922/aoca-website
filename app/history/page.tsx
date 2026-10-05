@@ -9,7 +9,7 @@ import CtaBand from "@/components/CtaBand";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/history" },
-  title: "Our History",
+  title: "Our History: Engineering since 1996",
   description:
     "Three decades of AOCA — from a one-engineer practice in Portlaoise to a multidisciplinary consultancy across Ireland, the UK and Europe.",
 };

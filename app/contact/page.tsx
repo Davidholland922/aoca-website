@@ -8,7 +8,7 @@ import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
-  title: "Contact",
+  title: "Contact AOCA: Portlaoise, Dublin & Manchester Offices",
   description:
     "Contact AOCA Engineering Consultants — offices in Portlaoise, Dublin and Manchester. Email us or call and one of the team will get back to you shortly.",
 };
