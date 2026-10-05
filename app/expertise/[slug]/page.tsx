@@ -12,6 +12,8 @@ import CtaBand from "@/components/CtaBand";
 import JsonLd from "@/components/JsonLd";
 import ProjectCard from "@/components/ProjectCard";
 import { projectsForService, serviceJsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import { serviceLandings, getServiceLanding, LANDING_LIVE } from "@/lib/landing";
+import { ServiceLandingView } from "@/components/LandingPage";
 
 /** search-led page titles: what people type, plus where we are */
 const SEO_LABEL: Record<string, string> = {
@@ -27,7 +29,8 @@ const SEO_LABEL: Record<string, string> = {
 };
 
 export function generateStaticParams() {
-  return services.map((s) => ({ slug: s.slug }));
+  // client-written expertise pages plus the search landing pages beside them
+  return [...services.map((s) => ({ slug: s.slug })), ...serviceLandings.map((l) => ({ slug: l.slug }))];
 }
 
 export async function generateMetadata({
@@ -35,8 +38,19 @@ export async function generateMetadata({
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const service = getService((await params).slug);
-  if (!service) return {};
+  const slug = (await params).slug;
+  const service = getService(slug);
+  if (!service) {
+    const l = getServiceLanding(slug);
+    if (!l) return {};
+    return {
+      title: l.metaTitle,
+      description: l.metaDescription,
+      alternates: { canonical: `/expertise/${l.slug}` },
+      openGraph: { images: [l.image] },
+      robots: LANDING_LIVE ? { index: true, follow: true } : { index: false, follow: false },
+    };
+  }
   const label = SEO_LABEL[service.slug] ?? service.title;
   const short = service.short.length > 105 ? service.short.slice(0, service.short.lastIndexOf(" ", 105)) + "." : service.short;
   return {
@@ -52,8 +66,13 @@ export default async function ServicePage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const service = getService((await params).slug);
-  if (!service) notFound();
+  const slug = (await params).slug;
+  const service = getService(slug);
+  if (!service) {
+    const l = getServiceLanding(slug);
+    if (!l) notFound();
+    return <ServiceLandingView l={l} />;
+  }
   const related = projectsForService(service.slug).slice(0, 6);
 
   return (
