@@ -7,6 +7,8 @@ import { insights, getArticle } from "@/lib/insights";
 import Reveal from "@/components/Reveal";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
+import JsonLd from "@/components/JsonLd";
+import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
   return insights.map((a) => ({ slug: a.slug }));
@@ -23,6 +25,7 @@ export async function generateMetadata({
     title: article.title,
     description: article.excerpt,
     alternates: { canonical: `/insights/${article.slug}` },
+    openGraph: { type: "article", publishedTime: article.date, images: [article.image] },
   };
 }
 
@@ -38,6 +41,15 @@ export default async function ArticlePage({
 
   return (
     <>
+      <JsonLd
+        data={[
+          articleJsonLd(article),
+          breadcrumbJsonLd([
+            { name: "Insights", path: "/insights" },
+            { name: article.title, path: `/insights/${article.slug}` },
+          ]),
+        ]}
+      />
       <PageHero
         eyebrow={
           <>

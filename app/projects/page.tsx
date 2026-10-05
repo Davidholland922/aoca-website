@@ -4,6 +4,7 @@ import Reveal from "@/components/Reveal";
 import PageHero from "@/components/PageHero";
 import ProjectsExplorer from "@/components/ProjectsExplorer";
 import CtaBand from "@/components/CtaBand";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/projects" },
@@ -28,6 +29,24 @@ export default function ProjectsPage() {
         <div className="container-site">
           <Reveal>
             <ProjectsExplorer projects={projects} sectors={sectors} />
+          </Reveal>
+          <Reveal>
+            <h2 className="mt-16 text-xl font-semibold text-navy-900">
+              Browse projects by sector
+            </h2>
+            <div className="rule" />
+            <ul className="mt-6 flex flex-wrap gap-3">
+              {sectors.map((s) => (
+                <li key={s.slug}>
+                  <Link
+                    href={`/projects/sector/${s.slug}`}
+                    className="inline-block border border-navy-200 px-4 py-2 text-sm font-medium text-navy-800 transition-colors hover:border-navy-800"
+                  >
+                    {s.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </Reveal>
         </div>
       </section>

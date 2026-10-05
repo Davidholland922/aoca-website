@@ -17,6 +17,7 @@ import {
   cultureImages,
   companyImages,
   shortLocation,
+  offices,
 } from "@/lib/site";
 import ServiceIcon from "@/components/ServiceIcon";
 import { insights } from "@/lib/insights";
@@ -30,6 +31,7 @@ import AWatermark from "@/components/AWatermark";
 import AccreditationBadges from "@/components/AccreditationBadges";
 import FscBanner from "@/components/FscBanner";
 import CultureMarquee from "@/components/CultureMarquee";
+import { officePlaces } from "@/lib/seo";
 
 export const metadata = { alternates: { canonical: "/" } };
 
@@ -511,6 +513,45 @@ export default function HomePage() {
         {/* full-bleed drifting film strip — pauses on hover */}
         <div className="mt-12">
           <CultureMarquee images={cultureImages} />
+        </div>
+      </section>
+
+      {/* WHERE WE WORK — three offices, each with its own page */}
+      <section className="border-t border-navy-100 bg-navy-50/60 py-16">
+        <div className="container-site">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Where we work"
+              title="Consulting engineers in Portlaoise, Dublin and Manchester"
+              lead="Three offices, one team. Head office in Portlaoise since 1996, a Dublin office in Clondalkin, and a UK office in Manchester city centre for work in England and Wales."
+            />
+          </Reveal>
+          <Reveal>
+            <ul className="mt-10 grid gap-6 md:grid-cols-3">
+              {offices.map((o, i) =>
+                officePlaces[i] ? (
+                  <li key={o.name}>
+                    <Link
+                      href={`/offices/${officePlaces[i].slug}`}
+                      className="group block h-full border border-navy-100 bg-white p-6 transition-all duration-200 hover:-translate-y-1 hover:border-navy-800 hover:shadow-lg"
+                    >
+                      <h3 className="text-lg font-semibold text-navy-900 group-hover:text-brand">
+                        {officePlaces[i].city}
+                      </h3>
+                      <p className="mt-2 text-sm leading-relaxed text-navy-600">
+                        {o.address.join(", ")}
+                      </p>
+                      <p className="mt-3 text-sm font-medium text-navy-800">{o.phone}</p>
+                      <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-brand">
+                        {officePlaces[i].city} office
+                        <ArrowRight size={14} aria-hidden />
+                      </span>
+                    </Link>
+                  </li>
+                ) : null
+              )}
+            </ul>
+          </Reveal>
         </div>
       </section>
 

@@ -5,7 +5,9 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
-import { site, offices } from "@/lib/site";
+import { site } from "@/lib/site";
+import { orgJsonLd } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 
 const heading = Space_Grotesk({
   subsets: ["latin"],
@@ -38,39 +40,6 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: site.name,
-  legalName: site.legalName,
-  url: site.url,
-  telephone: site.phone,
-  email: site.email,
-  foundingDate: site.founded,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Lismard House, Timahoe Road",
-    addressLocality: "Portlaoise",
-    addressRegion: "Co. Laois",
-    addressCountry: "IE",
-  },
-  location: offices.map((o) => ({
-    "@type": "Place",
-    name: o.name,
-    address: o.address.join(", "),
-  })),
-  areaServed: ["Ireland", "United Kingdom"],
-  logo: `${site.url}/aoca-logo-nav.png`,
-  image: `${site.url}/og.png`,
-  sameAs: [
-    "https://www.linkedin.com/company/aidan-o'connell-&-associates",
-    "https://www.facebook.com/aoca.ie",
-    "https://instagram.com/aocaengineering",
-  ],
-  description:
-    "Civil & structural engineering, insurance engineering, pyrite remediation and consulting engineering services since 1996.",
-};
-
 export default function RootLayout({
   children,
 }: {
@@ -83,10 +52,7 @@ export default function RootLayout({
       className={`${heading.variable} ${body.variable}`}
     >
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <JsonLd data={orgJsonLd()} />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:text-navy-900"

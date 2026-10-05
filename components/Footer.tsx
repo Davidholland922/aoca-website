@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { MapPin, Clock, Linkedin, Facebook, Instagram } from "lucide-react";
 import { site, offices } from "@/lib/site";
+import { officePlaces } from "@/lib/seo";
 
 const socials = [
   {
@@ -30,7 +31,7 @@ export default function Footer() {
             Offices
           </h2>
           <ul className="mt-8 grid gap-10 md:grid-cols-3">
-            {offices.map((o) => (
+            {offices.map((o, i) => (
               <li key={o.name}>
                 <p className="flex items-start gap-3 text-lg font-semibold text-white">
                   <MapPin
@@ -38,7 +39,16 @@ export default function Footer() {
                     className="mt-1 shrink-0 text-brand"
                     aria-hidden
                   />
-                  {o.name}
+                  {officePlaces[i] ? (
+                    <Link
+                      href={`/offices/${officePlaces[i].slug}`}
+                      className="transition-colors hover:text-brand-light"
+                    >
+                      {o.name}
+                    </Link>
+                  ) : (
+                    o.name
+                  )}
                 </p>
                 <p className="mt-2 pl-8 text-base leading-relaxed text-navy-300">
                   {o.address.join(", ")}

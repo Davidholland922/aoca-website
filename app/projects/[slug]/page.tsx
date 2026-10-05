@@ -14,6 +14,8 @@ import {
 import Reveal from "@/components/Reveal";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
+import JsonLd from "@/components/JsonLd";
+import { projectJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import SectionVideo from "@/components/SectionVideo";
 import ProjectGallery from "@/components/ProjectGallery";
 
@@ -29,9 +31,10 @@ export async function generateMetadata({
   const project = getProject((await params).slug);
   if (!project) return {};
   return {
-    title: project.title,
+    title: project.location ? `${project.title}, ${project.location}` : project.title,
     description: project.summary,
     alternates: { canonical: `/projects/${project.slug}` },
+    openGraph: { images: [project.hero ?? project.thumb] },
   };
 }
 
@@ -54,13 +57,28 @@ export default async function ProjectPage({
 
   return (
     <>
+      <JsonLd
+        data={[
+          projectJsonLd(project),
+          breadcrumbJsonLd([
+            { name: "Projects", path: "/projects" },
+            ...(sector ? [{ name: sector.title, path: `/projects/sector/${sector.slug}` }] : []),
+            { name: project.title, path: `/projects/${project.slug}` },
+          ]),
+        ]}
+      />
       <PageHero
         eyebrow={
           <>
             <Link href="/projects" className="hover:text-brand-light">
               Projects
             </Link>{" "}
-            / {sector?.title}
+            /{" "}
+            {sector ? (
+              <Link href={`/projects/sector/${sector.slug}`} className="hover:text-brand-light">
+                {sector.title}
+              </Link>
+            ) : null}
           </>
         }
         title={project.title}

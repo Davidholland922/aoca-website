@@ -9,6 +9,9 @@ import PageHero from "@/components/PageHero";
 import SectionVideo from "@/components/SectionVideo";
 import FscShowcase from "@/components/FscShowcase";
 import CtaBand from "@/components/CtaBand";
+import JsonLd from "@/components/JsonLd";
+import ProjectCard from "@/components/ProjectCard";
+import { projectsForService, serviceJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -22,9 +25,10 @@ export async function generateMetadata({
   const service = getService((await params).slug);
   if (!service) return {};
   return {
-    title: service.title,
-    description: service.short,
+    title: `${service.title}, Portlaoise, Dublin & Manchester`,
+    description: `${service.short} ${service.title} consultants at AOCA Engineering Consultants, serving Ireland and the UK from Portlaoise, Dublin and Manchester since 1996.`,
     alternates: { canonical: `/expertise/${service.slug}` },
+    openGraph: { images: [service.image] },
   };
 }
 
@@ -35,9 +39,19 @@ export default async function ServicePage({
 }) {
   const service = getService((await params).slug);
   if (!service) notFound();
+  const related = projectsForService(service.slug).slice(0, 6);
 
   return (
     <>
+      <JsonLd
+        data={[
+          serviceJsonLd(service),
+          breadcrumbJsonLd([
+            { name: "Expertise", path: "/expertise" },
+            { name: service.title, path: `/expertise/${service.slug}` },
+          ]),
+        ]}
+      />
       <PageHero
         eyebrow={
           <>
@@ -201,6 +215,20 @@ export default async function ServicePage({
                         sizes="(min-width: 1024px) 24rem, 50vw"
                       />
                     </div>
+                  ))}
+                </div>
+              </Reveal>
+            )}
+
+            {related.length > 0 && (
+              <Reveal>
+                <h2 className="mt-14 text-2xl font-semibold text-navy-900">
+                  Projects where we provided {service.title.toLowerCase()}
+                </h2>
+                <div className="rule" />
+                <div className="mt-8 grid gap-6 sm:grid-cols-2">
+                  {related.map((p) => (
+                    <ProjectCard key={p.slug} p={p} />
                   ))}
                 </div>
               </Reveal>
