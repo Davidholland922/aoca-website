@@ -2,6 +2,7 @@ import Link from "next/link";
 import { MapPin, Clock, Linkedin, Facebook, Instagram } from "lucide-react";
 import { site, offices } from "@/lib/site";
 import { officePlaces } from "@/lib/seo";
+import { LANDING_LIVE, serviceLandings, countyLandings } from "@/lib/landing";
 
 const socials = [
   {
@@ -72,6 +73,31 @@ export default function Footer() {
               </li>
             ))}
           </ul>
+          {LANDING_LIVE && (
+            <div className="mt-10 grid gap-6 border-t border-white/10 pt-8 text-sm md:grid-cols-2">
+              <p className="leading-relaxed text-navy-300">
+                <span className="font-semibold text-white">Areas: </span>
+                <Link href="/offices/portlaoise" className="hover:text-white">Laois</Link>
+                {countyLandings.map((c) => (
+                  <span key={c.slug}>
+                    {" · "}
+                    <Link href={`/areas/${c.slug}`} className="hover:text-white">{c.county}</Link>
+                  </span>
+                ))}
+                {" · "}<Link href="/offices/dublin" className="hover:text-white">Dublin</Link>
+                {" · "}<Link href="/offices/manchester" className="hover:text-white">Manchester</Link>
+              </p>
+              <p className="leading-relaxed text-navy-300">
+                <span className="font-semibold text-white">Specialist services: </span>
+                {serviceLandings.map((l, i) => (
+                  <span key={l.slug}>
+                    {i > 0 && " · "}
+                    <Link href={`/expertise/${l.slug}`} className="hover:text-white">{l.title}</Link>
+                  </span>
+                ))}
+              </p>
+            </div>
+          )}
           <div className="mt-10 flex flex-wrap items-center justify-between gap-6 border-t border-white/10 pt-8">
             <p className="flex items-center gap-3 text-sm">
               <Clock size={15} className="shrink-0 text-brand" aria-hidden />

@@ -7,7 +7,7 @@ import { projects, type Project } from "@/lib/site";
  * address for review but carry noindex, sit outside the sitemap and are not
  * linked from any menu.
  */
-export const LANDING_LIVE = false;
+export const LANDING_LIVE = true;
 
 export type Faq = { q: string; a: string };
 export type LandingSection = { heading: string; body: string[] };
@@ -51,6 +51,8 @@ export type CountyLanding = {
   /** substrings matched against project.location */
   match: string[];
   faqs: Faq[];
+  /** council and planning authority, for the how-we-work section */
+  council: string;
 };
 
 const IE = ["Laois", "Kildare", "Carlow", "Kilkenny", "Tipperary", "Offaly", "Westmeath", "Dublin", "All Ireland"];
@@ -62,7 +64,7 @@ export const serviceLandings: ServiceLanding[] = [
     title: "Subsidence engineers",
     metaTitle: "Subsidence Engineers Ireland",
     metaDescription:
-      "Subsidence investigation, monitoring and remediation design across Ireland. Reports written for insurers and loss adjusters. AOCA, Portlaoise, Dublin and Manchester.",
+      "Subsidence investigation, monitoring and remediation design across Ireland. Reports insurers and loss adjusters can act on. AOCA, Portlaoise and Dublin.",
     eyebrow: "Expertise / Subsidence",
     lead: "Finding the true cause of movement, assessing the damage, and setting out the repair. Reports that insurers, loss adjusters and homeowners can act on.",
     image: "/images/2026-08-pamela-on-site.jpg",
@@ -119,7 +121,7 @@ export const serviceLandings: ServiceLanding[] = [
     title: "Structural reports for insurance claims",
     metaTitle: "Structural Reports for Insurance Claims",
     metaDescription:
-      "Independent structural engineer's reports for insurance claims: subsidence, fire, storm, flood and impact damage. Causation, extent and repair scope. AOCA, Ireland and the UK.",
+      "Independent engineer's reports for insurance claims: subsidence, fire, storm, flood and impact damage. Cause, extent and repair scope. Ireland and the UK.",
     eyebrow: "Expertise / Structural reports",
     lead: "A clear engineer's report on what happened, why, how far the damage goes and what it takes to put right. Written for insurers, loss adjusters, loss assessors and property owners.",
     image: "/images/2026-08-pamela-on-site.jpg",
@@ -177,7 +179,7 @@ export const serviceLandings: ServiceLanding[] = [
     title: "Latent defects engineers",
     metaTitle: "Latent Defects Engineers, Ireland & UK",
     metaDescription:
-      "Latent defect investigation, technical audits and remediation management. Sole engineering consultant on the Liberty LDI programme, 1,000 homes remediated, £200m of UK projects.",
+      "Latent defect investigation, technical audits and remediation management. 1,000 homes remediated under the Liberty LDI programme, £200m of UK projects.",
     eyebrow: "Expertise / Latent defects",
     lead: "Thirty years of finding, scoping and fixing the defects that show up after a building is finished, for insurers, warranty providers, developers and owners in Ireland and the UK.",
     image: "/images/2026-08-team-shot-3.jpg",
@@ -230,7 +232,7 @@ export const serviceLandings: ServiceLanding[] = [
     title: "Pyrite and defective concrete blocks",
     metaTitle: "Pyrite Testing & Remediation Engineers",
     metaDescription:
-      "Pyrite testing, categorisation and remediation, and defective concrete block assessment. AOCA helped develop the NSAI standards for pyrite remediation and has managed some of Ireland's largest programmes.",
+      "Pyrite testing, categorisation and remediation, and defective concrete block assessment to I.S. 465. AOCA helped develop the NSAI pyrite remediation standards.",
     eyebrow: "Expertise / Pyrite and defective blocks",
     lead: "From the test result to the finished floor. AOCA helped write the national standards for pyrite remediation and has managed some of the largest residential remediation programmes in Ireland.",
     image: "/images/2026-08-team-shot-3.jpg",
@@ -288,7 +290,7 @@ export const serviceLandings: ServiceLanding[] = [
     title: "Apartment defects remediation",
     metaTitle: "Apartment Defects Remediation Engineers",
     metaDescription:
-      "Fire safety, structural and water ingress defects in apartments and duplexes built 1991 to 2013. Assessment, scope, design and remediation under the Interim Remediation Scheme. AOCA and Fire Safety Consultants.",
+      "Fire safety, structural and water ingress defects in apartments built 1991 to 2013. Assessment, scope, design and remediation under the Interim Remediation Scheme.",
     eyebrow: "Expertise / Apartment defects",
     lead: "Engineering for owners' management companies dealing with fire safety, structural and water ingress defects in apartment and duplex schemes, under the Interim Remediation Scheme and the legislation that follows it.",
     image: "/images/2026-08-team-shot-3.jpg",
@@ -338,10 +340,10 @@ export const serviceLandings: ServiceLanding[] = [
 
 export const countyLandings: CountyLanding[] = [
   {
-    kind: "county", slug: "kildare", county: "Kildare",
+    kind: "county", slug: "kildare", county: "Kildare", council: "Kildare County Council",
     title: "Structural and civil engineers in Kildare",
-    metaTitle: "Structural Engineers Kildare",
-    metaDescription: "Civil, structural, insurance and forensic engineers serving Kildare from Portlaoise and Dublin. Schools, housing, commercial and insurance work. AOCA Engineering Consultants.",
+    metaTitle: "Structural & Civil Engineers Kildare",
+    metaDescription: "Civil, structural, insurance and forensic engineers for Kildare, from Portlaoise and Dublin. Schools, housing, commercial and insurance work since 1996.",
     lead: "Newbridge, Naas, Kildare town, Athy, Maynooth and Celbridge, served from Portlaoise and from the Dublin office in Clondalkin.",
     image: "/images/2026-02-st-patricks-ns.jpg",
     intro: [
@@ -356,10 +358,10 @@ export const countyLandings: CountyLanding[] = [
     ],
   },
   {
-    kind: "county", slug: "carlow", county: "Carlow",
+    kind: "county", slug: "carlow", county: "Carlow", council: "Carlow County Council",
     title: "Structural and civil engineers in Carlow",
-    metaTitle: "Structural Engineers Carlow",
-    metaDescription: "Civil, structural, insurance and forensic engineers serving Carlow from Portlaoise, 35 minutes away. Schools, housing and insurance work. AOCA Engineering Consultants.",
+    metaTitle: "Structural & Civil Engineers Carlow",
+    metaDescription: "Civil, structural, insurance and forensic engineers for Carlow, 35 minutes from the Portlaoise office. Schools, housing and insurance work since 1996.",
     lead: "Carlow town, Tullow, Bagenalstown and the county, served from the head office in Portlaoise.",
     image: "/images/2026-02-st-patricks-ns.jpg",
     intro: [
@@ -374,10 +376,10 @@ export const countyLandings: CountyLanding[] = [
     ],
   },
   {
-    kind: "county", slug: "kilkenny", county: "Kilkenny",
+    kind: "county", slug: "kilkenny", county: "Kilkenny", council: "Kilkenny County Council",
     title: "Structural and civil engineers in Kilkenny",
-    metaTitle: "Structural Engineers Kilkenny",
-    metaDescription: "Civil, structural, insurance and forensic engineers serving Kilkenny from Portlaoise. Commercial, residential, community and insurance work. AOCA Engineering Consultants.",
+    metaTitle: "Structural & Civil Engineers Kilkenny",
+    metaDescription: "Civil, structural, insurance and forensic engineers for Kilkenny, under an hour from Portlaoise. Commercial, residential and insurance work since 1996.",
     lead: "Kilkenny city, Castlecomer, Callan and Thomastown, served from the head office in Portlaoise, under an hour away.",
     image: "/images/office-building.jpg",
     intro: [
@@ -391,10 +393,10 @@ export const countyLandings: CountyLanding[] = [
     ],
   },
   {
-    kind: "county", slug: "tipperary", county: "Tipperary",
+    kind: "county", slug: "tipperary", county: "Tipperary", council: "Tipperary County Council",
     title: "Structural and civil engineers in Tipperary",
-    metaTitle: "Structural Engineers Tipperary",
-    metaDescription: "Civil, structural, insurance and forensic engineers serving Tipperary from Portlaoise. Housing in Thurles, one-off homes and insurance work. AOCA Engineering Consultants.",
+    metaTitle: "Structural & Civil Engineers Tipperary",
+    metaDescription: "Civil, structural, insurance and forensic engineers for Tipperary, from Portlaoise. Housing in Thurles, one-off homes and insurance work since 1996.",
     lead: "Thurles, Roscrea, Nenagh, Templemore and Clonmel, served from the head office in Portlaoise.",
     image: "/images/office-building.jpg",
     intro: [
@@ -408,10 +410,10 @@ export const countyLandings: CountyLanding[] = [
     ],
   },
   {
-    kind: "county", slug: "offaly", county: "Offaly",
+    kind: "county", slug: "offaly", county: "Offaly", council: "Offaly County Council",
     title: "Structural and civil engineers in Offaly",
-    metaTitle: "Structural Engineers Offaly",
-    metaDescription: "Civil, structural, insurance and forensic engineers serving Offaly from Portlaoise, 30 minutes from Tullamore. Housing, commercial and insurance work. AOCA Engineering Consultants.",
+    metaTitle: "Structural & Civil Engineers Offaly",
+    metaDescription: "Civil, structural, insurance and forensic engineers for Offaly, 30 minutes from Tullamore. Housing, commercial and insurance work since 1996.",
     lead: "Tullamore, Birr, Edenderry, Clara and Portarlington, served from the head office in Portlaoise.",
     image: "/images/office-building.jpg",
     intro: [
@@ -425,10 +427,10 @@ export const countyLandings: CountyLanding[] = [
     ],
   },
   {
-    kind: "county", slug: "westmeath", county: "Westmeath",
+    kind: "county", slug: "westmeath", county: "Westmeath", council: "Westmeath County Council",
     title: "Structural and civil engineers in Westmeath",
-    metaTitle: "Structural Engineers Westmeath",
-    metaDescription: "Civil, structural, insurance and forensic engineers serving Westmeath and Athlone from Portlaoise. Commercial, residential and insurance work across the Midlands. AOCA Engineering Consultants.",
+    metaTitle: "Structural & Civil Engineers Westmeath",
+    metaDescription: "Civil, structural, insurance and forensic engineers for Westmeath and Athlone, from Portlaoise. Commercial, residential and insurance work since 1996.",
     lead: "Athlone, Mullingar, Moate and Kilbeggan, served from the head office in Portlaoise.",
     image: "/images/office-building.jpg",
     intro: [

@@ -15,6 +15,7 @@ import PageHero from "@/components/PageHero";
 import ProjectCard from "@/components/ProjectCard";
 import CtaBand from "@/components/CtaBand";
 import JsonLd from "@/components/JsonLd";
+import { LANDING_LIVE, countyLandings } from "@/lib/landing";
 
 /**
  * One page per office. These exist so that "consulting engineers Dublin",
@@ -123,6 +124,22 @@ export default async function OfficePage({
                 ))}
               </ul>
             </Reveal>
+
+            {LANDING_LIVE && office.country === "IE" && (
+              <Reveal>
+                <h2 className="mt-12 text-2xl font-semibold text-navy-900">Counties we cover from {office.city}</h2>
+                <div className="rule" />
+                <ul className="mt-5 flex flex-wrap gap-2">
+                  {countyLandings.map((c) => (
+                    <li key={c.slug}>
+                      <Link href={`/areas/${c.slug}`} className="block border border-navy-200 px-3 py-1.5 text-sm font-medium text-navy-800 transition-colors hover:border-navy-800 hover:text-brand">
+                        {c.county}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            )}
 
             {near.length > 0 && (
               <Reveal>

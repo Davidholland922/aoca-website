@@ -4,6 +4,8 @@ import { site, offices, services, projects } from "@/lib/site";
 import {
   LANDING_LIVE,
   projectsForCounty,
+  countyLandings,
+  serviceLandings,
   type ServiceLanding,
   type CountyLanding,
   type Faq,
@@ -145,11 +147,22 @@ export function ServiceLandingView({ l }: { l: ServiceLanding }) {
               <h2 className="mt-14 text-2xl font-semibold text-navy-900">Where we provide this</h2>
               <div className="rule" />
               <ul className="mt-5 flex flex-wrap gap-2">
-                {l.counties.map((c) => (
-                  <li key={c} className="border border-navy-200 px-3 py-1.5 text-sm font-medium text-navy-800">
-                    {c}
-                  </li>
-                ))}
+                {l.counties.map((c) => {
+                  const county = countyLandings.find((k) => k.county === c);
+                  const office = c === "Dublin" ? "/offices/dublin" : c === "Laois" ? "/offices/portlaoise" : c.startsWith("Manchester") ? "/offices/manchester" : null;
+                  const href = county ? `/areas/${county.slug}` : office;
+                  return (
+                    <li key={c}>
+                      {href ? (
+                        <Link href={href} className="block border border-navy-200 px-3 py-1.5 text-sm font-medium text-navy-800 transition-colors hover:border-navy-800 hover:text-brand">
+                          {c}
+                        </Link>
+                      ) : (
+                        <span className="block border border-navy-200 px-3 py-1.5 text-sm font-medium text-navy-800">{c}</span>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </Reveal>
           </div>
@@ -296,6 +309,40 @@ export function CountyLandingView({ l }: { l: CountyLanding }) {
                       className="group flex items-center justify-between gap-3 border border-navy-100 px-4 py-3 text-sm font-medium text-navy-800 transition-colors hover:border-navy-800"
                     >
                       {s.title}
+                      <ArrowRight size={14} className="shrink-0 text-brand" aria-hidden />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+
+            <Reveal>
+              <h2 className="mt-14 text-2xl font-semibold text-navy-900">How we work in {l.county}</h2>
+              <div className="rule" />
+              <div className="mt-4 space-y-4 leading-relaxed text-navy-700">
+                <p>
+                  Planning and building control in {l.county} run through {l.council}. We prepare the engineering drawings, reports and certificates a {l.county} application needs, from site suitability and drainage to structural design and the Certificate of Compliance on completion, and we act as assigned certifier under the Building Control Regulations where the project requires it.
+                </p>
+                <p>
+                  For insurers and loss adjusters we carry out subsidence, fire, storm and flood inspections across {l.county} and report to the policy definitions. For homeowners we provide structural surveys, pre-purchase inspections and structural design for extensions and one-off houses. For developers and contractors we provide civil and structural design, building envelope review and construction stage inspections.
+                </p>
+                <p>
+                  Every job is run by the same office that did the projects above, with the engineer who visits the site writing the report. Site visits in {l.county} are arranged within the week.
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal>
+              <h2 className="mt-14 text-2xl font-semibold text-navy-900">Specialist services in {l.county}</h2>
+              <div className="rule" />
+              <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                {serviceLandings.map((sl) => (
+                  <li key={sl.slug}>
+                    <Link
+                      href={`/expertise/${sl.slug}`}
+                      className="group flex items-center justify-between gap-3 border border-navy-100 px-4 py-3 text-sm font-medium text-navy-800 transition-colors hover:border-navy-800"
+                    >
+                      {sl.title}
                       <ArrowRight size={14} className="shrink-0 text-brand" aria-hidden />
                     </Link>
                   </li>
