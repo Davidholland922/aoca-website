@@ -71,7 +71,8 @@ export default function ApplyForm({
   retentionMonths?: number;
 }) {
   const options = [...roles, "Speculative application"];
-  const [role, setRole] = useState(options[0]);
+  // no visible role field: a job's Apply button sets this quietly, otherwise it is a general application
+  const [role, setRole] = useState("Speculative application");
   const [file, setFile] = useState<File | null>(null);
   const [dragging, setDragging] = useState(false);
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
@@ -257,17 +258,6 @@ export default function ApplyForm({
           Website
           <input name="website" tabIndex={-1} autoComplete="off" />
         </label>
-      </div>
-
-      <div className="flex flex-col gap-2 sm:col-span-2">
-        <label htmlFor="apply-role" className="text-sm font-medium text-navy-800">
-          Role <span className="text-brand">*</span>
-        </label>
-        <select id="apply-role" value={role} onChange={(e) => setRole(e.target.value)} className={field} required>
-          {options.map((o) => (
-            <option key={o}>{o}</option>
-          ))}
-        </select>
       </div>
 
       <div className="flex flex-col gap-2">

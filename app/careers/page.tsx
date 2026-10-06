@@ -141,7 +141,7 @@ export default function CareersPage() {
               </h3>
               <div className="rule" />
               <p className="mt-4 max-w-2xl text-navy-600">
-                Attach your CV and tell us which role you are interested in. It takes about a minute.
+                Attach your CV and send it to us. It takes about a minute.
               </p>
             </Reveal>
             <Reveal>
