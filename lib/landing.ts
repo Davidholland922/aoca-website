@@ -55,7 +55,7 @@ export type CountyLanding = {
   council: string;
 };
 
-const IE = ["Laois", "Kildare", "Carlow", "Kilkenny", "Tipperary", "Offaly", "Westmeath", "Dublin", "All Ireland"];
+const IE = ["Laois", "Kildare", "Carlow", "Kilkenny", "Tipperary", "Offaly", "Westmeath", "Wicklow", "Wexford", "Dublin", "All Ireland"];
 
 export const serviceLandings: ServiceLanding[] = [
   {
@@ -336,9 +336,241 @@ export const serviceLandings: ServiceLanding[] = [
     panel: { title: "Talk to us", lines: ["Remediating apartment schemes throughout Ireland.", "Fire safety, structural and water ingress defects.", "One team from assessment to close-out."] },
     counties: ["Dublin", "Kildare", "Laois", "Leinster", "All Ireland"],
   },
+
+  {
+    kind: "service",
+    slug: "pre-purchase-structural-survey",
+    title: "Pre-purchase structural surveys",
+    metaTitle: "Structural Survey Before Buying a House",
+    metaDescription:
+      "Independent structural surveys and engineer's reports before you buy, sell or extend. Experienced engineers, plain written reports. Portlaoise and Dublin.",
+    eyebrow: "Expertise / Structural surveys",
+    lead: "An engineer's inspection of the structure before you commit, and a report that says plainly what is wrong, what it means and what it will take to put right.",
+    image: "/images/structural-condition.jpg",
+    intro: [
+      "Investing in a property is a major financial commitment, so it matters that the investment is sound. A structural condition survey by qualified and experienced engineers gives a clear understanding of the property's structural integrity before contracts are signed.",
+      "Our structural condition assessments provide a detailed evaluation of the condition, integrity and performance of existing buildings. We identify defects, deterioration and potential structural risks, and give clear recommendations for repair, remediation or further investigation.",
+    ],
+    sections: [
+      {
+        heading: "What the survey covers",
+        body: [
+          "The engineer looks at the property from the roof to the foundations: the roof structure, external and internal walls, floors, lintels and chimneys, any cracking or signs of movement, and the ground and drainage around the house. Where an extension, an attic conversion or an opened-up wall has been added, we look at how it was done and what it is sitting on.",
+          "Where the inspection alone cannot answer a question we bring the building surveying tools to it: thermal imaging for heat loss, insulation defects and moisture patterns, targeted damp and moisture testing, and drone surveys for roofs and façades that cannot be reached safely from a ladder.",
+        ],
+      },
+      {
+        heading: "The report",
+        body: [
+          "Following the inspection we compile a detailed report outlining any issues found, complete with photographs and recommendations for rectification. It gives a comprehensive picture of the property's current structural health and a roadmap for future maintenance.",
+          "The report is written in plain terms, so a buyer, a solicitor, a lender or a builder can act on it without translation. Where something needs a specialist test, for instance pyrite or defective blocks in an area where they occur, we say so and arrange it.",
+        ],
+      },
+      {
+        heading: "Extensions, alterations and older houses",
+        body: [
+          "Many surveys are for people who are not buying but planning: removing a load-bearing wall, converting an attic, adding an extension or taking on an older rural house. The same inspection tells you what the structure will carry, what has to be strengthened and what the sensible sequence of work is, and it leads straight into the structural design and drawings if the project goes ahead.",
+        ],
+      },
+      {
+        heading: "Engineer's reports and certification",
+        body: [
+          "Alongside surveys we provide structural design, planning drawings and certification for homeowners, and engineer's reports for lenders, insurers and solicitors where a sale, a mortgage or a claim depends on an independent view of the structure.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "Do I need a structural survey as well as a surveyor's report?", a: "A valuer's or general surveyor's report is a broad condition check. When it flags cracking, movement, dampness or alterations, or when the house is old or has been extended, a structural engineer's survey looks at the structure specifically and says whether repair is needed and what it involves." },
+      { q: "How long does it take?", a: "The inspection takes a few hours on site for a typical house. We agree the timing of the written report when you book, and we flag anything serious on the day." },
+      { q: "Can you survey a house I am selling?", a: "Yes. A pre-sale survey lets you deal with issues on your own terms rather than in a buyer's negotiation." },
+      { q: "Where do you survey?", a: "Laois and the Midlands from Portlaoise, Dublin and the commuter counties from Clondalkin, and the UK from Manchester." },
+    ],
+    related: [
+      { slug: "structural-engineering", title: "Structural Engineering" },
+      { slug: "building-surveying", title: "Building Surveying" },
+      { slug: "subsidence-engineering", title: "Subsidence Engineering" },
+    ],
+    projectSlugs: ["one-off-bespoke-dwellings"],
+    articles: [
+      { slug: "why-structural-condition-survey-is-necessary", title: "Why do I need a structural condition survey?" },
+      { slug: "when-to-worry-about-cracks-in-home", title: "When should I worry about cracks in my home?" },
+    ],
+    panel: { title: "Book a survey", lines: ["Engineers in practice since 1996.", "Report with photographs and clear recommendations.", "Portlaoise, Dublin and Manchester."] },
+    counties: IE,
+  },
+  {
+    kind: "service",
+    slug: "fire-safety-certificates",
+    title: "Fire safety certificates and disability access certificates",
+    metaTitle: "Fire Safety Certificate & DAC Applications",
+    metaDescription:
+      "Fire safety certificate and disability access certificate applications, fire risk assessments and compliance reviews across Ireland, through Fire Safety Consultants.",
+    eyebrow: "Expertise / Fire safety",
+    lead: "Fire safety certificate and disability access certificate applications, fire risk assessments and compliance advice, delivered through Fire Safety Consultants, AOCA's joint venture with OCF.",
+    image: "/images/fs-apartments.jpg",
+    intro: [
+      "AOCA, in conjunction with OCF, has established Fire Safety Consultants to pool resources and expertise and provide specialist fire safety and accessibility consultancy. It brings together internationally recognised expertise in fire engineering, fire safety compliance, accessibility, inspection, due diligence and structural fire engineering.",
+      "For most building projects in Ireland other than houses, a Fire Safety Certificate and a Disability Access Certificate must be granted by the building control authority before work starts. We prepare and manage both applications, and we carry out the fire risk assessments and compliance reviews that existing buildings need.",
+    ],
+    sections: [
+      {
+        heading: "Fire safety certificate applications",
+        body: [
+          "A fire safety certificate application has to show the building control authority that the design meets Part B of the Building Regulations, either by following Technical Guidance Document B or through a performance-based fire engineering design. We prepare the fire strategy, the compliance report and the drawings, lodge the application, and deal with the authority's queries through to grant.",
+          "Where works were carried out without a certificate, or the design changed after one was granted, we prepare regularisation and revised fire safety certificate applications.",
+        ],
+      },
+      {
+        heading: "Disability access certificate applications",
+        body: [
+          "A disability access certificate confirms that a new building, extension or material change of use complies with Part M of the Building Regulations on access and use. We prepare the access statement and drawings and lodge the application alongside the fire safety certificate so the two run together.",
+          "Beyond the certificate we advise on accessibility, inclusive design and compliance with the relevant accessibility requirements, designing buildings everyone can use.",
+        ],
+      },
+      {
+        heading: "Fire risk assessments and inspections",
+        body: [
+          "We review building designs and existing buildings to identify fire safety risks and compliance issues, and carry out fire risk assessments covering hazards, existing measures and practical risk-reduction recommendations. Inspections cover fire doors, emergency lighting, alarm systems and passive fire protection, and we design and review fire detection, alarm and emergency lighting systems for compliance and life safety performance.",
+        ],
+      },
+      {
+        heading: "Apartment buildings and passive fire protection",
+        body: [
+          "Much of our fire safety work is in apartment buildings with defects from the construction boom: missing fire stopping, poor compartmentation and cavity barriers, and fire doors that do not perform. We assess structural behaviour in fire for steel, concrete, timber and composite structures and advise on fire stopping, compartmentation, cavity barriers, fire doors and structural fire protection, and we have followed the Government's remediation scheme for these buildings closely.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "Do I need a fire safety certificate for my house?", a: "No. A single dwelling house, and an extension to one, is exempt. Apartment buildings, commercial, industrial, educational and most other buildings need a certificate for new construction, extensions and material changes of use." },
+      { q: "When is a disability access certificate needed?", a: "For new buildings other than dwelling houses, and for material alterations, extensions and changes of use to them. Apartment blocks need one for the common areas." },
+      { q: "Work was done without a certificate. What now?", a: "A regularisation fire safety certificate or regularisation disability access certificate can be applied for. We inspect what was built, identify what has to change and prepare the application." },
+      { q: "Who carries out the work?", a: "The Fire Safety Consultants team, drawn from AOCA and OCF, working from the AOCA offices in Portlaoise, Dublin and Manchester." },
+    ],
+    related: [
+      { slug: "fire-safety-disability-access", title: "Fire Safety & Disability Access" },
+      { slug: "assigned-certifier", title: "Assigned Certifier & Regulatory Compliance" },
+      { slug: "apartment-defects-remediation", title: "Apartment Defects Remediation" },
+    ],
+    articles: [
+      { slug: "a-new-adventure-fire-safety-consultants", title: "A New Adventure: Fire Safety Consultants" },
+      { slug: "government-announces-interim-fire-safety-funding-for-celtic-tiger-era-apartments", title: "Interim fire safety funding for Celtic Tiger era apartments" },
+    ],
+    panel: { title: "Instruct Fire Safety Consultants", lines: ["Joint venture of AOCA and OCF.", "Certificate applications, assessments and inspections.", "Ireland and the UK."] },
+    counties: IE,
+  },
+  {
+    kind: "service",
+    slug: "assigned-certifier-bcar",
+    title: "Assigned certifier services under BCAR",
+    metaTitle: "Assigned Certifier Ireland (BCAR)",
+    metaDescription:
+      "Assigned certifier under BCAR for housing, schools and commercial projects across Ireland. Inspection plans, BCMS lodgement and completion certificates. AOCA since 1996.",
+    eyebrow: "Expertise / Assigned certifier",
+    lead: "Independent, experienced assigned certifiers for projects under the Building Control (Amendment) Regulations, from multi-unit housing to schools and commercial developments.",
+    image: "/images/ac-housing.jpg",
+    intro: [
+      "We regularly act as Assigned Certifier under the BCAR regime on a wide range of projects, from multi-unit housing to large commercial developments. Our practical experience of the Building Control Management System and the Code of Practice for Inspecting and Certifying Buildings and Works ensures robust oversight of design and construction, allowing projects to meet statutory requirements while keeping construction schedules on track.",
+      "Recent assigned certifier appointments include St Patrick's National School in Newbridge and Grange National School and Scoil Molaise in Carlow, alongside the civil and structural engineering on each.",
+    ],
+    sections: [
+      {
+        heading: "What the assigned certifier does",
+        body: [
+          "Under the Building Control (Amendment) Regulations, S.I. 9 of 2014, the building owner appoints an assigned certifier before work starts. The assigned certifier prepares and signs the preliminary inspection plan, coordinates the ancillary certificates from the designers and the builder, inspects the works as they proceed, keeps the inspection records, and at the end signs the Certificate of Compliance on Completion with the builder. Until that certificate is on the statutory register the building cannot be opened, occupied or used.",
+        ],
+      },
+      {
+        heading: "How we run it",
+        body: [
+          "We set the inspection plan at the start so everyone knows which stages will be inspected and what evidence is needed. Ancillary certifiers are lined up early, inspections happen at the agreed stages, and records go onto the Building Control Management System as the job proceeds rather than in a rush at the end. That is what keeps the completion certificate from becoming the thing that delays the opening.",
+        ],
+      },
+      {
+        heading: "Independent inspections and due diligence",
+        body: [
+          "We offer independent third-party inspections to main contractors and specialist subcontractors to verify that construction work meets specified standards and regulations, identifying issues early. Our technical due diligence and design review services provide independent, expert assessment of architectural and engineering designs, evaluating feasibility, regulatory compliance, technical performance and safety.",
+        ],
+      },
+      {
+        heading: "One-off houses and extensions",
+        body: [
+          "Since 2015 the owner of a single dwelling, or of an extension under 40 square metres, can opt out of the BCAR certification process. Many owners still want an engineer to inspect the work and certify it for the lender, the insurer or a future sale. We provide that inspection and certification alongside the structural design.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "Who can act as assigned certifier?", a: "The regulations limit the role to registered architects, chartered engineers and registered building surveyors. AOCA's assigned certifiers are chartered engineers." },
+      { q: "Can the same firm design the structure and act as assigned certifier?", a: "Yes, and it is common. On the schools listed on this page AOCA provided the civil and structural engineering and acted as assigned certifier." },
+      { q: "What happens if the works do not match the design?", a: "The inspection records capture it and the non-compliance is resolved before the Certificate of Compliance on Completion is signed. Catching it during construction rather than at the end is the point of the role." },
+      { q: "Do you act as assigned certifier outside Laois?", a: "Yes, across Ireland from the Portlaoise and Dublin offices." },
+    ],
+    related: [
+      { slug: "assigned-certifier", title: "Assigned Certifier & Regulatory Compliance" },
+      { slug: "structural-engineering", title: "Structural Engineering" },
+      { slug: "project-construction-management", title: "Project & Construction Management" },
+    ],
+    projectSlugs: ["st-patricks-national-school-newbridge-co-kildare", "grange-ns-carlow", "scoil-molaise-carlow"],
+    panel: { title: "Appoint AOCA", lines: ["Assigned certifier on schools, housing and commercial projects.", "Inspection plans and BCMS lodgement handled.", "Portlaoise and Dublin, all of Ireland."] },
+    counties: IE,
+  },
 ];
 
 export const countyLandings: CountyLanding[] = [
+  {
+    kind: "county", slug: "laois", county: "Laois", council: "Laois County Council",
+    title: "Structural and civil engineers in Laois",
+    metaTitle: "Structural & Civil Engineers Laois",
+    metaDescription: "AOCA's head office has been in Portlaoise since 1996. Civil, structural, insurance and forensic engineers for Laois: schools, churches, housing, retail and one-off homes.",
+    lead: "Portlaoise, Portarlington, Mountmellick, Abbeyleix, Stradbally and Durrow, from the head office at Lismard House on the Timahoe Road.",
+    image: "/images/office-building.jpg",
+    intro: [
+      "Laois is home. The practice was founded in Portlaoise in 1996 and the head office is still at Lismard House on the Timahoe Road, so more AOCA projects sit in Laois than in any other county: Stradbally Fire Station, Portlaoise Retail Park, People First Credit Union, Ratheniska Church and the Heath Church, housing in Abbeyleix, Mountmellick, Durrow and Portarlington, and a great many one-off homes.",
+      "For a homeowner that means an engineer who can be on site the same week. For developers, schools and parishes it means a team that knows the county's planners, ground conditions and builders.",
+    ],
+    towns: ["Portlaoise", "Portarlington", "Mountmellick", "Abbeyleix", "Stradbally", "Durrow", "Mountrath", "Rathdowney", "Ballyroan", "The Heath"],
+    match: ["Laois", "Portlaoise"],
+    faqs: [
+      { q: "Do you take on small jobs in Laois?", a: "Yes. Extensions, attic conversions, structural surveys before a purchase, engineer's reports and certification for one-off houses are a steady part of the Portlaoise office's work." },
+      { q: "Can you act as assigned certifier in Laois?", a: "Yes. We act as assigned certifier on housing, school and commercial projects across the county." },
+      { q: "Do you test for pyrite and defective blocks in Laois?", a: "Yes. We arrange sampling and testing to I.S. 398 and I.S. 465 and prepare the engineer's report, and we design and supervise the remediation where it is needed." },
+    ],
+  },
+  {
+    kind: "county", slug: "wicklow", county: "Wicklow", council: "Wicklow County Council",
+    title: "Structural and civil engineers in Wicklow",
+    metaTitle: "Structural & Civil Engineers Wicklow",
+    metaDescription: "Civil, structural, insurance and forensic engineers for Wicklow, from the Dublin office in Clondalkin and from Portlaoise. Façade design on the Arklow wastewater plant.",
+    lead: "Bray, Greystones, Wicklow town, Arklow, Blessington and Baltinglass, served from the Dublin office and from Portlaoise.",
+    image: "/images/2026-02-arklow_hero_final_dou4go-1.jpg",
+    intro: [
+      "In Wicklow AOCA provided the structural design of the fixing system for the architectural fin louvres on the award-winning Arklow Wastewater Treatment Plant, a façade in an exposed coastal location that had to hold its line in every wind.",
+      "North Wicklow is served from the Dublin office in Clondalkin, under an hour from Bray and Greystones. West Wicklow around Blessington and Baltinglass is as close to Portlaoise as it is to Dublin.",
+    ],
+    towns: ["Bray", "Greystones", "Wicklow town", "Arklow", "Blessington", "Baltinglass", "Rathdrum", "Newtownmountkennedy"],
+    match: ["Wicklow", "Arklow", "Dublin"],
+    faqs: [
+      { q: "Do you take on houses and extensions in Wicklow?", a: "Yes. Structural design, planning drawings, certification and pre-purchase structural surveys for homeowners, alongside commercial and public work." },
+      { q: "Do you carry out insurance inspections in Wicklow?", a: "Yes. Subsidence, fire, flood and impact damage inspections for insurers and loss adjusters, from the Dublin office." },
+    ],
+  },
+  {
+    kind: "county", slug: "wexford", county: "Wexford", council: "Wexford County Council",
+    title: "Structural and civil engineers in Wexford",
+    metaTitle: "Structural & Civil Engineers Wexford",
+    metaDescription: "Civil, structural, insurance and forensic engineers for Wexford, including work at Rosslare Europort. Inspections, reports and design from Portlaoise and Dublin.",
+    lead: "Wexford town, Gorey, Enniscorthy, New Ross and Rosslare, served from Portlaoise and from the Dublin office.",
+    image: "/images/2026-08-maxresdefault.jpg",
+    intro: [
+      "AOCA has provided engineering services at Rosslare Europort, Ireland's gateway port to Europe, and carries out insurance and forensic inspections across the south east for insurers and loss adjusters.",
+      "Wexford is reached from Portlaoise by the M9 and from Dublin by the M11, so site visits and inspections are straightforward to arrange from either office.",
+    ],
+    towns: ["Wexford town", "Gorey", "Enniscorthy", "New Ross", "Rosslare", "Bunclody", "Courtown"],
+    match: ["Wexford", "Rosslare", "Carlow"],
+    faqs: [
+      { q: "Is Wexford within your area?", a: "Yes. Wexford is served from Portlaoise and from the Dublin office for design, surveys, certification and insurance inspections." },
+      { q: "Do you do structural surveys for house purchases in Wexford?", a: "Yes. An engineer inspects the property and reports with photographs and clear recommendations before you sign." },
+    ],
+  },
   {
     kind: "county", slug: "kildare", county: "Kildare", council: "Kildare County Council",
     title: "Structural and civil engineers in Kildare",
@@ -457,4 +689,25 @@ export function projectsForCounty(l: CountyLanding, limit = 6): Project[] {
   const out: Project[] = [];
   for (const p of [...exact, ...near]) if (!out.find((o) => o.slug === p.slug)) out.push(p);
   return out.slice(0, limit);
+}
+
+/** Landing pages worth linking from an insights article, chosen by what the article is about. */
+const ARTICLE_RULES: { test: RegExp; slug: string }[] = [
+  { test: /pyrite|defective (concrete )?block|mica/i, slug: "pyrite-defective-blocks" },
+  { test: /apartment|duplex/i, slug: "apartment-defects-remediation" },
+  { test: /crack|subsidence/i, slug: "subsidence-engineering" },
+  { test: /structural (condition )?survey|buying a (house|home|property)/i, slug: "pre-purchase-structural-survey" },
+  { test: /fire safety|fire engineering|fire certificate/i, slug: "fire-safety-certificates" },
+  { test: /latent defect|cladding|remediation/i, slug: "latent-defects" },
+  { test: /insurance|insurer|loss adjuster/i, slug: "structural-reports-insurance-claims" },
+];
+export function landingsForArticle(text: string, limit = 3): ServiceLanding[] {
+  const out: ServiceLanding[] = [];
+  for (const r of ARTICLE_RULES) {
+    if (!r.test.test(text)) continue;
+    const l = getServiceLanding(r.slug);
+    if (l && !out.includes(l)) out.push(l);
+    if (out.length >= limit) break;
+  }
+  return out;
 }

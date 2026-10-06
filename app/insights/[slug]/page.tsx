@@ -9,6 +9,7 @@ import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
 import JsonLd from "@/components/JsonLd";
 import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import { LANDING_LIVE, landingsForArticle } from "@/lib/landing";
 
 export function generateStaticParams() {
   return insights.map((a) => ({ slug: a.slug }));
@@ -38,6 +39,8 @@ export default async function ArticlePage({
   if (!article) notFound();
 
   const more = insights.filter((a) => a.slug !== article.slug).slice(0, 3);
+  // specialist pages this article is about, for readers who need the service
+  const services = LANDING_LIVE ? landingsForArticle([article.title, article.excerpt, ...article.body].join(" ")) : [];
 
   return (
     <>
@@ -86,6 +89,26 @@ export default async function ArticlePage({
               <p className="mt-10 border-t border-navy-100 pt-6 text-sm text-navy-500">
                 Published {article.displayDate} · AOCA Engineering Consultants
               </p>
+              {services.length > 0 && (
+                <div className="mt-8 border border-navy-100 bg-navy-50/50 p-6">
+                  <h2 className="font-heading text-sm font-semibold uppercase tracking-wider text-navy-900">
+                    Need an engineer for this?
+                  </h2>
+                  <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                    {services.map((l) => (
+                      <li key={l.slug}>
+                        <Link
+                          href={`/expertise/${l.slug}`}
+                          className="group flex items-center justify-between gap-3 border border-navy-100 bg-white px-4 py-3 text-sm font-medium text-navy-800 transition-colors hover:border-navy-800"
+                        >
+                          {l.title}
+                          <ArrowRight size={14} className="shrink-0 text-brand" aria-hidden />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </Reveal>
           </div>
 
