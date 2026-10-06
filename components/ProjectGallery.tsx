@@ -120,7 +120,7 @@ export default function ProjectGallery({
                   same photo fills the frame instead of empty bands */}
               <Image
                 src={src}
-                alt=""
+                alt={`${title}, photo ${i + 1}`}
                 fill
                 loading={i === 0 ? "eager" : "lazy"}
                 sizes="20rem"
@@ -192,7 +192,7 @@ export default function ProjectGallery({
           >
             <Image
               src={src}
-              alt=""
+              alt={`${title}, thumbnail ${i + 1}`}
               fill
               loading="lazy"
               sizes="8rem"

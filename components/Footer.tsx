@@ -70,6 +70,18 @@ export default function Footer() {
                     {o.email}
                   </a>
                 </p>
+                {i === 0 && (
+                  <p className="mt-2 pl-8 text-sm">
+                    <a
+                      href="https://search.google.com/local/writereview?placeid=ChIJR-XnircNXUgRtsZtPNGmNLg"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-navy-300 underline-offset-2 transition-colors hover:text-white hover:underline"
+                    >
+                      Review us on Google
+                    </a>
+                  </p>
+                )}
               </li>
             ))}
           </ul>

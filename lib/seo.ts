@@ -22,6 +22,8 @@ export const officePlaces: {
   image: string;
   /** project.location substrings that count as "near this office" */
   nearby: string[];
+  /** Google Business Profile listing, when one exists */
+  mapsUrl?: string;
 }[] = [
   {
     slug: "portlaoise",
@@ -31,6 +33,7 @@ export const officePlaces: {
     countryName: "Ireland",
     image: "/images/office-building.jpg",
     nearby: ["Laois", "Carlow", "Kildare", "Tipperary", "Wexford", "Wicklow"],
+    mapsUrl: "https://www.google.com/maps?cid=13273417419359897270",
   },
   {
     slug: "dublin",
@@ -40,6 +43,7 @@ export const officePlaces: {
     countryName: "Ireland",
     image: "/images/dublin-office.jpg",
     nearby: ["Dublin"],
+    mapsUrl: "https://www.google.com/maps?cid=19978543044409404",
   },
   {
     slug: "manchester",
@@ -115,6 +119,7 @@ export function localBusinessJsonLd(i: number) {
     openingHoursSpecification: openingHours,
     image: `${site.url}${place.image}`,
     areaServed: place.countryName,
+    ...(place.mapsUrl ? { hasMap: place.mapsUrl } : {}),
   };
 }
 
@@ -145,6 +150,9 @@ export function orgJsonLd() {
           "https://www.linkedin.com/company/aidan-o'connell-&-associates",
           "https://www.facebook.com/aoca.ie",
           "https://instagram.com/aocaengineering",
+          "https://www.youtube.com/@AOCAEngineering",
+          "https://twitter.com/aocaie",
+          "https://www.google.com/maps?cid=13273417419359897270",
         ],
         description:
           "Civil & structural engineering, insurance and forensic engineering, fire safety and building surveying consultants since 1996. Offices in Portlaoise, Dublin and Manchester.",
