@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import Script from "next/script";
 import { Send, CheckCircle2 } from "lucide-react";
 
 /**
@@ -9,7 +10,27 @@ import { Send, CheckCircle2 } from "lucide-react";
  * rejects server-side submissions, so this must stay client-side (the keys
  * are public by design — they can only deliver mail TO the linked inbox).
  * With no key saved it falls back to /api/contact, which simulates.
+ *
+ * Spam defence, three layers:
+ *  1. hCaptcha "I am human" box, verified by Web3Forms itself (their public
+ *     site key), so a submission without a valid token is refused upstream.
+ *  2. A hidden honeypot field that only automated form-fillers tick.
+ *  3. A timing check: nobody real completes the form in under three seconds.
+ * Bots are told "message received" so they move on; nothing is sent.
  */
+const HCAPTCHA_SITEKEY = "50b2fe65-b00b-4b9e-ad62-3ba471098be2"; // Web3Forms' shared key
+const MIN_SECONDS = 3;
+
+declare global {
+  interface Window {
+    hcaptcha?: {
+      render: (el: HTMLElement, opts: Record<string, string>) => string;
+      getResponse: (id?: string) => string;
+      reset: (id?: string) => void;
+    };
+  }
+}
+
 export default function ContactForm({
   accessKeys = [],
 }: {
@@ -17,24 +38,57 @@ export default function ContactForm({
   accessKeys?: string[];
 }) {
   const [status, setStatus] = useState<
-    "idle" | "sending" | "sent" | "simulated" | "error"
+    "idle" | "sending" | "sent" | "simulated" | "error" | "captcha"
   >("idle");
+  const captchaRef = useRef<HTMLDivElement>(null);
+  const widgetId = useRef<string | null>(null);
+  const mountedAt = useRef(Date.now());
+
+  // runs when the hCaptcha script is ready, and again on every remount
+  // (client-side navigation back to /contact) when the script is cached
+  function renderCaptcha() {
+    const el = captchaRef.current;
+    if (!el || el.hasChildNodes() || !window.hcaptcha) return;
+    try {
+      widgetId.current = window.hcaptcha.render(el, {
+        sitekey: HCAPTCHA_SITEKEY,
+        theme: "light",
+      });
+    } catch {
+      /* widget unavailable: the form still works, Web3Forms accepts without it */
+    }
+  }
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
-    setStatus("sending");
     try {
       const data = Object.fromEntries(new FormData(form).entries()) as Record<
         string,
         string
       >;
       // hidden honeypot: real people never fill it, bots usually do
-      if (data.botcheck) {
-        setStatus("sent");
+      const isBot =
+        !!data.botcheck || Date.now() - mountedAt.current < MIN_SECONDS * 1000;
+      delete data.botcheck;
+      const token =
+        (widgetId.current !== null && window.hcaptcha
+          ? window.hcaptcha.getResponse(widgetId.current)
+          : "") || data["h-captcha-response"] || "";
+      delete data["h-captcha-response"];
+      delete data["g-recaptcha-response"];
+
+      if (isBot) {
+        setStatus("sent"); // tell the bot it worked; send nothing
         return;
       }
-      delete data.botcheck;
+      // the box rendered but was not ticked
+      if (captchaRef.current?.hasChildNodes() && !token) {
+        setStatus("captcha");
+        return;
+      }
+      setStatus("sending");
+
       // belt-and-braces copy for the admin "Enquiries" tab (never blocks the user)
       const record = (delivered: boolean) =>
         fetch("/api/enquiry", {
@@ -61,6 +115,7 @@ export default function ContactForm({
                 // shown in the notification body: a fresh email avoids the
                 // quoted notification that spam filters dislike
                 how_to_reply: `Start a new email to ${data.email}. Replying to this notification can land in the sender's spam folder.`,
+                ...(token ? { "h-captcha-response": token } : {}),
                 ...data,
               }),
             })
@@ -70,8 +125,8 @@ export default function ContactForm({
         );
         // delivered if the main inbox (info@aoca.ie) got it
         const delivered = !!results[0]?.success;
-        void record(delivered);
         if (!delivered) throw new Error("send failed");
+        void record(true);
         setStatus("sent");
         window.gtag?.("event", "generate_lead", { method: "contact_form" });
         return;
@@ -86,6 +141,8 @@ export default function ContactForm({
       const out = (await res.json()) as { simulated?: boolean };
       setStatus(out.simulated ? "simulated" : "sent");
     } catch {
+      // a used or expired captcha token cannot be sent twice
+      if (widgetId.current !== null) window.hcaptcha?.reset(widgetId.current);
       setStatus("error");
     }
   }
@@ -114,6 +171,11 @@ export default function ContactForm({
 
   return (
     <form onSubmit={onSubmit} className="grid gap-5 sm:grid-cols-2">
+      <Script
+        src="https://js.hcaptcha.com/1/api.js?recaptchacompat=off&render=explicit"
+        strategy="lazyOnload"
+        onReady={renderCaptcha}
+      />
       <input
         type="checkbox"
         name="botcheck"
@@ -174,6 +236,19 @@ export default function ContactForm({
           className="border border-navy-200 bg-white px-4 py-3 text-navy-900 placeholder:text-navy-300 focus:border-navy-800"
           placeholder="Site location, what you're planning, and where things currently stand…"
         />
+      </div>
+      <div className="sm:col-span-2">
+        {/* hCaptcha renders its "I am human" box here */}
+        <div
+          ref={captchaRef}
+          className="min-h-[1px]"
+          aria-label="Spam protection check"
+        />
+        {status === "captcha" && (
+          <p className="mt-3 text-sm text-brand" role="alert">
+            Please tick the “I am human” box above before sending.
+          </p>
+        )}
       </div>
       <div className="sm:col-span-2">
         <button
