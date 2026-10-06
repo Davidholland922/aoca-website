@@ -144,5 +144,46 @@
       "inbox": "ie",
       "accessKey": "89395638-8b6e-4efe-882a-4e9a98966839"
     }
-  ]
+  ],
+  "culture": {
+    "text": {},
+    "photos": [
+      "/images/uploads/culture-photo-mux5o39t-1.jpg",
+      "/images/dayout-pool.jpg",
+      "/images/dayout-drone.jpg",
+      "/images/dayout-344a7160.jpg",
+      "/images/2026-05-344a6993.jpg",
+      "/images/2026-05-344a7050.jpg",
+      "/images/2026-05-153a4152.jpg",
+      "/images/2026-05-img-20250902-wa0004.jpg",
+      "/images/2026-05-img-20250902-wa0027.jpg",
+      "/images/2026-05-img-20250902-wa0034.jpg",
+      "/images/2026-05-img-20250902-wa0050.jpg",
+      "/images/2026-05-img_3055.jpg",
+      "/images/2026-05-img_3074.jpg",
+      "/images/2026-05-brian-playing-darts.jpg",
+      "/images/2026-05-20230511_153410.jpg",
+      "/images/2026-05-dji_0603.jpg",
+      "/images/2026-05-20180924_102420507_ios.jpg",
+      "/images/2026-05-website-our-culture.jpg",
+      "/images/2026-05-website-our-culture-2.jpg",
+      "/images/2026-08-344a7015.jpg",
+      "/images/2026-08-344a7160.jpg",
+      "/images/2026-08-153a4159.jpg",
+      "/images/2026-08-pool-1.jpg",
+      "/images/2026-08-pam-and-tamara-pool.jpg",
+      "/images/2026-08-whatsapp-image-2026-06-09-at-16-03-09.jpg",
+      "/images/2026-08-img-4313.jpg",
+      "/images/2026-08-dji-fly-20230511-125242-867-1683805975036-photo-optimized.jpg",
+      "/images/2026-08-pool-2.jpg",
+      "/images/2026-08-pool-4.jpg",
+      "/images/2026-08-pam-pool-1.jpg",
+      "/images/2026-08-whatsapp-image-2026-06-09-at-16-03-11.jpg",
+      "/images/2026-08-20230511-140725.jpg",
+      "/images/2026-08-20230511-141813.jpg",
+      "/images/2026-08-img-20250902-wa0039.jpg",
+      "/images/2026-08-img-20250902-wa0048.jpg"
+    ],
+    "heroImage": "/images/2026-05-group-49-2.jpg"
+  }
 }
