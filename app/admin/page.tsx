@@ -17,6 +17,7 @@ import {
   Pencil,
   Star,
   Inbox,
+  FileText,
 } from "lucide-react";
 import clsx from "clsx";
 import {
@@ -31,9 +32,10 @@ import { allInsights, type Article } from "@/lib/insights";
 import AdminSections from "@/components/AdminSections";
 import AdminExpertise from "@/components/AdminExpertise";
 import AdminEnquiries from "@/components/AdminEnquiries";
+import AdminApplications from "@/components/AdminApplications";
 
 type Shot = { dataUrl: string; name: string };
-type Mode = "project" | "article" | "manage" | "expertise" | "details" | "enquiries";
+type Mode = "project" | "article" | "manage" | "expertise" | "details" | "enquiries" | "applications";
 
 /** Downscale a photo in the browser so uploads stay small and consistent. */
 async function resizeImage(file: File, maxW = 1600): Promise<Shot> {
@@ -330,7 +332,7 @@ export default function AdminPage() {
       </div>
 
       <div className="container-site mt-10 grid max-w-4xl gap-8">
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
           {(
             [
               { key: "project", label: "A project", Icon: HardHat },
@@ -339,6 +341,7 @@ export default function AdminPage() {
               { key: "expertise", label: "Expertise pages", Icon: Layers },
               { key: "details", label: "Edit details", Icon: Settings2 },
               { key: "enquiries", label: "Enquiries", Icon: Inbox },
+              { key: "applications", label: "Applications", Icon: FileText },
             ] as const
           ).map(({ key, label, Icon }) => (
             <button
@@ -373,6 +376,8 @@ export default function AdminPage() {
           <AdminSections password={password} />
         ) : mode === "enquiries" ? (
           <AdminEnquiries password={password} />
+        ) : mode === "applications" ? (
+          <AdminApplications password={password} />
         ) : (
           <>
         {editingSlug && (

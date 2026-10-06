@@ -8,6 +8,7 @@ import {
   getOffice,
   projectsNear,
   localBusinessJsonLd,
+  officeMapEmbed,
   breadcrumbJsonLd,
 } from "@/lib/seo";
 import Reveal from "@/components/Reveal";
@@ -194,9 +195,12 @@ export default async function OfficePage({
                 </ul>
                 <iframe
                   title={`Map, ${office.name}`}
-                  src={`https://maps.google.com/maps?q=${encodeURIComponent(
-                    office.address.filter((l) => !l.startsWith("(")).join(", ")
-                  )}&z=14&output=embed`}
+                  src={
+                    officeMapEmbed(office.slug) ??
+                    `https://maps.google.com/maps?q=${encodeURIComponent(
+                      office.address.filter((l) => !l.startsWith("(")).join(", ")
+                    )}&z=14&output=embed`
+                  }
                   className="mt-6 h-52 w-full border-0 grayscale transition-all duration-300 hover:grayscale-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"

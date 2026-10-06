@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, MapPin, GraduationCap, Users } from "lucide-react";
-import { site, companyImages, cultureImages, jobs } from "@/lib/site";
+import { site, companyImages, cultureImages, jobs, contactKeys } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
-import ApplyByEmail from "@/components/ApplyByEmail";
+import ApplyButton from "@/components/ApplyButton";
+import ApplyForm from "@/components/ApplyForm";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/careers" },
@@ -69,7 +70,7 @@ export default function CareersPage() {
               ))}
             </div>
             <div className="mt-10">
-              <ApplyByEmail email={site.email} subject="Careers at AOCA" label="Send us your CV" />
+              <ApplyButton role="Speculative application" label="Send us your CV" />
             </div>
           </Reveal>
           <Reveal delay={0.1}>
@@ -104,8 +105,8 @@ export default function CareersPage() {
               title={jobs.length ? "We're hiring" : "Current openings"}
               lead={
                 jobs.length
-                  ? "Apply by email with your CV — we reply to every application."
-                  : "There are no advertised openings right now — but we're always interested in talented engineers. Send us your CV and we'll keep it on file."
+                  ? "Apply below with your CV. We reply to every application."
+                  : "There are no advertised openings right now, but we're always interested in talented engineers. Send us your CV and we'll keep it on file."
               }
             />
           </Reveal>
@@ -126,24 +127,33 @@ export default function CareersPage() {
                       </p>
                     )}
                   </div>
-                  <ApplyByEmail
-                    email={site.email}
-                    subject={`Application: ${j.title}`}
-                    label="Apply by email"
-                    className="btn-primary shrink-0"
-                  />
+                  <ApplyButton role={j.title} label="Apply" className="btn-primary shrink-0" />
                 </div>
               </Reveal>
             ))}
-            {jobs.length === 0 && (
-              <Reveal>
-                <ApplyByEmail
+          </div>
+
+          {/* APPLICATION FORM — CV goes to private, encrypted storage */}
+          <div id="apply" className="mt-14 scroll-mt-28">
+            <Reveal>
+              <h3 className="text-2xl font-semibold text-navy-900">
+                {jobs.length ? "Apply" : "Send us your CV"}
+              </h3>
+              <div className="rule" />
+              <p className="mt-4 max-w-2xl text-navy-600">
+                Attach your CV and tell us which role you are interested in. It takes about a minute.
+              </p>
+            </Reveal>
+            <Reveal>
+              <div className="mt-8 max-w-3xl">
+                <ApplyForm
+                  roles={jobs.map((j) => j.title)}
                   email={site.email}
-                  subject="Speculative application"
-                  label="Send a speculative CV"
+                  accessKey={contactKeys.find((k) => k.inbox === "ie")?.accessKey}
+                  ownSitekey={process.env.HCAPTCHA_SECRET ? process.env.HCAPTCHA_SITEKEY : undefined}
                 />
-              </Reveal>
-            )}
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>

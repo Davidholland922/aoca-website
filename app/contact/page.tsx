@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { site, offices, companyImages, contactKeys } from "@/lib/site";
 import Reveal from "@/components/Reveal";
+import { officeMapEmbed, officePlaces } from "@/lib/seo";
 import ContactForm from "@/components/ContactForm";
 import PageHero from "@/components/PageHero";
 
@@ -65,9 +66,10 @@ export default function ContactPage() {
                 </ul>
                 <iframe
                   title={`Map — ${o.name}`}
-                  src={`https://maps.google.com/maps?q=${encodeURIComponent(
-                    o.address.join(", ")
-                  )}&z=14&output=embed`}
+                  src={
+                    officeMapEmbed(officePlaces[i]?.slug ?? "") ??
+                    `https://maps.google.com/maps?q=${encodeURIComponent(o.address.join(", "))}&z=14&output=embed`
+                  }
                   className="mt-6 h-44 w-full border-0 grayscale transition-all duration-300 hover:grayscale-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"

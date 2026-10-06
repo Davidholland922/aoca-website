@@ -1,13 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
-import { commitFiles, readRepoJson } from "@/lib/github";
+import { vaultPut, vaultReady } from "@/lib/vault";
 
 export const runtime = "nodejs";
 
 /**
- * Keeps a copy of every contact-form enquiry in content/enquiries.json so
- * the client can see them in /admin even if the notification email goes
- * astray. The email itself is sent by the browser to Web3Forms; this is
- * the belt-and-braces record.
+ * Keeps a copy of every contact-form enquiry so the client can see them in
+ * /admin even if the notification email goes astray. The email itself is
+ * sent by the browser to Web3Forms; this is the belt-and-braces record.
+ *
+ * Copies are stored encrypted in the private vault (lib/vault.ts), one file
+ * per enquiry. They are never written to the git repository, which is public.
  */
 export type Enquiry = {
   id: string;
@@ -18,8 +20,6 @@ export type Enquiry = {
   message: string;
   delivered: boolean;
 };
-
-const MAX = 500; // keep the file small; oldest fall off
 
 export async function POST(req: NextRequest) {
   let body: Partial<Enquiry> & { botcheck?: string };
@@ -48,22 +48,15 @@ export async function POST(req: NextRequest) {
     delivered: body.delivered !== false,
   };
 
-  // two enquiries in the same second can race on the commit; retry once
-  for (let attempt = 0; attempt < 2; attempt++) {
-    try {
-      // the file may not exist yet on the first ever enquiry
-      const current = (await readRepoJson("content/enquiries.json").catch(() => [])) as Enquiry[];
-      const next = [entry, ...(Array.isArray(current) ? current : [])].slice(0, MAX);
-      await commitFiles(`Enquiry from ${name}`, [
-        { path: "content/enquiries.json", utf8: JSON.stringify(next, null, 2) + "\n" },
-      ]);
-      return NextResponse.json({ ok: true, id: entry.id });
-    } catch (e) {
-      if (attempt === 1) {
-        console.error("[enquiry] could not record:", e);
-        return NextResponse.json({ error: "Could not record" }, { status: 500 });
-      }
-    }
+  if (!vaultReady()) {
+    console.error("[enquiry] vault is not configured; enquiry not recorded");
+    return NextResponse.json({ error: "Could not record" }, { status: 503 });
   }
-  return NextResponse.json({ error: "Could not record" }, { status: 500 });
+  try {
+    await vaultPut(`enquiries/${entry.id}`, Buffer.from(JSON.stringify(entry)));
+    return NextResponse.json({ ok: true, id: entry.id });
+  } catch (e) {
+    console.error("[enquiry] could not record:", e);
+    return NextResponse.json({ error: "Could not record" }, { status: 500 });
+  }
 }

@@ -57,6 +57,26 @@ export const officePlaces: {
   },
 ];
 
+/**
+ * Google Maps embed for an office. Where the office has a Google Business
+ * listing the map opens on that exact listing; otherwise it pins the surveyed
+ * coordinates. A typed address is never used, because Google's geocoder
+ * placed "Lismard House, Timahoe Road" and "Centrepoint Business Park" in the
+ * wrong spot.
+ */
+const officePins: Record<string, { cid?: string; lat: number; lng: number; label: string }> = {
+  portlaoise: { cid: "13273417419359897270", lat: 53.0271408, lng: -7.2898112, label: "AOCA Engineering Consultants" },
+  dublin: { cid: "19978543044409404", lat: 53.3226173, lng: -6.3690849, label: "AOCA Engineering Consultants, Dublin Office" },
+  manchester: { lat: 53.4798316, lng: -2.2361118, label: "AOCA, 11 Portland Street" },
+};
+export function officeMapEmbed(slug: string) {
+  const pin = officePins[slug];
+  if (!pin) return null;
+  return pin.cid
+    ? `https://maps.google.com/maps?cid=${pin.cid}&z=15&output=embed`
+    : `https://maps.google.com/maps?q=${pin.lat},${pin.lng}(${encodeURIComponent(pin.label)})&z=16&output=embed`;
+}
+
 export function getOffice(slug: string) {
   const i = officePlaces.findIndex((o) => o.slug === slug);
   if (i < 0 || !offices[i]) return null;
