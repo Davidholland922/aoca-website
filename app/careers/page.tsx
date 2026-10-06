@@ -6,6 +6,7 @@ import { site, companyImages, cultureImages, jobs } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
+import ApplyByEmail from "@/components/ApplyByEmail";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/careers" },
@@ -67,13 +68,9 @@ export default function CareersPage() {
                 </div>
               ))}
             </div>
-            <a
-              href={`mailto:${site.email}?subject=Careers at AOCA`}
-              className="btn-primary mt-10"
-            >
-              Send us your CV
-              <ArrowRight size={16} aria-hidden />
-            </a>
+            <div className="mt-10">
+              <ApplyByEmail email={site.email} subject="Careers at AOCA" label="Send us your CV" />
+            </div>
           </Reveal>
           <Reveal delay={0.1}>
             <div className="grid grid-cols-2 gap-4">
@@ -129,27 +126,22 @@ export default function CareersPage() {
                       </p>
                     )}
                   </div>
-                  <a
-                    href={`mailto:${site.email}?subject=${encodeURIComponent(
-                      `Application: ${j.title}`
-                    )}`}
+                  <ApplyByEmail
+                    email={site.email}
+                    subject={`Application: ${j.title}`}
+                    label="Apply by email"
                     className="btn-primary shrink-0"
-                  >
-                    Apply by email
-                  </a>
+                  />
                 </div>
               </Reveal>
             ))}
             {jobs.length === 0 && (
               <Reveal>
-                <a
-                  href={`mailto:${site.email}?subject=${encodeURIComponent(
-                    "Speculative application"
-                  )}`}
-                  className="btn-primary w-fit"
-                >
-                  Send a speculative CV
-                </a>
+                <ApplyByEmail
+                  email={site.email}
+                  subject="Speculative application"
+                  label="Send a speculative CV"
+                />
               </Reveal>
             )}
           </div>

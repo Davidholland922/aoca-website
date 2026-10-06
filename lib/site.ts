@@ -1923,7 +1923,7 @@ export const cultureImages = [
 ];
 
 export const companyImages = {
-  hero: P + "2026-05-344a6971.jpg",
+  hero: P + "2026-08-management-team-2025.jpg",
   office: [P + "office-building.jpg"],
   // real photography preferred over AI-generated imagery (client feedback)
   brandedTeam: P + "2026-05-dji_0603.jpg",
