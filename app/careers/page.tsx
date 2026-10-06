@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, MapPin, GraduationCap, Users } from "lucide-react";
-import { site, companyImages, cultureImages, jobs, contactKeys } from "@/lib/site";
+import { site, companyImages, careersImages, jobs, contactKeys } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
@@ -75,7 +75,7 @@ export default function CareersPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <div className="grid grid-cols-2 gap-4">
-              {cultureImages.slice(4, 8).map((src, i) => (
+              {careersImages.map((src, i) => (
                 <div
                   key={src}
                   className={`relative overflow-hidden ${

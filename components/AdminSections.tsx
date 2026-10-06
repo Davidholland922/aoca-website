@@ -20,6 +20,7 @@ import {
   accreditations as currentAccreditations,
   testimonials as currentTestimonials,
 } from "@/lib/site";
+import AdminCulture from "@/components/AdminCulture";
 
 type Section =
   | "team"
@@ -35,7 +36,8 @@ type Section =
   | "sectorText"
   | "values"
   | "accreditations"
-  | "testimonials";
+  | "testimonials"
+  | "culture";
 
 type TestimonialRow = {
   quote: string;
@@ -172,6 +174,7 @@ export default function AdminSections({ password }: { password: string }) {
     { key: "stats", label: "Homepage numbers" },
     { key: "offices", label: "Office details" },
     { key: "about", label: "About us" },
+    { key: "culture", label: "Culture page" },
     { key: "jobs", label: "Job openings" },
     { key: "banners", label: "Page banners" },
     { key: "timeline", label: "History timeline" },
@@ -611,19 +614,21 @@ export default function AdminSections({ password }: { password: string }) {
         </div>
       )}
 
-      {err && (
+      {section === "culture" && <AdminCulture password={password} />}
+
+      {section !== "culture" && err && (
         <p role="alert" className="border border-brand/30 bg-brand/5 px-4 py-3 text-sm text-brand-dark">
           {err}
         </p>
       )}
-      {saved && (
+      {section !== "culture" && saved && (
         <p role="status" className="flex items-center gap-2 border border-navy-200 bg-white px-4 py-3 text-sm text-navy-700">
           <CheckCircle2 size={16} className="text-brand" aria-hidden />
           Saved — the website updates itself within a few minutes.
         </p>
       )}
 
-      <div>
+      <div className={section === "culture" ? "hidden" : undefined}>
         <button type="button" onClick={save} disabled={busy}
           className="btn-primary disabled:cursor-not-allowed disabled:opacity-60">
           {busy ? (

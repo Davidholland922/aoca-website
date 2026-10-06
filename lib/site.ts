@@ -47,7 +47,28 @@ const overrides = overridesJson as Partial<{
     logo?: string;
     logoTall?: boolean;
   }[];
+  culture: {
+    text?: Partial<Record<CultureTextKey, string>>;
+    photos?: string[];
+    heroImage?: string;
+  };
 }>;
+
+/** Editable wording on the culture page, with the built-in defaults. */
+export const cultureTextDefaults = {
+  heroTitle: "People first. Since 1996.",
+  heroLead:
+    "No corporate hierarchy, no distant boardrooms — just a team that genuinely cares about the outcome and each other.",
+  filmTitle: "A day with the AOCA team",
+  filmLead: "Cameras followed the team for a day — office, sites and everything in between.",
+  galleryTitle: "Life at AOCA",
+  galleryLead: "Site days, team days, darts nights and everything in between.",
+  valuesTitle: "The values we hire for",
+  ctaTitle: "Sound like your kind of team?",
+  ctaBody:
+    "We're always interested in talking to good engineers — see what's involved in joining AOCA.",
+};
+export type CultureTextKey = keyof typeof cultureTextDefaults;
 
 /** Homepage hero wording — client-editable via /admin (Edit details). */
 export const heroText = {
@@ -1884,11 +1905,10 @@ export const logoWall = [
   "/images/2026-09-logo-dncf.png",
 ];
 
-export const cultureImages = [
+const builtInCultureImages = [
   P + "dayout-pool.jpg",
   P + "dayout-drone.jpg",
   P + "dayout-344a7160.jpg",
-  P + "2026-05-344a6971.jpg",
   P + "2026-05-344a6993.jpg",
   P + "2026-05-344a7050.jpg",
   P + "2026-05-153a4152.jpg",
@@ -1922,6 +1942,26 @@ export const cultureImages = [
   P + "2026-08-img-20250902-wa0048.jpg",
 ];
 
+/** Culture gallery (also the photo strip on the homepage) — client-editable via /admin. */
+export const cultureImages: string[] =
+  overrides.culture?.photos?.length ? overrides.culture.photos : builtInCultureImages;
+
+/** Culture page wording — client-editable via /admin. */
+export const cultureText: typeof cultureTextDefaults = {
+  ...cultureTextDefaults,
+  ...Object.fromEntries(
+    Object.entries(overrides.culture?.text ?? {}).filter(([, v]) => typeof v === "string" && v.trim())
+  ),
+};
+
+/** The four photos beside the careers intro. Fixed, so editing the culture gallery never reshuffles them. */
+export const careersImages = [
+  P + "2026-05-344a6993.jpg",
+  P + "2026-05-344a7050.jpg",
+  P + "2026-05-153a4152.jpg",
+  P + "2026-05-img-20250902-wa0004.jpg",
+];
+
 export const companyImages = {
   hero: P + "2026-08-management-team-2025.jpg",
   office: [P + "office-building.jpg"],
@@ -1929,6 +1969,7 @@ export const companyImages = {
   brandedTeam: P + "2026-05-dji_0603.jpg",
   brandedTeam2: P + "tamara-reception.jpg",
   cultureTeaser: P + "2026-05-group-49-2.jpg",
+  cultureHero: overrides.culture?.heroImage || P + "2026-05-group-49-2.jpg",
   careers: P + "2026-05-344a6993.jpg",
   contact: P + "2026-08-contact-us.jpg",
   expertiseHero: P + "2026-02-arklow-waste-water-treatment-plant-clancy-moore-architects_16-1-1.jpg",

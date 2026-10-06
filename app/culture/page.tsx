@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { values, cultureImages, companyImages } from "@/lib/site";
+import { values, cultureImages, cultureText, companyImages } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import SectionVideo from "@/components/SectionVideo";
 import SectionHeading from "@/components/SectionHeading";
@@ -21,9 +21,9 @@ export default function CulturePage() {
     <>
       <PageHero
         eyebrow="Our culture"
-        title="People first. Since 1996."
-        lead="No corporate hierarchy, no distant boardrooms — just a team that genuinely cares about the outcome and each other."
-        image={companyImages.cultureTeaser}
+        title={cultureText.heroTitle}
+        lead={cultureText.heroLead}
+        image={companyImages.cultureHero}
         imageAlt="The AOCA team"
       />
 
@@ -34,8 +34,8 @@ export default function CulturePage() {
             <SectionHeading
               dark
               eyebrow="Behind the scenes"
-              title="A day with the AOCA team"
-              lead="Cameras followed the team for a day — office, sites and everything in between."
+              title={cultureText.filmTitle}
+              lead={cultureText.filmLead}
             />
           </Reveal>
           <Reveal delay={0.1}>
@@ -54,8 +54,8 @@ export default function CulturePage() {
           <Reveal>
             <SectionHeading
               eyebrow="Beyond the desk"
-              title="Life at AOCA"
-              lead="Site days, team days, darts nights and everything in between."
+              title={cultureText.galleryTitle}
+              lead={cultureText.galleryLead}
             />
           </Reveal>
           <div className="mt-12 columns-2 gap-4 md:columns-3 lg:columns-4 [&>div]:mb-4">
@@ -93,7 +93,7 @@ export default function CulturePage() {
             <SectionHeading
               dark
               eyebrow="What holds it together"
-              title="The values we hire for"
+              title={cultureText.valuesTitle}
             />
           </Reveal>
           <div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-5">
@@ -123,8 +123,8 @@ export default function CulturePage() {
       </section>
 
       <CtaBand
-        title="Sound like your kind of team?"
-        body="We're always interested in talking to good engineers — see what's involved in joining AOCA."
+        title={cultureText.ctaTitle}
+        body={cultureText.ctaBody}
       />
     </>
   );
