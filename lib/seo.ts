@@ -260,3 +260,29 @@ export function articleJsonLd(a: Article) {
     inLanguage: "en-IE",
   };
 }
+
+/** JobPosting for an open position, so it can appear in Google's job listings. */
+export function jobPostingJsonLd(job: { title: string; location: string; type: string; summary: string; posted?: string }) {
+  const where = officePlaces
+    .map((place, i) => ({ place, i }))
+    .filter(({ place }) => job.location.toLowerCase().includes(place.city.toLowerCase()));
+  const type = /part/i.test(job.type) ? "PART_TIME" : /contract/i.test(job.type) ? "CONTRACTOR" : /intern|placement|graduate/i.test(job.type) ? "INTERN" : "FULL_TIME";
+  return {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    title: job.title,
+    description: job.summary
+      .split(/\n\s*\n/)
+      .map((para) => `<p>${para.trim().replace(/&/g, "&amp;").replace(/</g, "&lt;")}</p>`)
+      .join(""),
+    datePosted: job.posted ?? new Date().toISOString().slice(0, 10),
+    employmentType: type,
+    directApply: true,
+    url: `${site.url}/careers#apply`,
+    hiringOrganization: { "@type": "Organization", name: site.name, sameAs: site.url, logo: `${site.url}/aoca-logo-colour.png` },
+    jobLocation: (where.length ? where : [{ place: officePlaces[0], i: 0 }]).map(({ i }) => ({
+      "@type": "Place",
+      address: postalAddress(i),
+    })),
+  };
+}

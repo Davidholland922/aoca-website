@@ -260,6 +260,26 @@ export default function ApplyForm({
         </label>
       </div>
 
+      <div className="flex flex-wrap items-center justify-between gap-3 border-l-4 border-brand bg-navy-50 px-4 py-3 sm:col-span-2" aria-live="polite">
+        <p className="text-sm text-navy-700">
+          {role === "Speculative application" ? (
+            <>
+              <span className="font-semibold text-navy-900">General application.</span> We will keep your CV on file.
+            </>
+          ) : (
+            <>
+              Applying for <span className="font-semibold text-navy-900">{role}</span>
+            </>
+          )}
+        </p>
+        {role !== "Speculative application" && (
+          <button type="button" onClick={() => setRole("Speculative application")}
+            className="text-xs font-semibold uppercase tracking-wider text-navy-500 underline-offset-2 hover:text-brand hover:underline">
+            General application instead
+          </button>
+        )}
+      </div>
+
       <div className="flex flex-col gap-2">
         <label htmlFor="apply-name" className="text-sm font-medium text-navy-800">
           Name <span className="text-brand">*</span>

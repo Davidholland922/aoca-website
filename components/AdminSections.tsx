@@ -59,7 +59,7 @@ type TimelineRow = {
 type TeamRow = { name: string; role: string; cred: string };
 type StatRow = { value: string; label: string };
 type OfficeRow = { name: string; address: string; phone: string; email: string };
-type JobRow = { title: string; location: string; type: string; summary: string };
+type JobRow = { title: string; location: string; type: string; summary: string; posted?: string };
 
 const input =
   "w-full min-h-[44px] border border-navy-200 bg-white px-3 py-2 text-sm text-navy-900 placeholder:text-navy-300 focus:border-navy-800";

@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, MapPin, GraduationCap, Users } from "lucide-react";
+import { ArrowRight, ChevronDown, Clock, FileText, MapPin, MessageSquare, GraduationCap, Users } from "lucide-react";
 import { site, companyImages, careersImages, jobs, contactKeys } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
 import ApplyButton from "@/components/ApplyButton";
 import ApplyForm from "@/components/ApplyForm";
+import JsonLd from "@/components/JsonLd";
+import { jobPostingJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/careers" },
@@ -99,17 +101,19 @@ export default function CareersPage() {
       {/* OPEN POSITIONS — posted by AOCA via /admin */}
       <section className="section bg-navy-50/60" id="open-positions">
         <div className="container-site">
+          {jobs.length > 0 && <JsonLd data={jobs.filter((j) => j.summary).map(jobPostingJsonLd)} />}
           <Reveal>
             <SectionHeading
               eyebrow="Open positions"
               title={jobs.length ? "We're hiring" : "Current openings"}
               lead={
                 jobs.length
-                  ? "Apply below with your CV. We reply to every application."
+                  ? "Choose a role to apply. We reply to every application."
                   : "There are no advertised openings right now, but we're always interested in talented engineers. Send us your CV and we'll keep it on file."
               }
             />
           </Reveal>
+
           {jobs.length > 0 && (
             <Reveal>
               <div className="relative mt-10 overflow-hidden bg-navy-950">
@@ -120,7 +124,7 @@ export default function CareersPage() {
                   className="object-cover"
                   sizes="(min-width: 1280px) 80rem, 100vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-950/60 to-navy-950/10" aria-hidden />
+                <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-950/65 to-navy-950/15" aria-hidden />
                 <div className="relative flex min-h-[16rem] flex-col justify-center p-6 sm:min-h-[18rem] sm:p-10 lg:min-h-[20rem]">
                   <p className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-brand-light">
                     {jobs.length} open position{jobs.length === 1 ? "" : "s"}
@@ -130,8 +134,12 @@ export default function CareersPage() {
                   </p>
                   <ul className="mt-5 flex max-w-2xl flex-wrap gap-2">
                     {jobs.map((j) => (
-                      <li key={j.title} className="border border-white/40 bg-navy-950/40 px-3 py-1.5 text-sm font-medium text-white backdrop-blur-sm">
-                        {j.title}
+                      <li key={j.title}>
+                        <ApplyButton
+                          role={j.title}
+                          label={j.title}
+                          className="group inline-flex min-h-[44px] items-center gap-2 border border-white/45 bg-navy-950/45 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:border-brand hover:bg-brand"
+                        />
                       </li>
                     ))}
                   </ul>
@@ -139,49 +147,88 @@ export default function CareersPage() {
               </div>
             </Reveal>
           )}
+
           <div className="mt-6 grid gap-4">
-            {jobs.map((j) => (
-              <Reveal key={j.title}>
-                <div className="flex flex-col gap-4 border border-navy-100 bg-white p-6 sm:flex-row sm:items-start sm:justify-between">
-                  <div>
-                    <h3 className="text-lg font-semibold text-navy-900">
-                      {j.title}
-                    </h3>
-                    <p className="mt-1 text-xs uppercase tracking-wider text-navy-400">
-                      {[j.location, j.type].filter(Boolean).join(" · ")}
-                    </p>
-                    {j.summary && (
-                      <p className="mt-2 max-w-2xl whitespace-pre-line text-sm leading-relaxed text-navy-600">
-                        {j.summary}
-                      </p>
+            {jobs.map((j) => {
+              const [first, ...rest] = j.summary.split(/\n\s*\n/).filter((x) => x.trim());
+              return (
+                <Reveal key={j.title}>
+                  <article className="border border-navy-100 bg-white p-6 sm:p-8">
+                    <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+                      <div className="min-w-0">
+                        <h3 className="text-xl font-semibold text-navy-900">{j.title}</h3>
+                        <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm text-navy-600">
+                          {j.location && (
+                            <li className="flex items-center gap-1.5">
+                              <MapPin size={15} className="text-brand" aria-hidden />
+                              {j.location}
+                            </li>
+                          )}
+                          {j.type && (
+                            <li className="flex items-center gap-1.5">
+                              <Clock size={15} className="text-brand" aria-hidden />
+                              {j.type}
+                            </li>
+                          )}
+                        </ul>
+                      </div>
+                      <ApplyButton role={j.title} label="Apply for this role" className="btn-primary shrink-0" />
+                    </div>
+                    {first && <p className="mt-5 max-w-3xl leading-relaxed text-navy-700">{first}</p>}
+                    {rest.length > 0 && (
+                      <details className="group mt-3 max-w-3xl">
+                        <summary className="flex cursor-pointer list-none items-center gap-1.5 text-sm font-semibold text-brand hover:text-brand-dark [&::-webkit-details-marker]:hidden">
+                          <ChevronDown size={16} className="transition-transform group-open:rotate-180" aria-hidden />
+                          <span className="group-open:hidden">Read the full description</span>
+                          <span className="hidden group-open:inline">Show less</span>
+                        </summary>
+                        <div className="mt-3 space-y-3 leading-relaxed text-navy-700">
+                          {rest.map((para) => (
+                            <p key={para.slice(0, 40)}>{para}</p>
+                          ))}
+                        </div>
+                      </details>
                     )}
-                  </div>
-                  <ApplyButton role={j.title} label="Apply" className="btn-primary shrink-0" />
-                </div>
-              </Reveal>
-            ))}
+                  </article>
+                </Reveal>
+              );
+            })}
           </div>
 
           {/* APPLICATION FORM — CV goes to private, encrypted storage */}
-          <div id="apply" className="mt-14 scroll-mt-28">
+          <div id="apply" className="mt-16 grid scroll-mt-28 gap-10 lg:grid-cols-[1fr,1.6fr] lg:gap-14">
             <Reveal>
-              <h3 className="text-2xl font-semibold text-navy-900">
+              <h3 className="text-2xl font-semibold text-navy-900 sm:text-3xl">
                 {jobs.length ? "Apply" : "Send us your CV"}
               </h3>
               <div className="rule" />
-              <p className="mt-4 max-w-2xl text-navy-600">
-                Attach your CV and send it to us. It takes about a minute.
+              <p className="mt-4 text-navy-600">
+                {jobs.length
+                  ? "Applying for one of the roles above, or just want us to have your CV on file? Use this form either way."
+                  : "Attach your CV and send it to us."}
               </p>
+              <ul className="mt-6 space-y-4 text-sm text-navy-700">
+                <li className="flex items-start gap-3">
+                  <Clock size={18} className="mt-0.5 shrink-0 text-brand" aria-hidden />
+                  <span><span className="font-semibold text-navy-900">About a minute.</span> Your details and one file.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <FileText size={18} className="mt-0.5 shrink-0 text-brand" aria-hidden />
+                  <span><span className="font-semibold text-navy-900">PDF or Word.</span> Up to 4 MB.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <MessageSquare size={18} className="mt-0.5 shrink-0 text-brand" aria-hidden />
+                  <span><span className="font-semibold text-navy-900">A reply, every time.</span> We answer every application.</span>
+                </li>
+              </ul>
             </Reveal>
-            <Reveal>
-              <div className="mt-8 max-w-3xl">
-                <ApplyForm
-                  roles={jobs.map((j) => j.title)}
-                  email={site.email}
-                  accessKey={contactKeys.find((k) => k.inbox === "ie")?.accessKey}
-                  ownSitekey={process.env.HCAPTCHA_SECRET ? process.env.HCAPTCHA_SITEKEY : undefined}
-                />
-              </div>
+            <Reveal delay={0.08}>
+              <ApplyForm
+                roles={jobs.map((j) => j.title)}
+                email={site.email}
+                accessKey={contactKeys.find((k) => k.inbox === "ie")?.accessKey}
+                ownSitekey={process.env.HCAPTCHA_SECRET ? process.env.HCAPTCHA_SITEKEY : undefined}
+              />
             </Reveal>
           </div>
         </div>

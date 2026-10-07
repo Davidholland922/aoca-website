@@ -24,7 +24,7 @@ const overrides = overridesJson as Partial<{
   }[];
   about: string[];
   featured: string[];
-  jobs: { title: string; location: string; type: string; summary: string }[];
+  jobs: { title: string; location: string; type: string; summary: string; posted?: string }[];
   banners: { key: string; title: string; body: string }[];
   contactKeys: { inbox: string; accessKey: string }[];
   timeline: {
@@ -1970,7 +1970,7 @@ export const companyImages = {
   brandedTeam2: P + "tamara-reception.jpg",
   cultureTeaser: P + "2026-05-group-49-2.jpg",
   cultureHero: overrides.culture?.heroImage || P + "2026-05-group-49-2.jpg",
-  careers: P + "2026-05-344a6993.jpg",
+  careers: P + "2026-08-pamela-on-site.jpg",
   contact: P + "2026-08-contact-us.jpg",
   expertiseHero: P + "2026-02-arklow-waste-water-treatment-plant-clancy-moore-architects_16-1-1.jpg",
   expertiseAlt: P + "2026-03-shutterstock_2715611483-1.jpg",

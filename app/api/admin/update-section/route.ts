@@ -201,6 +201,7 @@ export async function POST(req: NextRequest) {
           location?: string;
           type?: string;
           summary?: string;
+          posted?: string;
         }[]
       )
         .map((j) => ({
@@ -208,6 +209,8 @@ export async function POST(req: NextRequest) {
           location: (j.location ?? "").trim(),
           type: (j.type ?? "").trim(),
           summary: (j.summary ?? "").trim(),
+          // the day the post first went up, for Google's job listings
+          posted: /^\d{4}-\d{2}-\d{2}$/.test(j.posted ?? "") ? (j.posted as string) : new Date().toISOString().slice(0, 10),
         }))
         .filter((j) => j.title);
     } else {
