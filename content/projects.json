@@ -1,5 +1,33 @@
 [
   {
+    "slug": "derry-road-durrow",
+    "title": "Derry Road, Durrow",
+    "sector": "residential",
+    "location": "Durrow, Co. Laois",
+    "thumb": "/images/2026-02-derry.jpg",
+    "hero": "/images/2026-02-derry.jpg",
+    "gallery": [
+      "/images/2026-08-dji-20250428111105-0067-d.jpg",
+      "/images/uploads/derry-road-durrow-19nwy-1.jpg",
+      "/images/uploads/derry-road-durrow-19nwy-2.jpg",
+      "/images/uploads/derry-road-durrow-19nwy-3.jpg",
+      "/images/uploads/derry-road-durrow-19nwy-4.jpg"
+    ],
+    "summary": "20-unit social housing development for Laois County Council — stepped foundations and split attenuation on a steeply falling site.",
+    "body": [
+      "AOCA is providing full Civil and Structural Engineering services for this 20-unit social housing development on behalf of Laois County Council. The development comprises a mix of bungalow, two-storey, terraced and duplex residential units, all designed using traditional construction methods.",
+      "AOCA's role includes the design, supervision and certification of all civil and structural elements, including foul and stormwater drainage systems, watermain infrastructure and associated external site works. The project presents several complex engineering challenges due to the significant changes in ground levels across the site, from Derry Road to the south-eastern boundary and onwards towards the junction with the N77.",
+      "To address these constraints, AOCA developed bespoke engineering solutions including stepped foundations and boundary walls to accommodate level differences, together with a split stormwater attenuation strategy incorporating two separate storage areas. The restricted site footprint, combined with the requirement to maximise residential delivery, required careful coordination and efficient design solutions to ensure the development functions effectively without compromising quality or performance.",
+      "Through considered engineering design and close collaboration with the client and wider project team, AOCA is supporting the successful delivery of a high-quality residential development for the local community."
+    ],
+    "featured": false,
+    "servicesProvided": [],
+    "servicesText": [
+      "Civil engineering design, structural engineering design, site infrastructure design, foul and stormwater drainage design, watermain design, foundation and boundary wall design, construction supervision and construction certification."
+    ],
+    "video": "/video/projects/derry-road-durrow.mp4"
+  },
+  {
     "slug": "stradbally-fire-station",
     "title": "Stradbally Fire Station",
     "sector": "infrastructure-government",
