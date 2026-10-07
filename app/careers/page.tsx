@@ -116,13 +116,12 @@ export default function CareersPage() {
                 <Image
                   src="/images/2026-08-team-meeting-1.jpg"
                   alt="The AOCA team in a project meeting"
-                  width={1600}
-                  height={900}
-                  className="h-64 w-full object-cover sm:h-72 lg:h-80"
+                  fill
+                  className="object-cover"
                   sizes="(min-width: 1280px) 80rem, 100vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-950/60 to-navy-950/10" aria-hidden />
-                <div className="absolute inset-0 flex flex-col justify-center p-6 sm:p-10">
+                <div className="relative flex min-h-[16rem] flex-col justify-center p-6 sm:min-h-[18rem] sm:p-10 lg:min-h-[20rem]">
                   <p className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-brand-light">
                     {jobs.length} open position{jobs.length === 1 ? "" : "s"}
                   </p>
