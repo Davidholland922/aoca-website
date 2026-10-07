@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Download, Loader2, Lock, Mail, Phone, RefreshCw, ShieldCheck, Trash2 } from "lucide-react";
+import { Briefcase, Download, Loader2, Lock, Mail, Phone, RefreshCw, ShieldCheck, Trash2 } from "lucide-react";
 
 type Application = {
   id: string;
@@ -20,7 +20,7 @@ type Application = {
  * CVs are decrypted on the server only for a correct password and are
  * downloaded straight to this computer; there is no public link to any CV.
  */
-export default function AdminApplications({ password: adminPassword }: { password: string }) {
+export default function AdminApplications({ password: adminPassword, onManageJobs }: { password: string; onManageJobs?: () => void }) {
   const [password, setPassword] = useState(adminPassword);
   const [needsOwn, setNeedsOwn] = useState(false);
   const [list, setList] = useState<Application[] | null>(null);
@@ -126,6 +126,17 @@ export default function AdminApplications({ password: adminPassword }: { passwor
           Refresh
         </button>
       </div>
+
+      {onManageJobs && (
+        <div className="flex flex-wrap items-center justify-between gap-3 border border-navy-200 bg-white px-4 py-3">
+          <p className="text-sm text-navy-700">
+            Looking to add or change a job post? Job posts are edited under Edit details, Job openings.
+          </p>
+          <button type="button" onClick={onManageJobs} className="flex min-h-[40px] cursor-pointer items-center gap-2 bg-navy-900 px-4 text-sm font-semibold text-white hover:bg-navy-800">
+            <Briefcase size={15} aria-hidden /> Edit job posts
+          </button>
+        </div>
+      )}
 
       {needsOwn && (
         <form

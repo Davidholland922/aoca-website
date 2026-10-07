@@ -67,6 +67,7 @@ export default function AdminPage() {
   const [password, setPassword] = useState("");
   const [unlocked, setUnlocked] = useState(false);
   const [mode, setMode] = useState<Mode>("project");
+  const [detailsStart, setDetailsStart] = useState<"jobs" | undefined>(undefined);
 
   // shared publish form state
   const [editingSlug, setEditingSlug] = useState<string | null>(null);
@@ -373,11 +374,17 @@ export default function AdminPage() {
         ) : mode === "expertise" ? (
           <AdminExpertise password={password} />
         ) : mode === "details" ? (
-          <AdminSections password={password} />
+          <AdminSections key={detailsStart ?? "details"} password={password} start={detailsStart} />
         ) : mode === "enquiries" ? (
           <AdminEnquiries password={password} />
         ) : mode === "applications" ? (
-          <AdminApplications password={password} />
+          <AdminApplications
+            password={password}
+            onManageJobs={() => {
+              setDetailsStart("jobs");
+              setMode("details");
+            }}
+          />
         ) : (
           <>
         {editingSlug && (

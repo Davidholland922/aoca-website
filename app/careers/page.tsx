@@ -110,10 +110,40 @@ export default function CareersPage() {
               }
             />
           </Reveal>
-          <div className="mt-10 grid gap-4">
+          {jobs.length > 0 && (
+            <Reveal>
+              <div className="relative mt-10 overflow-hidden bg-navy-950">
+                <Image
+                  src="/images/2026-08-team-meeting-1.jpg"
+                  alt="The AOCA team in a project meeting"
+                  width={1600}
+                  height={900}
+                  className="h-64 w-full object-cover sm:h-72 lg:h-80"
+                  sizes="(min-width: 1280px) 80rem, 100vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-950/60 to-navy-950/10" aria-hidden />
+                <div className="absolute inset-0 flex flex-col justify-center p-6 sm:p-10">
+                  <p className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-brand-light">
+                    {jobs.length} open position{jobs.length === 1 ? "" : "s"}
+                  </p>
+                  <p className="mt-3 max-w-xl font-heading text-3xl font-semibold leading-tight text-white sm:text-4xl">
+                    Join the AOCA team.
+                  </p>
+                  <ul className="mt-5 flex max-w-2xl flex-wrap gap-2">
+                    {jobs.map((j) => (
+                      <li key={j.title} className="border border-white/40 bg-navy-950/40 px-3 py-1.5 text-sm font-medium text-white backdrop-blur-sm">
+                        {j.title}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </Reveal>
+          )}
+          <div className="mt-6 grid gap-4">
             {jobs.map((j) => (
               <Reveal key={j.title}>
-                <div className="flex flex-col gap-4 border border-navy-100 bg-white p-6 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex flex-col gap-4 border border-navy-100 bg-white p-6 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <h3 className="text-lg font-semibold text-navy-900">
                       {j.title}
@@ -122,7 +152,7 @@ export default function CareersPage() {
                       {[j.location, j.type].filter(Boolean).join(" · ")}
                     </p>
                     {j.summary && (
-                      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-navy-600">
+                      <p className="mt-2 max-w-2xl whitespace-pre-line text-sm leading-relaxed text-navy-600">
                         {j.summary}
                       </p>
                     )}

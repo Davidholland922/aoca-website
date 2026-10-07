@@ -65,8 +65,8 @@ const input =
   "w-full min-h-[44px] border border-navy-200 bg-white px-3 py-2 text-sm text-navy-900 placeholder:text-navy-300 focus:border-navy-800";
 
 /** "Edit details" tab: client edits team / stats / office details directly. */
-export default function AdminSections({ password }: { password: string }) {
-  const [section, setSection] = useState<Section>("team");
+export default function AdminSections({ password, start }: { password: string; start?: "jobs" }) {
+  const [section, setSection] = useState<Section>(start ?? "team");
   const [team, setTeam] = useState<TeamRow[]>(currentTeam.map((m) => ({ ...m })));
   const [stats, setStats] = useState<StatRow[]>(currentStats.map((s) => ({ ...s })));
   const [offices, setOffices] = useState<OfficeRow[]>(
@@ -295,8 +295,9 @@ export default function AdminSections({ password }: { password: string }) {
       {section === "jobs" && (
         <div className="grid gap-3">
           <p className="text-sm text-navy-500">
-            Positions listed on the Careers page. Applicants email{" "}
-            <strong>info@aoca.ie</strong> with the job title as the subject.
+            Positions listed on the Careers page. Add a title, where it is based, the type (for example Full Time)
+            and a description, then press Save changes. Applicants apply on the Careers page and their CVs appear
+            under the <strong>Applications</strong> tab.
           </p>
           {jobRows.map((j, i) => (
             <div key={i} className="grid gap-2 border border-navy-100 bg-white p-4">
