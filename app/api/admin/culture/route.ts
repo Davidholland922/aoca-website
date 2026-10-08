@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+import { adminGate } from "@/lib/admin-auth";
 import { commitFiles, readRepoJson, type CommitFile } from "@/lib/github";
-import { safeEqual } from "@/lib/vault";
 import { cultureTextDefaults, type CultureTextKey } from "@/lib/site";
 
 export const runtime = "nodejs";
@@ -33,9 +33,8 @@ export async function POST(req: NextRequest) {
       photos?: Incoming[];
       heroImage?: Incoming;
     };
-    if (!process.env.ADMIN_PASSWORD || !password || !safeEqual(password, process.env.ADMIN_PASSWORD)) {
-      return NextResponse.json({ error: "Wrong password" }, { status: 401 });
-    }
+    const denied = await adminGate(req, password);
+    if (denied) return denied;
     if (!Array.isArray(photos) || photos.length === 0) {
       return NextResponse.json({ error: "Keep at least one photo in the gallery." }, { status: 400 });
     }

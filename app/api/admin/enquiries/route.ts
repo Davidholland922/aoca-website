@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { safeEqual, vaultGet, vaultList, vaultReady } from "@/lib/vault";
+import { adminGate } from "@/lib/admin-auth";
+import { vaultGet, vaultList, vaultReady } from "@/lib/vault";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -8,9 +9,8 @@ export const dynamic = "force-dynamic";
 export async function POST(req: NextRequest) {
   try {
     const { password } = (await req.json()) as { password: string };
-    if (!process.env.ADMIN_PASSWORD || !password || !safeEqual(password, process.env.ADMIN_PASSWORD)) {
-      return NextResponse.json({ error: "Wrong password" }, { status: 401 });
-    }
+    const denied = await adminGate(req, password);
+    if (denied) return denied;
     if (!vaultReady()) return NextResponse.json({ error: "Storage is not set up" }, { status: 503 });
     const files = (await vaultList("enquiries/"))
       .sort((a, b) => b.uploadedAt.getTime() - a.uploadedAt.getTime())

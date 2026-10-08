@@ -21,7 +21,35 @@ export type Enquiry = {
   delivered: boolean;
 };
 
+// soft per-server limit; the form's captcha is the main gate
+const seen = new Map<string, number[]>();
+function tooMany(ip: string) {
+  const now = Date.now();
+  const recent = (seen.get(ip) ?? []).filter((t) => now - t < 60 * 60 * 1000);
+  recent.push(now);
+  seen.set(ip, recent);
+  if (seen.size > 5000) seen.clear();
+  return recent.length > 10;
+}
+
 export async function POST(req: NextRequest) {
+  // only the site's own contact form may record an enquiry
+  const origin = req.headers.get("origin");
+  let host = "";
+  try {
+    host = origin ? new URL(origin).host : "";
+  } catch {
+    /* malformed origin */
+  }
+  if (!host || !(host === req.headers.get("host") || host === "www.aoca.ie" || host === "aoca.ie")) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+  const ip = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "unknown";
+  if (tooMany(ip)) return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+  if (Number(req.headers.get("content-length") ?? 0) > 20_000) {
+    return NextResponse.json({ error: "Too large" }, { status: 413 });
+  }
+
   let body: Partial<Enquiry> & { botcheck?: string };
   try {
     body = await req.json();

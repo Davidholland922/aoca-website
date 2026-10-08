@@ -1,3 +1,28 @@
+/**
+ * Content Security Policy. Lists the only places the site may load code,
+ * frames and data from, so an injected script pointing anywhere else is
+ * refused by the browser. Add a host here when a new service is added.
+ *   - Google Analytics (after consent), hCaptcha (forms), Google Maps (office
+ *     maps), Web3Forms (form delivery), Vercel Analytics.
+ */
+const dev = process.env.NODE_ENV !== "production";
+const csp = [
+  "default-src 'self'",
+  `script-src 'self' 'unsafe-inline'${dev ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://hcaptcha.com https://*.hcaptcha.com https://va.vercel-scripts.com`,
+  "style-src 'self' 'unsafe-inline' https://hcaptcha.com https://*.hcaptcha.com",
+  "img-src 'self' data: blob: https:",
+  "font-src 'self' data:",
+  "media-src 'self' blob:",
+  `connect-src 'self' https://api.web3forms.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://hcaptcha.com https://*.hcaptcha.com https://vitals.vercel-insights.com${dev ? " ws: http://localhost:*" : ""}`,
+  "frame-src https://maps.google.com https://www.google.com https://hcaptcha.com https://*.hcaptcha.com",
+  "worker-src 'self' blob:",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'self'",
+  "upgrade-insecure-requests",
+].join("; ");
+
 /** @type {import('next').NextConfig} */
 
 // Article slugs that lived at the ROOT of the old WordPress site and now
@@ -45,7 +70,9 @@ const nextConfig = {
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=(), usb=()" },
+          { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
+          { key: "Content-Security-Policy", value: csp },
         ],
       },
     ];

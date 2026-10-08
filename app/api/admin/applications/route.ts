@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { safeEqual, vaultReady } from "@/lib/vault";
+import { adminGate } from "@/lib/admin-auth";
+import { vaultReady } from "@/lib/vault";
 import { RETENTION_DAYS, deleteApplication, getCv, listApplications } from "@/lib/applications";
 
 export const runtime = "nodejs";
@@ -17,9 +18,8 @@ export async function POST(req: NextRequest) {
   try {
     const { password, action, id } = (await req.json()) as { password?: string; action?: string; id?: string };
     const expected = process.env.APPLICATIONS_PASSWORD || process.env.ADMIN_PASSWORD;
-    if (!expected || !password || !safeEqual(password, expected)) {
-      return NextResponse.json({ error: "Wrong password" }, { status: 401, headers: noStore });
-    }
+    const denied = await adminGate(req, password, expected);
+    if (denied) return denied;
     if (!vaultReady()) return NextResponse.json({ error: "Storage is not set up" }, { status: 503, headers: noStore });
 
     if (action === "download" && id) {

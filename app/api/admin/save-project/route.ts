@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { adminGate } from "@/lib/admin-auth";
 import { commitFiles, readRepoJson, slugify } from "@/lib/github";
 
 export const runtime = "nodejs";
@@ -31,9 +32,8 @@ export async function POST(req: NextRequest) {
       newImages?: { dataUrl: string }[];
     };
 
-    if (!process.env.ADMIN_PASSWORD || password !== process.env.ADMIN_PASSWORD) {
-      return NextResponse.json({ error: "Wrong password" }, { status: 401 });
-    }
+    const denied = await adminGate(req, password);
+    if (denied) return denied;
     if (!record?.title || !record?.sector || !record?.summary) {
       return NextResponse.json(
         { error: "Title, sector and summary are required" },
