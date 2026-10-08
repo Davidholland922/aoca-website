@@ -64,7 +64,7 @@ export const serviceLandings: ServiceLanding[] = [
     title: "Subsidence engineers",
     metaTitle: "Subsidence Engineers Ireland",
     metaDescription:
-      "Subsidence investigation, monitoring and remediation design across Ireland. Reports insurers and loss adjusters can act on. AOCA, Portlaoise and Dublin.",
+      "Subsidence investigation, monitoring, repair design and certification across Ireland. Independent engineers' reports insurers act on. Portlaoise and Dublin.",
     eyebrow: "Expertise / Subsidence",
     lead: "Finding the true cause of movement, assessing the damage, and setting out the repair. Reports that insurers, loss adjusters and homeowners can act on.",
     image: "/images/2026-08-pamela-on-site.jpg",
@@ -94,6 +94,26 @@ export const serviceLandings: ServiceLanding[] = [
         ],
       },
       {
+        heading: "Subsidence repair: who does what",
+        body: [
+          "A subsidence repair has three parts, and it helps to know which is which. The engineer establishes the cause and designs the repair. A specialist contractor carries it out, whether that is underpinning, piling, resin injection or a drainage repair. The engineer then inspects the work as it proceeds and certifies it when it is finished, which is the document an insurer, a lender or a future buyer will ask for.",
+          "AOCA is the engineer in that arrangement. We are independent of the contractors, so the repair we specify is the one the building needs. We can prepare the specification, help you obtain and compare contractors' prices, and supervise the work through to the completion certificate.",
+        ],
+      },
+      {
+        heading: "Commercial, public and multi-unit buildings",
+        body: [
+          "Subsidence is not only a problem for houses. We investigate movement in commercial and industrial buildings, schools, churches, apartment blocks and local authority housing, where the questions are the same but the stakes are higher: whether the building can stay in use, what has to be propped or monitored in the meantime, and how the repair can be phased around the people who use it.",
+          "For councils, housing bodies, property managers and insurers with several affected properties, we survey and report across the portfolio so the worst cases are dealt with first and each repair is specified once.",
+        ],
+      },
+      {
+        heading: "Subsidence in Dublin and the east",
+        body: [
+          "Dublin and the commuter counties are served from our office in Centrepoint Business Park, Clondalkin. Much of the older housing in the city has shallow foundations and old clay drains, and a leaking or collapsed drain is one of the most common causes of the movement we are asked to look at. A drainage survey with a camera is often the first step, and often the cheapest answer.",
+        ],
+      },
+      {
         heading: "Expert witness",
         body: [
           "We regularly provide expert witness services, drawing on years of direct project experience. From subsidence and structural failures to insurance claims and dispute resolution, our engineers offer clear, objective and practical technical evidence that reflects real-world engineering challenges and solutions.",
@@ -101,6 +121,9 @@ export const serviceLandings: ServiceLanding[] = [
       },
     ],
     faqs: [
+      { q: "Do you carry out the subsidence repair yourselves?", a: "We design, specify, supervise and certify the repair. The physical work is done by a specialist contractor, and we can help you obtain and compare prices. Keeping the two separate means the repair is specified by someone with nothing to gain from making it bigger." },
+      { q: "Will my insurer accept an AOCA report?", a: "Insurers and loss adjusters instruct us directly for these reports, and we write them to the policy definitions. Where a homeowner instructs us, the report is independent and can be given to the insurer or loss assessor." },
+      { q: "Do you investigate subsidence in Dublin?", a: "Yes, from the Dublin office in Clondalkin, along with Kildare, Wicklow and Meath. The rest of the country is covered from the head office in Portlaoise." },
       { q: "Is every crack subsidence?", a: "No. Most cracks in Irish homes are from thermal and moisture movement, lintel deflection or settlement of a newer extension, and are not progressive. Diagonal stepped cracking wider than about 5 mm, cracks that widen over months, doors and windows sticking, and cracking near drains or trees are the signs worth an inspection." },
       { q: "Who instructs AOCA on a subsidence claim?", a: "Insurers, loss adjusters and loss assessors instruct us directly. Homeowners and solicitors also instruct us for independent reports, second opinions and expert witness work." },
       { q: "How long does an investigation take?", a: "The first inspection and report are quick. Where monitoring is needed to prove whether movement is ongoing, the monitoring itself runs over a period of months, and we say at the outset how long and why." },
@@ -290,7 +313,7 @@ export const serviceLandings: ServiceLanding[] = [
     title: "Apartment defects remediation",
     metaTitle: "Apartment Defects Remediation Engineers",
     metaDescription:
-      "Fire safety, structural and water ingress defects in apartments built 1991 to 2013. Assessment, scope, design and remediation under the Interim Remediation Scheme.",
+      "Fire safety, structural and water ingress defects in apartments built 1991 to 2013. Assessment, design and remediation under the Interim Remediation Scheme.",
     eyebrow: "Expertise / Apartment defects",
     lead: "Engineering for owners' management companies dealing with fire safety, structural and water ingress defects in apartment and duplex schemes, under the Interim Remediation Scheme and the legislation that follows it.",
     image: "/images/2026-08-team-shot-3.jpg",
@@ -404,7 +427,7 @@ export const serviceLandings: ServiceLanding[] = [
     title: "Fire safety certificates and disability access certificates",
     metaTitle: "Fire Safety Certificate & DAC Applications",
     metaDescription:
-      "Fire safety certificate and disability access certificate applications, fire risk assessments and compliance reviews across Ireland, through Fire Safety Consultants.",
+      "Fire safety certificate and disability access certificate applications, fire risk assessments and compliance reviews across Ireland.",
     eyebrow: "Expertise / Fire safety",
     lead: "Fire safety certificate and disability access certificate applications, fire risk assessments and compliance advice, delivered through Fire Safety Consultants, AOCA's joint venture with OCF.",
     image: "/images/fs-apartments.jpg",
@@ -464,7 +487,7 @@ export const serviceLandings: ServiceLanding[] = [
     title: "Assigned certifier services under BCAR",
     metaTitle: "Assigned Certifier Ireland (BCAR)",
     metaDescription:
-      "Assigned certifier under BCAR for housing, schools and commercial projects across Ireland. Inspection plans, BCMS lodgement and completion certificates. AOCA since 1996.",
+      "Assigned certifier under BCAR for housing, schools and commercial projects across Ireland. Inspection plans, BCMS lodgement and completion certificates.",
     eyebrow: "Expertise / Assigned certifier",
     lead: "Independent, experienced assigned certifiers for projects under the Building Control (Amendment) Regulations, from multi-unit housing to schools and commercial developments.",
     image: "/images/ac-housing.jpg",
@@ -513,6 +536,123 @@ export const serviceLandings: ServiceLanding[] = [
     panel: { title: "Appoint AOCA", lines: ["Assigned certifier on schools, housing and commercial projects.", "Inspection plans and BCMS lodgement handled.", "Portlaoise and Dublin, all of Ireland."] },
     counties: IE,
   },
+  {
+    kind: "service",
+    slug: "structural-engineers-dublin",
+    title: "Structural engineers in Dublin",
+    metaTitle: "Structural Engineers Dublin",
+    metaDescription:
+      "Structural and civil engineers in Dublin, from our Clondalkin office. Apartments, data centres, public buildings, surveys and reports. In practice since 1996.",
+    eyebrow: "Expertise / Dublin",
+    lead: "Structural and civil engineering for Dublin and the commuter counties, from the AOCA office in Centrepoint Business Park, Clondalkin.",
+    image: "/images/2026-02-glass-bottle-site.webp",
+    intro: [
+      "AOCA opened its Dublin office in May 2014. It has expanded considerably since and offers the full range of engineering services along with pyrite investigation, sharing resources with the head office in Portlaoise so every project has the people it needs.",
+      "AOCA delivers structural engineering solutions that combine technical excellence with practical construction insight. Our engineers are fully conversant with the Eurocodes and current building regulations, enabling us to develop efficient, buildable and economical structural solutions tailored to each project.",
+    ],
+    sections: [
+      {
+        heading: "What we have built in Dublin",
+        body: [
+          "The Hole in the Wall is a 42-unit, seven-storey apartment scheme with a basement car park on a compact 0.2 hectare site, for which AOCA provided the full civil and structural design, including the basement and foundations and a first-floor transfer slab. At Vista Montana we brought a stalled 11-unit development through to completion with assessment, design and BCAR oversight.",
+          "For South Dublin County Council we delivered the Dodder Valley sports pavilions and an equestrian centre as design and build projects, with bespoke foundations and sustainable drainage on difficult ground. At Harold's Cross we managed the refurbishment and upgrade of a hospice building, including roof replacement, a plant deck and hydrotherapy pool works.",
+        ],
+      },
+      {
+        heading: "Data centres and large commercial structures",
+        body: [
+          "The practice has provided structural engineering on a 52 MW data centre campus in Dublin, two two-storey facilities on a 22 acre site, and on data centres in Wales, Sweden and Finland. On one of Dublin's landmark regeneration sites in Ringsend we act as the independent third-party quality assurance advisor for the waterproofing systems.",
+        ],
+      },
+      {
+        heading: "Apartment defects, pyrite and insurance work",
+        body: [
+          "A large share of the Dublin office's work is on existing buildings: defects in apartment blocks from the construction boom, pyrite in floors, subsidence, and fire, flood and impact damage for insurers and loss adjusters. We investigate, report, design the remediation and supervise it through to certification.",
+        ],
+      },
+      {
+        heading: "Homeowners",
+        body: [
+          "For homeowners in Dublin we carry out structural surveys before a purchase, engineer's reports on cracking and movement, and the structural design and certification for extensions, attic conversions and the removal of load-bearing walls.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "Where is your Dublin office?", a: "Unit E6, Centrepoint Business Park, Oak Drive, Clondalkin, Dublin 12, beside the M50 and the Naas Road. The phone number is 01 424 3035." },
+      { q: "Which parts of Dublin do you cover?", a: "All of the city and county, with Kildare, Wicklow and Meath from the same office." },
+      { q: "Do you take on small residential jobs in Dublin?", a: "Yes. Surveys, engineer's reports and structural design for extensions and alterations are a steady part of the work, alongside the large commercial and public projects." },
+      { q: "Can you act as assigned certifier on a Dublin project?", a: "Yes. We act as assigned certifier under BCAR on housing, school and commercial projects." },
+    ],
+    related: [
+      { slug: "structural-engineering", title: "Structural Engineering" },
+      { slug: "civil-engineering", title: "Civil Engineering" },
+      { slug: "pre-purchase-structural-survey", title: "Pre-purchase Structural Surveys" },
+      { slug: "apartment-defects-remediation", title: "Apartment Defects Remediation" },
+    ],
+    projectSlugs: ["the-hole-in-the-wall", "sdcc-dodder-valley-pavilions", "52-mw-data-centre-dublin-bjd6", "vista-montana", "harolds-cross-hospice-refurbishment", "the-glass-bottle-site"],
+    panel: { title: "Dublin office", lines: ["Centrepoint Business Park, Clondalkin, Dublin 12.", "01 424 3035", "Monday to Friday, 8:30am to 5:00pm."] },
+    counties: ["Dublin", "Kildare", "Wicklow"],
+  },
+  {
+    kind: "service",
+    slug: "fire-safety-consultants-dublin",
+    title: "Fire safety consultants in Dublin",
+    metaTitle: "Fire Safety Consultants Dublin",
+    metaDescription:
+      "Fire safety consultants in Dublin: fire safety certificates, risk assessments, apartment defect surveys and fire engineering from our Clondalkin office.",
+    eyebrow: "Expertise / Fire safety, Dublin",
+    lead: "Fire engineering, fire safety certificates, risk assessments and apartment fire defect surveys for Dublin, delivered through Fire Safety Consultants, AOCA's joint venture with OCF.",
+    image: "/images/fs-apartments.jpg",
+    intro: [
+      "AOCA, in conjunction with OCF, has established Fire Safety Consultants to pool resources and expertise and provide specialist fire safety and accessibility consultancy. It brings together internationally recognised expertise in fire engineering, fire safety compliance, accessibility, inspection, due diligence and structural fire engineering.",
+      "In Dublin the work is led from the AOCA office in Clondalkin, for developers, design teams, owners' management companies, property managers and building owners across the city and county.",
+    ],
+    sections: [
+      {
+        heading: "Fire safety certificates and disability access certificates",
+        body: [
+          "New buildings, extensions and material changes of use in Dublin, other than houses, need a Fire Safety Certificate and a Disability Access Certificate from the building control authority: Dublin City Council, South Dublin, Fingal or Dún Laoghaire-Rathdown. We prepare the fire strategy, the compliance report and the drawings, lodge both applications and deal with the authority's queries through to grant, including regularisation applications where work was done without a certificate.",
+        ],
+      },
+      {
+        heading: "Apartment buildings and owners' management companies",
+        body: [
+          "Many Dublin apartment blocks built during the construction boom have fire safety defects: missing fire stopping, poor compartmentation and cavity barriers, and fire doors that do not perform. We survey the building, set out what has to be done and in what order, and design and oversee the remediation, and we have followed the Government's remediation scheme and its interim fire safety funding closely.",
+        ],
+      },
+      {
+        heading: "Fire risk assessments and inspections",
+        body: [
+          "We carry out fire risk assessments covering hazards, existing measures and practical risk-reduction recommendations, and inspections of fire doors, emergency lighting, alarm systems and passive fire protection. We also design and review fire detection, alarm and emergency lighting systems for compliance and life safety performance.",
+        ],
+      },
+      {
+        heading: "Fire engineering and due diligence",
+        body: [
+          "For new and existing buildings we provide performance-based and prescriptive fire safety design, and specialist assessment of structural behaviour in fire for steel, concrete, timber and composite structures. For acquisitions, developments, design teams and contractors we provide independent fire safety reviews and third-party checking.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "Do you prepare fire safety certificate applications for Dublin City Council?", a: "Yes, and for South Dublin, Fingal and Dún Laoghaire-Rathdown County Councils. We prepare and lodge the application and manage it through to grant." },
+      { q: "We are an owners' management company with fire defects. Where do we start?", a: "With a survey that establishes what is wrong and how serious it is. From that we set out the interim measures, the remediation and the cost, which is also what an application to the remediation scheme needs." },
+      { q: "Do you carry out fire risk assessments for commercial premises?", a: "Yes, for offices, retail, industrial and multi-unit residential buildings across Dublin." },
+      { q: "Who does the work?", a: "The Fire Safety Consultants team, drawn from AOCA and OCF, working from the AOCA office in Clondalkin." },
+    ],
+    related: [
+      { slug: "fire-safety-disability-access", title: "Fire Safety & Disability Access" },
+      { slug: "fire-safety-certificates", title: "Fire Safety Certificate Applications" },
+      { slug: "apartment-defects-remediation", title: "Apartment Defects Remediation" },
+      { slug: "structural-engineers-dublin", title: "Structural Engineers Dublin" },
+    ],
+    articles: [
+      { slug: "a-new-adventure-fire-safety-consultants", title: "A New Adventure: Fire Safety Consultants" },
+      { slug: "government-announces-interim-fire-safety-funding-for-celtic-tiger-era-apartments", title: "Interim fire safety funding for Celtic Tiger era apartments" },
+      { slug: "celtic-tiger-apartment-defects-repair-plan", title: "Apartment defects: repair plan eligibility and timeline" },
+    ],
+    panel: { title: "Instruct Fire Safety Consultants", lines: ["Joint venture of AOCA and OCF.", "Clondalkin, Dublin 12. 01 424 3035.", "Certificates, assessments, surveys and fire engineering."] },
+    counties: ["Dublin", "Kildare", "Wicklow"],
+  },
 ];
 
 export const countyLandings: CountyLanding[] = [
@@ -520,7 +660,7 @@ export const countyLandings: CountyLanding[] = [
     kind: "county", slug: "laois", county: "Laois", council: "Laois County Council",
     title: "Structural and civil engineers in Laois",
     metaTitle: "Structural & Civil Engineers Laois",
-    metaDescription: "AOCA's head office has been in Portlaoise since 1996. Civil, structural, insurance and forensic engineers for Laois: schools, churches, housing, retail and one-off homes.",
+    metaDescription: "Structural and civil engineers in Laois, based in Portlaoise since 1996. Schools, churches, housing, retail, surveys and one-off homes.",
     lead: "Portlaoise, Portarlington, Mountmellick, Abbeyleix, Stradbally and Durrow, from the head office at Lismard House on the Timahoe Road.",
     image: "/images/office-building.jpg",
     intro: [
@@ -539,7 +679,7 @@ export const countyLandings: CountyLanding[] = [
     kind: "county", slug: "wicklow", county: "Wicklow", council: "Wicklow County Council",
     title: "Structural and civil engineers in Wicklow",
     metaTitle: "Structural & Civil Engineers Wicklow",
-    metaDescription: "Civil, structural, insurance and forensic engineers for Wicklow, from the Dublin office in Clondalkin and from Portlaoise. Façade design on the Arklow wastewater plant.",
+    metaDescription: "Structural and civil engineers for Wicklow, from our Dublin and Portlaoise offices. Façade design on the award-winning Arklow wastewater plant.",
     lead: "Bray, Greystones, Wicklow town, Arklow, Blessington and Baltinglass, served from the Dublin office and from Portlaoise.",
     image: "/images/2026-02-arklow_hero_final_dou4go-1.jpg",
     intro: [
@@ -557,7 +697,7 @@ export const countyLandings: CountyLanding[] = [
     kind: "county", slug: "wexford", county: "Wexford", council: "Wexford County Council",
     title: "Structural and civil engineers in Wexford",
     metaTitle: "Structural & Civil Engineers Wexford",
-    metaDescription: "Civil, structural, insurance and forensic engineers for Wexford, including work at Rosslare Europort. Inspections, reports and design from Portlaoise and Dublin.",
+    metaDescription: "Structural and civil engineers for Wexford, including work at Rosslare Europort. Inspections, reports and design from Portlaoise and Dublin.",
     lead: "Wexford town, Gorey, Enniscorthy, New Ross and Rosslare, served from Portlaoise and from the Dublin office.",
     image: "/images/2026-08-maxresdefault.jpg",
     intro: [
@@ -575,18 +715,21 @@ export const countyLandings: CountyLanding[] = [
     kind: "county", slug: "kildare", county: "Kildare", council: "Kildare County Council",
     title: "Structural and civil engineers in Kildare",
     metaTitle: "Structural & Civil Engineers Kildare",
-    metaDescription: "Civil, structural, insurance and forensic engineers for Kildare, from Portlaoise and Dublin. Schools, housing, commercial and insurance work since 1996.",
+    metaDescription: "Structural and civil engineers for Naas, Newbridge, Maynooth and all of Kildare. Surveys, reports, design and certification from Portlaoise and Dublin.",
     lead: "Newbridge, Naas, Kildare town, Athy, Maynooth and Celbridge, served from Portlaoise and from the Dublin office in Clondalkin.",
     image: "/images/2026-02-st-patricks-ns.jpg",
     intro: [
       "AOCA has worked across Kildare for thirty years, including the new St Patrick's National School in Newbridge, where the practice provided civil and structural engineering and acted as assigned certifier.",
       "Kildare sits between the two Irish offices. Engineers travel from Portlaoise to the west of the county and from Clondalkin to the north and east, so a site visit is rarely more than a day away.",
+      "Naas and Newbridge are both about half an hour from either office. For homeowners there that means structural surveys before a purchase, engineer's reports for cracks and subsidence, and design and certification for extensions. For developers and businesses it means civil and structural design, assigned certifier services and fire safety certificate applications from one practice.",
     ],
     towns: ["Newbridge", "Naas", "Kildare town", "Athy", "Maynooth", "Celbridge", "Leixlip", "Monasterevin"],
     match: ["Kildare", "Portarlington", "Mountmellick"],
     faqs: [
       { q: "Do you take on one-off houses and extensions in Kildare?", a: "Yes. Structural design, planning drawings, certification and building surveys for homeowners, alongside the larger commercial and public work." },
       { q: "Can you act as assigned certifier in Kildare?", a: "Yes. We did so on St Patrick's National School in Newbridge and on schools in Carlow." },
+      { q: "Do you have engineers covering Naas and Newbridge?", a: "Yes. Both towns are about half an hour from the Portlaoise and Dublin offices, and we worked in Newbridge on St Patrick's National School. We carry out structural surveys, engineer's reports, design and certification across both." },
+      { q: "Can I get a structural survey in Kildare before I buy a house?", a: "Yes. An engineer inspects the property from roof to foundations and gives you a written report with photographs and clear recommendations before you sign." },
     ],
   },
   {

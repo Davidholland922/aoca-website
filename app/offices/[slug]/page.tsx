@@ -16,7 +16,7 @@ import PageHero from "@/components/PageHero";
 import ProjectCard from "@/components/ProjectCard";
 import CtaBand from "@/components/CtaBand";
 import JsonLd from "@/components/JsonLd";
-import { LANDING_LIVE, countyLandings } from "@/lib/landing";
+import { LANDING_LIVE, countyLandings, serviceLandings } from "@/lib/landing";
 
 /**
  * One page per office. These exist so that "consulting engineers Dublin",
@@ -125,6 +125,25 @@ export default async function OfficePage({
                 ))}
               </ul>
             </Reveal>
+
+            {LANDING_LIVE && office.slug === "dublin" && (
+              <Reveal>
+                <h2 className="mt-12 text-2xl font-semibold text-navy-900">Dublin services in detail</h2>
+                <div className="rule" />
+                <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                  {serviceLandings
+                    .filter((l) => ["structural-engineers-dublin", "fire-safety-consultants-dublin", "subsidence-engineering", "apartment-defects-remediation"].includes(l.slug))
+                    .map((l) => (
+                      <li key={l.slug}>
+                        <Link href={`/expertise/${l.slug}`} className="group flex items-center justify-between gap-3 border border-navy-100 px-4 py-3 text-sm font-medium text-navy-800 transition-colors hover:border-navy-800">
+                          {l.title}
+                          <ArrowRight size={14} className="shrink-0 text-brand" aria-hidden />
+                        </Link>
+                      </li>
+                    ))}
+                </ul>
+              </Reveal>
+            )}
 
             {LANDING_LIVE && office.country === "IE" && (
               <Reveal>
