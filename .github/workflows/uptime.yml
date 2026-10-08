@@ -1,0 +1,37 @@
+name: Site uptime check
+
+# Checks the live site every 30 minutes. If a check fails, the run fails and
+# GitHub emails the repository owner; an issue is also opened as a record.
+on:
+  schedule:
+    - cron: "7,37 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: uptime
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: scripts
+      - name: Check www.aoca.ie
+        id: check
+        run: bash scripts/uptime-check.sh | tee result.txt; exit ${PIPESTATUS[0]}
+      - name: Open an issue if the site is down
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          open=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "Site check failing in:title" --json number --jq 'length')
+          if [ "$open" = "0" ]; then
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "Site check failing" --body "$(printf 'The automatic check of www.aoca.ie failed.\n\n```\n%s\n```\n\nRun: %s/%s/actions/runs/%s' "$(grep -E '^FAIL' result.txt)" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID")"
+          fi
