@@ -43,7 +43,7 @@ export default function HomePage() {
       {/* VIDEO HERO */}
       <VideoHero poster={companyImages.videoPoster}>
         <div className="container-site py-24">
-          <Reveal>
+          <div className="hero-rise">
             <h1 className="max-w-4xl text-4xl font-semibold leading-[1.05] text-white sm:text-6xl lg:text-7xl">
               {heroText.headline}{" "}
               <span className="text-brand-light">{heroText.headlineAccent}</span>
@@ -68,7 +68,7 @@ export default function HomePage() {
                 Talk to an engineer
               </Link>
             </div>
-          </Reveal>
+          </div>
         </div>
       </VideoHero>
 

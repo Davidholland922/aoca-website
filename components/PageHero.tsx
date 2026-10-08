@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Reveal from "@/components/Reveal";
 
 /** Full-bleed image hero for interior pages. */
 export default function PageHero({
@@ -41,7 +40,7 @@ export default function PageHero({
           compact ? "min-h-[48vh] pb-16" : "min-h-[62vh] pb-20"
         }`}
       >
-        <Reveal>
+        <div className="hero-rise">
           <p className="eyebrow">{eyebrow}</p>
           <h1 className="mt-4 max-w-3xl text-4xl font-semibold text-white sm:text-5xl lg:text-6xl">
             {title}
@@ -52,7 +51,7 @@ export default function PageHero({
               {lead}
             </p>
           )}
-        </Reveal>
+        </div>
       </div>
       <div className="relative h-1 w-full bg-gradient-to-r from-brand via-brand to-transparent" />
     </section>

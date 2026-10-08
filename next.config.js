@@ -64,6 +64,10 @@ const nextConfig = {
   // security headers (HSTS is added by Vercel itself)
   async headers() {
     return [
+      // the admin area and the form endpoints must never appear in search results
+      { source: "/admin/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }, { key: "Cache-Control", value: "no-store" }] },
+      { source: "/admin", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }, { key: "Cache-Control", value: "no-store" }] },
+      { source: "/api/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] },
       {
         source: "/:path*",
         headers: [
@@ -80,6 +84,28 @@ const nextConfig = {
 
   async redirects() {
     return [
+      // ---- likely old or guessed addresses that would otherwise be a dead end (9 Oct 2026)
+      { source: "/pyrite", destination: "/expertise/pyrite-defective-blocks", permanent: true },
+      { source: "/services", destination: "/expertise", permanent: true },
+      { source: "/about-us", destination: "/company", permanent: true },
+      { source: "/about", destination: "/company", permanent: true },
+      { source: "/fire-safety", destination: "/expertise/fire-safety-disability-access", permanent: true },
+      { source: "/team", destination: "/company", permanent: true },
+      { source: "/our-team", destination: "/company", permanent: true },
+      { source: "/privacy-policy", destination: "/privacy", permanent: true },
+      { source: "/latent-defects", destination: "/expertise/latent-defects", permanent: true },
+      { source: "/project-management", destination: "/expertise/project-construction-management", permanent: true },
+      { source: "/assigned-certifier", destination: "/expertise/assigned-certifier", permanent: true },
+      { source: "/testimonials", destination: "/company", permanent: true },
+      { source: "/subsidence", destination: "/expertise/subsidence-engineering", permanent: true },
+      { source: "/jobs", destination: "/careers", permanent: true },
+      { source: "/vacancies", destination: "/careers", permanent: true },
+      { source: "/contact-us", destination: "/contact", permanent: true },
+      { source: "/news-insights", destination: "/insights", permanent: true },
+      { source: "/blog", destination: "/insights", permanent: true },
+      { source: "/sitemap_index.xml", destination: "/sitemap.xml", permanent: true },
+      { source: "/page-sitemap.xml", destination: "/sitemap.xml", permanent: true },
+      { source: "/post-sitemap.xml", destination: "/sitemap.xml", permanent: true },
       // ---- every remaining URL from the old WordPress sitemap (verified 4 Oct 2026)
       { source: "/5-simple-steps-to-detect-pyrite-in-your-home", destination: "/insights", permanent: true },
       { source: "/a-breakthrough-in-solar-power-with-chromium", destination: "/insights/a-breakthrough-in-solar-power-with-chromium", permanent: true },

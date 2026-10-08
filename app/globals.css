@@ -124,3 +124,19 @@
     transform: translateX(calc(-50% - 0.5rem));
   }
 }
+
+/* Page headings fade up with CSS alone, so the headline is on screen before
+   any JavaScript has loaded. (Scroll reveals further down still use JS.) */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.hero-rise {
+  animation: hero-rise 0.45s ease-out both;
+}
