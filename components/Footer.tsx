@@ -89,10 +89,9 @@ export default function Footer() {
             <div className="mt-10 grid gap-6 border-t border-white/10 pt-8 text-sm md:grid-cols-2">
               <p className="leading-relaxed text-navy-300">
                 <span className="font-semibold text-white">Areas: </span>
-                <Link href="/offices/portlaoise" className="hover:text-white">Laois</Link>
-                {countyLandings.map((c) => (
+                {countyLandings.map((c, i) => (
                   <span key={c.slug}>
-                    {" · "}
+                    {i > 0 && " · "}
                     <Link href={`/areas/${c.slug}`} className="hover:text-white">{c.county}</Link>
                   </span>
                 ))}
