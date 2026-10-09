@@ -48,56 +48,6 @@ export default function CareersPage() {
         compact
       />
 
-      <section className="section bg-white">
-        <div className="container-site grid items-start gap-14 lg:grid-cols-2">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Who we're looking for"
-              title="Students to senior engineers"
-              lead="Whether you're a student eager to gain hands-on experience or an experienced engineer ready to take the next step, we offer an environment where your work matters from day one."
-            />
-            <div className="mt-8 space-y-6">
-              {perks.map((p) => (
-                <div key={p.title} className="flex items-start gap-4">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-navy-950 text-brand-light">
-                    <p.icon size={20} aria-hidden />
-                  </span>
-                  <div>
-                    <h3 className="font-semibold text-navy-900">{p.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-navy-600">
-                      {p.body}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="mt-10">
-              <ApplyButton role="Speculative application" label="Send us your CV" />
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <div className="grid grid-cols-2 gap-4">
-              {careersImages.map((src, i) => (
-                <div
-                  key={src}
-                  className={`relative overflow-hidden ${
-                    i % 2 ? "aspect-[3/4] md:mt-8" : "aspect-[3/4]"
-                  }`}
-                >
-                  <Image
-                    src={src}
-                    alt="Working at AOCA"
-                    fill
-                    className="object-cover transition-transform duration-500 hover:scale-105"
-                    sizes="(min-width: 1024px) 20rem, 50vw"
-                  />
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
       {/* OPEN POSITIONS — posted by AOCA via /admin */}
       <section className="section bg-navy-50/60" id="open-positions">
         <div className="container-site">
@@ -231,6 +181,57 @@ export default function CareersPage() {
               />
             </Reveal>
           </div>
+        </div>
+      </section>
+
+
+      <section className="section bg-white">
+        <div className="container-site grid items-start gap-14 lg:grid-cols-2">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Who we're looking for"
+              title="Students to senior engineers"
+              lead="Whether you're a student eager to gain hands-on experience or an experienced engineer ready to take the next step, we offer an environment where your work matters from day one."
+            />
+            <div className="mt-8 space-y-6">
+              {perks.map((p) => (
+                <div key={p.title} className="flex items-start gap-4">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-navy-950 text-brand-light">
+                    <p.icon size={20} aria-hidden />
+                  </span>
+                  <div>
+                    <h3 className="font-semibold text-navy-900">{p.title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-navy-600">
+                      {p.body}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-10">
+              <ApplyButton role="Speculative application" label="Send us your CV" />
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <div className="grid grid-cols-2 gap-4">
+              {careersImages.map((src, i) => (
+                <div
+                  key={src}
+                  className={`relative overflow-hidden ${
+                    i % 2 ? "aspect-[3/4] md:mt-8" : "aspect-[3/4]"
+                  }`}
+                >
+                  <Image
+                    src={src}
+                    alt="Working at AOCA"
+                    fill
+                    className="object-cover transition-transform duration-500 hover:scale-105"
+                    sizes="(min-width: 1024px) 20rem, 50vw"
+                  />
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 

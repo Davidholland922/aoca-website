@@ -40,7 +40,7 @@ const builtInInsights: Article[] = [
     "title": "Arklow Wastewater Treatment Plant Recognised with Prestigious Awards",
     "date": "2025-09-11",
     "displayDate": "September 2025",
-    "image": "/images/2025-09-arklow_case_study_featured_ojg6cb.webp",
+    "image": "/images/2026-10-news-arklow-case-study-featured-ojg6cb.webp",
     "excerpt": "AOCA Engineering is proud to announce that the Arklow Wastewater Treatment Plant, a landmark project in which we played a central role, has been recognised with significant nationa…",
     "body": [
       "AOCA Engineering is proud to announce that the Arklow Wastewater Treatment Plant, a landmark project in which we played a central role, has been recognised with significant national awards for both its environmental and architectural contribution.",
@@ -56,7 +56,7 @@ const builtInInsights: Article[] = [
     "title": "A New Chapter at AOCA",
     "date": "2025-09-09",
     "displayDate": "September 2025",
-    "image": "/images/2025-09-img_4403-scaled-1.jpg",
+    "image": "/images/2026-10-news-img-4403.jpg",
     "excerpt": "After nearly three decades leading one of Ireland’s most respected engineering consultancies, Aidan O’Connel l is stepping down as Managing Director of AOCA (formerly Aidan O’Conne…",
     "body": [
       "After nearly three decades leading one of Ireland’s most respected engineering consultancies, Aidan O’Connel l is stepping down as Managing Director of AOCA (formerly Aidan O’Connell & Associates Ltd .), closing a remarkable chapter in Irish civil and structural engineering.",
@@ -69,7 +69,7 @@ const builtInInsights: Article[] = [
     "title": "The effects of climate change are increasingly visible in Ireland",
     "date": "2025-03-11",
     "displayDate": "March 2025",
-    "image": "/images/2026-02-arklowwwtpfeb25-1.jpg",
+    "image": "/images/2026-10-news-across-from-jurys1.jpg",
     "excerpt": "In recent years, Ireland has seen a significant rise in extreme weather events, raising public concern regarding the nation’s preparedness for future flooding. A survey by Engineer…",
     "body": [
       "In recent years, Ireland has seen a significant rise in extreme weather events, raising public concern regarding the nation’s preparedness for future flooding. A survey by Engineers Ireland found that 95% of the public are worried about potential flood risks, with 58% questioning the sufficiency of current flood defence infrastructure.",
@@ -85,7 +85,7 @@ const builtInInsights: Article[] = [
     "title": "Government Prioritises Apartment and Duplex Defects Remediation Bill 2024",
     "date": "2024-09-19",
     "displayDate": "September 2024",
-    "image": "/images/2026-08-near-finish.jpg",
+    "image": "/images/2026-10-news-dscf0409.jpg",
     "excerpt": "The Irish government has approved the priority drafting of the Apartment and Duplex Defects Remediation Bill 2024 , which addresses fire safety, structural, and water ingress issue…",
     "body": [
       "The Irish government has approved the priority drafting of the Apartment and Duplex Defects Remediation Bill 2024 , which addresses fire safety, structural, and water ingress issues in buildings constructed between 1991 and 2013. Under the new legislation, 100% of eligible remediation costs will be covered.",
@@ -101,7 +101,7 @@ const builtInInsights: Article[] = [
     "title": "Healthy Homes Ireland Retrofit",
     "date": "2024-08-13",
     "displayDate": "August 2024",
-    "image": "/images/2024-08-velux.jpg",
+    "image": "/images/2026-10-news-velux.jpg",
     "excerpt": "Healthy Homes Ireland, in partnership with the Irish Green Building Council and VELUX , hosted a pivotal breakfast event in Dublin this summer, highlighting the urgent need for ret…",
     "body": [
       "Healthy Homes Ireland, in partnership with the Irish Green Building Council and VELUX , hosted a pivotal breakfast event in Dublin this summer, highlighting the urgent need for retrofitting homes to enhance both mental and physical well-being.",
@@ -117,7 +117,7 @@ const builtInInsights: Article[] = [
     "title": "Shortlisted for the Irish Building and Design Awards, recognised as being ‘Best in Class’",
     "date": "2024-01-31",
     "displayDate": "January 2024",
-    "image": "/images/2026-08-geotechnical-engineering.jpg",
+    "image": "/images/2026-10-news-ibda-finalist-blue-1.jpg",
     "excerpt": "This project has been shortlisted for the Irish Building and Design Awards, recognised as being ‘Best in Class’ both nationally and internationally. The IBDAs recognise excellence …",
     "body": [
       "This project has been shortlisted for the Irish Building and Design Awards, recognised as being ‘Best in Class’ both nationally and internationally. The IBDAs recognise excellence in build, design, people, and creativity. The winners of the awards will be announced on March 8th, 2024.",
@@ -133,7 +133,7 @@ const builtInInsights: Article[] = [
     "title": "Government Announces Interim Fire Safety Funding for Celtic Tiger-Era Apartments",
     "date": "2023-12-20",
     "displayDate": "December 2023",
-    "image": "/images/2026-02-dji_0871.jpg",
+    "image": "/images/2026-10-news-wmq23ck7kvn5laec7lwxadnpya.webp",
     "excerpt": "A significant development, Minister for Housing Darragh O’Brien has introduced a new interim fire safety funding scheme for owners of Celtic Tiger-era apartments. The initiative ai…",
     "body": [
       "A significant development, Minister for Housing Darragh O’Brien has introduced a new interim fire safety funding scheme for owners of Celtic Tiger-era apartments. The initiative aims to provide immediate assistance to the owners of up to 100,000 affected buildings while a comprehensive State support program is being finalised.",
@@ -149,7 +149,7 @@ const builtInInsights: Article[] = [
     "title": "Unfortunate news for homeowners as the wait prolongs for apartment defects remediation until later in 2024.",
     "date": "2023-11-28",
     "displayDate": "November 2023",
-    "image": "/images/2026-02-sam_9876.jpg",
+    "image": "/images/2026-10-news-untitled-1.jpg",
     "excerpt": "Unfortunate news for homeowners as legislative hurdles prolong the wait for apartment defects remediation until later in 2024. Deputy Duncan Smith recently sought clarification fro…",
     "body": [
       "Unfortunate news for homeowners as legislative hurdles prolong the wait for apartment defects remediation until later in 2024. Deputy Duncan Smith recently sought clarification from the Minister for Housing, Local Government, and Heritage regarding the anticipated timeline for the draft legislation supporting the remediation of defects in apartments and duplexes constructed between 1991 and 2013.",
@@ -165,7 +165,7 @@ const builtInInsights: Article[] = [
     "title": "The Urgent Need for Modular Housing to address the Crisis in Ireland",
     "date": "2023-10-27",
     "displayDate": "October 2023",
-    "image": "/images/2023-10-build-wright-fresh-home-2.jpg",
+    "image": "/images/2026-10-news-build-wright-fresh-home-2.jpg",
     "excerpt": "In the midst of Ireland’s ongoing housing crisis, there is a pressing need for innovative solutions that can swiftly tackle the growing problem. The Engineers Ireland Conference hi…",
     "body": [
       "In the midst of Ireland’s ongoing housing crisis, there is a pressing need for innovative solutions that can swiftly tackle the growing problem. The Engineers Ireland Conference highlights an approach gaining momentum – modular housing.",
@@ -181,7 +181,7 @@ const builtInInsights: Article[] = [
     "title": "Celtic Tiger Apartment Defects: Repair Plan Eligibility & Timeline",
     "date": "2023-10-03",
     "displayDate": "October 2023",
-    "image": "/images/2023-10-shutterstock_698839954.jpg",
+    "image": "/images/2026-10-news-shutterstock-698839954.jpg",
     "excerpt": "Between 1991 and 2013, 50% to 80% of apartments and duplexes were built with significant problems, such as those pertaining to fire safety, structural defects, and water ingress.",
     "body": [
       "Between 1991 and 2013, 50% to 80% of apartments and duplexes were built with significant problems, such as those pertaining to fire safety, structural defects, and water ingress.",
@@ -197,7 +197,7 @@ const builtInInsights: Article[] = [
     "title": "Embracing a Sustainable Cladding Alternative",
     "date": "2023-09-28",
     "displayDate": "September 2023",
-    "image": "/images/2023-08-64b00425f4e29498aa810ade_fireproof-mushroom.png",
+    "image": "/images/2026-10-news-64b00425f4e29498aa810ade-fireproof-mushroom.png",
     "excerpt": "As environmental concerns drive a seismic shift toward sustainability in the construction industry, the significance of a sustainable cladding alternative emerges prominently. Choo…",
     "body": [
       "As environmental concerns drive a seismic shift toward sustainability in the construction industry, the significance of a sustainable cladding alternative emerges prominently. Choosing the right cladding for building exteriors is pivotal for achieving eco-friendly construction practices. Today, the need for a sustainable cladding alternative goes beyond optional consideration; it is an unequivocal necessity, underpinned by compelling reasons.",
@@ -213,7 +213,7 @@ const builtInInsights: Article[] = [
     "title": "A Breakthrough in Solar Power with Chromium",
     "date": "2023-09-14",
     "displayDate": "September 2023",
-    "image": "/images/2023-08-chromium-scaled-1.jpg",
+    "image": "/images/2026-10-news-chromium.jpg",
     "excerpt": "In the dynamic realm of sustainable energy, here at AOCA we are always on the lookout for game-changing innovations that continue to shape our trajectory towards a greener future. …",
     "body": [
       "In the dynamic realm of sustainable energy, here at AOCA we are always on the lookout for game-changing innovations that continue to shape our trajectory towards a greener future. A breakthrough discovery in solar panel technology, centered around the utilisation of chromium, a commonplace metal, has the potential to revolutionise solar energy’s efficiency and accessibility. This transformative advancement comes as a significant leap toward achieving global sustainability goals.",
@@ -244,7 +244,7 @@ const builtInInsights: Article[] = [
     "title": "Retrofitting Buildings for a Sustainable Future",
     "date": "2023-08-31",
     "displayDate": "August 2023",
-    "image": "/images/2026-08-geotechnical-engineering.jpg",
+    "image": "/images/2026-10-news-img-2146.jpg",
     "excerpt": "In the face of escalating urbanisation and climate change, reducing urban carbon emissions has emerged as a pressing imperative. An effective strategy in this endeavour is retrofit…",
     "body": [
       "In the face of escalating urbanisation and climate change, reducing urban carbon emissions has emerged as a pressing imperative. An effective strategy in this endeavour is retrofitting buildings for a sustainable future, a process that optimises existing structures to be more energy-efficient and environmentally responsible.",
@@ -275,7 +275,7 @@ const builtInInsights: Article[] = [
     "title": "Defective Block Works Crisis tackled by AOCA",
     "date": "2023-07-14",
     "displayDate": "July 2023",
-    "image": "/images/2026-02-sam_9876.jpg",
+    "image": "/images/2026-10-news-defective-block-works-scheme.png",
     "excerpt": "At AOCA, we are delighted to announce that two of our valued team members, Aidan O’Connell and Colin Scott, are on the committee overseeing the implementation of the defective bloc…",
     "body": [
       "At AOCA, we are delighted to announce that two of our valued team members, Aidan O’Connell and Colin Scott, are on the committee overseeing the implementation of the defective block works scheme. Their participation speaks volumes about their dedication to the highest engineering standards, crucial in managing the defective concrete block crisis in Ireland.",
@@ -289,7 +289,7 @@ const builtInInsights: Article[] = [
     "title": "An Overview of the Enhanced Defective Concrete Blocks Grant Scheme",
     "date": "2023-07-07",
     "displayDate": "July 2023",
-    "image": "/images/2026-02-dscn8508-1.jpg",
+    "image": "/images/2026-10-news-mica.jpg",
     "excerpt": "The recent amendments to the Defective Concrete Blocks Grant Scheme mark a significant development for homeowners grappling with the aftermath of pyrite and mica infestations. This…",
     "body": [
       "The recent amendments to the Defective Concrete Blocks Grant Scheme mark a significant development for homeowners grappling with the aftermath of pyrite and mica infestations. This government initiative, now known as the Enhanced Defective Concrete Blocks Grant Scheme , provides crucial financial support to affected homeowners, allowing them to repair or rebuild their homes.",
@@ -304,7 +304,7 @@ const builtInInsights: Article[] = [
     "title": "When Should I Worry About Cracks in My Home?",
     "date": "2023-07-05",
     "displayDate": "July 2023",
-    "image": "/images/2026-02-hole-in-the-wall-.jpg",
+    "image": "/images/2026-10-news-img-3529.jpg",
     "excerpt": "In every home, it’s normal to see minor cracks appear over time, especially in older buildings. But when should these cracks start raising alarm bells? Let’s delve into the subject…",
     "body": [
       "In every home, it’s normal to see minor cracks appear over time, especially in older buildings. But when should these cracks start raising alarm bells? Let’s delve into the subject to help you distinguish between normal house settling and more serious structural issues.",
@@ -320,7 +320,7 @@ const builtInInsights: Article[] = [
     "title": "Why do I need a structural condition survey?",
     "date": "2023-07-05",
     "displayDate": "July 2023",
-    "image": "/images/2026-02-arklowwwtpfeb25-1.jpg",
+    "image": "/images/2026-10-news-untitled-facebook-post-landscape.png",
     "excerpt": "Investing in a property is a major financial commitment, hence the importance of ensuring your investment is sound. A structural condition survey, performed by qualified and experi…",
     "body": [
       "Investing in a property is a major financial commitment, hence the importance of ensuring your investment is sound. A structural condition survey, performed by qualified and experienced engineers, provides a comprehensive understanding of the property’s structural integrity. But why is such a survey necessary , and what does the process involve? Let’s explore with the guidance of AOCA Engineering Consultants.",
