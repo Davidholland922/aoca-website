@@ -659,7 +659,7 @@ export const serviceLandings: ServiceLanding[] = [
     title: "Façade engineers",
     metaTitle: "Façade Engineers, Ireland & UK",
     metaDescription:
-      "Façade and roof engineering for data centre, pharmaceutical and mission-critical buildings: design, wind loads, fire and moisture review, third-party inspection.",
+      "Façade and roof engineering for data centre, pharmaceutical and mission-critical buildings: design, wind loads, fire and moisture review, inspection.",
     eyebrow: "Expertise / Façade engineering",
     lead: "Structural, fire, moisture and thermal engineering of façade and roof systems for clients, design teams and specialist envelope contractors across Ireland, the UK and Europe.",
     image: "/images/arklow-fins.jpg",
@@ -714,7 +714,7 @@ export const serviceLandings: ServiceLanding[] = [
     title: "Data centre engineering",
     metaTitle: "Data Centre Engineers, Ireland, UK & Europe",
     metaDescription:
-      "Structural and building envelope engineering for data centres from 16 MW to 100 MW campuses in Dublin, Wales, Sweden and Finland. Design, peer review and site auditing.",
+      "Structural and envelope engineering for data centres from 16 MW to 100 MW in Dublin, Wales, Sweden and Finland. Design, peer review and site auditing.",
     eyebrow: "Expertise / Data centres",
     lead: "Building envelope and structural engineering for mission-critical facilities across Europe, from 16 MW single buildings to 100 MW campuses.",
     image: "/images/2026-08-screenshot-2025-09-29-150238.jpg",
@@ -769,7 +769,7 @@ export const serviceLandings: ServiceLanding[] = [
     title: "Building defect remediation engineers",
     metaTitle: "Building Defect Remediation Engineers",
     metaDescription:
-      "Investigation, design and management of building defect remediation: latent defects, apartment fire and structural defects, cladding, pyrite. Ireland and the UK since 1996.",
+      "Investigation, design and management of building defect remediation: latent defects, apartment fire and structural defects, cladding and pyrite. Ireland and UK.",
     eyebrow: "Expertise / Defect remediation",
     lead: "Finding, scoping, designing and managing the repair of defects in finished buildings, for insurers, warranty providers, developers, owners' management companies and public bodies in Ireland and the UK.",
     image: "/images/2026-02-glass-bottle-site.webp",
