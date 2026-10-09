@@ -1802,11 +1802,12 @@ const builtInProjects: Project[] = [
 
 /** Every project, including ones hidden via /admin (used by the admin UI).
  * Edited/uploaded records (content/projects.json) override built-ins by slug. */
+const uploaded = uploadedProjects as Project[];
 export const allProjects: Project[] = [
-  ...(uploadedProjects as Project[]),
-  ...builtInProjects.filter(
-    (b) => !(uploadedProjects as Project[]).some((u) => u.slug === b.slug)
-  ),
+  // genuinely new projects first, in the order they were added
+  ...uploaded.filter((u) => !builtInProjects.some((b) => b.slug === u.slug)),
+  // then the original list in its original order; an edited one is swapped in place
+  ...builtInProjects.map((b) => uploaded.find((u) => u.slug === b.slug) ?? b),
 ];
 
 /** Client-uploaded projects (via /admin) appear first; hidden ones removed. */

@@ -5,6 +5,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { services, companyImages } from "@/lib/site";
 import ServiceIcon from "@/components/ServiceIcon";
 import Reveal from "@/components/Reveal";
+import { LANDING_LIVE, serviceLandings } from "@/lib/landing";
 import PageHero from "@/components/PageHero";
 import SectionVideo from "@/components/SectionVideo";
 import CtaBand from "@/components/CtaBand";
@@ -128,6 +129,28 @@ export default function ExpertisePage() {
           </div>
         </div>
       </section>
+
+      {/* SPECIALIST PAGES — search landing pages that sit beside the nine services */}
+      {LANDING_LIVE && (
+        <section className="border-t border-navy-100 bg-navy-50/60 py-14">
+          <div className="container-site">
+            <Reveal>
+              <h2 className="font-heading text-sm font-semibold uppercase tracking-wider text-navy-900">
+                Specialist services
+              </h2>
+              <ul className="mt-5 grid gap-x-8 gap-y-2 text-sm sm:grid-cols-2 lg:grid-cols-3">
+                {serviceLandings.map((l) => (
+                  <li key={l.slug}>
+                    <Link href={`/expertise/${l.slug}`} className="text-navy-700 underline-offset-2 hover:text-brand hover:underline">
+                      {l.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       <CtaBand
         title="Not sure which discipline you need?"

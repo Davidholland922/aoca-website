@@ -333,12 +333,14 @@ const builtInInsights: Article[] = [
 ];
 
 /** Every article, including ones hidden via /admin (used by the admin UI). */
+// newest first by date, whichever list an article lives in, so editing an
+// old article never moves it to the top
 export const allInsights: Article[] = [
   ...(uploadedArticles as Article[]),
   ...builtInInsights.filter(
     (b) => !(uploadedArticles as Article[]).some((u) => u.slug === b.slug)
   ),
-];
+].sort((a, b) => (b.date || "").localeCompare(a.date || ""));
 
 /** Client-uploaded articles (via /admin) appear first; hidden ones removed. */
 export const insights: Article[] = allInsights.filter(

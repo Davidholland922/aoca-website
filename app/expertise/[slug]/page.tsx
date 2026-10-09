@@ -25,7 +25,7 @@ const SEO_LABEL: Record<string, string> = {
   "assigned-certifier": "Assigned Certifier",
   "project-construction-management": "Project & Construction Management",
   "consulting-engineering": "Consulting Engineers",
-  "building-envelope-engineering": "Building Envelope Engineers",
+  "building-envelope-engineering": "Building Envelope & Façade Engineers",
 };
 
 export function generateStaticParams() {

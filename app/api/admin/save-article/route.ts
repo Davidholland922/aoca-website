@@ -63,7 +63,10 @@ export async function POST(req: NextRequest) {
     const current = (await readRepoJson("content/articles.json")) as {
       slug: string;
     }[];
-    const next = [cleaned, ...current.filter((a) => a.slug !== slug)];
+    // an edit stays where it was; only a new record goes to the front
+    const next = current.some((a) => a.slug === slug)
+      ? current.map((a) => (a.slug === slug ? cleaned : a))
+      : [cleaned, ...current];
     files.push({
       path: "content/articles.json",
       utf8: JSON.stringify(next, null, 2) + "\n",

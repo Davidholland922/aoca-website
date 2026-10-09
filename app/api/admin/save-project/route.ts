@@ -99,7 +99,10 @@ export async function POST(req: NextRequest) {
       video: record.video?.trim() || undefined,
       videoPoster: record.videoPoster?.trim() || undefined,
     };
-    const next = [cleaned, ...current.filter((p) => p.slug !== slug)];
+    // an edit stays where it was; only a new record goes to the front
+    const next = current.some((p) => p.slug === slug)
+      ? current.map((p) => (p.slug === slug ? cleaned : p))
+      : [cleaned, ...current];
     files.push({
       path: "content/projects.json",
       utf8: JSON.stringify(next, null, 2) + "\n",

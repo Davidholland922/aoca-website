@@ -653,6 +653,182 @@ export const serviceLandings: ServiceLanding[] = [
     panel: { title: "Instruct Fire Safety Consultants", lines: ["Joint venture of AOCA and OCF.", "Clondalkin, Dublin 12. 01 424 3035.", "Certificates, assessments, surveys and fire engineering."] },
     counties: ["Dublin", "Kildare", "Wicklow"],
   },
+  {
+    kind: "service",
+    slug: "facade-engineering",
+    title: "Façade engineers",
+    metaTitle: "Façade Engineers, Ireland & UK",
+    metaDescription:
+      "Façade and roof engineering for data centre, pharmaceutical and mission-critical buildings: design, wind loads, fire and moisture review, third-party inspection.",
+    eyebrow: "Expertise / Façade engineering",
+    lead: "Structural, fire, moisture and thermal engineering of façade and roof systems for clients, design teams and specialist envelope contractors across Ireland, the UK and Europe.",
+    image: "/images/arklow-fins.jpg",
+    intro: [
+      "AOCA provides specialist building envelope engineering services for data centre, pharmaceutical, industrial and other mission-critical buildings. Our role is to ensure that roof and façade systems are structurally sound, fire safe, moisture robust, thermally efficient and compliant with the project specification. We support clients, design teams and specialist contractors through design, review and site inspection services.",
+      "The work ranges from the structural design of a façade's fixing system, as on the architectural fin louvres of the award-winning Arklow Wastewater Treatment Plant, to independent third-party quality assurance of the waterproofing envelope on one of Dublin's landmark regeneration sites, and the peer review and inspection of cladding and roofing on data centres in Dublin, Wales, Sweden and Finland.",
+    ],
+    sections: [
+      {
+        heading: "Façade and roof structural design",
+        body: [
+          "Roof and façade structural design; wind load design to Eurocode and FM Global requirements across multiple European jurisdictions; and finite element analysis for bespoke details and complex geometry. On the Arklow louvre façade this meant designing a fixing system for an exposed coastal location that held the architectural intent while resisting the environmental loading.",
+        ],
+      },
+      {
+        heading: "Fire, moisture and thermal performance",
+        body: [
+          "Fire engineering review of façade, roof and cavity barrier systems; condensation risk analysis and hygrothermal modelling; U-value, thermal bridge and energy performance assessments; and architectural engineering specification advice. For data centres and pharmaceutical buildings the envelope is part of the facility's resilience, so these checks are done before the system is procured, not after it leaks.",
+        ],
+      },
+      {
+        heading: "Peer review, audit and inspection on site",
+        body: [
+          "Design audits, peer reviews and compliance checks; BIM coordination and technical detailing support; and third-party site inspections and envelope audits. On a 52 MW data centre campus in Dublin AOCA was appointed by the main contractor as quality auditor, on site every two weeks for the duration of the project to inspect the roofing and cladding against design and specification. On a 16 MW data centre in Wales we acted as third-party design auditor and construction inspector for the envelope contractor.",
+        ],
+      },
+      {
+        heading: "Who instructs us",
+        body: [
+          "Main contractors who need an independent auditor on the envelope package, specialist façade and roofing contractors who need design and certification support, design teams who need a peer review, and owners and developers who want assurance that what was specified is what was built.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "Do you work for the façade contractor or for the client?", a: "Both, on different projects. For a contractor we provide design, analysis and technical documentation. For a client or main contractor we act as the independent auditor and inspector. We do not do both on the same project." },
+      { q: "Can you design to FM Global requirements?", a: "Yes. Wind load design to Eurocode and FM Global is routine on our data centre and industrial work across several European jurisdictions." },
+      { q: "Do you inspect during construction?", a: "Yes. Third-party site inspections and envelope audits at agreed stages, with records that go to the client and the design team." },
+      { q: "Do you cover the UK and Europe?", a: "Yes. The UK is served from the Manchester office, and the practice has worked on envelopes in Wales, Sweden and Finland as well as Ireland." },
+    ],
+    related: [
+      { slug: "building-envelope-engineering", title: "Building Envelope Engineering" },
+      { slug: "data-centre-engineering", title: "Data Centre Engineering" },
+      { slug: "structural-engineering", title: "Structural Engineering" },
+    ],
+    projectSlugs: ["arklow-water-treatment-plant", "the-glass-bottle-site", "52-mw-data-centre-dublin-bjd6", "16-mw-data-centre-dqm3"],
+    panel: { title: "Instruct AOCA", lines: ["Envelope engineering on data centres across Europe.", "Design, peer review and third-party inspection.", "Portlaoise, Dublin and Manchester."] },
+    counties: ["Dublin", "All Ireland", "Manchester and the UK"],
+  },
+  {
+    kind: "service",
+    slug: "data-centre-engineering",
+    title: "Data centre engineering",
+    metaTitle: "Data Centre Engineers, Ireland, UK & Europe",
+    metaDescription:
+      "Structural and building envelope engineering for data centres from 16 MW to 100 MW campuses in Dublin, Wales, Sweden and Finland. Design, peer review and site auditing.",
+    eyebrow: "Expertise / Data centres",
+    lead: "Building envelope and structural engineering for mission-critical facilities across Europe, from 16 MW single buildings to 100 MW campuses.",
+    image: "/images/2026-08-screenshot-2025-09-29-150238.jpg",
+    intro: [
+      "AOCA provides specialist building envelope and structural engineering services on data centre projects across Ireland, the UK and Europe. Our portfolio includes facilities in Dublin, Newport, Cardiff, Sweden and Finland, ranging from 16MW single buildings to 52MW campuses.",
+      "Our role on these mission-critical projects typically covers roof and façade structural design, wind load design to Eurocode and FM Global requirements, condensation risk analysis, fire engineering review of envelope systems and third-party site inspections.",
+    ],
+    sections: [
+      {
+        heading: "Structural engineering for hyperscale campuses",
+        body: [
+          "On a hyperscale campus in Finland of around 100 MW, three steel-framed data centres across a 122 hectare site, each of two levels plus admin and ancillary facilities, AOCA supported the building envelope contractor's façade and cladding engineering scope. Structural design to the Eurocodes, with buildability and programme in mind, is the core of what the practice does.",
+        ],
+      },
+      {
+        heading: "Envelope engineering",
+        body: [
+          "Roof and façade systems on a data centre have to be structurally sound, fire safe, moisture robust and thermally efficient, and they have to match the specification exactly. We design and analyse them, review the fire and condensation performance, and audit what is installed.",
+        ],
+      },
+      {
+        heading: "Quality auditing during construction",
+        body: [
+          "On a 52 MW campus in Dublin, two two-storey facilities of 32 MW and 20 MW on a 22 acre site, AOCA was appointed by the main contractor as quality auditor during construction, on site every two weeks to inspect all roofing and cladding against design and specification. On a 16 MW data centre in Wales we were the third-party design audit and construction inspection auditor for the envelope contractor, with a peer design review covering every aspect of the building envelope.",
+        ],
+      },
+      {
+        heading: "Working with contractors and design teams",
+        body: [
+          "Data centre programmes are fast and the envelope package is on the critical path. We are used to working inside a main contractor's or an envelope contractor's team: answering technical queries quickly, coordinating in BIM, and giving the client an independent record that the installed envelope matches the design.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "What have you done on data centres?", a: "Structural and envelope engineering, peer review and construction auditing on facilities in Dublin, Newport, Cardiff, Sweden and Finland, from 16 MW to a 100 MW campus." },
+      { q: "Who appoints you?", a: "Main contractors, envelope and cladding contractors, and owners or developers wanting an independent auditor." },
+      { q: "Do you work outside Ireland?", a: "Yes. The UK from the Manchester office, and we have delivered projects in Sweden and Finland." },
+      { q: "Do you design to FM Global?", a: "Yes. Wind load design to Eurocode and FM Global requirements is standard on this work." },
+    ],
+    related: [
+      { slug: "building-envelope-engineering", title: "Building Envelope Engineering" },
+      { slug: "facade-engineering", title: "Façade Engineering" },
+      { slug: "structural-engineering", title: "Structural Engineering" },
+    ],
+    projectSlugs: ["52-mw-data-centre-dublin-bjd6", "100-mw-hyperscale-data-centre-campus-finland-7xh1", "16-mw-data-centre-dqm3", "data-centre-projects"],
+    panel: { title: "Instruct AOCA", lines: ["Data centres in Ireland, the UK, Sweden and Finland.", "Structural, envelope, peer review and auditing.", "Portlaoise, Dublin and Manchester."] },
+    counties: ["Dublin", "All Ireland", "Manchester and the UK"],
+  },
+  {
+    kind: "service",
+    slug: "building-defect-remediation",
+    title: "Building defect remediation engineers",
+    metaTitle: "Building Defect Remediation Engineers",
+    metaDescription:
+      "Investigation, design and management of building defect remediation: latent defects, apartment fire and structural defects, cladding, pyrite. Ireland and the UK since 1996.",
+    eyebrow: "Expertise / Defect remediation",
+    lead: "Finding, scoping, designing and managing the repair of defects in finished buildings, for insurers, warranty providers, developers, owners' management companies and public bodies in Ireland and the UK.",
+    image: "/images/2026-02-glass-bottle-site.webp",
+    intro: [
+      "We have over 30 years of latent defect investigation and remediation experience in Ireland and the UK. AOCA Engineering Consultants were the sole engineering consultant for Liberty Syndicates and their Premier Guarantee LDI policy, managing the full investigation and remediation of over 1,000 residential homes.",
+      "From our UK office in Manchester we have managed over £200m of latent defect remediation projects, from investigation, scope of works and design through to construction and handover. Through our sister company Fire Safety Consultants, AOCA is currently remediating apartment schemes throughout Ireland under the apartment defects remediation scheme.",
+    ],
+    sections: [
+      {
+        heading: "Investigation and diagnosis",
+        body: [
+          "A remediation that fixes the symptom and not the cause is money spent twice. We start with the investigation: opening up, testing, monitoring where movement is suspected, and a report that says what is wrong, why, how serious it is and what has to happen in what order. For an insurer, warranty provider or management company that report is also the document that settles who pays.",
+        ],
+      },
+      {
+        heading: "Scope, design and procurement",
+        body: [
+          "We prepare the scope of works and the remediation design, specify the systems and products, and help the client procure a contractor on a like-for-like basis. We are independent of the contractors, so the scope is what the building needs rather than what is easiest to sell.",
+        ],
+      },
+      {
+        heading: "Managing the works to handover",
+        body: [
+          "We act as engineer and project manager through the remediation: inspecting the work as it proceeds, dealing with what is found once things are opened up, keeping residents and owners informed, and certifying the work at completion. Where buildings stay occupied during the works, phasing and interim safety measures are part of the plan from the start.",
+        ],
+      },
+      {
+        heading: "Apartment schemes, cladding and fire defects",
+        body: [
+          "Many apartment buildings from the construction boom have fire safety, structural and water ingress defects: missing fire stopping, poor compartmentation, defective balconies, cladding and roofs that leak. We assess the building, prepare the application and the scope for the Government's remediation scheme, and design and oversee the works, with the fire engineering through Fire Safety Consultants.",
+        ],
+      },
+      {
+        heading: "Pyrite and defective concrete blocks",
+        body: [
+          "We assess to I.S. 398 and I.S. 465, prepare the engineer's report for the grant schemes, and design and supervise the remediation of pyrite heave and defective block damage, from single houses to housing estates and public buildings.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "Who do you work for on remediation projects?", a: "Insurers and warranty providers, developers and contractors, owners' management companies and property managers, local authorities and housing bodies, and individual owners." },
+      { q: "Can you manage the whole remediation?", a: "Yes. Investigation, scope, design, procurement, supervision and certification at completion, from one practice." },
+      { q: "Do you cover the UK?", a: "Yes. The Manchester office has managed over £200m of latent defect remediation in England and Wales." },
+      { q: "Do you handle the Government apartment remediation scheme?", a: "Yes, with Fire Safety Consultants. We prepare the assessment and scope that an application needs and carry the works through." },
+    ],
+    related: [
+      { slug: "latent-defects", title: "Latent Defects" },
+      { slug: "apartment-defects-remediation", title: "Apartment Defects Remediation" },
+      { slug: "pyrite-defective-blocks", title: "Pyrite & Defective Blocks" },
+      { slug: "insurance-forensic-engineering", title: "Insurance & Forensic Engineering" },
+    ],
+    projectSlugs: ["vista-montana", "the-glass-bottle-site"],
+    articles: [
+      { slug: "defective-block-works-crisis-tackled-by-aoca", title: "Defective block works crisis tackled by AOCA" },
+      { slug: "celtic-tiger-apartment-defects-repair-plan", title: "Apartment defects: repair plan eligibility and timeline" },
+    ],
+    panel: { title: "Instruct AOCA", lines: ["Over 1,000 homes remediated under the Liberty LDI programme.", "£200m of UK remediation managed from Manchester.", "Ireland and the UK."] },
+    counties: ["Dublin", "All Ireland", "Manchester and the UK"],
+  },
 ];
 
 export const countyLandings: CountyLanding[] = [
