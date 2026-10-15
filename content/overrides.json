@@ -151,7 +151,6 @@
       "location": "Dublin or Portlaoise",
       "type": "Full Time",
       "summary": "AOCA Engineering Consultants are seeking a highly motivated and skilled Structural Engineer & Structural Technician to join our growing team. The role will be based in our Dublin or Portlaoise offices, and the successful candidate will work closely with Senior Engineers and Project Managers.\n\nWe offer a competitive salary package, opportunities for professional growth and development, and a collaborative and dynamic work environment.",
-      "posted": "2026-10-07",
       "responsibilities": [
         "Structural Design: Preparation of structural designs, drawings, and models using AutoCAD, Revit, or similar software.",
         "Prepare applications for approval by regulatory bodies.",
@@ -175,13 +174,35 @@
         "A valid, clean driving licence essential.",
         "Excellent written and verbal communication, interpersonal, and organisational skills, with strong attention to detail.",
         "Ability to work independently and collaboratively within a multidisciplinary team, manage competing priorities, work under pressure, and meet project deadlines."
-      ]
+      ],
+      "posted": "2026-10-07"
     },
     {
       "title": "Fire Engineer",
       "location": "Dublin or Portlaoise",
       "type": "Full Time",
-      "summary": "We are seeking an experienced Fire Engineer to join our growing team in Dublin or Portlaoise. The role involves providing expert fire safety engineering solutions across a range of construction projects, from initial design through to completion.\n\nYou will be responsible for developing fire safety strategies, conducting risk assessments and site inspections, designing and reviewing passive and active fire protection systems, and ensuring compliance with Irish fire safety regulations and relevant standards. You will work closely with architects, engineers, contractors, clients, and regulatory bodies to deliver safe, compliant, and practical solutions.\n\nThe ideal candidate will have a degree in Fire Engineering or a related discipline, approximately 5 years’ relevant experience, strong knowledge of Irish fire safety legislation, and excellent technical and communication skills and must have a full driving licence.",
+      "summary": "We are currently seeking a Fire Engineer to join our growing team. Role will be based out of our Dublin or Portlaoise office. This role offers a unique opportunity to manage complex and high-impact construction projects, providing expert fire safety engineering solutions to clients.\nAs a Fire Engineer you will be responsible for developing fire safety strategies for new buildings and renovations, designing and reviewing passive and active fire protection systems like alarms and sprinklers, and ensuring that all designs align with building codes, fire safety standards, and local regulations.",
+      "responsibilities": [
+        "Conducts risk assessments, safety audits, and site inspections to identify hazards and recommend solutions.",
+        "Prepare fire risk assessments and implement corrective measures to enhance safety. Ensuring that all designs comply with fire codes.",
+        "Provide technical guidance to clients and internal teams regarding fire safety regulations, best practices, and innovations, as well as offering support in troubleshooting issues during construction and post-completion.",
+        "Conduct fire risk assessments, safety audits, and simulations to identify potential hazards and recommend appropriate solutions.",
+        "Collaborate with multidisciplinary teams, including architects, structural engineers, and contractors, to integrate fire safety measures into the overall design and construction process.",
+        "Author fire engineering reports, specifications, and documentation to support project approvals and compliance.",
+        "Engage with clients, stakeholders, and regulatory bodies to provide expert advice and ensure successful project outcomes.",
+        "Stay up-to-date with the latest developments in fire safety engineering, building codes, and industry standards."
+      ],
+      "requirements": [
+        "Bachelor's or Master's degree in Fire Engineering or related field",
+        "5 years of experience in fire engineering, preferably within the construction industry.",
+        "Strong knowledge of Irish fire safety regulations, building codes, and relevant international standards.",
+        "Experience in fire safety design, risk assessment, and fire protection systems for a variety of building types, including commercial, residential, and industrial.",
+        "Proficiency in fire modelling software and tools, such as FDS, PyroSim, or similar is a bonus",
+        "Excellent problem-solving skills and the ability to develop innovative fire safety solutions.",
+        "Strong communication and interpersonal skills, with the ability to effectively collaborate with project teams and stakeholders.",
+        "Chartered Engineer status or working towards it is an advantage.",
+        "Full current driver's license."
+      ],
       "posted": "2026-10-07"
     },
     {
@@ -189,6 +210,8 @@
       "location": "Portlaoise",
       "type": "Full Time",
       "summary": "We are seeking an experienced Architectural Technologist to join our growing team in Portlaoise. The role involves supporting the design and delivery of a range of building projects, from initial concept and planning through to detailed design and construction.\n\nThe ideal candidate will have a qualification in Architectural Technology, relevant industry experience, strong knowledge of Irish Building Regulations and construction methods, and excellent technical, communication, and problem-solving skills. Proficiency in Revit, AutoCAD and a full driving licence.",
+      "responsibilities": [],
+      "requirements": [],
       "posted": "2026-10-07"
     }
   ],
