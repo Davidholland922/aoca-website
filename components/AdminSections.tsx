@@ -59,7 +59,7 @@ type TimelineRow = {
 type TeamRow = { name: string; role: string; cred: string };
 type StatRow = { value: string; label: string };
 type OfficeRow = { name: string; address: string; phone: string; email: string };
-type JobRow = { title: string; location: string; type: string; summary: string; posted?: string };
+type JobRow = { title: string; location: string; type: string; summary: string; posted?: string; responsibilities?: string[]; requirements?: string[] };
 
 const input =
   "w-full min-h-[44px] border border-navy-200 bg-white px-3 py-2 text-sm text-navy-900 placeholder:text-navy-300 focus:border-navy-800";
@@ -295,8 +295,9 @@ export default function AdminSections({ password, start }: { password: string; s
       {section === "jobs" && (
         <div className="grid gap-3">
           <p className="text-sm text-navy-500">
-            Positions listed on the Careers page. Add a title, where it is based, the type (for example Full Time)
-            and a description, then press Save changes. Applicants apply on the Careers page and their CVs appear
+            Positions listed on the Careers page. Each one gets its own page. Add a title, where it is based,
+            the type (for example Full Time), a short introduction, then the key responsibilities and requirements,
+            one per line. Bullet points are added for you, and pasting a list from Word works. Press Save changes. Applicants apply on the Careers page and their CVs appear
             under the <strong>Applications</strong> tab.
           </p>
           {jobRows.map((j, i) => (
@@ -322,10 +323,27 @@ export default function AdminSections({ password, start }: { password: string; s
                   aria-label={`Job ${i + 1} type`}
                   onChange={(e) => setJobRows(jobRows.map((x, k) => (k === i ? { ...x, type: e.target.value } : x)))} />
               </div>
-              <textarea className={input} rows={3} placeholder="Short description of the role"
-                value={j.summary}
-                aria-label={`Job ${i + 1} description`}
-                onChange={(e) => setJobRows(jobRows.map((x, k) => (k === i ? { ...x, summary: e.target.value } : x)))} />
+              <label className="grid gap-1 text-xs font-semibold uppercase tracking-wider text-navy-500">
+                Introduction
+                <textarea className={input} rows={4} placeholder="A few lines about the role and the team"
+                  value={j.summary}
+                  aria-label={`Job ${i + 1} introduction`}
+                  onChange={(e) => setJobRows(jobRows.map((x, k) => (k === i ? { ...x, summary: e.target.value } : x)))} />
+              </label>
+              <label className="grid gap-1 text-xs font-semibold uppercase tracking-wider text-navy-500">
+                Key responsibilities (one per line)
+                <textarea className={input} rows={6} placeholder={"Prepare structural designs and drawings\nCarry out site inspections"}
+                  value={(j.responsibilities ?? []).join("\n")}
+                  aria-label={`Job ${i + 1} key responsibilities`}
+                  onChange={(e) => setJobRows(jobRows.map((x, k) => (k === i ? { ...x, responsibilities: e.target.value.split("\n") } : x)))} />
+              </label>
+              <label className="grid gap-1 text-xs font-semibold uppercase tracking-wider text-navy-500">
+                Requirements (one per line)
+                <textarea className={input} rows={6} placeholder={"Level 8 degree in Structural Engineering\nFull clean driving licence"}
+                  value={(j.requirements ?? []).join("\n")}
+                  aria-label={`Job ${i + 1} requirements`}
+                  onChange={(e) => setJobRows(jobRows.map((x, k) => (k === i ? { ...x, requirements: e.target.value.split("\n") } : x)))} />
+              </label>
             </div>
           ))}
           <button type="button"

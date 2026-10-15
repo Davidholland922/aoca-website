@@ -262,7 +262,9 @@ export function articleJsonLd(a: Article) {
 }
 
 /** JobPosting for an open position, so it can appear in Google's job listings. */
-export function jobPostingJsonLd(job: { title: string; location: string; type: string; summary: string; posted?: string }) {
+export function jobPostingJsonLd(job: { title: string; location: string; type: string; summary: string; posted?: string; slug?: string; responsibilities?: string[]; requirements?: string[] }) {
+  const esc = (t: string) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  const list = (h: string, items?: string[]) => (items?.length ? `<p><strong>${h}</strong></p><ul>${items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>` : "");
   const where = officePlaces
     .map((place, i) => ({ place, i }))
     .filter(({ place }) => job.location.toLowerCase().includes(place.city.toLowerCase()));
@@ -273,12 +275,12 @@ export function jobPostingJsonLd(job: { title: string; location: string; type: s
     title: job.title,
     description: job.summary
       .split(/\n\s*\n/)
-      .map((para) => `<p>${para.trim().replace(/&/g, "&amp;").replace(/</g, "&lt;")}</p>`)
-      .join(""),
+      .map((para) => `<p>${esc(para.trim())}</p>`)
+      .join("") + list("Key responsibilities", job.responsibilities) + list("Requirements", job.requirements),
     datePosted: job.posted ?? new Date().toISOString().slice(0, 10),
     employmentType: type,
     directApply: true,
-    url: `${site.url}/careers#apply`,
+    url: job.slug ? `${site.url}/careers/${job.slug}` : `${site.url}/careers#apply`,
     hiringOrganization: { "@type": "Organization", name: site.name, sameAs: site.url, logo: `${site.url}/aoca-logo-colour.png` },
     jobLocation: (where.length ? where : [{ place: officePlaces[0], i: 0 }]).map(({ i }) => ({
       "@type": "Place",

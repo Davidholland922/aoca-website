@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ChevronDown, Clock, FileText, MapPin, MessageSquare, GraduationCap, Users } from "lucide-react";
+import { ArrowRight, Clock, FileText, MapPin, MessageSquare, GraduationCap, Users } from "lucide-react";
 import { site, companyImages, careersImages, jobs, contactKeys } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
@@ -58,7 +58,7 @@ export default function CareersPage() {
               title={jobs.length ? "We're hiring" : "Current openings"}
               lead={
                 jobs.length
-                  ? "Choose a role to apply. We reply to every application."
+                  ? "Click a role to see the responsibilities and requirements, and apply. We reply to every application."
                   : "There are no advertised openings right now, but we're always interested in talented engineers. Send us your CV and we'll keep it on file."
               }
             />
@@ -85,11 +85,13 @@ export default function CareersPage() {
                   <ul className="mt-5 flex max-w-2xl flex-wrap gap-2">
                     {jobs.map((j) => (
                       <li key={j.title}>
-                        <ApplyButton
-                          role={j.title}
-                          label={j.title}
+                        <Link
+                          href={`/careers/${j.slug}`}
                           className="group inline-flex min-h-[44px] items-center gap-2 border border-white/45 bg-navy-950/45 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:border-brand hover:bg-brand"
-                        />
+                        >
+                          {j.title}
+                          <ArrowRight size={16} aria-hidden />
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -99,50 +101,37 @@ export default function CareersPage() {
           )}
 
           <div className="mt-6 grid gap-4">
-            {jobs.map((j) => {
-              const [first, ...rest] = j.summary.split(/\n\s*\n/).filter((x) => x.trim());
-              return (
-                <Reveal key={j.title}>
-                  <article className="border border-navy-100 bg-white p-6 sm:p-8">
-                    <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-                      <div className="min-w-0">
-                        <h3 className="text-xl font-semibold text-navy-900">{j.title}</h3>
-                        <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm text-navy-600">
-                          {j.location && (
-                            <li className="flex items-center gap-1.5">
-                              <MapPin size={15} className="text-brand" aria-hidden />
-                              {j.location}
-                            </li>
-                          )}
-                          {j.type && (
-                            <li className="flex items-center gap-1.5">
-                              <Clock size={15} className="text-brand" aria-hidden />
-                              {j.type}
-                            </li>
-                          )}
-                        </ul>
-                      </div>
-                      <ApplyButton role={j.title} label="Apply for this role" className="btn-primary shrink-0" />
-                    </div>
-                    {first && <p className="mt-5 max-w-3xl leading-relaxed text-navy-700">{first}</p>}
-                    {rest.length > 0 && (
-                      <details className="group mt-3 max-w-3xl">
-                        <summary className="flex cursor-pointer list-none items-center gap-1.5 text-sm font-semibold text-brand hover:text-brand-dark [&::-webkit-details-marker]:hidden">
-                          <ChevronDown size={16} className="transition-transform group-open:rotate-180" aria-hidden />
-                          <span className="group-open:hidden">Read the full description</span>
-                          <span className="hidden group-open:inline">Show less</span>
-                        </summary>
-                        <div className="mt-3 space-y-3 leading-relaxed text-navy-700">
-                          {rest.map((para) => (
-                            <p key={para.slice(0, 40)}>{para}</p>
-                          ))}
-                        </div>
-                      </details>
-                    )}
-                  </article>
-                </Reveal>
-              );
-            })}
+            {jobs.map((j) => (
+              <Reveal key={j.slug}>
+                <Link
+                  href={`/careers/${j.slug}`}
+                  className="group flex flex-col gap-4 border border-navy-100 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-navy-800 hover:shadow-lg sm:flex-row sm:items-center sm:justify-between sm:p-8"
+                >
+                  <div className="min-w-0">
+                    <h3 className="text-xl font-semibold text-navy-900 group-hover:text-brand">{j.title}</h3>
+                    <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm text-navy-600">
+                      {j.location && (
+                        <li className="flex items-center gap-1.5">
+                          <MapPin size={15} className="text-brand" aria-hidden />
+                          {j.location}
+                        </li>
+                      )}
+                      {j.type && (
+                        <li className="flex items-center gap-1.5">
+                          <Clock size={15} className="text-brand" aria-hidden />
+                          {j.type}
+                        </li>
+                      )}
+                    </ul>
+                    <p className="mt-3 line-clamp-2 max-w-3xl text-sm leading-relaxed text-navy-600">{j.summary.split(/\n/)[0]}</p>
+                  </div>
+                  <span className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold uppercase tracking-wider text-brand">
+                    View role
+                    <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" aria-hidden />
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
           </div>
 
           {/* APPLICATION FORM — CV goes to private, encrypted storage */}

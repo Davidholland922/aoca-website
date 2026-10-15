@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { site, services, projects, sectors } from "@/lib/site";
+import { site, services, projects, sectors, jobs } from "@/lib/site";
 import { insights } from "@/lib/insights";
 import { officePlaces } from "@/lib/seo";
 import { LANDING_LIVE, serviceLandings, countyLandings } from "@/lib/landing";
@@ -21,7 +21,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page("/company", 0.7, "monthly"),
     page("/history", 0.5, "yearly"),
     page("/culture", 0.5, "yearly"),
-    page("/careers", 0.5, "monthly"),
+    page("/careers", 0.6, "weekly"),
+    ...jobs.map((j) => page(`/careers/${j.slug}`, 0.6, "weekly", new Date(j.posted ?? LAUNCH))),
     page("/insights", 0.7, "weekly"),
     page("/contact", 0.8, "yearly"),
     page("/privacy", 0.2, "yearly"),

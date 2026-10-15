@@ -55,6 +55,7 @@ const prettySize = (n: number) => (n < 1024 * 1024 ? `${Math.max(1, Math.round(n
 
 export default function ApplyForm({
   roles,
+  initialRole,
   email,
   accessKey,
   ownSitekey,
@@ -62,6 +63,8 @@ export default function ApplyForm({
 }: {
   /** advertised job titles; "Speculative application" is always offered */
   roles: string[];
+  /** preselect a role, as on a job's own page */
+  initialRole?: string;
   /** fallback address shown under the form */
   email: string;
   /** Web3Forms key for the notification email to AOCA */
@@ -72,7 +75,7 @@ export default function ApplyForm({
 }) {
   const options = [...roles, "Speculative application"];
   // no visible role field: a job's Apply button sets this quietly, otherwise it is a general application
-  const [role, setRole] = useState("Speculative application");
+  const [role, setRole] = useState(initialRole ?? "Speculative application");
   const [file, setFile] = useState<File | null>(null);
   const [dragging, setDragging] = useState(false);
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");

@@ -14,6 +14,12 @@ type Section = (typeof SECTIONS)[number];
 // sections that may legitimately be saved as an empty list
 const MAY_BE_EMPTY: Section[] = ["jobs", "featured", "contactKeys"];
 
+/** One bullet per line; pasted bullet symbols and blank lines are dropped. */
+function bulletList(v: string[] | string | undefined) {
+  const lines = Array.isArray(v) ? v : String(v ?? "").split("\n");
+  return lines.map((l) => String(l).replace(/^[\s•·▪\-*–]+/, "").trim()).filter(Boolean).slice(0, 40);
+}
+
 function telHref(phone: string) {
   const digits = phone.replace(/[^\d+]/g, "").replace(/(?!^)\+/g, "");
   return `tel:${digits}`;
@@ -202,6 +208,8 @@ export async function POST(req: NextRequest) {
           type?: string;
           summary?: string;
           posted?: string;
+          responsibilities?: string[] | string;
+          requirements?: string[] | string;
         }[]
       )
         .map((j) => ({
@@ -209,6 +217,8 @@ export async function POST(req: NextRequest) {
           location: (j.location ?? "").trim(),
           type: (j.type ?? "").trim(),
           summary: (j.summary ?? "").trim(),
+          responsibilities: bulletList(j.responsibilities),
+          requirements: bulletList(j.requirements),
           // the day the post first went up, for Google's job listings
           posted: /^\d{4}-\d{2}-\d{2}$/.test(j.posted ?? "") ? (j.posted as string) : new Date().toISOString().slice(0, 10),
         }))

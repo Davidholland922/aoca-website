@@ -11,6 +11,20 @@ import hiddenSlugsJson from "../content/hidden.json";
 import overridesJson from "../content/overrides.json";
 import uploadedServices from "../content/services.json";
 
+/** An open position. Each one has its own page at /careers/<slug>. */
+export type Job = {
+  title: string;
+  location: string;
+  type: string;
+  /** the introduction: what the role is */
+  summary: string;
+  /** bullet points, one per line in the admin */
+  responsibilities?: string[];
+  requirements?: string[];
+  posted?: string;
+};
+
+
 /** Sections editable by the client via /admin (content/overrides.json). */
 const overrides = overridesJson as Partial<{
   team: { name: string; role: string; cred: string; bio?: string; photo?: string }[];
@@ -24,7 +38,7 @@ const overrides = overridesJson as Partial<{
   }[];
   about: string[];
   featured: string[];
-  jobs: { title: string; location: string; type: string; summary: string; posted?: string }[];
+  jobs: Job[];
   banners: { key: string; title: string; body: string }[];
   contactKeys: { inbox: string; accessKey: string }[];
   timeline: {
@@ -111,8 +125,12 @@ export const aboutParagraphs: string[] =
     "Our business philosophy is, always, to provide the most professional attention, together with the most practical solution at a reasonable cost. Our professional staff are on hand to discuss projects of any magnitude — simple or complex — and will deliver the highest standard possible to help you achieve your stated goal.",
   ];
 
+export const jobSlug = (title: string) =>
+  title.toLowerCase().normalize("NFKD").replace(/[^\w\s-]/g, "").trim().replace(/[\s_]+/g, "-").replace(/-+/g, "-");
+
 /** Open job positions — client-editable via /admin. */
-export const jobs = overrides.jobs ?? [];
+export const jobs: (Job & { slug: string })[] = (overrides.jobs ?? []).map((j) => ({ ...j, slug: jobSlug(j.title) }));
+export const getJob = (slug: string) => jobs.find((j) => j.slug === slug);
 
 /** Slugs removed from the site via /admin (reversible). */
 export const hiddenSlugs = hiddenSlugsJson as string[];
