@@ -8,7 +8,6 @@ import {
   values,
   timeline,
   team,
-  offices,
   companyImages,
   aboutParagraphs,
 } from "@/lib/site";
@@ -244,49 +243,6 @@ export default function CompanyPage() {
         </div>
       </section>
 
-      {/* OFFICES */}
-      <section className="blueprint section bg-navy-950">
-        <div className="container-site">
-          <Reveal>
-            <SectionHeading
-              dark
-              eyebrow="Where we are"
-              title="Three offices, one team"
-              lead={`${site.hours}.`}
-            />
-          </Reveal>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {offices.map((o, i) => (
-              <Reveal key={o.name} delay={i * 0.07}>
-                <div className="h-full border border-white/10 bg-navy-900/60 p-7">
-                  <h3 className="font-semibold text-white">{o.name}</h3>
-                  <div className="rule" />
-                  <p className="mt-4 text-sm leading-relaxed text-navy-100">
-                    {o.address.map((l) => (
-                      <span key={l} className="block">
-                        {l}
-                      </span>
-                    ))}
-                  </p>
-                  <p className="mt-4 text-sm">
-                    <a href={o.phoneHref} className="text-navy-100 hover:text-white">
-                      {o.phone}
-                    </a>
-                  </p>
-                  <p className="mt-1 text-sm">
-                    <a
-                      href={`mailto:${o.email}`}
-                      className="text-brand-light hover:text-white"
-                    >
-                      {o.email}
-                    </a>
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <CtaBand
         title="Get to know us on a real project."
