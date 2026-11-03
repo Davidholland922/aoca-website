@@ -273,5 +273,43 @@
       "/images/2026-08-img-20250902-wa0048.jpg"
     ],
     "heroImage": "/images/2026-05-group-49-2.jpg"
-  }
+  },
+  "offices": [
+    {
+      "name": "Head Office — Portlaoise",
+      "address": [
+        "Lismard House",
+        "Timahoe Road",
+        "Portlaoise, Co. Laois"
+      ],
+      "phone": "+353 (0)57 866 3244",
+      "phoneHref": "tel:+3530578663244",
+      "email": "info@aoca.ie"
+    },
+    {
+      "name": "Dublin Office",
+      "address": [
+        "Unit E6, Centrepoint Business Park",
+        "Oak Drive, Clondalkin",
+        "Dublin 12"
+      ],
+      "phone": "+353 (0)1 424 3035",
+      "phoneHref": "tel:+353014243035",
+      "email": "info@aoca.ie"
+    },
+    {
+      "name": "UK Office",
+      "address": [
+        "Lynwood House,",
+        "Crofton Road,",
+        "Orpington,",
+        "Kent,",
+        "BR8 8QE,",
+        "United Kingdom"
+      ],
+      "phone": "+44 1689471026",
+      "phoneHref": "tel:+441689471026",
+      "email": "info@aoca.co.uk"
+    }
+  ]
 }
