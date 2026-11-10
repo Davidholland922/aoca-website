@@ -1,5 +1,37 @@
 [
   {
+    "slug": "harper-street-mountmellick",
+    "title": "Grange Manor Mountmellick",
+    "sector": "residential",
+    "location": "Mountmellick, Co. Laois",
+    "thumb": "/images/2026-02-harper-thumb.jpg",
+    "hero": "/images/2026-02-harper-thumb.jpg",
+    "gallery": [
+      "/images/2026-02-dji_0807.jpg",
+      "/images/2026-08-dji-0015.jpg",
+      "/images/2026-08-dji-0016.jpg",
+      "/images/2026-08-dji-0017.jpg",
+      "/images/2026-02-dji_0814.jpg",
+      "/images/2026-02-dji_20250526051209_0006_d.jpg",
+      "/images/2026-08-grange-manor-images.jpg",
+      "/images/uploads/harper-street-mountmellick-ocyhm-1.jpg",
+      "/images/uploads/harper-street-mountmellick-ocyhm-2.jpg",
+      "/images/uploads/harper-street-mountmellick-ocyhm-3.jpg"
+    ],
+    "summary": "54-unit residential development on a greenfield site — full civil engineering design, supervision and certification.",
+    "body": [
+      "AOCA provided full Civil Engineering services for the delivery of this 54-unit residential development on a greenfield site located on the approach to Mountmellick from the Dublin side. The development comprised a mix of 42 three-bedroom two-storey houses, 8 two-bedroom two-storey houses and 4 two-bedroom bungalows, providing a varied residential scheme to meet local housing requirements.",
+      "AOCA was responsible for the design, supervision and certification of all civil engineering elements associated with the development. A key engineering challenge was the contrasting drainage requirements across the site, with the foul water system naturally falling towards the main entrance road while the stormwater system required drainage in the opposite direction towards an existing drain located across adjacent farmland.",
+      "This required careful coordination and detailed design of the underground services network, including the strategic positioning of service crossings and the development of an effective stormwater conveyance system capable of serving the entire development. Through close collaboration between the developer and design team throughout the construction phase, the project was successfully delivered on programme."
+    ],
+    "featured": false,
+    "servicesProvided": [],
+    "servicesText": [
+      "Civil engineering design, site infrastructure design, stormwater drainage design, foul water drainage design, utilities coordination, construction supervision and civil works certification."
+    ],
+    "video": "/video/projects/harper-street-mountmellick.mp4"
+  },
+  {
     "slug": "derry-road-durrow",
     "title": "Derry Road, Durrow",
     "sector": "residential",
