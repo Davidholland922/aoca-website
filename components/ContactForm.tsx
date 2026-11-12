@@ -38,8 +38,9 @@ export default function ContactForm({
   accessKeys?: string[];
 }) {
   const [status, setStatus] = useState<
-    "idle" | "sending" | "sent" | "simulated" | "error" | "captcha"
+    "idle" | "sending" | "sent" | "simulated" | "error" | "captcha" | "saved"
   >("idle");
+  const lastData = useRef<Record<string, string> | null>(null);
   const captchaRef = useRef<HTMLDivElement>(null);
   const widgetId = useRef<string | null>(null);
   const mountedAt = useRef(Date.now());
@@ -62,14 +63,28 @@ export default function ContactForm({
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form).entries()) as Record<
+      string,
+      string
+    >;
+    // copy for the admin "Enquiries" tab; failed sends are flagged there so
+    // no real enquiry is ever lost, whatever happens to the email
+    const record = (delivered: boolean) =>
+      fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...data, delivered }),
+        keepalive: true,
+      })
+        .then((r) => r.ok)
+        .catch(() => false);
+    lastData.current = data;
     try {
-      const data = Object.fromEntries(new FormData(form).entries()) as Record<
-        string,
-        string
-      >;
-      // hidden honeypot: real people never fill it, bots usually do
-      const isBot =
-        !!data.botcheck || Date.now() - mountedAt.current < MIN_SECONDS * 1000;
+      // hidden honeypot: real people never tick it, bots usually do
+      const isBot = !!data.botcheck;
+      // implausibly fast (autofill + paste can do it): not emailed, but kept
+      // in the Enquiries tab, flagged, so a real person is never lost
+      const tooFast = Date.now() - mountedAt.current < MIN_SECONDS * 1000;
       delete data.botcheck;
       const token =
         (widgetId.current !== null && window.hcaptcha
@@ -82,21 +97,17 @@ export default function ContactForm({
         setStatus("sent"); // tell the bot it worked; send nothing
         return;
       }
+      if (tooFast) {
+        await record(false);
+        setStatus("sent");
+        return;
+      }
       // the box rendered but was not ticked
       if (captchaRef.current?.hasChildNodes() && !token) {
         setStatus("captcha");
         return;
       }
       setStatus("sending");
-
-      // belt-and-braces copy for the admin "Enquiries" tab (never blocks the user)
-      const record = (delivered: boolean) =>
-        fetch("/api/enquiry", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...data, delivered }),
-          keepalive: true,
-        }).catch(() => {});
 
       if (accessKeys.length) {
         const results = await Promise.all(
@@ -143,8 +154,39 @@ export default function ContactForm({
     } catch {
       // a used or expired captcha token cannot be sent twice
       if (widgetId.current !== null) window.hcaptcha?.reset(widgetId.current);
-      setStatus("error");
+      setStatus((await record(false)) ? "saved" : "error");
     }
+  }
+
+  const mailto = (() => {
+    const d = lastData.current;
+    const body = d
+      ? `Name: ${d.name ?? ""}\nPhone: ${d.phone ?? ""}\n\n${d.message ?? ""}`
+      : "";
+    return `mailto:info@aoca.ie?subject=${encodeURIComponent(
+      "Website enquiry"
+    )}&body=${encodeURIComponent(body)}`;
+  })();
+
+  if (status === "saved") {
+    return (
+      <div
+        className="flex flex-col items-center border border-navy-100 bg-navy-50/50 px-8 py-16 text-center"
+        role="status"
+      >
+        <CheckCircle2 size={44} className="text-brand" aria-hidden />
+        <h3 className="mt-5 text-xl font-semibold text-navy-900">
+          Thanks — we have your message.
+        </h3>
+        <p className="mt-2 max-w-sm text-navy-600">
+          Our email system had a hiccup, but your enquiry has been saved and
+          an engineer will come back to you within one working day.
+        </p>
+        <a href={mailto} className="btn-outline-dark mt-6">
+          Or email it to info@aoca.ie
+        </a>
+      </div>
+    );
   }
 
   if (status === "sent" || status === "simulated") {
@@ -261,8 +303,12 @@ export default function ContactForm({
         </button>
         {status === "error" && (
           <p className="mt-3 text-sm text-brand" role="alert">
-            Something went wrong sending your message — please try again, or
-            call us on +353 (0)57 866 3244.
+            Something went wrong sending your message. Please{" "}
+            <a href={mailto} className="font-semibold underline">
+              email it to info@aoca.ie
+            </a>{" "}
+            (your message is filled in for you) or call us on +353 (0)57 866
+            3244.
           </p>
         )}
       </div>
