@@ -12,7 +12,7 @@ import CtaBand from "@/components/CtaBand";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/expertise" },
-  title: "Engineering Expertise: Civil, Structural, Forensic, Fire Safety & Surveying",
+  title: "Engineering Expertise: Civil, Structural, Fire & Forensic",
   description:
     "Civil engineering, structural engineering, insurance engineering, pyrite remediation and consulting engineering services from AOCA.",
 };

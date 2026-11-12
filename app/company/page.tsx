@@ -17,6 +17,10 @@ import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
+import JsonLd from "@/components/JsonLd";
+import { leadershipJsonLd, faqJsonLd } from "@/lib/seo";
+import { companyFaqs } from "@/lib/faqs";
+import FaqList from "@/components/FaqList";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/company" },
@@ -28,6 +32,7 @@ export const metadata: Metadata = {
 export default function CompanyPage() {
   return (
     <>
+      <JsonLd data={[leadershipJsonLd(), faqJsonLd(companyFaqs)]} />
       <PageHero
         eyebrow="Company"
         title="Independently Irish since 1996."
@@ -243,6 +248,17 @@ export default function CompanyPage() {
         </div>
       </section>
 
+      {/* plain facts about the firm, in question form */}
+      <section className="section bg-navy-50/60">
+        <div className="container-site max-w-4xl">
+          <Reveal>
+            <SectionHeading eyebrow="At a glance" title="AOCA in brief" />
+          </Reveal>
+          <Reveal>
+            <FaqList faqs={companyFaqs} />
+          </Reveal>
+        </div>
+      </section>
 
       <CtaBand
         title="Get to know us on a real project."

@@ -11,7 +11,9 @@ import FscShowcase from "@/components/FscShowcase";
 import CtaBand from "@/components/CtaBand";
 import JsonLd from "@/components/JsonLd";
 import ProjectCard from "@/components/ProjectCard";
-import { projectsForService, serviceJsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import { projectsForService, serviceJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
+import { expertiseFaqs } from "@/lib/faqs";
+import FaqList from "@/components/FaqList";
 import { serviceLandings, getServiceLanding, LANDING_LIVE } from "@/lib/landing";
 import { ServiceLandingView } from "@/components/LandingPage";
 
@@ -53,8 +55,10 @@ export async function generateMetadata({
   }
   const label = SEO_LABEL[service.slug] ?? service.title;
   const short = service.short.length > 105 ? service.short.slice(0, service.short.lastIndexOf(" ", 105)) + "." : service.short;
+  // keep the whole title inside a search result (about 65 characters)
+  const place = `${label}, Portlaoise, Dublin & UK | AOCA`.length <= 65 ? "Portlaoise, Dublin & UK" : "Ireland & UK";
   return {
-    title: `${label}, Portlaoise, Dublin & UK`,
+    title: `${label}, ${place}`,
     description: `${short} AOCA, Portlaoise, Dublin and Manchester.`,
     alternates: { canonical: `/expertise/${service.slug}` },
     openGraph: { images: [service.image] },
@@ -74,12 +78,14 @@ export default async function ServicePage({
     return <ServiceLandingView l={l} />;
   }
   const related = projectsForService(service.slug).slice(0, 6);
+  const faqs = expertiseFaqs[service.slug] ?? [];
 
   return (
     <>
       <JsonLd
         data={[
           serviceJsonLd(service),
+          ...(faqs.length ? [faqJsonLd(faqs)] : []),
           breadcrumbJsonLd([
             { name: "Expertise", path: "/expertise" },
             { name: service.title, path: `/expertise/${service.slug}` },
@@ -251,6 +257,16 @@ export default async function ServicePage({
                     </div>
                   ))}
                 </div>
+              </Reveal>
+            )}
+
+            {faqs.length > 0 && (
+              <Reveal>
+                <h2 className="mt-14 text-2xl font-semibold text-navy-900">
+                  Common questions
+                </h2>
+                <div className="rule" />
+                <FaqList faqs={faqs} />
               </Reveal>
             )}
 

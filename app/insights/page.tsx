@@ -6,6 +6,8 @@ import { insights } from "@/lib/insights";
 import Reveal from "@/components/Reveal";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
+import JsonLd from "@/components/JsonLd";
+import { itemListJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/insights" },
@@ -19,6 +21,7 @@ export default function InsightsPage() {
 
   return (
     <>
+      <JsonLd data={itemListJsonLd("AOCA Insights", "/insights", insights.map((a) => ({ name: a.title, path: `/insights/${a.slug}` })))} />
       <PageHero
         eyebrow="Insights"
         title="Knowledge Built on Experience"

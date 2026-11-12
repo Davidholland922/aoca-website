@@ -3,9 +3,10 @@ import Image from "next/image";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { site, offices, companyImages, contactKeys } from "@/lib/site";
 import Reveal from "@/components/Reveal";
-import { officeMapEmbed, officePlaces } from "@/lib/seo";
+import { officeMapEmbed, officePlaces, contactPageJsonLd } from "@/lib/seo";
 import ContactForm from "@/components/ContactForm";
 import PageHero from "@/components/PageHero";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
+      <JsonLd data={contactPageJsonLd()} />
       <PageHero
         eyebrow="Contact"
         title="Get in touch."

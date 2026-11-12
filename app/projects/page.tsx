@@ -4,6 +4,8 @@ import Reveal from "@/components/Reveal";
 import PageHero from "@/components/PageHero";
 import ProjectsExplorer from "@/components/ProjectsExplorer";
 import CtaBand from "@/components/CtaBand";
+import JsonLd from "@/components/JsonLd";
+import { itemListJsonLd } from "@/lib/seo";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -16,6 +18,7 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <>
+      <JsonLd data={itemListJsonLd("AOCA Projects", "/projects", projects.map((x) => ({ name: x.title, path: `/projects/${x.slug}` })))} />
       <PageHero
         eyebrow="Projects"
         title="Some of the projects that have shaped who we are."

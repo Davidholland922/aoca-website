@@ -1,4 +1,4 @@
-import { site, offices, services, sectors, projects, projectServices, type Project, type Service } from "@/lib/site";
+import { site, offices, services, sectors, projects, projectServices, team, accreditations, type Project, type Service } from "@/lib/site";
 import type { Article } from "@/lib/insights";
 
 /**
@@ -106,6 +106,25 @@ function postalAddress(i: number) {
   const place = officePlaces[i];
   if (!o || !place) return undefined;
   const lines = o.address.filter((l) => !l.startsWith("("));
+  // The address is edited by the client in /admin. If it no longer names
+  // this office's city, the fixed locality and postcode above are stale, so
+  // describe only what the page actually shows rather than publish an
+  // address that does not exist.
+  const shown = lines.join(", ");
+  if (!shown.toLowerCase().includes(place.city.toLowerCase())) {
+    const parts = shown.split(",").map((x) => x.trim()).filter(Boolean);
+    const country = parts.filter((x) => /^(united kingdom|uk|ireland|england|wales|scotland)$/i.test(x));
+    const rest = parts.filter((x) => !country.includes(x));
+    const ukPostcode = rest.find((x) => /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i.test(x));
+    const body = rest.filter((x) => x !== ukPostcode);
+    return {
+      "@type": "PostalAddress",
+      streetAddress: body.slice(0, -2).join(", ") || body.join(", "),
+      ...(body.length > 2 ? { addressLocality: body[body.length - 2], addressRegion: body[body.length - 1] } : {}),
+      ...(ukPostcode ? { postalCode: ukPostcode.toUpperCase() } : {}),
+      addressCountry: place.country,
+    };
+  }
   return {
     "@type": "PostalAddress",
     streetAddress: lines.slice(0, -1).join(", "),
@@ -166,6 +185,20 @@ export function orgJsonLd() {
         location: offices.map((_, i) => ({ "@id": `${site.url}/offices/${officePlaces[i]?.slug}#office` })),
         areaServed: ["Ireland", "United Kingdom", "Europe"],
         knowsAbout: services.map((s) => s.title),
+        founder: { "@type": "Person", name: "Aidan O'Connell" },
+        employee: team.map((m) => ({ "@id": personId(m.name) })),
+        hasCredential: accreditations.map((name) => ({
+          "@type": "EducationalOccupationalCredential",
+          name,
+        })),
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "customer service",
+          telephone: site.phoneHref.replace("tel:", ""),
+          email: site.email,
+          areaServed: ["IE", "GB"],
+          availableLanguage: "English",
+        },
         sameAs: [
           "https://www.linkedin.com/company/aidan-o'connell-&-associates",
           "https://www.facebook.com/aoca.ie",
@@ -258,6 +291,9 @@ export function articleJsonLd(a: Article) {
     publisher: { "@id": ORG_ID },
     mainEntityOfPage: `${site.url}/insights/${a.slug}`,
     inLanguage: "en-IE",
+    articleSection: "Insights",
+    wordCount: a.body.join(" ").split(/\s+/).length,
+    isPartOf: { "@id": `${site.url}/#website` },
   };
 }
 
@@ -286,5 +322,150 @@ export function jobPostingJsonLd(job: { title: string; location: string; type: s
       "@type": "Place",
       address: postalAddress(i),
     })),
+  };
+}
+
+/* ------------------------------------------------------------------ */
+/* Titles and descriptions sized for search results                    */
+/* ------------------------------------------------------------------ */
+
+const SUFFIX = ` | ${site.shortName}`;
+
+/** Cut at a word boundary, with an ellipsis, never mid-word. */
+export function clip(text: string, max: number) {
+  const t = text.replace(/\s+/g, " ").replace(/…$/, "").trim();
+  if (t.length <= max) return t;
+  return t.slice(0, t.lastIndexOf(" ", max - 1)).replace(/[\s,;:–—-]+$/, "") + "…";
+}
+
+/**
+ * Page title that fits a search result (about 65 characters). Short titles
+ * get the brand suffix from the layout template; long ones drop it rather
+ * than be cut off mid-phrase by Google.
+ */
+export function fitTitle(title: string): string | { absolute: string } {
+  if ((title + SUFFIX).length <= 65) return title;
+  return { absolute: clip(title, 65) };
+}
+
+/**
+ * Project title for search: the name plus where it is, without repeating a
+ * town the name already contains ("…, Portlaoise, Portlaoise, Co. Laois").
+ */
+export function projectTitle(p: Project) {
+  if (!p.location) return fitTitle(p.title);
+  const loc = /various locations/i.test(p.location) ? "Ireland" : p.location;
+  const parts = loc.split(",").map((x) => x.trim()).filter((x) => x && !p.title.toLowerCase().includes(x.toLowerCase()));
+  for (const tail of [parts.join(", "), parts.slice(-1).join("")]) {
+    const t = tail ? `${p.title}, ${tail}` : p.title;
+    if ((t + SUFFIX).length <= 65) return t;
+  }
+  return fitTitle(p.title);
+}
+
+/** Project description: the summary, filled out when it is very short. */
+export function projectDescription(p: Project) {
+  if (p.summary.length >= 110) return clip(p.summary, 158);
+  const sector = sectors.find((s) => s.slug === p.sector)?.title;
+  const where = p.location && !/various/i.test(p.location) ? ` in ${p.location}` : "";
+  return clip(`${p.summary.replace(/\.$/, "")}. ${sector ? `${sector} project` : "Project"}${where} by ${site.name}.`, 158);
+}
+
+/* ------------------------------------------------------------------ */
+/* Structured data for answers, people and video                       */
+/* ------------------------------------------------------------------ */
+
+export function faqJsonLd(faqs: { q: string; a: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+}
+
+export function personId(name: string) {
+  return `${site.url}/company#${name.toLowerCase().replace(/[^a-z]+/g, "-").replace(/^-|-$/g, "")}`;
+}
+
+/** The management team as people, tied to the organisation. */
+export function leadershipJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "AboutPage",
+        "@id": `${site.url}/company#about`,
+        url: `${site.url}/company`,
+        name: `About ${site.name}`,
+        about: { "@id": ORG_ID },
+        isPartOf: { "@id": `${site.url}/#website` },
+      },
+      ...team.map((m) => ({
+        "@type": "Person",
+        "@id": personId(m.name),
+        name: m.name,
+        jobTitle: m.role,
+        ...(m.cred ? { honorificSuffix: m.cred } : {}),
+        ...(m.bio ? { description: m.bio } : {}),
+        ...(m.photo ? { image: `${site.url}${m.photo}` } : {}),
+        worksFor: { "@id": ORG_ID },
+        url: `${site.url}/company`,
+      })),
+    ],
+  };
+}
+
+/** A project film, so it can appear in video results. */
+export function videoJsonLd(p: Project) {
+  if (!p.video) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "@id": `${site.url}/projects/${p.slug}#video`,
+    name: `${p.title}: project film`,
+    description: p.summary,
+    thumbnailUrl: `${site.url}${p.videoPoster ?? p.hero ?? p.thumb}`,
+    contentUrl: `${site.url}${p.video}`,
+    uploadDate: "2026-10-04T00:00:00+01:00",
+    publisher: { "@id": ORG_ID },
+    ...(p.location ? { contentLocation: { "@type": "Place", name: p.location } } : {}),
+  };
+}
+
+export function contactPageJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "@id": `${site.url}/contact#contact`,
+    url: `${site.url}/contact`,
+    name: `Contact ${site.name}`,
+    about: { "@id": ORG_ID },
+    isPartOf: { "@id": `${site.url}/#website` },
+  };
+}
+
+/** A list page (insights, projects) as an ordered list of its entries. */
+export function itemListJsonLd(name: string, path: string, items: { name: string; path: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${site.url}${path}#list`,
+    url: `${site.url}${path}`,
+    name,
+    isPartOf: { "@id": `${site.url}/#website` },
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: items.length,
+      itemListElement: items.map((it, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: it.name,
+        url: `${site.url}${it.path}`,
+      })),
+    },
   };
 }

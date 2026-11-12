@@ -15,7 +15,7 @@ import Reveal from "@/components/Reveal";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
 import JsonLd from "@/components/JsonLd";
-import { projectJsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import { projectJsonLd, breadcrumbJsonLd, projectTitle, projectDescription, videoJsonLd } from "@/lib/seo";
 import SectionVideo from "@/components/SectionVideo";
 import ProjectGallery from "@/components/ProjectGallery";
 
@@ -31,8 +31,8 @@ export async function generateMetadata({
   const project = getProject((await params).slug);
   if (!project) return {};
   return {
-    title: project.location ? `${project.title}, ${project.location}` : project.title,
-    description: project.summary,
+    title: projectTitle(project),
+    description: projectDescription(project),
     alternates: { canonical: `/projects/${project.slug}` },
     openGraph: { images: [project.hero ?? project.thumb] },
   };
@@ -60,6 +60,7 @@ export default async function ProjectPage({
       <JsonLd
         data={[
           projectJsonLd(project),
+          ...(project.video ? [videoJsonLd(project)!] : []),
           breadcrumbJsonLd([
             { name: "Projects", path: "/projects" },
             ...(sector ? [{ name: sector.title, path: `/projects/sector/${sector.slug}` }] : []),

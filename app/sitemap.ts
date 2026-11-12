@@ -13,6 +13,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"],
     lastModified: Date = LAUNCH
   ) => ({ url: `${site.url}${path}`, lastModified, changeFrequency, priority });
+  // attach the page's own photographs so they can surface in image search
+  const withImages = <T extends object>(entry: T, images: (string | undefined)[]) => ({
+    ...entry,
+    images: [...new Set(images.filter((i): i is string => !!i))].slice(0, 12).map((i) => `${site.url}${i}`),
+  });
 
   return [
     page("", 1, "weekly"),
@@ -27,13 +32,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page("/contact", 0.8, "yearly"),
     page("/privacy", 0.2, "yearly"),
     ...officePlaces.map((o) => page(`/offices/${o.slug}`, 0.8, "monthly")),
-    ...services.map((s) => page(`/expertise/${s.slug}`, 0.9, "monthly")),
+    ...services.map((s) => withImages(page(`/expertise/${s.slug}`, 0.9, "monthly"), [s.image, ...s.sections.map((x) => x.image), ...s.gallery])),
     ...sectors.map((s) => page(`/projects/sector/${s.slug}`, 0.7, "weekly")),
     ...(LANDING_LIVE ? serviceLandings.map((l) => page(`/expertise/${l.slug}`, 0.8, "monthly", new Date("2026-10-05"))) : []),
     ...(LANDING_LIVE ? countyLandings.map((l) => page(`/areas/${l.slug}`, 0.7, "monthly", new Date("2026-10-05"))) : []),
-    ...projects.map((p) => page(`/projects/${p.slug}`, 0.6, "monthly")),
+    ...projects.map((p) => withImages(page(`/projects/${p.slug}`, 0.6, "monthly"), [p.hero, p.thumb, ...p.gallery])),
     ...insights.map((a) =>
-      page(`/insights/${a.slug}`, 0.5, "yearly", a.date ? new Date(a.date) : LAUNCH)
+      withImages(page(`/insights/${a.slug}`, 0.5, "yearly", a.date ? new Date(a.date) : LAUNCH), [a.image])
     ),
+    page("/fire-safety-consultants", 0.6, "monthly"),
   ];
 }

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/fire-safety-consultants" },
   title: "Fire Safety Consultants, Ireland",
   description:
-    "Fire Safety Consultants — AOCA and OCF's specialist fire safety and accessibility consultancy. Fire engineering, certificates, risk assessments and defect remediation across Ireland and the UK.",
+    "AOCA and OCF's specialist fire safety and accessibility practice: fire engineering, certificates, risk assessments and defect remediation in Ireland and the UK.",
 };
 
 /* FSC's brand orange, sampled from the flame logo (see DESIGN.md) */

@@ -8,7 +8,7 @@ import Reveal from "@/components/Reveal";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
 import JsonLd from "@/components/JsonLd";
-import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import { articleJsonLd, breadcrumbJsonLd, fitTitle, clip } from "@/lib/seo";
 import { LANDING_LIVE, landingsForArticle } from "@/lib/landing";
 
 export function generateStaticParams() {
@@ -23,8 +23,8 @@ export async function generateMetadata({
   const article = getArticle((await params).slug);
   if (!article) return {};
   return {
-    title: article.title,
-    description: article.excerpt,
+    title: fitTitle(article.title),
+    description: clip(article.excerpt, 155),
     alternates: { canonical: `/insights/${article.slug}` },
     openGraph: { type: "article", publishedTime: article.date, images: [article.image] },
   };
